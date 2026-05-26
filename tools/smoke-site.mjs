@@ -28,6 +28,10 @@ async function checkViewport(name, viewport) {
   await page.click('button[data-topic-group="modern"]');
   const detail = await page.locator(".topic-detail").innerText();
   const detailHasDeepDive = await page.locator(".deep-dive-row").count();
+  await page.waitForFunction(() => {
+    const image = document.querySelector(".diagram-card img");
+    return image && image.complete && image.naturalWidth > 0;
+  });
   const diagramBox = await page.locator(".diagram-card img").first().evaluate((element) => {
     const rect = element.getBoundingClientRect();
     return {
