@@ -235,10 +235,13 @@ async function refreshVisibleMetrics() {
   const apiBase = metricApiBase();
   const items = visibleMetricItems();
   if (!apiBase || !items.length) return;
-  const params = new URLSearchParams();
-  items.forEach((item) => params.append("item", item));
   try {
-    const res = await fetch(`${apiBase}/stats?${params.toString()}`, { cache: "no-store" });
+    const res = await fetch(`${apiBase}/stats`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items }),
+      cache: "no-store"
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     state.metricCounts = { ...state.metricCounts, ...(data.counts || {}) };

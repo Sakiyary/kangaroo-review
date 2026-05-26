@@ -296,13 +296,19 @@ class MetricsHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         endpoint = self.api_endpoint()
-        if endpoint != "track":
+        if endpoint not in {"track", "stats"}:
             json_response(self, HTTPStatus.NOT_FOUND, {"error": "not found"})
             return
         try:
             length = min(int(self.headers.get("Content-Length", "0")), MAX_BODY_BYTES)
             payload = json.loads(self.rfile.read(length) or b"{}")
-            result = self.app.store.track(payload, self.headers, self.client_address[0])
+            if endpoint == "stats":
+                items = payload.get("items") or []
+                if not isinstance(items, list):
+                    raise ValueError("items must be a list")
+                result = self.app.store.stats([str(item) for item in items])
+            else:
+                result = self.app.store.track(payload, self.headers, self.client_address[0])
             json_response(self, HTTPStatus.OK, result)
         except (json.JSONDecodeError, ValueError) as error:
             json_response(self, HTTPStatus.BAD_REQUEST, {"error": str(error)})
