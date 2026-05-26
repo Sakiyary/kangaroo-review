@@ -5,20 +5,21 @@
 ## 本地浏览
 
 ```bash
-cd site
-python3 -m http.server 18082 --bind 127.0.0.1
+python3 -m http.server 18080 --bind 127.0.0.1
 ```
 
-然后打开 <http://127.0.0.1:18082/>。
+然后打开 <http://127.0.0.1:18080/site/>。
 
-也可以直接打开 `site/index.html`；页面会使用 `site/data/*.js` fallback 数据。
+也可以直接打开 `site/index.html`；页面会使用 `site/data/*.js` fallback 数据。若要在“资料库”里预览本机抽取内容，请从仓库根目录启动 18080 服务。
+
+线上部署目标：<https://docs.cpl.icu/kangaroo-review/>。
 
 ## 内容结构
 
 - `site/`：前端页面、样式、交互和可发布数据。
-- `site/content.js`：复习路线、知识点、术语表和画板资源。
-- `site/data/questions.json`：33 条往年题聚类。
-- `site/data/sources.json`：30 个源文件的抽取状态清单。
+- `site/content.js`：复习路线、15 个知识点、79 条术语、11 张本地图解和画板资源。
+- `site/data/questions.json`：33 条往年题聚类，包含中文完整示例答案、英文关键词和图解关联。
+- `site/data/sources.json`：42 个源文件的抽取状态清单。
 - `tools/extract_sources.py`：本地文本抽取脚本。
 - `tools/vision_pdf_ocr.swift`：macOS Vision/PDFKit OCR 脚本。
 - `data/catalog/sources.json`：源文件清单。
@@ -39,6 +40,10 @@ python3 -m http.server 18082 --bind 127.0.0.1
 
 ## 验证记录
 
-- `node --check site/app.js`
-- `node --check site/content.js`
-- Playwright/Chrome 桌面与移动视口验证：9 个知识点卡片、33 条真题聚类、42 个术语、30 条资料清单，无控制台错误，无横向溢出。
+- `node --check site/app.js site/content.js site/data/questions.js site/data/sources.js tools/smoke-site.mjs`
+- `jq empty site/data/questions.json site/data/sources.json`
+- Playwright/Chrome 桌面与移动视口验证：15 个知识点、33 条真题聚类、79 个术语、42 条资料清单、11 张本地图解，无控制台错误，无横向溢出。
+
+## License
+
+MIT

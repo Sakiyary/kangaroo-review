@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Quality attribute scenario six elements</title>
+  <desc id="desc">A concrete performance scenario with source, stimulus, environment, artifact, response, and response measure.</desc>
+  <rect width="1280" height="720" fill="#fffdf8"/>
+  <rect x="42" y="38" width="1196" height="644" fill="#f7f4ec" stroke="#d9d2c4" stroke-width="3"/>
+  <text x="70" y="94" font-family="Georgia,serif" font-size="34" font-weight="700" fill="#1f2328">Quality Attribute Scenario: checkout latency</text>
+  <text x="70" y="132" font-family="Avenir Next,Arial,sans-serif" font-size="18" fill="#667078">考试答题：先写六要素，再补 tactic / pattern；每个元素都要可测量。</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#355f91"/>
+    </marker>
+  </defs>
+
+  <g font-family="Avenir Next,Arial,sans-serif">
+    <rect x="70" y="205" width="205" height="110" rx="8" fill="#ffffff" stroke="#b54634" stroke-width="3"/>
+    <text x="92" y="242" font-size="18" font-weight="700" fill="#b54634">1. Source</text>
+    <text x="92" y="272" font-size="18" fill="#1f2328">10,000 shoppers</text>
+    <text x="92" y="299" font-size="15" fill="#667078">刺激源：大量用户</text>
+
+    <rect x="330" y="205" width="220" height="110" rx="8" fill="#ffffff" stroke="#355f91" stroke-width="3"/>
+    <text x="352" y="242" font-size="18" font-weight="700" fill="#355f91">2. Stimulus</text>
+    <text x="352" y="272" font-size="18" fill="#1f2328">submit checkout</text>
+    <text x="352" y="299" font-size="15" fill="#667078">刺激：同时提交订单</text>
+
+    <rect x="605" y="205" width="230" height="110" rx="8" fill="#ffffff" stroke="#14756f" stroke-width="3"/>
+    <text x="627" y="242" font-size="18" font-weight="700" fill="#14756f">3. Environment</text>
+    <text x="627" y="272" font-size="18" fill="#1f2328">normal peak traffic</text>
+    <text x="627" y="299" font-size="15" fill="#667078">环境：促销高峰但系统正常</text>
+
+    <rect x="890" y="205" width="270" height="110" rx="8" fill="#ffffff" stroke="#4e7348" stroke-width="3"/>
+    <text x="912" y="242" font-size="18" font-weight="700" fill="#4e7348">4. Artifact</text>
+    <text x="912" y="272" font-size="18" fill="#1f2328">order + payment services</text>
+    <text x="912" y="299" font-size="15" fill="#667078">制品：订单与支付服务</text>
+
+    <rect x="240" y="430" width="300" height="125" rx="8" fill="#ffffff" stroke="#b8841f" stroke-width="3"/>
+    <text x="263" y="468" font-size="18" font-weight="700" fill="#b8841f">5. Response</text>
+    <text x="263" y="499" font-size="18" fill="#1f2328">accept request, queue overload,</text>
+    <text x="263" y="525" font-size="18" fill="#1f2328">return confirmation or retry hint</text>
+
+    <rect x="670" y="430" width="330" height="125" rx="8" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+    <text x="693" y="468" font-size="18" font-weight="700" fill="#1f2328">6. Response Measure</text>
+    <text x="693" y="499" font-size="18" fill="#1f2328">95% requests &lt; 2s;</text>
+    <text x="693" y="525" font-size="18" fill="#1f2328">error rate &lt; 0.1%</text>
+  </g>
+
+  <line x1="275" y1="260" x2="330" y2="260" stroke="#355f91" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="550" y1="260" x2="605" y2="260" stroke="#355f91" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="835" y1="260" x2="890" y2="260" stroke="#355f91" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1025 315 C1025 382 875 390 835 430" fill="none" stroke="#355f91" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="540" y1="492" x2="670" y2="492" stroke="#355f91" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

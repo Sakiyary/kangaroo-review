@@ -48,6 +48,21 @@ function labelText(value) {
   return localize(value).replace(/\n/g, " / ");
 }
 
+function localizedPair(item, zhKey, enKey) {
+  if (!item) return "";
+  if (state.lang === "en") return item[enKey] || item[zhKey] || "";
+  if (state.lang === "zh") return item[zhKey] || item[enKey] || "";
+  const zh = item[zhKey] || "";
+  const en = item[enKey] || "";
+  if (!zh) return en;
+  if (!en || zh === en) return zh;
+  return `${zh}\n${en}`;
+}
+
+function diagramById(id) {
+  return (content.diagrams || []).find((diagram) => diagram.id === id);
+}
+
 function flattenValues(value) {
   if (value == null) return [];
   if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return [String(value)];
@@ -105,7 +120,7 @@ function currentTopics() {
   return content.topics
     .filter((topic) => state.priority === "all" || topic.priority === state.priority)
     .filter((topic) => state.topicGroup === "all" || topic.group === state.topicGroup)
-    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.sources, topic.sourceConfidence));
+    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.deepDive, topic.sources, topic.sourceConfidence));
 }
 
 function renderOverview() {
@@ -271,7 +286,9 @@ function renderKnowledge() {
 }
 
 function renderTopicDetail(topic) {
-  const related = state.questions.filter((question) => includesQuery(question.cluster, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.recurring_terms) && topic.sources.join(" ").toLowerCase().includes(question.cluster.split("_")[0])).length;
+  const relatedQuestions = state.questions.filter((question) => (question.topicIds || []).includes(topic.id));
+  const related = relatedQuestions.length;
+  const diagrams = (topic.diagramIds || []).map(diagramById).filter(Boolean);
   return `
     <header class="detail-head">
       <div>
@@ -304,6 +321,76 @@ function renderTopicDetail(topic) {
         <small>${related ? `${related} related question clusters` : ""}</small>
       </aside>
     </section>
+    ${renderDeepDive(topic)}
+    ${diagrams.length ? `
+      <section class="diagram-section">
+        <h3>${state.lang === "en" ? "Diagrams to memorize" : "建议背下来的图解"}</h3>
+        <div class="diagram-grid">
+          ${diagrams.map((diagram) => renderDiagramCard(diagram)).join("")}
+        </div>
+      </section>
+    ` : ""}
+    ${relatedQuestions.length ? `
+      <section class="related-questions">
+        <h3>${state.lang === "en" ? "Related past-paper practice" : "关联真题练习"}</h3>
+        <div class="mini-question-list">
+          ${relatedQuestions.slice(0, 5).map((question) => `
+            <a href="#papers" data-action="jump-question" data-question-id="${escapeHtml(question.id)}">
+              <span>${escapeHtml(question.cluster)}</span>
+              <strong>${escapeHtml(state.lang === "en" ? question.canonical_question : question.question_zh || question.canonical_question)}</strong>
+            </a>
+          `).join("")}
+        </div>
+      </section>
+    ` : ""}
+  `;
+}
+
+function renderDeepDive(topic) {
+  const sections = topic.deepDive || [];
+  if (!sections.length) return "";
+  return `
+    <section class="deep-dive">
+      <h3>${state.lang === "en" ? "Expanded notes" : "展开讲解：背什么，怎么写，哪里易错"}</h3>
+      <div class="deep-dive-list">
+        ${sections.map((section) => `
+          <article class="deep-dive-row">
+            <header>
+              <b>${htmlText(section.title)}</b>
+              <p>${htmlText(section.summary || "")}</p>
+            </header>
+            <div>
+              <span>${state.lang === "en" ? "Must memorize" : "必须背"}</span>
+              <p>${htmlText(section.must)}</p>
+            </div>
+            <div>
+              <span>${state.lang === "en" ? "How to answer" : "怎么答"}</span>
+              <p>${htmlText(section.answer)}</p>
+            </div>
+            <div>
+              <span>${state.lang === "en" ? "Common trap" : "易错点"}</span>
+              <p>${htmlText(section.trap)}</p>
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderDiagramCard(diagram, compact = false) {
+  return `
+    <article class="diagram-card ${compact ? "compact" : ""}">
+      <button type="button" data-action="open-diagram" data-diagram-id="${escapeHtml(diagram.id)}">
+        <img src="${escapeHtml(diagram.src)}" alt="${escapeHtml(labelText(diagram.title))}" />
+        <span>${state.lang === "en" ? "Zoom" : "放大"}</span>
+      </button>
+      <div>
+        <strong>${htmlText(diagram.title)}</strong>
+        <p>${htmlText(diagram.note)}</p>
+        ${diagram.use ? `<small>${htmlText(diagram.use)}</small>` : ""}
+      </div>
+    </article>
   `;
 }
 
@@ -311,7 +398,7 @@ function renderPapers() {
   const clusters = ["all", ...new Set(state.questions.map((q) => q.cluster).sort())];
   const questions = state.questions
     .filter((question) => state.cluster === "all" || question.cluster === state.cluster)
-    .filter((question) => includesQuery(question.cluster, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.recurring_terms, question.appearances));
+    .filter((question) => includesQuery(question.cluster, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords, question.appearances));
   return `
     <section class="panel">
       <div class="section-head split">
@@ -336,6 +423,9 @@ function renderPapers() {
 function renderQuestion(question, open) {
   const zhQuestion = question.question_zh || question.canonical_question;
   const zhAnswer = question.answer_zh || question.likely_answer_pattern;
+  const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
+  const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
+  const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
   const title = state.lang === "en"
     ? question.canonical_question
     : state.lang === "zh"
@@ -357,9 +447,27 @@ function renderQuestion(question, open) {
           <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
           <p>${htmlText(answer)}</p>
         </section>
+        ${sample ? `
+          <section class="sample-answer">
+            <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
+            <p>${htmlText(sample)}</p>
+          </section>
+        ` : ""}
+        ${diagram ? `
+          <section class="question-diagram">
+            <h3>${state.lang === "en" ? "Useful diagram" : "配套图解"}</h3>
+            ${renderDiagramCard(diagram, true)}
+            ${visualHint ? `<p>${htmlText(visualHint)}</p>` : ""}
+          </section>
+        ` : visualHint ? `
+          <section class="question-diagram">
+            <h3>${state.lang === "en" ? "Diagram hint" : "画图提示"}</h3>
+            <p>${htmlText(visualHint)}</p>
+          </section>
+        ` : ""}
         <div class="question-meta">
           <div class="tag-stack">
-            ${(question.recurring_terms || []).map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
+            ${[...(question.english_keywords || question.recurring_terms || [])].map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
           </div>
           <small>${escapeHtml((question.appearances || []).join(" · "))}</small>
         </div>
@@ -587,9 +695,16 @@ function setupEvents() {
       const topic = content.topics.find((item) => item.id === state.selectedTopicId);
       state.topicGroup = topic?.group || "all";
     }
+    if (action === "jump-question") {
+      state.cluster = "all";
+    }
     if (action === "open-whiteboard") {
       event.preventDefault();
       openWhiteboard(target.dataset.boardId);
+    }
+    if (action === "open-diagram") {
+      event.preventDefault();
+      openDiagram(target.dataset.diagramId);
     }
     if (action === "preview-source") {
       event.preventDefault();
@@ -653,6 +768,31 @@ function openWhiteboard(id) {
   `);
 }
 
+function openDiagram(id) {
+  const diagram = diagramById(id);
+  if (!diagram) return;
+  openModal(`
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <section class="modal-panel wide" role="dialog" aria-modal="true" aria-label="${escapeHtml(labelText(diagram.title))}">
+      <header class="modal-head">
+        <div>
+          <p class="section-kicker">Exam Diagram</p>
+          <h2>${htmlText(diagram.title)}</h2>
+          <p>${htmlText(diagram.note)}</p>
+        </div>
+        <div class="modal-actions">
+          <button type="button" data-action="zoom-board" data-delta="-0.25">−</button>
+          <button type="button" data-action="zoom-board" data-delta="0.25">+</button>
+          <button type="button" data-action="close-modal">${state.lang === "en" ? "Close" : "关闭"}</button>
+        </div>
+      </header>
+      <div class="modal-scroll">
+        <img class="modal-image" data-zoom="1" src="${escapeHtml(diagram.src)}" alt="${escapeHtml(labelText(diagram.title))}" />
+      </div>
+    </section>
+  `);
+}
+
 function normalizePreviewPath(source) {
   const path = source?.preview_path || (source?.extracted_path ? `../${source.extracted_path}` : "");
   if (!path) return "";
@@ -688,10 +828,29 @@ async function previewSource(source) {
     const text = await sourceTextFromResponse(res, path);
     pre.textContent = text.slice(0, 18000) || (state.lang === "en" ? "Preview is empty." : "预览内容为空。");
   } catch (error) {
-    pre.textContent = `${state.lang === "en" ? "Preview failed" : "预览失败"}: ${error.message}\n\n${state.lang === "en"
-      ? "Serve the site from the repository root, or use the source link to open the local file/external URL."
-      : "请从仓库根目录启动静态服务，或用“打开源文件/外链”查看原始资料。"}`;
+    pre.textContent = sourceFallbackText(source, error);
   }
+}
+
+function sourceFallbackText(source, error) {
+  const lines = state.lang === "en"
+    ? [
+      `Local extracted preview is unavailable here (${error.message}).`,
+      "The public site intentionally ships synthesized review data instead of raw PDFs, Feishu notes, or predecessor materials.",
+      source.summary ? `Summary: ${source.summary}` : "",
+      source.path ? `Local path: ${source.path}` : "",
+      source.url ? `Source URL: ${source.url}` : "",
+      source.trust ? `Trust level: ${source.trust}` : ""
+    ]
+    : [
+      `这里无法读取本机抽取预览（${error.message}）。`,
+      "公开站点只发布合成后的复习资料，不携带原始课件、飞书纪要或前人资料全文。",
+      source.summary ? `摘要：${source.summary}` : "",
+      source.path ? `本机路径：${source.path}` : "",
+      source.url ? `外链：${source.url}` : "",
+      source.trust ? `可信度：${source.trust}` : ""
+    ];
+  return lines.filter(Boolean).join("\n\n");
 }
 
 async function sourceTextFromResponse(res, path) {
