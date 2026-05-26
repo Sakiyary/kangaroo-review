@@ -38,6 +38,8 @@ python3 -m http.server 18080 --bind 127.0.0.1
 
 原因是这些目录包含原始课件、前人资料、飞书纪要原文和 OCR 中间结果；公开仓库只保留可浏览网站、合成后的题库/资料清单、工具和研究记录。
 
+服务器部署版与 public repo 不同：`docs.cpl.icu/kangaroo-review` 会额外镜像 `raw/`、`slides/`、`data/` 等源资料目录，使“资料库”页可以预览抽取文本并打开原始 PDF/文档。
+
 ## 验证记录
 
 - `node --check site/app.js site/content.js site/data/questions.js site/data/sources.js tools/smoke-site.mjs`

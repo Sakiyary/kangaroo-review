@@ -557,8 +557,8 @@ function renderSources() {
         </label>
       </div>
       <p class="source-note">${state.lang === "en"
-        ? "Preview reads local extracted/OCR/blog files when the site is served from the repository root. Local raw PDFs remain on your machine and are not published."
-        : "“预览抽取”会读取本机 data/ 下的抽取、OCR 或博客 HTML；原始 raw/slides 仍只在本机，不会被公开仓库提交。"}</p>
+        ? "On the docs.cpl.icu deployment, previews and source links read the mirrored data/raw/slides files under /kangaroo-review/. The public GitHub repo still excludes private source files."
+        : "服务器部署版会在 /kangaroo-review/ 下镜像 data/raw/slides，因此“预览抽取”和“打开源文件”都可直接阅读；public GitHub 仓库仍不提交这些源文件。"}</p>
       <div class="source-table">
         ${rows.map((source, index) => `
           <article class="source-row">
@@ -581,7 +581,7 @@ function renderSources() {
 }
 
 function renderSourceLink(source) {
-  const href = source.url || source.open_path || "";
+  const href = source.url || normalizeDeployPath(source.open_path || "");
   if (!href) return "";
   return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener">${source.url ? (state.lang === "en" ? "Open URL" : "打开外链") : (state.lang === "en" ? "Open file" : "打开源文件")}</a>`;
 }
@@ -793,11 +793,20 @@ function openDiagram(id) {
   `);
 }
 
+function normalizeDeployPath(path) {
+  if (!path) return "";
+  if (/^https?:\/\//.test(path)) return path;
+  if (window.location.protocol !== "file:" && !window.location.pathname.includes("/site/")) {
+    return path.replace(/^(\.\.\/)+/, "");
+  }
+  return path;
+}
+
 function normalizePreviewPath(source) {
   const path = source?.preview_path || (source?.extracted_path ? `../${source.extracted_path}` : "");
   if (!path) return "";
-  if (path.startsWith("../") || path.startsWith("http")) return path;
-  if (path.startsWith("data/")) return `../${path}`;
+  if (path.startsWith("../") || path.startsWith("http")) return normalizeDeployPath(path);
+  if (path.startsWith("data/")) return normalizeDeployPath(`../${path}`);
   return path;
 }
 
@@ -836,7 +845,7 @@ function sourceFallbackText(source, error) {
   const lines = state.lang === "en"
     ? [
       `Local extracted preview is unavailable here (${error.message}).`,
-      "The public site intentionally ships synthesized review data instead of raw PDFs, Feishu notes, or predecessor materials.",
+      "If this is the public GitHub-only checkout, raw source files may be absent. The docs.cpl.icu deployment mirrors the source library for direct reading.",
       source.summary ? `Summary: ${source.summary}` : "",
       source.path ? `Local path: ${source.path}` : "",
       source.url ? `Source URL: ${source.url}` : "",
@@ -844,7 +853,7 @@ function sourceFallbackText(source, error) {
     ]
     : [
       `这里无法读取本机抽取预览（${error.message}）。`,
-      "公开站点只发布合成后的复习资料，不携带原始课件、飞书纪要或前人资料全文。",
+      "如果你打开的是 public GitHub 版本，原始资料可能不在仓库里；docs.cpl.icu 部署版会镜像完整资料库，支持直接阅读源文件。",
       source.summary ? `摘要：${source.summary}` : "",
       source.path ? `本机路径：${source.path}` : "",
       source.url ? `外链：${source.url}` : "",
