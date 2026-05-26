@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Lightweight SQLite metrics service for the Kangaroo review site."""
 
-from __future__ import annotations
-
 import argparse
 import hashlib
 import json
@@ -15,7 +13,7 @@ from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict, List, Optional, Tuple, Type
 
 
 EVENT_TYPES = {
@@ -51,7 +49,7 @@ def utc_now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def utc_day(ts: float | None = None) -> str:
+def utc_day(ts: Optional[float] = None) -> str:
     timestamp = time.time() if ts is None else ts
     return datetime.fromtimestamp(timestamp, timezone.utc).strftime("%Y-%m-%d")
 
@@ -61,7 +59,7 @@ def clamp_text(value: Any, limit: int) -> str:
     return text[:limit]
 
 
-def json_response(handler: BaseHTTPRequestHandler, status: int, payload: dict[str, Any]) -> None:
+def json_response(handler: BaseHTTPRequestHandler, status: int, payload: Dict[str, Any]) -> None:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
@@ -137,7 +135,7 @@ class MetricsStore:
         material = f"{self.salt}:{ip}".encode("utf-8", errors="ignore")
         return hashlib.sha256(material).hexdigest()[:24]
 
-    def track(self, payload: dict[str, Any], headers: Any, client_ip: str) -> dict[str, Any]:
+    def track(self, payload: Dict[str, Any], headers: Any, client_ip: str) -> Dict[str, Any]:
         event_type = clamp_text(payload.get("event_type"), 60)
         if event_type not in EVENT_TYPES:
             raise ValueError("unsupported event_type")
@@ -202,7 +200,7 @@ class MetricsStore:
 
         return {"ok": True, "event_type": event_type, "key": metric_key}
 
-    def stats(self, items: list[str]) -> dict[str, Any]:
+    def stats(self, items: List[str]) -> Dict[str, Any]:
         pairs = []
         for item in items:
             if "::" not in item:
@@ -214,16 +212,16 @@ class MetricsStore:
         if not pairs:
             return {"counts": {}, "items": []}
 
-        counts: dict[str, int] = {}
-        placeholders = ",".join(["(?, ?)"] * len(pairs))
+        counts = {}
+        conditions = " OR ".join(["(event_type = ? AND metric_key = ?)"] * len(pairs))
         params = [value for pair in pairs for value in pair]
         with self.connect() as conn:
             rows = conn.execute(
-                f"""
+                """
                 SELECT event_type, metric_key, total
                 FROM counters
-                WHERE (event_type, metric_key) IN ({placeholders})
-                """,
+                WHERE {conditions}
+                """.format(conditions=conditions),
                 params,
             ).fetchall()
 
@@ -233,7 +231,7 @@ class MetricsStore:
             counts.setdefault(f"{event_type}::{metric_key}", 0)
         return {"counts": counts, "items": [f"{event_type}::{metric_key}" for event_type, metric_key in pairs]}
 
-    def summary(self, days: int = 14) -> dict[str, Any]:
+    def summary(self, days: int = 14) -> Dict[str, Any]:
         days = max(1, min(days, 90))
         with self.connect() as conn:
             totals = conn.execute(
@@ -368,7 +366,7 @@ class MetricsHandler(BaseHTTPRequestHandler):
         if not head:
             self.wfile.write(body)
 
-    def resolve_static_path(self) -> Path | None:
+    def resolve_static_path(self) -> Optional[Path]:
         parsed = urllib.parse.urlparse(self.path)
         raw_path = urllib.parse.unquote(parsed.path)
         mount = self.app.mount.rstrip("/")
@@ -380,7 +378,7 @@ class MetricsHandler(BaseHTTPRequestHandler):
         rel = raw_path.lstrip("/") or "site/index.html"
         return self.safe_join(rel)
 
-    def resolve_mounted_path(self, rel: str) -> Path | None:
+    def resolve_mounted_path(self, rel: str) -> Optional[Path]:
         if not rel:
             return self.safe_join("site/index.html")
 
@@ -392,7 +390,7 @@ class MetricsHandler(BaseHTTPRequestHandler):
             return root_candidate
         return self.safe_join(f"site/{rel}")
 
-    def safe_join(self, rel: str) -> Path | None:
+    def safe_join(self, rel: str) -> Optional[Path]:
         root = self.app.static_root.resolve()
         target = (root / rel).resolve()
         try:
@@ -411,8 +409,8 @@ class MetricsHandler(BaseHTTPRequestHandler):
 class MetricsHTTPServer(ThreadingHTTPServer):
     def __init__(
         self,
-        server_address: tuple[str, int],
-        handler_class: type[MetricsHandler],
+        server_address: Tuple[str, int],
+        handler_class: Type[MetricsHandler],
         store: MetricsStore,
         static_root: Path,
         mount: str,
