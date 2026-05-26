@@ -1,0 +1,21 @@
+.DS_Store
+.swift-module-cache/
+
+# OMX runtime state is local execution bookkeeping. Keep context/research artifacts.
+.omx/logs/
+.omx/state/
+.omx/metrics.json
+.omx/tmux-hook.json
+
+# Source PDFs and classmate raw files remain local inputs; the public repo keeps
+# the review site, synthesized data, tools, and research notes.
+raw/
+slides/
+
+# Heavy or sensitive extraction intermediates are persisted locally but not pushed.
+data/extracted/
+data/ocr/
+data/feishu/*.json
+data/feishu/*.md
+data/feishu/media/
+data/feishu/whiteboards/
