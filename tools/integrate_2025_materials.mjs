@@ -25,7 +25,6 @@ const reason = {
 const p0 = new Set([
   "q_requirement_kinds",
   "q_quality_scenarios",
-  "q_cnc_soa",
   "q_add_process",
   "q_microservices_vs_soa"
 ]);
@@ -49,10 +48,7 @@ const p1 = new Set([
   "q_soa_quality",
   "q_soa_ws_esb",
   "q_stakeholder_concerns",
-  "q_availability_mtbf_mttr",
-  "q_pattern_architecture_boundary",
-  "q_design_decisions_importance",
-  "q_pipe_filter_text_design"
+  "q_design_decisions_importance"
 ]);
 
 for (const question of questions) {
@@ -60,6 +56,36 @@ for (const question of questions) {
   question.priority = level;
   question.priority_reason_zh = reason[level].zh;
   question.priority_reason_en = reason[level].en;
+}
+
+const customPriorityReasons = {
+  q_requirement_kinds: {
+    zh: "今年复习课明确回到功能需求、质量需求和约束作为架构输入，且 2025 最新相邻课程资料命中；优先练到能直接成段作答。",
+    en: "The current review class explicitly revisits functional requirements, quality requirements, and constraints as architecture inputs, and the latest 2025 adjacent-course evidence hits the same topic; practice until you can write a full answer."
+  },
+  q_cnc_soa: {
+    zh: "具体 C&C + SOA 问法来自相邻课程和 Mubu；今年复习课保留 SOA 演进/模式理解，不把该题置于主线。保留为辅助辨析题。",
+    en: "This exact C&C + SOA wording comes from adjacent-course/Mubu material. The current review class keeps SOA as architectural evolution/pattern understanding, so keep this as a supporting distinction question."
+  },
+  q_availability_mtbf_mttr: {
+    zh: "可用性是质量属性例子，但 MTBF/MTTR 计算题源主要是 2022 相邻课程；今年复习只需作为可用性场景的辅助记忆。",
+    en: "Availability is a useful quality-attribute example, but the MTBF/MTTR calculation prompt mainly comes from the 2022 adjacent course; keep it as supporting memory for availability scenarios."
+  },
+  q_pipe_filter_text_design: {
+    zh: "Pipe-and-Filter 设计题来自 2021 相邻课程；只保留架构组件/连接器/质量取舍，排除 Java 代码实现和详细设计部分。",
+    en: "This Pipe-and-Filter design prompt comes from the 2021 adjacent course. Keep architecture components/connectors/tradeoffs only, excluding Java implementation and detailed-design parts."
+  },
+  q_pattern_architecture_boundary: {
+    zh: "该题用于防止把 GoF 模式和架构模式混淆；今年复习课更强调架构演进、时代矛盾和适用场景，因此作为辅助辨析题。",
+    en: "This helps avoid confusing GoF patterns with architectural patterns. The current review class emphasizes evolution, historical tensions, and applicability, so keep it as a supporting distinction question."
+  }
+};
+
+for (const question of questions) {
+  const customReason = customPriorityReasons[question.id];
+  if (!customReason) continue;
+  question.priority_reason_zh = customReason.zh;
+  question.priority_reason_en = customReason.en;
 }
 
 function addEvidence(id, appearances, sourcePaths) {
@@ -92,9 +118,9 @@ const newQuestions = [
   {
     id: "q_operability_performance_scenarios",
     cluster: "quality_attributes_asr",
-    priority: "P0",
-    priority_reason_zh: reason.P0.zh,
-    priority_reason_en: reason.P0.en,
+    priority: "P1",
+    priority_reason_zh: "质量属性六要素是今年复习课明确主线；可操作性/性能这一组合来自 2025 相邻课程和前人资料，作为六要素模板的高频练习例。",
+    priority_reason_en: "The six-part quality scenario template is current review-class mainline; the operability/performance pairing comes from 2025 adjacent/senior material, so use it as a high-frequency practice example.",
     canonical_question: "Describe operability and performance quality attribute scenarios.",
     question_zh: "如何描述可操作性和性能的质量属性场景？",
     appearances: ["2025 softsys recall", "2025 keyword hints", "2025 review outline"],
@@ -136,9 +162,9 @@ const newQuestions = [
   {
     id: "q_microservice_food_delivery_design",
     cluster: "design_diagrams",
-    priority: "P0",
-    priority_reason_zh: reason.P0.zh,
-    priority_reason_en: reason.P0.en,
+    priority: "P1",
+    priority_reason_zh: "微服务拆分与设计是今年主线，但外卖平台具体场景来自 2025 相邻课程；作为设计题练习模板保留，不高于微服务特性/对比本体。",
+    priority_reason_en: "Microservice decomposition/design is current mainline, but the food-delivery scenario is from the 2025 adjacent course. Keep it as a design-practice template below core microservice characteristics/comparisons.",
     canonical_question: "Design a food-delivery platform using microservices and explain the service decomposition.",
     question_zh: "用微服务设计一个外卖平台，并说明操作、微服务和对应关系。",
     appearances: ["2025 softsys recall design"],
@@ -166,7 +192,7 @@ for (const item of newQuestions) {
 const newSources = [
   {
     path: "raw/25软件系统设计回忆版.jpg",
-    bytes: 200995,
+    bytes: 201029,
     kind: "jpg",
     extraction: "manual-vision-ocr",
     text_chars: 678,
@@ -174,10 +200,10 @@ const newSources = [
     needs_ocr: true,
     title: "软件系统设计 2025 春回忆版（筛选架构部分）",
     source_group: "adjacent_past_papers",
-    trust: "high_priority_adjacent_filtered",
+    trust: "auxiliary_adjacent_filtered",
     preview_path: "../data/extracted/raw/softsys-2025-architecture-filter.md",
     open_path: "../raw/25软件系统设计回忆版.jpg",
-    summary: "相邻课程 2025 回忆卷照片。仅吸收需求/ASR、质量属性场景、C&C/SOA、ADD、微服务特性与微服务拆分设计；GoF/OOP 设计模式题已排除。"
+    summary: "相邻课程 2025 回忆卷照片。仅作为近期辅助练习吸收需求/ASR、质量属性场景、C&C/SOA、ADD、微服务特性与微服务拆分设计；GoF/OOP 设计模式题已排除。"
   },
   {
     path: "raw/考前关键词提示版本.pdf",
@@ -219,10 +245,10 @@ const newSources = [
     node_count: 287,
     title: "Mubu：Software System Design - Software Architecture Design",
     source_group: "adjacent_course_notes",
-    trust: "high_priority_adjacent_filtered",
+    trust: "auxiliary_adjacent_filtered",
     preview_path: "../data/extracted/raw/mubu-softsys-architecture-outline.md",
     open_path: "https://mubu.com/doc/Klk_SUrzZB",
-    summary: "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点，并保留颜色标签。剔除设计模式外延后，用作今年复习主纲的补充证据。"
+    summary: "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点，并保留颜色标签。剔除设计模式外延后，只作今年复习主纲的辅助证据。"
   }
 ];
 

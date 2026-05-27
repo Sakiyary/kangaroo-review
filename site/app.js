@@ -97,8 +97,8 @@ function textForLanguage(zh, en, mixedSeparator = "\n") {
 
 function reviewDisclaimerText() {
   return textForLanguage(
-    "本复习资料由 Codex（GPT-5.5）辅助整理生成，未经任课老师确认；可能存在遗漏、误读或过度概括，请以课程原始 slides、复习课纪要和老师说明为准。",
-    "This review material was organized with Codex (GPT-5.5) assistance and has not been endorsed by the instructors. It may contain omissions or mistakes; prefer the original slides, review notes, and instructor guidance."
+    "本复习资料由 Codex（GPT-5.5）辅助整理生成，专门针对 2026 南京大学软件学院研究生《软件体系结构》期末复习；未经任课老师确认，不保证适用于未来年份或 2026 本科《软件系统设计》，请以课程原始 slides、复习课纪要和老师说明为准。",
+    "This review material was organized with Codex (GPT-5.5) assistance for the 2026 NJU Software Institute graduate Software Architecture final review. It has not been endorsed by the instructors and is not guaranteed for future offerings or the 2026 undergraduate Software System Design course; prefer the original slides, review notes, and instructor guidance."
   );
 }
 
@@ -427,8 +427,23 @@ function renderOverview() {
       </div>
     </section>
 
-    <section class="evidence-band">
-      ${content.meta.evidence.map((item) => `<p>${htmlText(item)}</p>`).join("")}
+    <section class="panel evidence-panel" aria-label="${state.lang === "en" ? "Source and scope evidence" : "来源与范围依据"}">
+      <div class="section-head">
+        <p class="section-kicker">Evidence Boundary</p>
+        <h2>${state.lang === "en" ? "Source basis and scope boundary" : "来源依据与适用边界"}</h2>
+      </div>
+      <div class="evidence-band">
+        ${content.meta.evidence.map((item) => {
+          const label = item.label || { zh: "依据", en: "Evidence" };
+          const body = item.body || item;
+          return `
+            <article class="evidence-card">
+              <b>${htmlText(label)}</b>
+              <p>${htmlText(body)}</p>
+            </article>
+          `;
+        }).join("")}
+      </div>
     </section>
   `;
 }

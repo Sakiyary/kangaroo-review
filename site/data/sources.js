@@ -688,10 +688,10 @@ window.reviewSources = [
     "needs_ocr": false,
     "title": "软件系统设计 2021 春期末回忆（筛选架构部分）",
     "source_group": "adjacent_past_papers",
-    "trust": "high_priority_adjacent_filtered",
+    "trust": "auxiliary_adjacent_filtered",
     "preview_path": "../data/extracted/raw/softsys-2021-2022-architecture-filter.md",
     "open_path": "../raw/2021 痛苦回忆.pdf",
-    "summary": "相邻课程真实回忆卷，优先级高于 2019 前旧卷；只纳入 ASR、架构决策、C&C/SOA、ATAM、Pipe-and-Filter 等架构题。"
+    "summary": "相邻课程真实回忆卷，只作体系结构重合题的辅助练习；保留 ASR、架构决策、C&C/SOA、ATAM、Pipe-and-Filter 等架构题，优先级服从今年复习课。"
   },
   {
     "path": "raw/软统2022试卷.pdf",
@@ -704,10 +704,10 @@ window.reviewSources = [
     "needs_ocr": true,
     "title": "软件系统设计 2022 A 卷扫描试卷（OCR 筛选架构部分）",
     "source_group": "adjacent_past_papers",
-    "trust": "high_priority_adjacent_filtered",
+    "trust": "auxiliary_adjacent_filtered",
     "preview_path": "../data/extracted/raw/softsys-2021-2022-architecture-filter.md",
     "open_path": "../raw/软统2022试卷.pdf",
-    "summary": "相邻课程 2022 A 卷扫描件。pypdf 原始抽取为空，已通过渲染图片和人工多模态 OCR 校对形成筛选稿；前五道简答和前两道设计题为 GoF/详细设计，已排除；保留 ASR、可用性、视图、风险点和分布式缓存架构题。",
+    "summary": "相邻课程 2022 A 卷扫描件。已通过渲染图片和人工多模态 OCR 校对形成筛选稿；GoF/详细设计题排除，保留 ASR、可用性、视图、风险点和分布式缓存架构题作为辅助练习。",
     "pypdf_extracted_path": "data/extracted/raw/2022-307a521c.json",
     "ocr_text_path": "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
     "ocr_text_chars": 8892
@@ -726,10 +726,10 @@ window.reviewSources = [
     "needs_ocr": true,
     "title": "软件系统设计 2025 春回忆版（筛选架构部分）",
     "source_group": "adjacent_past_papers",
-    "trust": "high_priority_adjacent_filtered",
+    "trust": "auxiliary_adjacent_filtered",
     "preview_path": "../data/extracted/raw/softsys-2025-architecture-filter.md",
     "open_path": "../raw/25软件系统设计回忆版.jpg",
-    "summary": "相邻课程 2025 回忆卷照片。仅吸收需求/ASR、质量属性场景、C&C/SOA、ADD、微服务特性与微服务拆分设计；GoF/OOP 设计模式题已排除。"
+    "summary": "相邻课程 2025 回忆卷照片。仅作为近期辅助练习吸收需求/ASR、质量属性场景、C&C/SOA、ADD、微服务特性与微服务拆分设计；GoF/OOP 设计模式题已排除。"
   },
   {
     "path": "raw/考前关键词提示版本.pdf",
@@ -771,9 +771,9 @@ window.reviewSources = [
     "node_count": 287,
     "title": "Mubu：Software System Design - Software Architecture Design",
     "source_group": "adjacent_course_notes",
-    "trust": "high_priority_adjacent_filtered",
+    "trust": "auxiliary_adjacent_filtered",
     "preview_path": "../data/extracted/raw/mubu-softsys-architecture-outline.md",
     "open_path": "https://mubu.com/doc/Klk_SUrzZB",
-    "summary": "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点，并保留颜色标签。剔除设计模式外延后，用作今年复习主纲的补充证据。"
+    "summary": "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点并保留颜色标签。剔除设计模式外延后，只作今年复习主纲的辅助证据。"
   }
 ];

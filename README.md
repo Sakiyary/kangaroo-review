@@ -1,8 +1,8 @@
-# Software Architecture Review
+# 2026 NJU Graduate Software Architecture Review
 
-静态复习网站：把《软件体系结构》课程 slides、复习课纪要、raw 前人资料和往年题整理成可浏览的复习资料。
+静态复习网站：把 2026 南京大学软件学院研究生课程《软件体系结构》的 slides、复习课纪要、raw 前人资料和往年题整理成可浏览的复习资料。
 
-> 准确性提示：本资料由 Codex（GPT-5.5）辅助整理生成，未经任课老师确认，不一定准确；复习和作答时请优先以课程原始 slides、复习课纪要和老师说明为准。
+> 准确性提示：本资料由 Codex（GPT-5.5）辅助整理生成，未经任课老师确认，不一定准确；专门面向 2026 南京大学软件学院研究生《软件体系结构》期末复习，不保证适用于未来年份或本科《软件系统设计》。复习和作答时请优先以课程原始 slides、复习课纪要和老师说明为准。
 
 ## 本地浏览
 
@@ -65,7 +65,7 @@ python3 server/metrics_server.py --host 127.0.0.1 --port 18080 --static-root . -
 --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r
 ```
 
-新增高优先级资料中，`raw/2021 痛苦回忆.pdf`、`raw/软统2022试卷.pdf` 与 `raw/25软件系统设计回忆版.jpg` 来自相邻课程《软件系统设计》。该课程只有体系结构部分与本课重合，因此题库只吸收 ASR、质量属性、架构视图、C&C/SOA、ADD、微服务、Pipe-and-Filter、缓存一致性等体系结构题；LSP/OCP、Factory、Command、Observer、Facade/Proxy、代码实现类题目按详细设计/GoF 设计模式排除。`raw/考前关键词提示版本.pdf`、`raw/老师复习大纲（答案方式）.docx` 和 Mubu 思维导图作为 2025 前人冲刺资料使用，但优先级仍服从今年复习课。`data/feishu/ai-wiki-*.md` 与 `data/feishu/whiteboards/` 来自同学 AI 整理 Wiki，通过 bytedcli 抓取后作为辅助资料，不作为老师标准答案。
+相邻课程辅助资料中，`raw/2021 痛苦回忆.pdf`、`raw/软统2022试卷.pdf` 与 `raw/25软件系统设计回忆版.jpg` 来自《软件系统设计》。该课程只有体系结构部分与本课重合，因此题库只吸收 ASR、质量属性、架构视图、C&C/SOA、ADD、微服务、Pipe-and-Filter、缓存一致性等体系结构题；LSP/OCP、Factory、Command、Observer、Facade/Proxy、代码实现类题目按详细设计/GoF 设计模式排除。`raw/考前关键词提示版本.pdf`、`raw/老师复习大纲（答案方式）.docx` 和 Mubu 思维导图作为 2025 前人冲刺资料使用，但优先级仍服从今年复习课。`data/feishu/ai-wiki-*.md` 与 `data/feishu/whiteboards/` 来自同学 AI 整理 Wiki，通过 bytedcli 抓取后作为辅助资料，不作为老师标准答案。
 
 ## 访问统计
 

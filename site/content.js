@@ -1,8 +1,8 @@
 window.reviewContent = {
   "meta": {
     "title": {
-      "zh": "软件体系结构复习资料",
-      "en": "Software Architecture Exam Review"
+      "zh": "2026 南大软院研究生《软件体系结构》复习资料",
+      "en": "2026 NJU Software Institute Graduate Software Architecture Review"
     },
     "exam": [
       {
@@ -24,24 +24,44 @@ window.reviewContent = {
     ],
     "evidence": [
       {
-        "zh": "复习课纪要：张贺、李杉杉、吕骏三份飞书智能纪要已抓取并作为主基准",
-        "en": "Review notes: Feishu AI notes from Zhang He, Li Shanshan, and Lu Jun are the primary review baseline"
+        "label": {
+          "zh": "主纲来源",
+          "en": "Primary Baseline"
+        },
+        "body": {
+          "zh": "以张贺、李杉杉、吕骏三份复习课纪要为主线，结合 Lecture 14 复习 slides 与 Lecture 3 复习回顾校对。",
+          "en": "Uses the Zhang He, Li Shanshan, and Lu Jun review notes as the main outline, cross-checked with Lecture 14 review slides and the Lecture 3 review recap."
+        }
       },
       {
-        "zh": "课件：10 份 slides 已建清单；图片型 PDF 走 OCR/抽取后进入校对链",
-        "en": "Slides: 10 PDFs cataloged; image-based PDFs are OCR/extracted and used for cross-checking"
+        "label": {
+          "zh": "适用边界",
+          "en": "Scope Boundary"
+        },
+        "body": {
+          "zh": "专门面向 2026 南京大学软件学院研究生《软件体系结构》期末复习；不保证适用于未来年份或 2026 本科《软件系统设计》。",
+          "en": "Built specifically for the 2026 NJU Software Institute graduate Software Architecture final review; not guaranteed for future offerings or the 2026 undergraduate Software System Design course."
+        }
       },
       {
-        "zh": "前人资料：raw 中 Markdown/DOCX/RTF/PDF/图片已抽取；真题聚类 39 条，并补齐中文对照、真实答题示例、优先级和来源路径",
-        "en": "Raw materials: Markdown/DOCX/RTF/PDF/images extracted; 39 past-paper clusters now include Chinese counterparts, answer examples, priorities, and source paths"
+        "label": {
+          "zh": "纳入规则",
+          "en": "Inclusion Rule"
+        },
+        "body": {
+          "zh": "相邻课程《软件系统设计》只吸收体系结构重合题；GoF/OOP/代码实现类题排除，ATAM/SPL/MDA 等历史高频但今年未点名内容降权保留。",
+          "en": "Adjacent-course Software System Design material contributes only overlapping architecture questions; GoF/OOP/coding items are excluded, while historical ATAM/SPL/MDA topics stay lower priority."
+        }
       },
       {
-        "zh": "新增博客：EagleBear 2025Spring 两篇博客与架构相关引用已纳入，详细设计/设计模式专题已降权或排除",
-        "en": "New blog source: two EagleBear 2025Spring posts and architecture-related references integrated; detailed design/design-pattern-only material is downgraded or excluded"
-      },
-      {
-        "zh": "新增高优先级资料：软件系统设计 2021/2022/2025 真实卷已按“只保留体系结构题”筛选；2025 照片已 OCR；Mubu 思维导图已从 share 接口递归抽取 287 个节点；AI 整理 Wiki 与画板已用 bytedcli 抓取并入库",
-        "en": "New high-priority sources: 2021/2022/2025 Software System Design papers were filtered to architecture-only questions; the 2025 photo was OCR-checked; the Mubu mind map was recursively extracted from the share API with 287 nodes; the AI wiki and whiteboard were fetched with bytedcli"
+        "label": {
+          "zh": "佐证材料",
+          "en": "Evidence Pool"
+        },
+        "body": {
+          "zh": "课程 slides、OCR 文本、raw 前人资料、EagleBear 博客、Mubu 思维导图与 AI Wiki 只作交叉佐证，不替代老师复习课范围。",
+          "en": "Slides, OCR text, raw senior notes, EagleBear posts, the Mubu mind map, and AI Wiki are cross-checking material only; they do not override the review-class scope."
+        }
       }
     ]
   },
@@ -88,8 +108,8 @@ window.reviewContent = {
         "en": "Historical High-Frequency Core"
       },
       "summary": {
-        "zh": "这些是往年题反复出现的基本盘，也是简答题最稳的得分来源。新补的 2021/2022/2025《软件系统设计》卷和 2025 前人冲刺资料中，架构相关题也主要落在这里。",
-        "en": "These recur in past papers and are the safest source of short-answer points. The newly added 2021/2022/2025 Software System Design papers and 2025 senior review materials also map mainly here after filtering architecture-only questions."
+        "zh": "这些是往年题反复出现的基本盘，也是简答题最稳的得分来源。相邻课程真题只用来验证这些架构基本功，不用来抬高今年复习课未点名内容。",
+        "en": "These recur in past papers and are the safest source of short-answer points. Adjacent-course papers are used to practice these architecture basics, not to promote topics outside the current review-class focus."
       },
       "items": [
         {
@@ -122,19 +142,19 @@ window.reviewContent = {
         "en": "Supporting Background"
       },
       "summary": {
-        "zh": "用于论述题提气和补充上下文；AI 增强/AI 原生按复习课说法不作为考试重点。",
-        "en": "Useful context for essays; AI-enabled/AI-native architecture is not a central exam target according to the review notes."
+        "zh": "用于论述题提气和补充上下文，只留骨架；AI 增强/AI 原生按复习课说法不作为考试重点。",
+        "en": "Useful context for essays; keep only skeletons. AI-enabled/AI-native architecture is not a central exam target according to the review notes."
       },
       "items": [
         {
-          "topicId": "foundation",
-          "zh": "软件架构定义、架构 vs 设计/结构、架构师职责",
-          "en": "Definitions, architecture vs design/structure, architect responsibilities"
+          "topicId": "evaluation-atam",
+          "zh": "ATAM：历史高频输出/角色/风险点，只背骨架",
+          "en": "ATAM: historical outputs/roles/risk points; memorize only the skeleton"
         },
         {
-          "topicId": "patterns",
-          "zh": "架构演进：主机终端、C/S、分层、SOA、微服务、云原生",
-          "en": "Evolution: mainframe/terminal, C/S, layered, SOA, microservices, cloud native"
+          "topicId": "reuse-variability",
+          "zh": "SPL/MDA/复用与可变性：旧题保底，不抢主线时间",
+          "en": "SPL/MDA/reuse and variability: old-paper baseline, do not steal mainline time"
         },
         {
           "topicId": "ai",
@@ -2246,8 +2266,8 @@ window.reviewContent = {
       },
       "items": [
         {
-          "zh": "按 39 个真题簇逐条看中文答案，再对照英文题干；2025/2022/2021 相邻课程真题优先看架构筛选部分，GoF/OOP 题跳过",
-          "en": "Read Chinese answer frames for all 39 clusters, then compare English prompts; prioritize the architecture-filtered 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
+          "zh": "按 39 个真题簇逐条看中文答案，再对照英文题干；2025/2022/2021 相邻课程真题只看架构筛选部分，GoF/OOP 题跳过",
+          "en": "Read Chinese answer frames for all 39 clusters, then compare English prompts; use only the architecture-filtered parts of 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
         },
         {
           "zh": "练 4 个设计模板：DDD 改错、微服务迁移、三层系统、缓存失效",
