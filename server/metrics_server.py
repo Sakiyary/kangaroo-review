@@ -16,7 +16,7 @@ from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from socketserver import ThreadingMixIn
-from typing import Any, Dict, List, Optional, Tuple, Type
+from typing import Any, Dict, List, Optional, Set, Tuple, Type
 
 
 CHINA_TZ = timezone(timedelta(hours=8), "Asia/Shanghai")
@@ -121,7 +121,7 @@ def moderation_text(value: str) -> str:
     return re.sub(r"[\W_]+", "", normalized, flags=re.UNICODE)
 
 
-def origin_is_allowed(origin: str, host: str, allowed_origins: set[str]) -> bool:
+def origin_is_allowed(origin: str, host: str, allowed_origins: Set[str]) -> bool:
     if not origin:
         return True
     parsed_origin = urllib.parse.urlparse(origin)
