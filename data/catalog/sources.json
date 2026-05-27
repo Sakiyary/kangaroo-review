@@ -114,6 +114,16 @@
     "extracted_path": "data/extracted/raw/2025-05-21-2024-timeerrors-83813858.md"
   },
   {
+    "path": "raw/2021 痛苦回忆.pdf",
+    "bytes": 47131,
+    "kind": "pdf",
+    "extraction": "pypdf",
+    "text_chars": 548,
+    "page_count": 1,
+    "extracted_path": "data/extracted/raw/2021-2d5bf9b1.json",
+    "needs_ocr": false
+  },
+  {
     "path": "raw/zqx考试复习资料/【批量下载】18年等/18年.pdf",
     "bytes": 1181515,
     "kind": "pdf",
@@ -280,6 +290,16 @@
     "page_count": 64,
     "extracted_path": "data/extracted/raw/zhy-8ab00f0d.json",
     "needs_ocr": false
+  },
+  {
+    "path": "raw/软统2022试卷.pdf",
+    "bytes": 1692202,
+    "kind": "pdf",
+    "extraction": "pypdf",
+    "text_chars": 0,
+    "page_count": 3,
+    "extracted_path": "data/extracted/raw/2022-307a521c.json",
+    "needs_ocr": true
   },
   {
     "path": "raw/软统整理-体系结构部分.pdf",

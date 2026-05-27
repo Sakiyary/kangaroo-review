@@ -32,12 +32,16 @@ window.reviewContent = {
         "en": "Slides: 10 PDFs cataloged; image-based PDFs are OCR/extracted and used for cross-checking"
       },
       {
-        "zh": "前人资料：raw 中 Markdown/DOCX/RTF/PDF 已抽取，真题聚类 33 条并补齐中文对照",
-        "en": "Raw materials: Markdown/DOCX/RTF/PDF extracted; 33 past-paper clusters now have Chinese counterparts"
+        "zh": "前人资料：raw 中 Markdown/DOCX/RTF/PDF 已抽取；真题聚类 36 条，并补齐中文对照、真实答题示例和来源路径",
+        "en": "Raw materials: Markdown/DOCX/RTF/PDF extracted; 36 past-paper clusters now include Chinese counterparts, answer examples, and source paths"
       },
       {
         "zh": "新增博客：EagleBear 2025Spring 两篇博客与架构相关引用已纳入，详细设计/设计模式专题已降权或排除",
         "en": "New blog source: two EagleBear 2025Spring posts and architecture-related references integrated; detailed design/design-pattern-only material is downgraded or excluded"
+      },
+      {
+        "zh": "新增高优先级资料：软件系统设计 2021/2022 真实卷已按“只保留体系结构题”筛选；2022 扫描卷已完成 OCR 校对；AI 整理 Wiki 与画板已用 bytedcli 抓取并入库",
+        "en": "New high-priority sources: 2021/2022 Software System Design papers were filtered to architecture-only questions; the scanned 2022 paper was OCR-checked; the AI wiki and whiteboard were fetched with bytedcli"
       }
     ]
   },
@@ -84,8 +88,8 @@ window.reviewContent = {
         "en": "Historical High-Frequency Core"
       },
       "summary": {
-        "zh": "这些是往年题反复出现的基本盘，也是简答题最稳的得分来源。",
-        "en": "These recur in past papers and are the safest source of short-answer points."
+        "zh": "这些是往年题反复出现的基本盘，也是简答题最稳的得分来源。新补的 2021/2022《软件系统设计》卷中，架构相关题也主要落在这里。",
+        "en": "These recur in past papers and are the safest source of short-answer points. The newly added 2021/2022 Software System Design papers also map mainly here after filtering architecture-only questions."
       },
       "items": [
         {
@@ -2242,8 +2246,8 @@ window.reviewContent = {
       },
       "items": [
         {
-          "zh": "按 33 个真题簇逐条看中文答案，再对照英文题干",
-          "en": "Read Chinese answer frames for all 33 clusters, then compare English prompts"
+          "zh": "按 36 个真题簇逐条看中文答案，再对照英文题干；2021/2022 相邻课程真题优先看架构筛选部分",
+          "en": "Read Chinese answer frames for all 36 clusters, then compare English prompts; prioritize the architecture-filtered 2021/2022 adjacent-course papers"
         },
         {
           "zh": "练 4 个设计模板：DDD 改错、微服务迁移、三层系统、缓存失效",
@@ -2277,7 +2281,7 @@ window.reviewContent = {
         "zh": "已扩充",
         "en": "Expanded"
       },
-      "evidence": "Lecture 1 OCR, Lecture 2-4 OCR, review notes, blog references"
+      "evidence": "Lecture 1 OCR, Lecture 2-4 OCR, review notes, blog references, 2021/2022 Software System Design filtered questions"
     },
     {
       "area": {
@@ -2310,7 +2314,7 @@ window.reviewContent = {
         "zh": "历史高频，降权保留",
         "en": "Kept as lower-priority historical topics"
       },
-      "evidence": "Past papers, EagleBear system-design review"
+      "evidence": "Past papers, EagleBear system-design review, 2021/2022 adjacent-course architecture questions"
     },
     {
       "area": {
@@ -2321,7 +2325,7 @@ window.reviewContent = {
         "zh": "排除主线",
         "en": "Excluded from mainline"
       },
-      "evidence": "Current course review scope excludes design-pattern-only half"
+      "evidence": "Current course review scope excludes design-pattern-only half; 2021/2022 LSP/OCP, Factory, Command, Observer and pattern-coding questions were filtered out"
     }
   ],
   "whiteboards": [
@@ -2412,6 +2416,40 @@ window.reviewContent = {
         {
           "zh": "微服务到云原生/事件驱动：追求自治、长期稳定和韧性，但引入异步时序与排障复杂性。",
           "en": "Microservices to cloud-native/event-driven: autonomy, long-running stability, resilience; adds async ordering and debugging complexity."
+        }
+      ]
+    },
+    {
+      "id": "ai-wiki-mainline",
+      "title": {
+        "zh": "AI Wiki 期末主线画板",
+        "en": "AI Wiki Exam Mainline Whiteboard"
+      },
+      "src": "assets/feishu-whiteboards/ai-wiki-mainline.png",
+      "note": {
+        "zh": "把 AI 整理资料中的主线压缩成一条可作答链路：业务目标、驱动因素、架构选择、边界落地、考场输出。",
+        "en": "Condenses the AI-organized source into an answerable chain: business goals, drivers, architectural choices, boundaries, and exam output."
+      },
+      "points": [
+        {
+          "zh": "起点：业务目标与 stakeholders，先说明系统要解决什么，以及最关心哪些风险与价值。",
+          "en": "Start with business goals and stakeholders: what problem the system solves, and which risks/value matter most."
+        },
+        {
+          "zh": "识别驱动：质量属性场景、ASR 与约束，把需求转成可设计、可评估的驱动因素。",
+          "en": "Identify drivers: quality-attribute scenarios, ASRs, and constraints turn requirements into designable and evaluable drivers."
+        },
+        {
+          "zh": "做出选择：用 ADD 3.0、tactics、patterns 或微服务权衡，说明选择改善了哪些质量属性。",
+          "en": "Make choices: use ADD 3.0, tactics, patterns, or microservice tradeoffs to explain which qualities are improved."
+        },
+        {
+          "zh": "落到边界：用 DDD 聚合/限界上下文和企业架构 4A/治理，把高层选择映射到组织、数据、应用和技术边界。",
+          "en": "Land boundaries: use DDD aggregates/bounded contexts and EA 4A/governance to map choices to organization, data, application, and technology boundaries."
+        },
+        {
+          "zh": "考场句式：问题与驱动因素 → 结构/决策 → 改善的质量属性 → 代价与验证。",
+          "en": "Exam sentence: problem and drivers -> structure/decision -> improved quality attributes -> cost and validation."
         }
       ]
     }

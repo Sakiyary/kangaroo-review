@@ -322,7 +322,9 @@ function sourceGroupName(group) {
     review_class_notes: state.lang === "en" ? "Review notes" : "复习课纪要",
     teacher_slides: state.lang === "en" ? "Teacher slides" : "教师课件",
     senior_blog_reference: state.lang === "en" ? "Senior blog" : "学长博客",
-    raw_predecessor_notes: state.lang === "en" ? "Past notes" : "前人资料"
+    raw_predecessor_notes: state.lang === "en" ? "Past notes" : "前人资料",
+    adjacent_past_papers: state.lang === "en" ? "Adjacent papers" : "相邻课程真题",
+    ai_generated_notes: state.lang === "en" ? "AI notes" : "AI 整理资料"
   })[group] || group || "Other";
 }
 

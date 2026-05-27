@@ -49,18 +49,26 @@ async function checkViewport(name, viewport) {
   await page.click('button[data-lang="zh"]');
   await page.click('a[data-page="papers"]');
   await page.waitForSelector(".question-item");
+  const questionCount = await page.locator(".question-item").count();
   const question = await page.locator(".question-item summary strong").first().innerText();
   const sampleAnswer = await page.locator(".sample-answer").first().innerText();
 
   await page.click('a[data-page="whiteboards"]');
   await page.waitForSelector(".whiteboard-thumb");
-  await page.click(".whiteboard-thumb");
+  const whiteboardCount = await page.locator(".whiteboard-row").count();
+  const aiWhiteboard = page.locator('.whiteboard-row:has-text("AI Wiki") .whiteboard-thumb').first();
+  const hasAiWhiteboard = await aiWhiteboard.count();
+  await (hasAiWhiteboard ? aiWhiteboard : page.locator(".whiteboard-thumb").first()).click();
   await page.waitForSelector(".modal-image");
   const whiteboardNaturalWidth = await page.locator(".modal-image").evaluate((element) => element.naturalWidth);
   await page.locator('button[data-action="close-modal"]').last().click();
 
   await page.click('a[data-page="sources"]');
   await page.waitForSelector(".source-row");
+  const sourceGroups = await page.locator("#source-select option").evaluateAll((nodes) => nodes.map((node) => node.value));
+  await page.selectOption("#source-select", "ai_generated_notes");
+  await page.waitForSelector(".source-row");
+  const aiSourceText = await page.locator(".source-row").first().innerText();
   await page.click(".source-actions button");
   await page.waitForSelector(".source-preview");
   await page.waitForFunction(() => {
@@ -109,9 +117,15 @@ async function checkViewport(name, viewport) {
     detailHasDeepDive: detailHasDeepDive > 0,
     diagramRendered: diagramBox.complete && diagramBox.width > 120 && diagramBox.height > 60,
     diagramBox,
+    questionCount,
     questionHasChinese: /软件|架构|需求|列出|解释/.test(question),
     sampleAnswerHasChinese: /架构|需求|系统|质量|服务/.test(sampleAnswer),
+    whiteboardCount,
+    hasAiWhiteboard: hasAiWhiteboard > 0,
     whiteboardNaturalWidth,
+    sourceGroups,
+    hasNewSourceGroups: sourceGroups.includes("ai_generated_notes") && sourceGroups.includes("adjacent_past_papers"),
+    aiSourceVisible: /AI 整理|Wiki|画板|期末复习/.test(aiSourceText),
     sourcePreviewLoaded: !/预览失败|Preview failed/.test(previewSample),
     rewardHasCopy: /报销一点Codex|Codex bill|谢谢|Thank you/.test(rewardText),
     rewardImageLoaded,
@@ -132,6 +146,9 @@ for (const result of [desktop, mobile]) {
     "detailHasModernTopic",
     "detailHasDeepDive",
     "diagramRendered",
+    "hasNewSourceGroups",
+    "hasAiWhiteboard",
+    "aiSourceVisible",
     "questionHasChinese",
     "sampleAnswerHasChinese",
     "sourcePreviewLoaded",
@@ -144,6 +161,8 @@ for (const result of [desktop, mobile]) {
     if (!result[key]) errors.push(`${result.name}: ${key} failed`);
   }
   if (result.overviewMetricBadges < 3) errors.push(`${result.name}: metric badges missing`);
+  if (result.questionCount < 36) errors.push(`${result.name}: expected at least 36 question clusters`);
+  if (result.whiteboardCount < 4) errors.push(`${result.name}: expected at least 4 whiteboards`);
   if (result.whiteboardNaturalWidth < 1000) errors.push(`${result.name}: whiteboard image did not load`);
 }
 
