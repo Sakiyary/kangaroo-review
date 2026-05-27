@@ -79,6 +79,10 @@ async function checkViewport(name, viewport) {
   await sourcePopup.close();
   await page.click(".reward-trigger");
   await page.waitForSelector(".reward-modal .reward-qr");
+  await page.waitForFunction(() => {
+    const image = document.querySelector(".reward-qr");
+    return image && image.complete && image.naturalWidth > 100;
+  });
   const rewardText = await page.locator(".reward-modal").innerText();
   const rewardImageLoaded = await page.locator(".reward-qr").evaluate((element) => element.complete && element.naturalWidth > 100);
   await page.click('button[data-reward-provider="alipay"]');
