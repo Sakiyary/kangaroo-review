@@ -21,7 +21,6 @@ const state = {
   questions: [],
   sources: [],
   openQuestionId: "",
-  pendingQuestionId: "",
   suppressedQuestionToggleId: ""
 };
 
@@ -1086,10 +1085,13 @@ function renderTopicDetail(topic) {
         <h3>${state.lang === "en" ? "Related past-paper practice" : "关联真题练习"}</h3>
         <div class="mini-question-list">
           ${relatedQuestions.slice(0, 5).map((question) => `
-            <a href="#papers" data-action="jump-question" data-question-id="${escapeHtml(question.id)}">
+            <a href="javascript:void(0)" data-action="toggle-inline-question" data-question-id="${escapeHtml(question.id)}">
               <span>${escapeHtml(question.cluster)}</span>
               <strong>${escapeHtml(state.lang === "en" ? question.canonical_question : question.question_zh || question.canonical_question)}</strong>
             </a>
+            <div class="mini-question-body" data-question-id="${escapeHtml(question.id)}" hidden>
+              ${renderQuestionBody(question)}
+            </div>
           `).join("")}
         </div>
       </section>
@@ -1179,16 +1181,55 @@ function renderPapers() {
   `;
 }
 
-function renderQuestion(question, open) {
-  const zhQuestion = question.question_zh || question.canonical_question;
+function renderQuestionBody(question) {
   const zhAnswer = question.answer_zh || question.likely_answer_pattern;
   const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
-  const title = textForLanguage(zhQuestion, question.canonical_question);
   const answer = textForLanguage(zhAnswer, question.likely_answer_pattern);
-  const priority = question.priority || "P2";
   const priorityReason = localizedPair(question, "priority_reason_zh", "priority_reason_en");
+  const title = textForLanguage(question.question_zh || question.canonical_question, question.canonical_question);
+  return `
+    <div class="question-actions">
+      ${renderChecklistControl("question", question.id || question.canonical_question, labelText(title), "compact-check")}
+    </div>
+    <div class="question-body">
+      <section>
+        <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
+        <p>${htmlText(answer)}</p>
+      </section>
+      ${sample ? `
+        <section class="sample-answer">
+          <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
+          <p>${htmlText(sample)}</p>
+        </section>
+      ` : ""}
+      ${diagram ? `
+        <section class="question-diagram">
+          <h3>${state.lang === "en" ? "Useful diagram" : "配套图解"}</h3>
+          ${renderDiagramCard(diagram, true)}
+          ${visualHint ? `<p>${htmlText(visualHint)}</p>` : ""}
+        </section>
+      ` : visualHint ? `
+        <section class="question-diagram">
+          <h3>${state.lang === "en" ? "Diagram hint" : "画图提示"}</h3>
+          <p>${htmlText(visualHint)}</p>
+        </section>
+      ` : ""}
+      <div class="question-meta">
+        <div class="tag-stack">
+          ${[...(question.english_keywords || question.recurring_terms || [])].map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
+        </div>
+        ${priorityReason ? `<small class="priority-reason">${htmlText(priorityReason)}</small>` : ""}
+        <small>${escapeHtml((question.appearances || []).join(" · "))}</small>
+      </div>
+    </div>`;
+}
+
+function renderQuestion(question, open) {
+  const zhQuestion = question.question_zh || question.canonical_question;
+  const title = textForLanguage(zhQuestion, question.canonical_question);
+  const priority = question.priority || "P2";
   const id = questionId(question);
   return `
     <details class="question-item" data-question-id="${escapeHtml(id)}" ${open ? "open" : ""}>
@@ -1200,40 +1241,7 @@ function renderQuestion(question, open) {
         <strong>${htmlText(title)}</strong>
         ${renderMetricBadge("question_view", questionMetricKey(question))}
       </summary>
-      <div class="question-actions">
-        ${renderChecklistControl("question", question.id || question.canonical_question, labelText(title), "compact-check")}
-      </div>
-      <div class="question-body">
-        <section>
-          <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
-          <p>${htmlText(answer)}</p>
-        </section>
-        ${sample ? `
-          <section class="sample-answer">
-            <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
-            <p>${htmlText(sample)}</p>
-          </section>
-        ` : ""}
-        ${diagram ? `
-          <section class="question-diagram">
-            <h3>${state.lang === "en" ? "Useful diagram" : "配套图解"}</h3>
-            ${renderDiagramCard(diagram, true)}
-            ${visualHint ? `<p>${htmlText(visualHint)}</p>` : ""}
-          </section>
-        ` : visualHint ? `
-          <section class="question-diagram">
-            <h3>${state.lang === "en" ? "Diagram hint" : "画图提示"}</h3>
-            <p>${htmlText(visualHint)}</p>
-          </section>
-        ` : ""}
-        <div class="question-meta">
-          <div class="tag-stack">
-            ${[...(question.english_keywords || question.recurring_terms || [])].map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
-          </div>
-          ${priorityReason ? `<small class="priority-reason">${htmlText(priorityReason)}</small>` : ""}
-          <small>${escapeHtml((question.appearances || []).join(" · "))}</small>
-        </div>
-      </div>
+      ${renderQuestionBody(question)}
     </details>
   `;
 }
@@ -1427,12 +1435,6 @@ function setPageFromHash() {
   setPage(next);
   renderAll();
   trackPageView(state.page);
-  if (state.page === "papers" && state.pendingQuestionId) {
-    const targetQuestionId = state.pendingQuestionId;
-    state.pendingQuestionId = "";
-    requestAnimationFrame(() => revealQuestion(targetQuestionId, { track: true }));
-    return;
-  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -1460,23 +1462,6 @@ function revealQuestion(targetQuestionId, options = {}) {
     }
   }, 0);
   window.setTimeout(() => item.classList.remove("is-targeted"), 1600);
-}
-
-function jumpToQuestion(targetQuestionId) {
-  const question = questionById(targetQuestionId);
-  const nextQuestionId = questionId(question);
-  if (!question || !nextQuestionId) return;
-  state.priority = "all";
-  state.cluster = question.cluster || "all";
-  state.query = "";
-  state.openQuestionId = nextQuestionId;
-  state.pendingQuestionId = nextQuestionId;
-  state.suppressedQuestionToggleId = nextQuestionId;
-  if (window.location.hash === "#papers") {
-    setPageFromHash();
-  } else {
-    window.location.hash = "papers";
-  }
 }
 
 function setupEvents() {
@@ -1574,10 +1559,15 @@ function setupEvents() {
         state.topicGroup = topic?.group || "all";
         break;
       }
-      case "jump-question":
+      case "toggle-inline-question": {
         event.preventDefault();
-        jumpToQuestion(target.dataset.questionId);
+        const body = target.parentElement.querySelector(`.mini-question-body[data-question-id="${target.dataset.questionId}"]`);
+        if (!body) return;
+        const wasHidden = body.hidden;
+        body.hidden = !body.hidden;
+        if (wasHidden) trackQuestionOpen(questionById(target.dataset.questionId));
         break;
+      }
       case "open-whiteboard":
         event.preventDefault();
         trackMetric("whiteboard_open", stableMetricKey("whiteboard", target.dataset.boardId), target.dataset.boardId);

@@ -124,30 +124,28 @@ async function checkViewport(name, viewport) {
     };
     window.__kangarooFetchWrapped = true;
   });
-  const relatedQuestionLink = page.locator('.related-questions a[data-action="jump-question"]').first();
+  const relatedQuestionLink = page.locator('.mini-question-list a[data-action="toggle-inline-question"]').first();
   const relatedQuestionId = await relatedQuestionLink.getAttribute("data-question-id");
   await relatedQuestionLink.click();
-  await page.waitForSelector(`.question-item[data-question-id="${relatedQuestionId}"][open]`);
   await page.waitForFunction((id) => {
-    const item = [...document.querySelectorAll(".question-item")].find((node) => node.dataset.questionId === id);
-    if (!item) return false;
-    const rect = (item.querySelector("summary") || item).getBoundingClientRect();
+    const body = document.querySelector(`.mini-question-body[data-question-id="${id}"]`);
+    if (!body || body.hidden) return false;
+    const rect = body.getBoundingClientRect();
     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
     const trackCount = window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0;
     const tracked = trackCount === 1;
-    return item.open && inView && tracked;
+    return inView && tracked;
   }, relatedQuestionId, { timeout: 5000 });
   const relatedQuestionJumped = await page.evaluate((id) => {
-    const item = [...document.querySelectorAll(".question-item")].find((node) => node.dataset.questionId === id);
-    if (!item) return { opened: false, inView: false, tracked: false, hash: window.location.hash, cluster: "" };
-    const rect = (item.querySelector("summary") || item).getBoundingClientRect();
+    const body = document.querySelector(`.mini-question-body[data-question-id="${id}"]`);
+    if (!body || body.hidden) return { opened: false, inView: false, tracked: false, hash: window.location.hash };
+    const rect = body.getBoundingClientRect();
     return {
-      opened: item.open,
+      opened: true,
       inView: rect.top >= 0 && rect.bottom <= window.innerHeight,
       trackCount: window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0,
       tracked: (window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0) === 1,
-      hash: window.location.hash,
-      cluster: document.querySelector("#cluster-select")?.value || ""
+      hash: window.location.hash
     };
   }, relatedQuestionId);
 
@@ -288,7 +286,7 @@ for (const result of [desktop, mobile]) {
   ]) {
     if (key === "relatedQuestionJumped") {
       const jump = result[key] || {};
-      if (!(jump.opened && jump.inView && jump.tracked && jump.hash === "#papers" && jump.cluster)) {
+      if (!(jump.opened && jump.inView && jump.tracked && jump.hash === "#knowledge")) {
         errors.push(`${result.name}: relatedQuestionJumped failed ${JSON.stringify(jump)}`);
       }
       continue;
