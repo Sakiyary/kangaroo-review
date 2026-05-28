@@ -1450,8 +1450,9 @@ function revealQuestion(targetQuestionId, options = {}) {
     item.open = true;
   }
   item.classList.add("is-targeted");
-  item.scrollIntoView({ block: "center", behavior: "smooth" });
-  item.querySelector("summary")?.focus({ preventScroll: true });
+  const summary = item.querySelector("summary");
+  (summary || item).scrollIntoView({ block: "center", behavior: "smooth" });
+  summary?.focus({ preventScroll: true });
   if (options.track) trackQuestionOpen(question);
   window.setTimeout(() => {
     if (state.suppressedQuestionToggleId === String(targetQuestionId || "")) {

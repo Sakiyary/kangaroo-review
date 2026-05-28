@@ -131,8 +131,8 @@ async function checkViewport(name, viewport) {
   await page.waitForFunction((id) => {
     const item = [...document.querySelectorAll(".question-item")].find((node) => node.dataset.questionId === id);
     if (!item) return false;
-    const rect = item.getBoundingClientRect();
-    const inView = rect.bottom > 0 && rect.top < window.innerHeight * 0.85;
+    const rect = (item.querySelector("summary") || item).getBoundingClientRect();
+    const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
     const trackCount = window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0;
     const tracked = trackCount === 1;
     return item.open && inView && tracked;
@@ -140,10 +140,10 @@ async function checkViewport(name, viewport) {
   const relatedQuestionJumped = await page.evaluate((id) => {
     const item = [...document.querySelectorAll(".question-item")].find((node) => node.dataset.questionId === id);
     if (!item) return { opened: false, inView: false, tracked: false, hash: window.location.hash, cluster: "" };
-    const rect = item.getBoundingClientRect();
+    const rect = (item.querySelector("summary") || item).getBoundingClientRect();
     return {
       opened: item.open,
-      inView: rect.bottom > 0 && rect.top < window.innerHeight * 0.85,
+      inView: rect.top >= 0 && rect.bottom <= window.innerHeight,
       trackCount: window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0,
       tracked: (window.__kangarooTrackPayloads?.filter((payload) => payload.event_type === "question_view" && String(payload.key || "").includes(id)).length || 0) === 1,
       hash: window.location.hash,
