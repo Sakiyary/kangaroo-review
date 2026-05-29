@@ -1375,6 +1375,20 @@ li {
   overflow-wrap: anywhere;
 }
 
+.comment-toggle {
+  justify-self: center;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  color: var(--ink);
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.comment-toggle:hover {
+  background: rgba(191, 77, 54, 0.12);
+}
+
 .empty {
   margin: 0;
   color: var(--muted);

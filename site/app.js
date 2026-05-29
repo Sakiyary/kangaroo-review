@@ -23,6 +23,7 @@ const state = {
   checklistMessage: "",
   commentsByPage: {},
   commentsStatusByPage: {},
+  commentsExpandedByPage: {},
   questions: [],
   sources: [],
   openQuestionId: "",
@@ -640,10 +641,25 @@ function commentStatus(page = state.page) {
   return state.commentsStatusByPage[page] || "";
 }
 
+function commentTimestamp(comment) {
+  const time = new Date(comment?.created_at || "").getTime();
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function sortedCommentsForDisplay(page = state.page) {
+  return [...commentPageState(page)].sort((a, b) => {
+    const byTime = commentTimestamp(b) - commentTimestamp(a);
+    if (byTime) return byTime;
+    return Number(b?.id || 0) - Number(a?.id || 0);
+  });
+}
+
 function renderCommentsPanel() {
-  const comments = commentPageState();
+  const comments = sortedCommentsForDisplay();
   const status = commentStatus();
   const disabled = commentApiAvailable() ? "" : "disabled";
+  const expanded = Boolean(state.commentsExpandedByPage[state.page]);
+  const visibleComments = expanded ? comments : comments.slice(0, 5);
   return `
     <section class="panel comments-panel" aria-label="${state.lang === "en" ? "Page comments" : "本页评论"}" data-comments-page="${escapeHtml(state.page)}">
       <div class="section-head split">
@@ -663,7 +679,7 @@ function renderCommentsPanel() {
       </form>
       ${status ? `<p class="comment-status">${escapeHtml(status)}</p>` : ""}
       <div class="comment-list">
-        ${comments.length ? comments.map((comment) => `
+        ${comments.length ? visibleComments.map((comment) => `
           <article class="comment-item">
             <header>
               <strong>${escapeHtml(comment.nickname || (state.lang === "en" ? "Anonymous" : "匿名同学"))}</strong>
@@ -675,6 +691,13 @@ function renderCommentsPanel() {
           ? (state.lang === "en" ? "No comments yet." : "还没有评论。")
           : (state.lang === "en" ? "Comments require the local/online SQLite service." : "评论区需要通过本地或线上 SQLite 服务访问。")}</p>`}
       </div>
+      ${comments.length > 5 ? `
+        <button class="comment-toggle" type="button" data-action="toggle-comments" data-comments-page="${escapeHtml(state.page)}" aria-expanded="${expanded}">
+          ${expanded
+            ? (state.lang === "en" ? "Collapse comments" : "收起评论")
+            : (state.lang === "en" ? `Show all ${comments.length} comments` : `展开全部 ${comments.length} 条评论`)}
+        </button>
+      ` : ""}
     </section>
   `;
 }
@@ -1715,6 +1738,13 @@ function setupEvents() {
         target.classList.toggle("active", wasHidden);
         const question = questionById(target.dataset.questionId);
         if (wasHidden && question) trackQuestionOpen(question);
+        break;
+      }
+      case "toggle-comments": {
+        event.preventDefault();
+        const page = target.dataset.commentsPage || state.page;
+        state.commentsExpandedByPage[page] = !state.commentsExpandedByPage[page];
+        refreshCommentsPanel(page);
         break;
       }
       case "open-whiteboard":
