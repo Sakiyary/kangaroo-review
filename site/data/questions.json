@@ -11,7 +11,13 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班A卷.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2016年春季2班A卷.txt"
     ],
     "recurring_terms": [
       "requirements",
@@ -20,9 +26,9 @@
       "architects",
       "technical environment"
     ],
-    "likely_answer_pattern": "List five sources: requirements, system stakeholders, development organization, architects, and technical/operational environment.",
+    "likely_answer_pattern": "For the old-paper wording, list exactly five sources: requirements, system stakeholders, development organization, architects, and technical environment. Then, if space allows, connect the 2026 review focus to NFRs/ASRs/quality requirements and business goals.",
     "question_zh": "软件架构从哪里来？列出五个可能来源。",
-    "answer_zh": "列出五类来源：需求、系统利益相关者、开发组织、架构师经验，以及技术/运行环境。可补充业务目标和组织约束。",
+    "answer_zh": "旧卷五项按原题列：需求、系统利益相关者、开发组织、架构师，以及技术/运行环境。业务目标可以作为复习课强调的补充驱动来说明，但不要把它写成替代这五项的“第六个标准答案”。",
     "topicIds": [
       "foundation"
     ],
@@ -33,11 +39,24 @@
       "architects",
       "technical environment"
     ],
-    "sample_answer_zh": "软件架构来自多种约束和驱动因素，不只是需求文档。常见五类来源是：需求，说明系统必须提供的功能和质量目标；系统利益相关者，例如用户、运维、测试、监管者，他们带来不同 concern；开发组织，例如团队结构、技能和进度会影响模块边界；架构师经验和既有模式，例如分层、微服务、broker；技术和运行环境，例如数据库、中间件、云平台、遗留系统。还可以补充业务目标，例如上市时间和成本。",
-    "sample_answer_en": "Architecture does not come only from requirement documents. It is shaped by requirements, stakeholders, development organization, architect experience/patterns, and technical or operational environment. Business goals such as time-to-market and cost can also drive architectural choices.",
+    "sample_answer_zh": "软件架构不是只从需求文档里自然长出来的。旧卷标准式五项可以写：第一，requirements，包含功能需求、质量需求和约束；第二，system stakeholders，例如用户、运维、测试、监管者等带来的 concerns；第三，development organization，例如团队结构、技能、进度和成本会影响模块边界；第四，architects，也就是架构师已有知识、经验和对模式/技术的判断；第五，technical environment，例如数据库、中间件、部署平台、遗留系统和运行环境。结合 2026 复习课还可补一句：今年主线更强调其中的 NFRs、quality requirements 和 ASRs，并用 business goals 来筛选优先级。",
+    "sample_answer_en": "Architecture is not derived only from a requirements document. For the old-paper wording, list five sources: requirements; system stakeholders and their concerns; the development organization, including team structure, skills, schedule, and cost; architects, including their knowledge and judgement; and the technical/operational environment such as databases, middleware, deployment platforms, legacy systems, and runtime constraints. In the 2026 review-class framing, emphasize NFRs, quality requirements, ASRs, and business goals for prioritization.",
     "priority": "P1",
-    "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_zh": "旧卷有精确五项答案；今年复习课把“架构来源”收束到 NFR/质量需求/ASR 与业务目标筛选，作为基础简答保留。",
+    "priority_reason_en": "Old papers provide the exact five-item answer; the current review class narrows the focus to NFRs, quality requirements, ASRs, and business-goal prioritization.",
+    "source_audit_zh": "有据可查：旧卷精确支持五项 requirements / system stakeholders / development organization / architects / technical environment；复习课支持 NFR/ASR/quality requirements 与 business goals 作为当前主线。已把业务目标标成补充驱动。",
+    "source_audit_en": "Grounded: old papers support the exact five items. Review notes support NFR/ASR/quality-requirement and business-goal framing. Business goals are now marked as supplemental, not a replacement item.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班A卷.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2016年春季2班A卷.txt"
+    ]
   },
   {
     "id": "q_arch_design_structure",
@@ -49,7 +68,10 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "architecture",
@@ -59,7 +81,7 @@
     ],
     "likely_answer_pattern": "Architecture is high-level design and a set of structures; all architecture is design but not all design is architecture; structure is elements, relations, and externally visible properties.",
     "question_zh": "解释 architecture 与 design、architecture 与 structure 的区别。",
-    "answer_zh": "所有架构都是设计，但并非所有设计都是架构；架构是高层设计和一组重要设计决策。structure 强调元素、关系和外部可见属性，architecture 在结构之上还包含设计原则、动态行为和演化约束。",
+    "answer_zh": "所有架构都是设计的一部分，但并非所有设计都上升到架构层次；架构关注早期、高层、会影响质量属性和系统结构的重要设计决定。structure 强调元素、关系和外部可见属性；architecture 使用一个或多个 structure 表达方案，并进一步服务 ASR、运行时依赖、通信和后续演化。",
     "topicIds": [
       "foundation"
     ],
@@ -69,11 +91,20 @@
       "structure",
       "externally visible properties"
     ],
-    "sample_answer_zh": "Architecture 是高层设计和一组重要设计决定；design 是更宽泛的设计活动，所以所有 architecture 都是 design，但不是所有 design 都达到 architecture 层次。Structure 强调元素、元素关系和外部可见属性，例如组件、连接器、模块依赖。Architecture 包含一个或多个 structure，并进一步包含设计原则、约束、质量属性影响和演化理由。因此答题时可说：structure 是架构的表达对象之一，architecture 是用这些结构和决策来满足 ASR 的整体方案。",
-    "sample_answer_en": "Architecture is high-level design and significant decisions. Design is broader, so every architecture is design but not every design is architecture. Structure means elements, relations, and externally visible properties. Architecture includes structures plus principles, constraints, quality consequences, and rationale.",
+    "sample_answer_zh": "Design 是更宽泛的设计活动；architecture 是其中高抽象、影响全局质量和后续实现的部分，所以 every architecture is design, but not every design is architecture。Structure 更偏“表达对象”：系统有哪些元素、元素之间有什么关系、外部可见属性是什么。Architecture 会使用这些 structure，但答题时还要说明它为什么这样组织：它要回应 ASR，协调运行时依赖、通信、部署和演化等关注点。因此 structure 可以看作架构的表示材料之一，architecture 是围绕重要设计决定形成的整体方案。",
+    "sample_answer_en": "Design is broader; architecture is the high-level part of design that affects system-wide qualities and later implementation. Structure describes elements, relations, and externally visible properties. Architecture uses one or more structures, but also explains why they are organized this way to satisfy ASRs and to coordinate runtime dependencies, communication, deployment, and evolution.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课点名 architecture/design/structure；答案只保留高层设计、结构元素/关系/属性和 ASR/运行时关注，避免把理由/原则写成定义本体。",
+    "source_audit_en": "The review class names architecture/design/structure. The answer keeps high-level design, elements/relations/properties, and ASR/runtime concerns without turning rationale/principles into the definition itself.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_req_quality_asr",
@@ -90,7 +121,10 @@
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
       "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
       "raw/软统2022试卷.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "requirements",
@@ -117,7 +151,19 @@
     "sample_answer_en": "Software requirements include functional requirements, quality requirements, and constraints. Quality attributes describe how well the system behaves. ASRs are requirements that significantly affect architectural decisions; hard and important qualities, business goals, and constraints often become ASRs.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课明确：需求分功能需求、质量需求和约束；ASR 是影响架构的子集，通常来自重要且困难的质量需求或强约束。",
+    "source_audit_en": "Review-class grounded: requirements include functional requirements, quality requirements, and constraints; ASRs are the architecture-shaping subset.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_requirement_kinds",
@@ -140,7 +186,10 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "functional requirements",
@@ -163,7 +212,23 @@
     "sample_answer_en": "Three kinds of requirements shape architecture: functional requirements, quality requirements, and constraints. Functions describe behavior and value, quality requirements should be specified by measurable scenarios, and constraints are pre-made decisions or external limits.",
     "priority": "P0",
     "priority_reason_zh": "今年复习课明确回到功能需求、质量需求和约束作为架构输入，且 2025 最新相邻课程资料命中；优先练到能直接成段作答。",
-    "priority_reason_en": "The current review class explicitly revisits functional requirements, quality requirements, and constraints as architecture inputs, and the latest 2025 adjacent-course evidence hits the same topic; practice until you can write a full answer."
+    "priority_reason_en": "The current review class explicitly revisits functional requirements, quality requirements, and constraints as architecture inputs, and the latest 2025 adjacent-course evidence hits the same topic; practice until you can write a full answer.",
+    "source_audit_zh": "P0 主线：张贺和李杉杉复习纪要都明确功能需求、质量需求、约束是架构输入，质量需求需场景化。",
+    "source_audit_en": "P0 core: both review notes identify functional requirements, quality requirements, and constraints as architecture inputs; quality requirements should be scenario-based.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_quality_scenarios",
@@ -189,13 +254,17 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
     ],
     "recurring_terms": [
       "source of stimulus",
       "stimulus",
-      "environment",
       "artifact",
+      "environment",
       "response",
       "response measure",
       "availability",
@@ -203,9 +272,9 @@
       "modifiability",
       "interoperability"
     ],
-    "likely_answer_pattern": "Draw or describe the six-part quality attribute scenario: source, stimulus, environment, artifact, response, response measure; provide requested attributes such as availability, performance, modifiability, or interoperability.",
+    "likely_answer_pattern": "Draw or describe the six-part quality attribute scenario in the table order: source, stimulus, artifact, environment, response, response measure; provide requested attributes such as availability, performance, modifiability, or interoperability.",
     "question_zh": "用 stimulus-response 形式建模质量属性场景。",
-    "answer_zh": "画出或描述六要素：刺激源、刺激、环境、制品、响应、响应度量。按题目要求套入可用性、性能、可修改性、互操作性等质量属性。",
+    "answer_zh": "画出或描述六要素，并按重绘表格顺序背：刺激源、刺激、制品/工件、环境、响应、响应度量。按题目要求套入可用性、性能、可修改性、互操作性等质量属性。",
     "topicIds": [
       "quality",
       "quality-tactics"
@@ -213,8 +282,8 @@
     "english_keywords": [
       "source of stimulus",
       "stimulus",
-      "environment",
       "artifact",
+      "environment",
       "response",
       "response measure",
       "availability",
@@ -223,13 +292,30 @@
       "interoperability"
     ],
     "diagram_id": "quality-scenario",
-    "sample_answer_zh": "质量属性场景用于把模糊的质量需求改写成可测试的架构需求。一个完整场景包含六个部分：刺激源、刺激、环境、制品、响应、响应度量。例子：在系统正常运行时，心跳监控器发现订单服务无响应，系统应自动把请求切换到备用实例，并通知运维人员；用户请求继续得到服务，恢复时间不超过 30 秒，且不丢失已提交订单。六要素分别是：source=heartbeat monitor，stimulus=order service does not respond，environment=normal operation，artifact=order service and failover mechanism，response=fail over and notify operator，measure=recover within 30 seconds and no committed order lost。",
-    "sample_answer_en": "A quality attribute scenario makes a vague quality measurable. Example availability scenario: during normal operation, a heartbeat monitor detects that the order service does not respond. The order service and failover mechanism switch requests to a standby instance, notify operators, and continue service. The response measure is recovery within 30 seconds with no committed order lost.",
-    "visual_hint_zh": "画成六要素表：source / stimulus / artifact / environment / response / response measure；若题目要求具体属性，就按该属性填一行。",
-    "visual_hint_en": "Draw it as a six-part scenario row: source, stimulus, artifact, environment, response, and response measure; fill one row for the requested quality attribute.",
+    "sample_answer_zh": "质量属性场景用于把模糊的质量需求改写成可测试的架构需求。一个完整场景包含六个部分：刺激源、刺激、制品、环境、响应、响应度量。按原表中的 Availability 例子可直接写：刺激源是 Heartbeat 监视器；刺激是服务器无响应；制品是处理器；环境是正常操作；响应是通知操作者并继续操作；响应度量是没有停机时间。答题时先画六列表，再把题目给出的可用性、性能、可修改性等需求填进去。",
+    "sample_answer_en": "A quality attribute scenario turns a vague quality requirement into a testable architectural requirement. It has six parts: source of stimulus, stimulus, artifact, environment, response, and response measure. In the table's Availability example: the source is a heartbeat monitor; the stimulus is that the server does not respond; the artifact is the processor; the environment is normal operation; the response is to notify the operator and continue operation; and the response measure is no downtime.",
+    "visual_hint_zh": "优先照着重绘表格背六列：source、stimulus、artifact、environment、response、measure。不要把订单服务切备用实例作为来源原文；如需举例请标注为自拟示例。",
+    "visual_hint_en": "Use the redrawn table as the source of truth: source, stimulus, artifact, environment, response, measure. Do not treat the order-service failover variant as source wording; mark it as a self-made example if used.",
     "priority": "P0",
     "priority_reason_zh": "今年复习课主纲与 2025 最新相邻课程资料同时命中，优先练到能直接成段作答。",
-    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer."
+    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer.",
+    "source_audit_zh": "P0 主线且以重绘表格作 ground truth；Availability 示例按表格使用 Heartbeat 监视器、服务器无响应、处理器、正常操作、通知操作者并继续操作、无停机时间。",
+    "source_audit_en": "P0 core with the redrawn table as ground truth. The Availability example follows the table: heartbeat monitor, server does not respond, processor, normal operation, notify operator and continue operation, and no downtime.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
+    ]
   },
   {
     "id": "q_asr_sources",
@@ -241,19 +327,23 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
     ],
     "recurring_terms": [
       "ASR",
       "requirements documents",
-      "stakeholders",
-      "scenario analysis",
-      "constraints",
-      "business goals"
+      "stakeholder workshop",
+      "interviews",
+      "business goals",
+      "utility tree"
     ],
-    "likely_answer_pattern": "Define ASR as architecturally significant requirement; list requirement document analysis, stakeholder workshops/interviews, scenario/use-case analysis, business goals, and technical/organizational constraints.",
+    "likely_answer_pattern": "Define ASRs as requirements with strong architectural impact. For 2026 review-class wording, gather/identify them from requirement documents, stakeholder workshops/interviews/QAW, business goals, and utility-tree prioritization; scenarios are the measurable representation.",
     "question_zh": "什么是 ASR？列出收集与识别 ASR 的来源和方法。",
-    "answer_zh": "ASR 是对架构产生深远影响的需求。来源包括需求文档分析、stakeholder workshop/interview、场景/用例分析、业务目标、技术与组织约束，并可用效用树组织和排序。",
+    "answer_zh": "ASR 是对架构设计决定有显著影响的需求。按复习课讲法，识别来源/方法主要是需求文档、stakeholder workshop/interview 或 QAW、业务目标，以及用效用树组织和排序。约束和质量属性场景是重要输入/表达形式，但不要把所有“用例分析”都写成同等来源。",
     "topicIds": [
       "asr",
       "evaluation-atam"
@@ -261,19 +351,29 @@
     "english_keywords": [
       "ASR",
       "requirements documents",
-      "stakeholders",
-      "scenario analysis",
-      "constraints",
-      "business goals"
+      "stakeholder workshop",
+      "interviews",
+      "business goals",
+      "utility tree"
     ],
     "diagram_id": "atam-utility-tree",
-    "sample_answer_zh": "ASR 是对架构有重大影响的需求，不是所有需求。识别 ASR 可以从四类来源入手：第一，分析需求文档和用户故事，找出高优先级功能、质量需求和约束；第二，访谈利益相关者或开展 QAW，把“系统要快、稳定、安全”这类说法转成可度量场景；第三，分析业务目标，例如上市时间、成本、合规和可扩展市场；第四，用场景、用例和效用树组织质量属性，并按业务价值和架构影响排序。最终优先处理高价值且高架构影响的需求。",
-    "sample_answer_en": "An ASR is a requirement with strong architectural impact. Sources include requirement documents and stories, stakeholder interviews/QAW, business goals, constraints, scenarios/use cases, and utility tree prioritization. High-value and high-impact drivers should be handled first.",
+    "sample_answer_zh": "ASR 不是所有需求，而是会强烈影响架构结构、模式、技术选择和质量取舍的需求。识别时先读 requirement documents，找功能需求、质量需求和约束；再通过 stakeholder workshop/interview 或 QAW 补全需求文档里没写清的质量关注点；同时用 business goals 判断哪些质量目标真正重要；最后把候选 ASR 写成质量属性场景，并放入 utility tree 做重要性和实现难度排序。优先处理业务价值高且架构影响大的叶节点。",
+    "sample_answer_en": "An ASR is not every requirement, but a requirement that strongly affects architectural structure, patterns, technology choices, and tradeoffs. Identify ASRs from requirement documents, stakeholder workshops/interviews or QAW, business goals, and utility-tree prioritization. Express candidate ASRs as quality attribute scenarios and prioritize them by value and architectural impact.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课支持 requirements、workshop/interviews、business goals、utility tree；约束和场景作为输入/表达，不再泛化成一串同级来源。",
+    "source_audit_en": "Review notes support requirements, workshops/interviews, business goals, and utility tree. Constraints/scenarios are framed as inputs/representations rather than a loose equal-level list.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
+    ]
   },
   {
     "id": "q_risk_sensitivity_tradeoff",
@@ -287,7 +387,9 @@
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
       "raw/软统2022试卷.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__zqx考试复习资料__往年资料以及答案.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "risks",
@@ -312,7 +414,17 @@
     "sample_answer_en": "Risk is a potential negative outcome. A sensitivity point is a decision or parameter where change strongly affects one quality, e.g. cache size affects performance. A tradeoff point affects multiple qualities in conflicting directions, e.g. layering improves modifiability but may hurt performance.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "主要来自 ATAM/旧卷材料，复习课没有放在最高优先级；保留定义和例子，但标为 P2。",
+    "source_audit_en": "Mainly ATAM/old-paper grounded, not current top priority; definitions and examples are kept as P2.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__zqx考试复习资料__往年资料以及答案.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_arch_process",
@@ -327,7 +439,11 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/architecture-design-process.svg"
     ],
     "recurring_terms": [
       "ASR",
@@ -337,9 +453,9 @@
       "inputs",
       "outputs"
     ],
-    "likely_answer_pattern": "Use the process chain: identify/specify ASRs, design architecture, document views and rationale, evaluate architecture, and evolve/manage it; include inputs/outputs when requested.",
+    "likely_answer_pattern": "Use the four-activity process from the review notes and process figure: specify ASRs, design the architecture, document it, and evaluate it. Explain inputs, artifacts, and feedback; treat evolution/maintenance as lifecycle context, not the fifth core step in this figure.",
     "question_zh": "简述软件架构过程的一般活动，包括输入和输出。",
-    "answer_zh": "按链条回答：识别/规约 ASR，设计架构，文档化视图和理由，评估架构，演化/管理架构。可说明输入是需求、约束、业务目标，输出是架构视图、接口、决策和评估结果。",
+    "answer_zh": "按本课程复习课和过程图回答四个早期架构活动：规约 ASR，进行 architecture design，documenting，architecture evaluation。输入包括 stakeholder concerns、优先级质量属性场景、需求、约束、patterns/tactics；输出是候选视图、组合后的视图、视图之外文档和评估反馈。演化维护可作为生命周期补充，不列成该图的第五个核心活动。",
     "topicIds": [
       "foundation",
       "add",
@@ -354,11 +470,22 @@
       "outputs"
     ],
     "diagram_id": "architecture-design-process",
-    "sample_answer_zh": "软件架构过程可以概括为五个活动。首先识别和规约 ASR，输入是业务目标、需求、约束和利益相关者关注点，输出是优先级化的架构驱动因素。其次进行架构设计，选择模式、战术和分解方案，输出候选架构。第三是文档化，用视图、接口、约束和设计理由描述架构。第四是架构评估，根据质量属性场景发现风险、敏感点和权衡点。最后是架构演化，在需求和环境变化时维护架构一致性。",
-    "sample_answer_en": "The architecture process includes identifying/specifying ASRs, designing architecture with patterns/tactics/decomposition, documenting views/interfaces/rationale, evaluating risks/sensitivity/tradeoffs, and evolving the architecture as requirements and environment change.",
+    "sample_answer_zh": "软件架构过程在这门课里可按四个活动答。第一，Specifying ASRs，把利益相关者关注点、需求、约束和业务目标整理成可度量的质量属性场景，并排序。第二，Architecture design，利用 requirements/constraints、patterns and tactics 形成候选架构和 candidate views。第三，Documenting，把候选视图选择、合并，形成 chosen combined views plus documentation beyond views，例如接口、映射、设计理由和约束。第四，Architecture Evaluation，用场景检查架构是否满足 stakeholder concerns，发现 risks、sensitivity points 和 trade-off points，并把结果反馈到下一轮设计。",
+    "sample_answer_en": "For this course, answer with four early architecture activities. First, specify ASRs by turning stakeholder concerns, requirements, constraints, and business goals into prioritized measurable quality scenarios. Second, perform architecture design using requirements, constraints, patterns, and tactics to form candidate views. Third, document the chosen and combined views plus beyond-view information such as interfaces, mappings, rationale, and constraints. Fourth, evaluate the architecture against scenarios to identify risks, sensitivity points, tradeoff points, and feedback for the next design iteration.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "以复习纪要和架构设计过程图为准，核心是四活动：Specifying ASRs、Architecture design、Documenting、Architecture Evaluation；演化维护降为生命周期补充。",
+    "source_audit_en": "Grounded in review notes and the architecture-process diagram: four activities, not a five-step process with evolution as a core step.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/architecture-design-process.svg"
+    ]
   },
   {
     "id": "q_add_process",
@@ -382,7 +509,12 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/add-roadmap.svg",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
     ],
     "recurring_terms": [
       "ADD",
@@ -416,7 +548,25 @@
     "visual_hint_en": "Draw the course figure: five red drivers on top, a vertical Step 1-7 process below, Steps 3-5 as key design steps, Step 7 looping back to Step 2 if necessary, and refined architecture design at the bottom.",
     "priority": "P0",
     "priority_reason_zh": "今年复习课主纲与 2025 最新相邻课程资料同时命中，优先练到能直接成段作答。",
-    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer."
+    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer.",
+    "source_audit_zh": "以 ADD 3.0 重绘图为绝对基准；七步、五个 driver、Step 7 反馈回 Step 2 均与图一致。",
+    "source_audit_en": "The redrawn ADD 3.0 diagram is the ground truth; seven steps, five drivers, and Step 7 feedback to Step 2 are aligned.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/add-roadmap.svg",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
+    ]
   },
   {
     "id": "q_atam_outputs",
@@ -434,7 +584,9 @@
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
       "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
       "raw/2021 痛苦回忆.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班A卷.txt"
     ],
     "recurring_terms": [
       "ATAM",
@@ -464,13 +616,24 @@
       "final report"
     ],
     "diagram_id": "atam-utility-tree",
-    "sample_answer_zh": "ATAM 的输出按阶段组织。Phase 0 是准备阶段，输出评估计划，包括参与者、时间、范围和报告对象。Phase 1 面向项目决策者，输出业务目标、架构介绍、效用树、优先质量场景、风险、非风险、敏感点和权衡点。Phase 2 引入更广泛的利益相关者，输出新的 stakeholder 场景、合并后的优先场景列表和风险主题。Phase 3 是后续阶段，输出最终评估报告，汇总发现的问题、风险主题和改进建议。",
-    "sample_answer_en": "ATAM outputs are phase-based: Phase 0 evaluation plan; Phase 1 business drivers, architecture presentation, utility tree, scenarios, risks/non-risks, sensitivity and tradeoff points; Phase 2 stakeholder scenarios and risk themes; Phase 3 final report.",
+    "sample_answer_zh": "ATAM 的输出按阶段组织。Phase 0 是准备阶段，输出 evaluation plan，包括参与者、时间、范围和报告对象。Phase 1 面向项目决策者，输出 business drivers、architecture presentation、utility tree、优先质量场景、risks/non-risks、sensitivity points 和 trade-off points。Phase 2 引入更广泛的 stakeholders，输出新增/合并后的 stakeholder scenarios、优先场景列表和 risk themes。Phase 3 输出 final report，汇总场景、风险、敏感点、权衡点和风险主题。",
+    "sample_answer_en": "ATAM outputs are phase-based: Phase 0 produces the evaluation plan. Phase 1 produces business drivers, an architecture presentation, a utility tree, prioritized scenarios, risks/non-risks, sensitivity points, and tradeoff points. Phase 2 adds broader stakeholder scenarios, merged/prioritized scenario lists, and risk themes. Phase 3 produces the final report.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "旧卷/ATAM 资料支持，但今年复习主线弱；已移除无来源的“改进建议/action plan”口吻，只保留阶段产物骨架。",
+    "source_audit_en": "Old-paper/ATAM grounded but not current mainline; unsupported improvement-action wording was removed.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班A卷.txt"
+    ]
   },
   {
     "id": "q_atam_stakeholders",
@@ -484,7 +647,9 @@
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班B卷.txt"
     ],
     "recurring_terms": [
       "ATAM",
@@ -508,11 +673,20 @@
       "architect",
       "scenarios"
     ],
-    "sample_answer_zh": "ATAM 中至少有三类关键参与者。评估团队负责组织评估、引导场景生成、记录风险和形成报告；项目决策者或管理者介绍业务驱动因素和评估目标；首席架构师介绍当前架构、设计理由和关键决策；更广泛的 stakeholder，例如用户、测试、运维、安全和维护人员，负责提出场景并参与优先级排序。不同角色共同保证评估既覆盖业务目标，也覆盖质量属性和实际运行风险。",
-    "sample_answer_en": "ATAM stakeholders include the evaluation team, project decision makers/managers, lead architect, and broader stakeholders such as users, testers, operators, security, and maintainers. They provide business drivers, architecture presentation, scenarios, priorities, and risk validation.",
+    "sample_answer_zh": "ATAM 中至少要说明几类角色。评估团队负责组织评估、介绍 ATAM 方法、引导场景生成、记录风险并形成报告。项目决策者/管理者说明 business drivers、范围和评估目标。首席架构师陈述当前架构、关键设计决定和理由。更广泛的 stakeholders 在 Phase 2 参与，例如用户、测试、运维、维护、安全或业务代表，他们提出并排序场景，帮助确认风险主题。不要把这些例子背成固定名单，重点是角色如何提供业务目标、架构信息、场景和风险验证。",
+    "sample_answer_en": "Explain ATAM roles rather than a fixed exhaustive list. The evaluation team organizes the evaluation, presents the method, elicits scenarios, records risks, and writes the report. Project decision makers/managers provide business drivers, scope, and evaluation goals. The lead architect presents the architecture and key rationale. Broader stakeholders in Phase 2, such as users, testers, operators, maintainers, security, or business representatives, propose and prioritize scenarios and help validate risk themes.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "旧卷支持角色题，但具体人员名单不应绝对化；答案改成角色职责，测试/运维/安全等仅为 Phase 2 broader stakeholders 示例。",
+    "source_audit_en": "Old-paper grounded; concrete stakeholder lists are examples. The answer focuses on roles and responsibilities.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__zqx考试复习资料__【批量下载】18年等__体系结构2015年春季2班B卷.txt"
+    ]
   },
   {
     "id": "q_style_view_mapping",
@@ -529,7 +703,11 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
     ],
     "recurring_terms": [
       "module styles",
@@ -557,7 +735,18 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷高频且 Views and Beyond/slide 支持 module、C&C、allocation 三类；视图例子按课程常见分类保留。",
+    "source_audit_en": "Old-paper high frequency and Views-and-Beyond/slides support module, C&C, and allocation categories.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
+    ]
   },
   {
     "id": "q_different_views",
@@ -575,7 +764,11 @@
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
       "raw/软统2022试卷.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
     ],
     "recurring_terms": [
       "views",
@@ -608,7 +801,20 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课点名 architecture views/4+1，ADD 文档化部分支持根据 stakeholder concerns 选择多视图。",
+    "source_audit_en": "Review notes mention architecture views/4+1; ADD documentation supports selecting views by stakeholder concerns.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
+    ]
   },
   {
     "id": "q_doc_package",
@@ -623,7 +829,11 @@
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
     ],
     "recurring_terms": [
       "architecture documentation",
@@ -654,7 +864,18 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "来源是 ADD 文档化与 Views and Beyond；属于文档化框架题，保留为 P1，但具体包内容按课程文档化术语表达。",
+    "source_audit_en": "Grounded in ADD documentation and Views and Beyond; kept as P1 documentation framework.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt"
+    ]
   },
   {
     "id": "q_4_plus_1",
@@ -676,7 +897,10 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "4+1",
@@ -707,7 +931,21 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课和 slide 明确 Logical/Process/Physical/Development + use cases；保留标准五项。",
+    "source_audit_en": "Review notes/slides explicitly cover Logical, Process, Physical, Development, plus use cases.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_patterns_tactics",
@@ -726,7 +964,13 @@
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
       "raw/考前关键词提示版本.pdf",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "patterns",
@@ -734,9 +978,9 @@
       "building blocks",
       "architectural force"
     ],
-    "likely_answer_pattern": "Tactics are smaller mechanisms addressing one force; patterns package multiple decisions and often combine tactics; list tactics such as timestamp, sanity checking, orchestrate, control resource demand, caching, load balancing.",
+    "likely_answer_pattern": "Tactics are fine-grained design decisions for one quality driver; patterns/styles package larger recurring structures and often combine multiple tactics. Use examples only as examples, not as an exhaustive source list.",
     "question_zh": "说明 architectural patterns 与 tactics 的关系，并列举 tactic 及用途。",
-    "answer_zh": "Tactic 是解决单个质量驱动力的较小机制；pattern 会打包多个设计决定并常组合多个 tactic。可举 timestamp、sanity checking、orchestrate、control resource demand、caching、load balancing 等。",
+    "answer_zh": "Tactic 是面向某个质量属性响应的较小设计动作；pattern/style 是更大粒度、可复用的结构方案，常把多个 tactic 和约束组合起来。例子可以写：可用性里的 heartbeat、redundancy、failover；性能里的 caching、load balancing、control resource demand；可修改性里的提高内聚、限制依赖；安全里的认证、授权、审计。",
     "topicIds": [
       "patterns",
       "quality-tactics"
@@ -748,13 +992,29 @@
       "architectural force"
     ],
     "diagram_id": "patterns-taxonomy",
-    "sample_answer_zh": "Tactic 是更小的架构设计决定，通常针对一个具体质量属性；Pattern 是更大粒度的架构组织方案，往往组合多个 tactic。比如为了提高可用性，可以使用 heartbeat、redundancy、failover；为了提高性能，可以使用 caching、load balancing、control resource demand；为了提高可修改性，可以使用 information hiding、layering；为了提高安全性，可以使用 authentication、authorization、audit。模式和战术都是架构师的工具，区别在于粒度和组合程度。",
-    "sample_answer_en": "A tactic is a smaller design decision aimed at a quality attribute; a pattern is a larger reusable organization that often combines tactics. Availability tactics include heartbeat/redundancy/failover; performance uses caching/load balancing; security uses authentication/authorization/audit.",
+    "sample_answer_zh": "Tactic 和 pattern 的区别在粒度。Tactic 通常针对一个质量属性的某个响应点，是较原子的设计动作；pattern/style 解决反复出现的一类架构问题，会规定元素、连接关系、约束和质量取舍，往往组合多个 tactics。例如为了 Availability，可以用 heartbeat 做故障检测，用 redundancy/failover 做恢复；这些 tactic 组合到具体系统里，可能形成 broker、client-server 或微服务等更大结构中的一部分。答题时不要只堆名词，要说明 tactic 服务单一质量驱动力，pattern 提供较完整的架构骨架。",
+    "sample_answer_en": "The difference is granularity. A tactic is a small design action for a quality-attribute response; a pattern/style is a larger reusable architectural solution that defines elements, relations, constraints, and tradeoffs, often combining several tactics. For availability, heartbeat detects failure and redundancy/failover supports recovery. In a concrete system these tactics may be part of a larger broker, client-server, or microservice structure.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课明确 strategies/tactics/patterns/styles 关系；已把 tactic 例子改成可用性/性能/可修改性/安全的保守示例，不再堆不明来源词。",
+    "source_audit_en": "Review notes support the tactics/patterns/styles relationship. Examples were tightened to conservative quality-attribute examples.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "raw/考前关键词提示版本.pdf",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_generic_design_strategies",
@@ -779,7 +1039,9 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "layering",
@@ -787,9 +1049,9 @@
       "SOA",
       "plug-in"
     ],
-    "likely_answer_pattern": "Name strategies such as layering, componentization, SOA, plug-in; for each, provide a small architecture example and why it supports change/reuse.",
+    "likely_answer_pattern": "Use the source-backed generic strategies: abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. Treat layering, SOA, plugins, etc. as design concepts or architectural styles, not the core generic-strategy list.",
     "question_zh": "软件设计中有哪些通用设计策略？给出架构例子。",
-    "answer_zh": "列举抽象、分解、分治、生成-测试、迭代、复用、分层、组件化、SOA、插件化等，并说明如何支持变化、复用或降低复杂度。",
+    "answer_zh": "通用设计策略优先背五个有据可查的词：抽象、分解、生成-测试、迭代/细化、复用。分层、SOA、插件化、组件化等可以作为这些策略落到架构上的例子或设计概念，不要和通用策略清单混在一起当作同级必答。",
     "topicIds": [
       "patterns",
       "design-decisions"
@@ -806,13 +1068,28 @@
       "reuse"
     ],
     "diagram_id": "patterns-taxonomy",
-    "sample_answer_zh": "通用设计策略包括抽象、分解、分治、生成-测试、迭代和复用，也可以在架构层体现为分层、组件化、服务化和插件化。以 ADD 为例，架构师先用分解选择要处理的系统元素，再用抽象识别职责和接口，用复用选择已有 pattern/tactic，用迭代逐轮处理最高优先级 ASR。例子：报价系统先分出 API、报价引擎、缓存和数据存储，再用缓存 tactic 提升性能，用 connector/adaptor 隔离异构调用。",
-    "sample_answer_en": "Generic strategies include abstraction, decomposition, divide-and-conquer, generate-and-test, iteration, and reuse. In ADD, decomposition selects the element to design, abstraction identifies responsibilities and interfaces, reuse selects known patterns/tactics, and iteration handles the highest-priority ASRs round by round.",
+    "sample_answer_zh": "软件设计的通用策略可以这样答：Abstraction 用抽象隐藏实现细节，让架构师先关注组件、连接件或模块；Decomposition 把系统或模块按关注点拆开；Generate-and-test 先提出候选方案，再用质量属性场景和约束评估；Iteration/Refinement 通过多轮设计逐步细化，ADD 就是典型迭代方法；Reuse 复用既有架构、模式、框架或组件来降低风险。分层、SOA、插件化等可以写成这些策略的应用例子，而不是把它们并列成“通用策略”。",
+    "sample_answer_en": "Source-backed generic design strategies are abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. Abstraction hides implementation detail; decomposition separates concerns; generate-and-test creates and evaluates alternatives; iteration/refinement gradually improves the design, as in ADD; reuse lowers risk by using existing architectures, patterns, frameworks, or components. Layering, SOA, and plugins are applications or design concepts, not the core generic-strategy list.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "原文/PPT 支持 abstraction、decomposition、generate-and-test、iteration/refinement、reuse；已把 SOA/插件化等从通用策略清单移到应用例子。",
+    "source_audit_en": "Slides support abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. SOA/plugins are now examples, not core strategies.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/2021 痛苦回忆.pdf",
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/extracted/slides/slides__Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_cnc_mvc",
@@ -826,7 +1103,10 @@
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "component-connector",
@@ -858,7 +1138,17 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "C&C 与 MVC 来自架构模式/视图材料；旧卷或课程模式部分支持，作为模式理解题保留。",
+    "source_audit_en": "C&C and MVC are grounded in architecture-pattern/view materials and kept as a pattern-understanding question.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_broker_pattern",
@@ -873,7 +1163,10 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "broker",
@@ -905,7 +1198,17 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷和架构模式材料支持 Broker 的上下文、收益、局限；例子保持通用，不绑定具体系统。",
+    "source_audit_en": "Old papers and pattern material support Broker context, benefits, and limits.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_layered_style",
@@ -917,7 +1220,10 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "layered",
@@ -948,7 +1254,16 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷和模式材料支持分层的上下文、收益、局限；答案保守聚焦 allowed-to-use、关注点分离和性能/跨层代价。",
+    "source_audit_en": "Old papers and pattern material support layered context, benefits, and limits.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_layered_vs_multitier",
@@ -959,7 +1274,10 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "Layered",
@@ -988,7 +1306,16 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷明确 Layered 是 module style、Multi-tier 是 allocation/deployment 视角；答案与该区分一致。",
+    "source_audit_en": "Old papers explicitly distinguish layered as module style and multi-tier as allocation/deployment.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_soa_quality",
@@ -1002,7 +1329,11 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "SOA",
@@ -1036,7 +1367,18 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷/讲义支持 SOA 原则及互操作性、可伸缩性、安全/性能影响；答案避免把收益写成无条件。",
+    "source_audit_en": "Old papers/slides support SOA principles and quality impacts; benefits are not phrased as unconditional.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_soa_ws_esb",
@@ -1048,7 +1390,11 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "SOA",
@@ -1082,7 +1428,17 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "旧卷原题支持 SOA、Web Service、ESB 三者关系；答案按思想/技术/基础设施区分。",
+    "source_audit_en": "Old-paper grounded: SOA is style/principle, Web Service is implementation technology, ESB is infrastructure.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_microservices_vs_soa",
@@ -1100,7 +1456,10 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
     ],
     "recurring_terms": [
       "microservices",
@@ -1126,13 +1485,26 @@
       "communication"
     ],
     "diagram_id": "microservice-migration",
-    "sample_answer_zh": "微服务和 SOA 都强调服务化、分布式、松耦合和复用，但粒度和治理方式不同。SOA 往往面向企业级集成，服务粒度较大，常依赖 ESB 或集中治理；微服务通常围绕业务能力或子域拆分，服务更小，由团队独立开发、部署和运维。微服务更强调服务自治、独立部署、轻量通信、服务自有数据和基础设施自动化。它提高了局部演化和持续交付能力，但也带来服务发现、分布式事务、监控、链路追踪和运维复杂度。",
-    "sample_answer_en": "Microservices and SOA both use services, distribution, loose coupling, and reuse. SOA is often enterprise integration with larger services and centralized governance/ESB. Microservices are smaller, business-capability based, independently deployed/owned, lightweight, and service-data owned, but add discovery, transactions, tracing, and ops complexity.",
+    "sample_answer_zh": "微服务和 SOA 都强调服务化、分布式、松耦合和复用，但粒度和治理方式不同。SOA 往往面向企业级集成，服务粒度较大，治理更集中，可能借助 ESB、服务注册表、编排或全局数据模型。微服务通常围绕业务能力或子域拆分，服务更小，由团队独立开发、部署和运维，更强调轻量通信、服务自治、服务自有数据和基础设施自动化。微服务提高局部演进和持续交付能力，但也带来服务发现、分布式事务、一致性、链路追踪和运维复杂度。",
+    "sample_answer_en": "Microservices and SOA both use services, distribution, loose coupling, and reuse, but differ in granularity and governance. SOA is often enterprise-integration oriented, with larger services and more centralized governance, possibly using ESB, registries, orchestration, or global data models. Microservices are usually smaller and organized around business capabilities or subdomains, with independent team ownership, deployment, lightweight communication, service-owned data, and infrastructure automation. Microservices improve local evolution and continuous delivery but add discovery, distributed transactions, consistency, tracing, and operations complexity.",
     "visual_hint_zh": "用对比表或迁移图：粒度、治理、部署、数据所有权、通信、代价。",
     "visual_hint_en": "Use a comparison table or migration diagram: granularity, governance, deployment, data ownership, communication, costs.",
     "priority": "P0",
     "priority_reason_zh": "今年复习课主纲与 2025 最新相邻课程资料同时命中，优先练到能直接成段作答。",
-    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer."
+    "priority_reason_en": "Hit by the current review-class outline and the latest 2025 adjacent-course evidence; practice until you can write a full answer.",
+    "source_audit_zh": "今年复习课明确微服务与 SOA 演进/对比是主线；已把 SOA 全局数据模型/ESB 等改成 often/may，避免绝对化。",
+    "source_audit_en": "Current review mainline; SOA ESB/global-data wording is phrased as often/may, not universal.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
+    ]
   },
   {
     "id": "q_spl_vs_single",
@@ -1147,7 +1519,8 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "SPL",
@@ -1176,7 +1549,15 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "主要来自旧卷和前人资料，非今年最高优先级；保留共性/可变性/核心资产骨架。",
+    "source_audit_en": "Mainly old-paper/senior material, not current top priority; keep commonality/variability/core-assets skeleton.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_reuse_spl_mda_soa",
@@ -1191,7 +1572,8 @@
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "SPL",
@@ -1229,7 +1611,15 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "旧卷支持 SPL/MDA/SOA 复用比较；今年主线弱，P2 保留。",
+    "source_audit_en": "Old-paper grounded SPL/MDA/SOA reuse comparison; P2 because it is weak in the current review outline.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_spl_variability",
@@ -1245,7 +1635,8 @@
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
-      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md"
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "SPL",
@@ -1278,7 +1669,15 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "旧卷和前人资料支持 variation points/mechanisms/binding time；今年主线弱，按 P2 骨架记忆。",
+    "source_audit_en": "Old-paper/senior material supports variation points/mechanisms/binding time; keep as P2 skeleton.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_binding_time",
@@ -1289,7 +1688,11 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "binding time",
@@ -1317,7 +1720,17 @@
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "设计决定七类里有 binding time；三维变化题主要来自旧卷，故保留但降权。",
+    "source_audit_en": "Binding time is in the seven design-decision categories; the three-dimension change question is mainly old-paper grounded.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_three_tier_design",
@@ -1329,7 +1742,8 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
-      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx"
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "three-tier",
@@ -1360,7 +1774,14 @@
     "visual_hint_en": "Write 2-3 responsibilities per tier and add Views and Beyond documentation notes.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "来自相邻/旧题的设计练习；三层示例是说明性答案，重点是 Views and Beyond 文档化，不作为今年主线。",
+    "source_audit_en": "Adjacent/old design-practice prompt; the three-tier example is illustrative, with Views-and-Beyond as the main architecture skill.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班B卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班B卷.docx",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_distributed_cache_design",
@@ -1375,7 +1796,8 @@
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
       "raw/软统2022试卷.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "distributed cache",
@@ -1410,7 +1832,16 @@
     "visual_hint_en": "A sequence diagram is safest: Client -> Server -> DB -> Coordinator/Broker -> Cache Adapters.",
     "priority": "P2",
     "priority_reason_zh": "历史高频或补充背景，但今年复习课未放在最高优先级；保留骨架即可。",
-    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton."
+    "priority_reason_en": "Historically useful or supporting background, but not highest priority in this review class; keep the skeleton.",
+    "source_audit_zh": "来自相邻/旧题；缓存失效协调器/Broker/Observer 是合理架构解法示例，非复习课核心主线。",
+    "source_audit_en": "Adjacent/old prompt; coordinator/Broker/Observer is a reasonable illustrative architecture solution, not current core.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
+      "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_stakeholder_concerns",
@@ -1421,7 +1852,10 @@
     ],
     "source_paths": [
       "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
-      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt"
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "concerns",
@@ -1447,7 +1881,16 @@
     "sample_answer_en": "A concern is something stakeholders care about: function, quality, technology, cost, schedule, risk, deployment, maintenance, compliance. Stakeholders include users/customers, business owners, developers, testers, operators, managers, architects, security/regulators. Architecture addresses their concerns through views and scenarios.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课反复强调 stakeholder concerns；角色列表是常见示例，不是封闭名单。",
+    "source_audit_en": "Review notes repeatedly emphasize stakeholder concerns; the role list is illustrative, not exhaustive.",
+    "source_audit_sources": [
+      "raw/zqx考试复习资料/张贺老师 体系结构 往年考题.md",
+      "data/extracted/raw/zqx考试复习资料/往年资料以及答案.txt",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_availability_mtbf_mttr",
@@ -1458,7 +1901,11 @@
     ],
     "source_paths": [
       "raw/软统2022试卷.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
     ],
     "recurring_terms": [
       "availability",
@@ -1487,7 +1934,17 @@
     "sample_answer_en": "Availability is the probability or proportion of time that the system delivers correct service when needed. MTBF means Mean Time Between Failures and MTTR means Mean Time To Repair. A common estimate is Availability = MTBF / (MTBF + MTTR), or uptime divided by uptime plus downtime. Tactics include fault detection, redundancy, failover, and recovery, with cost and complexity tradeoffs.",
     "priority": "P2",
     "priority_reason_zh": "可用性和 MTBF/MTTR 公式在本课件出现；计算题型主要来自相邻/往年资料，今年复习时作为可用性场景的辅助记忆。",
-    "priority_reason_en": "Availability and the MTBF/MTTR formula appear in the current course slides; the calculation-style prompt mainly comes from adjacent/past papers, so keep it as supporting memory for availability scenarios."
+    "priority_reason_en": "Availability and the MTBF/MTTR formula appear in the current course slides; the calculation-style prompt mainly comes from adjacent/past papers, so keep it as supporting memory for availability scenarios.",
+    "source_audit_zh": "可用性是质量属性核心；MTBF/MTTR 计算主要来自相邻/旧题，因此降为 P2 辅助。",
+    "source_audit_en": "Availability is core; MTBF/MTTR calculation is mainly adjacent/old-paper material, so P2.",
+    "source_audit_sources": [
+      "raw/软统2022试卷.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
+    ]
   },
   {
     "id": "q_pattern_architecture_boundary",
@@ -1498,7 +1955,13 @@
     ],
     "source_paths": [
       "raw/2021 痛苦回忆.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "pattern",
@@ -1525,7 +1988,19 @@
     "sample_answer_en": "A software pattern is a named abstraction of a recurring context, problem, and solution. Architectural patterns/styles such as Layered, Broker, Pipe-and-Filter, and SOA can provide an architecture skeleton because they organize system-level elements, connectors, constraints, and quality tradeoffs. GoF patterns are mostly local class/object collaboration mechanisms.",
     "priority": "P2",
     "priority_reason_zh": "该题用于防止把 GoF 模式和架构模式混淆；今年复习课更强调架构演进、时代矛盾和适用场景，因此作为辅助辨析题。",
-    "priority_reason_en": "This helps avoid confusing GoF patterns with architectural patterns. The current review class emphasizes evolution, historical tensions, and applicability, so keep it as a supporting distinction question."
+    "priority_reason_en": "This helps avoid confusing GoF patterns with architectural patterns. The current review class emphasizes evolution, historical tensions, and applicability, so keep it as a supporting distinction question.",
+    "source_audit_zh": "模式和架构边界来自复习课的 pattern/style 讨论与旧题；用于防止 GoF 设计模式和架构模式混淆。",
+    "source_audit_en": "Grounded in review discussion of pattern/style and old prompts; prevents confusing GoF patterns with architectural patterns.",
+    "source_audit_sources": [
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_design_decisions_importance",
@@ -1543,7 +2018,10 @@
       "raw/考前关键词提示版本.pdf",
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
     ],
     "recurring_terms": [
       "design decisions",
@@ -1570,7 +2048,20 @@
     "sample_answer_en": "Design decisions matter because architecture is more than a component-and-connector structure. The structure says what elements exist and how they interact; decisions record responsibility allocation, coordination, data, resources, mapping, binding time, technology choices, rationale, risks, and tradeoffs. This makes architecture reviewable, communicable, and evolvable.",
     "priority": "P1",
     "priority_reason_zh": "复习课或最新前人资料覆盖，且历史题高频；适合作为简答题保底。",
-    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline."
+    "priority_reason_en": "Covered by review-class or latest senior notes and recurring in past papers; good short-answer baseline.",
+    "source_audit_zh": "复习课明确七类设计决定，且强调架构不只是图；答案围绕结构 + 决策 + rationale。",
+    "source_audit_en": "Review notes explicitly list seven design-decision categories and stress that architecture is more than diagrams.",
+    "source_audit_sources": [
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt"
+    ]
   },
   {
     "id": "q_cnc_soa",
@@ -1587,7 +2078,10 @@
       "raw/25软件系统设计回忆版.jpg",
       "data/extracted/raw/softsys-2025-architecture-filter.md",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
     ],
     "recurring_terms": [
       "component-and-connector",
@@ -1616,7 +2110,20 @@
     "sample_answer_en": "A C&C style describes runtime components, connectors, and interaction constraints. In SOA, services are components, service contracts define interfaces, and HTTP/SOAP/messaging/ESB act as connectors. SOA improves interoperability and reuse, but adds remote-call overhead, governance complexity, and versioning issues.",
     "priority": "P2",
     "priority_reason_zh": "具体 C&C + SOA 问法来自相邻课程和 Mubu；今年复习课保留 SOA 演进/模式理解，不把该题置于主线。保留为辅助辨析题。",
-    "priority_reason_en": "This exact C&C + SOA wording comes from adjacent-course/Mubu material. The current review class keeps SOA as architectural evolution/pattern understanding, so keep this as a supporting distinction question."
+    "priority_reason_en": "This exact C&C + SOA wording comes from adjacent-course/Mubu material. The current review class keeps SOA as architectural evolution/pattern understanding, so keep this as a supporting distinction question.",
+    "source_audit_zh": "相邻/旧题支持 C&C + SOA 解释；今年复习把 SOA 放在演进/模式理解中，故 P2。",
+    "source_audit_en": "Adjacent/old prompt supports C&C + SOA; current review treats SOA as evolution/pattern understanding, so P2.",
+    "source_audit_sources": [
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/lu-jun-architectural-patterns-review.md",
+      "data/extracted/slides/slides__Lecture 3: Architectural Patterns - 软件架构模式.txt",
+      "data/extracted/slides/raw__架构.txt"
+    ]
   },
   {
     "id": "q_pipe_filter_text_design",
@@ -1627,7 +2134,8 @@
     ],
     "source_paths": [
       "raw/2021 痛苦回忆.pdf",
-      "data/extracted/raw/softsys-2021-2022-architecture-filter.md"
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
     ],
     "recurring_terms": [
       "Pipe-and-Filter",
@@ -1656,7 +2164,14 @@
     "sample_answer_en": "Use a Pipe-and-Filter pipeline: FileReader reads the text stream, Tokenizer splits words, Normalizer lowercases and removes punctuation, DuplicateRemover filters duplicates, Sorter orders the words, and Writer outputs the result. Pipes carry agreed data formats and filters avoid shared state. This improves reuse and replaceability, but is weak for highly interactive or shared-state tasks.",
     "priority": "P2",
     "priority_reason_zh": "Pipe-and-Filter 设计题来自 2021 相邻课程；只保留架构组件/连接器/质量取舍，排除 Java 代码实现和详细设计部分。",
-    "priority_reason_en": "This Pipe-and-Filter design prompt comes from the 2021 adjacent course. Keep architecture components/connectors/tradeoffs only, excluding Java implementation and detailed-design parts."
+    "priority_reason_en": "This Pipe-and-Filter design prompt comes from the 2021 adjacent course. Keep architecture components/connectors/tradeoffs only, excluding Java implementation and detailed-design parts.",
+    "source_audit_zh": "相邻课程题；已明确只保留架构组件/连接器/质量取舍，排除 Java 代码实现。",
+    "source_audit_en": "Adjacent-course prompt; only architecture components/connectors/tradeoffs are kept, excluding Java implementation.",
+    "source_audit_sources": [
+      "raw/2021 痛苦回忆.pdf",
+      "data/extracted/raw/softsys-2021-2022-architecture-filter.md",
+      "data/extracted/slides/raw__体系结构往年考题整理：.txt"
+    ]
   },
   {
     "id": "q_operability_performance_scenarios",
@@ -1675,7 +2190,11 @@
       "raw/25软件系统设计回忆版.jpg",
       "data/extracted/raw/softsys-2025-architecture-filter.md",
       "raw/考前关键词提示版本.pdf",
-      "raw/老师复习大纲（答案方式）.docx"
+      "raw/老师复习大纲（答案方式）.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
     ],
     "recurring_terms": [
       "operability",
@@ -1693,18 +2212,30 @@
     "english_keywords": [
       "source of stimulus",
       "stimulus",
-      "environment",
       "artifact",
+      "environment",
       "response",
       "response measure",
       "operability",
       "performance"
     ],
     "diagram_id": "quality-scenario",
-    "sample_answer_zh": "可操作性场景：在系统正常运行且订单服务告警时，运维人员通过监控控制台查看异常订单链路，系统应展示相关日志、指标和依赖服务状态，并允许一键回滚到上一个稳定版本；响应度量是 2 分钟内定位故障服务，5 分钟内完成回滚，且回滚过程不影响已支付订单。性能场景：在晚高峰每秒 1000 个下单请求下，用户向订单服务提交订单，系统应完成校验、创建订单并返回结果；响应度量是 95% 请求在 2 秒内返回，错误率低于 0.1%。",
-    "sample_answer_en": "Operability scenario: during normal operation, an operator receives an order-service alarm and uses the console to inspect traces, logs, metrics, and dependencies, then rolls back to a stable version. The measure is diagnosis within 2 minutes and rollback within 5 minutes without affecting paid orders. Performance scenario: under 1000 order requests per second at peak time, 95% of order submissions return within 2 seconds and error rate stays below 0.1%.",
-    "visual_hint_zh": "两个场景都画同一张六要素图，只是 stimulus、artifact、response measure 换成“运维操作”和“高并发请求”。",
-    "visual_hint_en": "Use the same six-part diagram for both; change the stimulus/artifact/measure for operator action vs high-load request."
+    "sample_answer_zh": "这类题仍然用六要素模板，不要把下面数值当成原题固定标准。可操作性示例：刺激源是运维人员；刺激是在正常运行环境下收到故障告警并执行诊断/回滚；制品是监控控制台和目标服务；响应是展示日志、指标、链路和依赖状态，并允许执行回滚；响应度量可写“在限定时间内定位并完成操作，且不影响已完成业务”。性能示例：刺激源是用户或外部系统；刺激是在峰值负载下发起请求；制品是目标服务/API；环境是正常运行或高峰期；响应是完成处理并返回结果；响应度量写延迟、吞吐、错误率或资源占用阈值。",
+    "sample_answer_en": "Use the same six-part template; do not treat the following numbers or scenario details as fixed source wording. For operability: the source is an operator; the stimulus is a diagnosis/configuration/rollback action after an alarm during normal operation; the artifact is the console and target service; the response is showing logs, metrics, traces, dependencies, and allowing the operation; measures include bounded diagnosis/operation time and no disruption to completed business. For performance: the source is a user or external system; the stimulus is a request under normal or peak load; the artifact is the target service/API; the response is processing and returning the result; measures are latency, throughput, error rate, or resource usage.",
+    "visual_hint_zh": "两个场景都画同一张六要素图，只是 source、stimulus、artifact、response measure 换成“运维操作”和“高并发请求”。",
+    "visual_hint_en": "Use the same six-part diagram for both; change the source, stimulus, artifact, and response measure for operator action vs high-load request.",
+    "source_audit_zh": "六要素模板来自复习课；可操作性/性能组合来自 2025 相邻材料，具体数值已改为示范性表达而非原题标准。",
+    "source_audit_en": "Six-part template is review-class core; operability/performance pairing is 2025 adjacent material. Concrete numbers are now illustrative, not fixed source wording.",
+    "source_audit_sources": [
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "data/feishu/zhang-he-course-review.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 14: Course Review - softarch2026-review-1.txt",
+      "site/assets/diagrams/quality-scenario.svg"
+    ]
   },
   {
     "id": "q_microservices_characteristics",
@@ -1728,7 +2259,9 @@
       "raw/老师复习大纲（答案方式）.docx",
       "https://mubu.com/doc/Klk_SUrzZB",
       "data/extracted/raw/mubu-softsys-architecture-outline.md",
-      "data/feishu/li-shanshan-course-review.md"
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
     ],
     "recurring_terms": [
       "microservices",
@@ -1758,7 +2291,20 @@
     "sample_answer_zh": "微服务架构的主要特征可以背六点：第一，通过服务组件化，把业务能力封装为可独立替换和升级的服务；第二，围绕业务能力组织团队和系统边界；第三，高内聚低耦合，服务内部保有自己的领域逻辑，服务间减少直接依赖；第四，去中心化治理和数据管理，不同服务可选不同技术栈并拥有自己的数据库；第五，基础设施自动化，通过 CI/CD、容器、服务发现、监控等支撑频繁交付；第六，服务设计与演进，允许服务独立演进并通过高可用设计容忍失败。",
     "sample_answer_en": "Six characteristics: componentization via services, organization around business capabilities, high cohesion and loose coupling, decentralized governance/data ownership, infrastructure automation such as CI/CD and containers, and evolutionary service design with resilience.",
     "visual_hint_zh": "可画成“业务能力 -> 服务边界 -> 独立部署/自有数据库/自动化平台”的三层图。",
-    "visual_hint_en": "Draw business capabilities mapped to service boundaries, each with independent deployment, owned data, and automation support."
+    "visual_hint_en": "Draw business capabilities mapped to service boundaries, each with independent deployment, owned data, and automation support.",
+    "source_audit_zh": "今年复习课明确微服务特性和对比是重点；六点特征来自李杉杉课件/前人资料，P0 保留。",
+    "source_audit_en": "Current review emphasizes microservice characteristics/comparison; six traits are supported by Li Shanshan slides/senior material.",
+    "source_audit_sources": [
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "raw/考前关键词提示版本.pdf",
+      "raw/老师复习大纲（答案方式）.docx",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
+    ]
   },
   {
     "id": "q_microservice_food_delivery_design",
@@ -1775,19 +2321,22 @@
       "raw/25软件系统设计回忆版.jpg",
       "data/extracted/raw/softsys-2025-architecture-filter.md",
       "https://mubu.com/doc/Klk_SUrzZB",
-      "data/extracted/raw/mubu-softsys-architecture-outline.md"
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
     ],
     "recurring_terms": [
       "microservice decomposition",
       "business capability",
       "bounded context",
-      "API Gateway",
-      "domain event",
-      "Saga"
+      "service-owned data",
+      "service collaboration",
+      "eventual consistency"
     ],
-    "likely_answer_pattern": "Explain why the scenario fits microservices, identify operations from verbs, map business capabilities/subdomains to services, then describe APIs/events, data ownership, and quality tradeoffs.",
+    "likely_answer_pattern": "Explain why the scenario fits microservices, identify operations from verbs, map business capabilities/subdomains to services, then describe APIs/events, data ownership, and quality tradeoffs. Concrete service names and Saga/events are an illustrative decomposition, not mandatory source wording.",
     "question_en": "Design a food-delivery platform using microservices and explain the service decomposition.",
-    "answer_zh": "先说明外卖平台业务域多、流量峰值明显、团队可按业务能力并行演进，因此适合微服务。再从动词识别系统操作：浏览菜单、下单、支付、接单、配送、通知、结算。服务可拆为用户、商家/菜单、订单、支付、配送调度、通知、结算/评价等。每个服务拥有自己的数据，跨服务用 API Gateway、同步查询和异步领域事件协作，并用 Saga/补偿保证最终一致性。",
+    "answer_zh": "先说明外卖平台业务域多、流量峰值明显、团队可按业务能力并行演进，因此适合微服务。再从动词识别系统操作：浏览菜单、下单、支付、接单、配送、通知、结算。服务可示例拆为用户、商家/菜单、订单、支付、配送调度、通知、结算/评价等。每个服务拥有自己的数据，跨服务可用同步 API 或异步事件协作；如果涉及跨服务一致性，再补最终一致性和补偿策略。",
     "topicIds": [
       "microservices",
       "ddd",
@@ -1797,14 +2346,25 @@
       "food delivery",
       "business capability",
       "service boundary",
-      "domain event",
-      "eventual consistency",
-      "Saga"
+      "service-owned data",
+      "sync API / async event",
+      "eventual consistency"
     ],
     "diagram_id": "microservice-migration",
-    "sample_answer_zh": "示例答案：外卖平台适合微服务，因为用户、商家、订单、支付、骑手调度和通知属于不同业务能力，访问压力和变化频率不同，可以独立扩展和迭代。系统操作包括浏览餐厅和菜单、创建订单、支付订单、商家接单、分配骑手、更新配送状态、发送通知和结算。对应服务可以设计为 User Service、Restaurant/Menu Service、Order Service、Payment Service、Delivery/Dispatch Service、Notification Service、Settlement Service。用户请求先进入 API Gateway；Order Service 创建订单后发布 OrderCreated 事件，Payment Service 支付成功后发布 PaymentSucceeded，Delivery Service 订阅后分配骑手并更新状态。订单、支付、配送分别拥有自己的数据库，跨服务一致性用 Saga 和补偿操作处理。",
-    "sample_answer_en": "A food-delivery platform fits microservices because user, restaurant/menu, order, payment, delivery, notification, and settlement capabilities evolve and scale differently. Map operations to services: browse menus, create order, pay, accept order, dispatch rider, update delivery, notify, and settle. Use API Gateway, service-owned databases, domain events such as OrderCreated and PaymentSucceeded, and Saga/compensation for eventual consistency.",
-    "visual_hint_zh": "画图时把 API Gateway 放在前面，后面按业务能力画 6-7 个服务，服务间用事件箭头标出 OrderCreated/PaymentSucceeded/DeliveryAssigned。",
-    "visual_hint_en": "Draw API Gateway in front, 6-7 capability services behind it, and event arrows for OrderCreated, PaymentSucceeded, and DeliveryAssigned."
+    "sample_answer_zh": "示例答案：外卖平台适合微服务，因为用户、商家、菜单、订单、支付、骑手调度和通知属于不同业务能力，访问压力和变化频率也不同，可以独立扩展和迭代。系统操作包括浏览餐厅和菜单、创建订单、支付订单、商家接单、分配骑手、更新配送状态、发送通知和结算。一个合理拆分是 User Service、Restaurant/Menu Service、Order Service、Payment Service、Delivery/Dispatch Service、Notification Service、Settlement Service。每个服务拥有自己的数据边界，用户请求可先进入 API Gateway；订单、支付、配送之间可通过同步 API 或异步事件协作。若题目追问一致性，可以补充最终一致性、Saga 或补偿操作，但这些是示例设计手段，不是题干固定要求。",
+    "sample_answer_en": "Illustrative answer: a food-delivery platform fits microservices because user, restaurant/menu, order, payment, delivery, notification, and settlement capabilities evolve and scale differently. Map operations to services: browse menus, create order, pay, accept order, dispatch rider, update delivery, notify, and settle. A reasonable split is User, Restaurant/Menu, Order, Payment, Delivery/Dispatch, Notification, and Settlement services. Each owns its data boundary; requests may enter through an API Gateway; services coordinate through synchronous APIs or asynchronous events. If the prompt asks about consistency, add eventual consistency, Saga, or compensation, but these are example design mechanisms rather than fixed wording in the prompt.",
+    "visual_hint_zh": "优先按业务能力画 6-7 个服务，并标出各自数据边界和协作方式。API Gateway、事件箭头或补偿流程可以作为一种示例画法；若题目只要求拆分，重点写服务边界、数据归属和协作方式。",
+    "visual_hint_en": "Prioritize 6-7 capability-based services, their data boundaries, and collaboration. API Gateway, event arrows, or compensation flows can be used as one illustrative drawing style; if the prompt only asks for decomposition, focus on boundaries, data ownership, and collaboration.",
+    "source_audit_zh": "外卖平台来自 2025 相邻回忆题；服务名、API Gateway、事件、Saga 是示例拆法，已明确不是题干唯一标准。",
+    "source_audit_en": "Food-delivery scenario comes from a 2025 adjacent recall; service names, API Gateway, events, and Saga are illustrative, not mandatory wording.",
+    "source_audit_sources": [
+      "raw/25软件系统设计回忆版.jpg",
+      "data/extracted/raw/softsys-2025-architecture-filter.md",
+      "https://mubu.com/doc/Klk_SUrzZB",
+      "data/extracted/raw/mubu-softsys-architecture-outline.md",
+      "data/feishu/li-shanshan-course-review.md",
+      "data/extracted/slides/slides__Lecture 6-7: Microservices Architecture - Microservices Patterns.txt",
+      "data/blog/eaglebear-45083-review.html"
+    ]
   }
 ]

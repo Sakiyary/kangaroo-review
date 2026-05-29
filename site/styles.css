@@ -276,6 +276,7 @@ select {
 .diagram-card p span,
 .diagram-card small span,
 .sample-answer p span,
+.source-audit p span,
 .question-diagram p span {
   display: block;
 }
@@ -1152,6 +1153,7 @@ li {
 }
 
 .sample-answer,
+.source-audit,
 .question-diagram {
   grid-column: 1 / -1;
   border-top: 1px solid var(--line);
@@ -1162,6 +1164,16 @@ li {
   border-left: 5px solid var(--red);
   background: rgba(181, 70, 52, 0.06);
   padding: 14px;
+}
+
+.source-audit {
+  border-left: 5px solid rgba(28, 92, 116, 0.72);
+  background: rgba(28, 92, 116, 0.07);
+  padding: 14px;
+}
+
+.source-audit h3 {
+  color: var(--ink);
 }
 
 .question-diagram .diagram-card {

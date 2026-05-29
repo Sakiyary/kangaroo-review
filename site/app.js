@@ -1321,7 +1321,7 @@ function renderPapers() {
   const clusters = ["all", ...new Set(priorityQuestions.map((q) => q.cluster).sort())];
   const questions = priorityQuestions
     .filter((question) => state.cluster === "all" || question.cluster === state.cluster)
-    .filter((question) => includesQuery(question.cluster, question.priority, question.priority_reason_zh, question.priority_reason_en, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords, question.appearances));
+    .filter((question) => includesQuery(question.cluster, question.priority, question.priority_reason_zh, question.priority_reason_en, question.source_audit_zh, question.source_audit_en, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords, question.appearances));
   const openQuestionId = questions.some((question) => questionId(question) === state.openQuestionId)
     ? state.openQuestionId
     : "";
@@ -1352,6 +1352,7 @@ function renderPapers() {
 function renderQuestionBody(question) {
   const zhAnswer = question.answer_zh || question.likely_answer_pattern;
   const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
+  const sourceAudit = localizedPair(question, "source_audit_zh", "source_audit_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
   const answer = textForLanguage(zhAnswer, question.likely_answer_pattern);
@@ -1370,6 +1371,12 @@ function renderQuestionBody(question) {
         <section class="sample-answer">
           <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
           <p>${htmlText(sample)}</p>
+        </section>
+      ` : ""}
+      ${sourceAudit ? `
+        <section class="source-audit">
+          <h3>${state.lang === "en" ? "Grounding check" : "来源校对"}</h3>
+          <p>${htmlText(sourceAudit)}</p>
         </section>
       ` : ""}
       ${diagram ? `

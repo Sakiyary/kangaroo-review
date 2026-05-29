@@ -182,16 +182,16 @@ window.reviewContent = {
       },
       "bullets": [
         {
-          "zh": "架构来源：需求、利益相关者、开发组织、架构师经验、技术/运行环境、业务目标。",
-          "en": "Sources: requirements, stakeholders, development organization, architect experience, technical/operational environment, business goals."
+          "zh": "旧卷五类来源：需求、系统利益相关者、开发组织、架构师、技术/运行环境；今年复习课主线更强调 NFR、质量需求、ASR 与业务目标筛选。",
+          "en": "Old-paper five sources: requirements, system stakeholders, development organization, architects, and technical/operational environment; the 2026 review focus emphasizes NFRs, quality requirements, ASRs, and business-goal prioritization."
         },
         {
           "zh": "架构师四类工作：协调利益相关者、软件工程经验/最佳实践、技术知识、风险管理。",
           "en": "Architect work: stakeholder liaison, software engineering practices, technical knowledge, risk management."
         },
         {
-          "zh": "架构活动：识别 ASR、设计架构、输出文档、评估架构，并随需求演化维护。",
-          "en": "Activities: identify ASRs, design the architecture, document it, evaluate it, and evolve it as requirements change."
+          "zh": "架构活动按过程图背四步：规约 ASR、架构设计、文档化、架构评估；演化维护是生命周期补充，不作为该图第五步。",
+          "en": "Use the process figure's four activities: specify ASRs, design the architecture, document it, and evaluate it; evolution/maintenance is lifecycle context, not a fifth step in this figure."
         },
         {
           "zh": "“Architecture is not only box-and-line”：只画框线不够，还要说明元素的行为、外部可见属性、关系约束和设计理由。",
@@ -272,8 +272,8 @@ window.reviewContent = {
         "en": "Quality attributes are primary drivers of architecture. Only scenario-based quality requirements are suitable architectural inputs."
       },
       "answerFrame": {
-        "zh": "固定六要素：source of stimulus、stimulus、environment、artifact、response、response measure。题目要画图时，把六个节点都标出来。",
-        "en": "Use the fixed six elements: source of stimulus, stimulus, environment, artifact, response, response measure. If a diagram is requested, label all six nodes."
+        "zh": "固定六要素按重绘表格顺序背：source of stimulus、stimulus、artifact、environment、response、response measure。题目要画图时，把六个节点都标出来。",
+        "en": "Use the redrawn table order: source of stimulus, stimulus, artifact, environment, response, response measure. If a diagram is requested, label all six nodes."
       },
       "bullets": [
         {
@@ -316,8 +316,8 @@ window.reviewContent = {
             "en": "This is the safest template for quality questions."
           },
           "must": {
-            "zh": "source of stimulus、stimulus、environment、artifact、response、response measure。中文可背：刺激源、刺激、环境、制品、响应、响应度量。",
-            "en": "Source of stimulus, stimulus, environment, artifact, response, response measure."
+            "zh": "source of stimulus、stimulus、artifact、environment、response、response measure。中文可背：刺激源、刺激、制品、环境、响应、响应度量。",
+            "en": "Source of stimulus, stimulus, artifact, environment, response, response measure."
           },
           "answer": {
             "zh": "先把题目中的模糊词改写成场景，再用六要素逐项填表。最后补一两条 tactic，例如冗余、缓存、认证、隔离、监控。",
@@ -513,7 +513,7 @@ window.reviewContent = {
           },
           "trap": {
             "zh": "不要用自创简化图替代课程图；不要漏 Architectural Concerns，也不要把 Step 1 写成建立目标。",
-            "en": "Do not replace the course figure with an invented simplification; do not omit Architectural Concerns or turn Step 1 into goal establishment."
+            "en": "Do not replace the course figure with an unsupported simplification; do not omit Architectural Concerns or turn Step 1 into goal establishment."
           }
         },
         {
@@ -580,8 +580,8 @@ window.reviewContent = {
           "en": "When comparing with SOA, focus on service granularity, governance, communication/middleware, and data ownership."
         },
         {
-          "zh": "迁移设计题可按“拆分边界 -> 数据迁移 -> 通信改造 -> 部署自动化 -> 可观测性 -> 灰度里程碑”组织。",
-          "en": "For migration design, use: decomposition boundary -> data migration -> communication changes -> deployment automation -> observability -> rollout milestones."
+          "zh": "迁移设计题可按“拆分边界 -> 数据迁移/一致性 -> 通信改造 -> 部署自动化 -> 可观测性 -> 分阶段迁移与验证”组织。",
+          "en": "For migration design, use: decomposition boundary -> data migration/consistency -> communication changes -> deployment automation -> observability -> staged migration and verification."
         },
         {
           "zh": "博客补充微服务六大特性：服务粒度小、围绕业务能力组织、服务自治、独立部署、去中心化治理/数据、基础设施自动化。",
@@ -629,8 +629,8 @@ window.reviewContent = {
             "en": "High-scoring microservice answers must include costs."
           },
           "must": {
-            "zh": "服务发现、网络失败、分布式事务、一致性、链路追踪、监控、灰度发布、配置治理。",
-            "en": "Service discovery, network failures, distributed transactions, consistency, tracing, monitoring, canary releases, configuration governance."
+            "zh": "服务发现、网络失败、分布式事务、一致性、链路追踪、监控、分阶段发布/回滚、配置治理。",
+            "en": "Service discovery, network failures, distributed transactions, consistency, tracing, monitoring, staged release/rollback, configuration governance."
           },
           "answer": {
             "zh": "结构图画完后补一句 tradeoff：局部自治提高可修改性和交付速度，但系统级调试和一致性更难。",
@@ -764,8 +764,8 @@ window.reviewContent = {
       },
       "bullets": [
         {
-          "zh": "4A：业务架构、数据架构、应用架构、技术架构；有材料也提安全架构形成 5A。",
-          "en": "4A: business, data, application, and technology architecture; some materials add security architecture as 5A."
+          "zh": "4A：业务架构、数据架构、应用架构、技术架构；若题目或材料明确提 5A，可把安全架构作为补充可能口径，不写成唯一标准。",
+          "en": "4A: business, data, application, and technology architecture. If a prompt/source explicitly mentions 5A, security architecture can be added as a possible supplement, not the only standard."
         },
         {
           "zh": "TOGAF ADM：预备、愿景、业务架构、信息系统架构、技术架构、机会与解决方案、迁移规划、实施治理、变更管理。",
@@ -803,8 +803,8 @@ window.reviewContent = {
             "en": "EA maps business goals to multi-layer architecture governance."
           },
           "must": {
-            "zh": "业务架构、应用架构、数据架构、技术架构；若材料提 5A，优先按安全架构补充，治理作为方法/机制说明。",
-            "en": "Business, application, data, and technology architecture; if a source mentions 5A, add security architecture first, while governance is better treated as a method/mechanism."
+            "zh": "业务架构、应用架构、数据架构、技术架构；若题目明确要求 5A，再把安全架构作为补充可能口径，治理更适合作为方法/机制说明。",
+            "en": "Business, application, data, and technology architecture; only when the prompt explicitly asks for 5A, add security architecture as a possible supplement, while governance is better treated as a method/mechanism."
           },
           "answer": {
             "zh": "先写现状和目标，再写差距、路线图和治理机制。",
@@ -1419,8 +1419,8 @@ window.reviewContent = {
           "en": "Cache consistency: add a coordinator or pub-sub/broker; notify other caches after DB commit; use connector/adapter/Web Service for heterogeneous protocols."
         },
         {
-          "zh": "微服务迁移题：服务边界、数据库拆分、通信协议、部署流水线、可观测性、灰度里程碑都要覆盖。",
-          "en": "Microservice migration: cover service boundaries, database split, communication protocol, deployment pipeline, observability, and rollout milestones."
+          "zh": "微服务迁移题：服务边界、数据库拆分、通信协议、部署流水线、可观测性、分阶段迁移与验证都要覆盖。",
+          "en": "Microservice migration: cover service boundaries, database split, communication protocol, deployment pipeline, observability, and staged migration/verification."
         }
       ],
       "sources": [

@@ -33,13 +33,14 @@ python3 server/metrics_server.py --host 127.0.0.1 --port 18080 --static-root . -
 - `site/metrics.html` / `site/metrics.js`：隐藏访问统计图表页，不在主导航中展示。
 - `site/assets/reward/`：底部低调打赏弹窗使用的微信/支付宝收款码。
 - `site/content.js`：复习路线、15 个知识点、79 条术语、11 张本地图解和 4 张画板资源。
-- `site/data/questions.json`：39 条往年题聚类，包含中文完整示例答案、英文关键词、优先级和图解关联。
+- `site/data/questions.json`：39 条往年题聚类，包含中文完整示例答案、英文关键词、优先级、图解关联和逐题来源校对。
 - `site/data/sources.json`：52 个源文件的抽取状态清单。
 - `server/metrics_server.py`：Python 标准库 + SQLite 的轻量访问统计 API。
 - `deploy/`：systemd service 和 nginx 反代片段。
 - `tools/extract_sources.py`：本地文本抽取脚本。
 - `tools/extract_mubu.mjs`：从 Mubu public share 接口递归抽取思维导图节点。
 - `tools/integrate_2025_materials.mjs`：将 2025 新资料与题簇优先级合并进发布数据。
+- `tools/ground_question_answers.mjs`：按复习课纪要、重绘图和 PPT/旧卷证据校正真题答题框架，并给每题写入来源校对字段；可用 `--check` 验证题库仍与校对脚本一致。
 - `tools/vision_pdf_ocr.swift`：macOS Vision/PDFKit OCR 脚本。
 - `data/catalog/sources.json`：抽取脚本生成的本地原始文件清单，用于记录 raw/slides 的基础抽取状态；可发布资料库以 `site/data/sources.json` 的人工增补版本为准。
 - `.omx/research/`：资料盘点、真题分析、信息架构、UX 方案等研究记录。
