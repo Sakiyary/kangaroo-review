@@ -48,6 +48,7 @@ COMMENT_IDENTITY_RATE_LIMIT = 5
 COMMENT_VISITOR_RATE_LIMIT = 8
 COMMENT_IP_RATE_LIMIT = 20
 COMMENT_RATE_WINDOW_SECONDS = 10 * 60
+ONLINE_WINDOW_SECONDS = 90
 VISITOR_EXPR = "CASE WHEN visitor_hash != '' THEN visitor_hash ELSE ip_hash || ':' || user_agent END"
 DEFAULT_BLOCK_WORDS = (
     "博彩",
@@ -68,6 +69,26 @@ DEFAULT_BLOCK_WORDS = (
     "loan",
     "telegram",
     "whatsapp",
+    "cnm",
+    "nmsl",
+    "sb",
+    "tmd",
+    "mmp",
+    "傻逼",
+    "傻比",
+    "煞笔",
+    "草泥马",
+    "操你妈",
+    "艹你妈",
+    "去你妈",
+    "你妈逼",
+    "妈逼",
+    "尼玛",
+    "他妈的",
+    "fuck",
+    "shit",
+    "bitch",
+    "asshole",
 )
 SITE_ROOT_FILES = {
     "index.html",
@@ -228,6 +249,20 @@ class MetricsStore:
 
                 CREATE INDEX IF NOT EXISTS idx_comments_page_created_at ON comments(page, created_at);
                 CREATE INDEX IF NOT EXISTS idx_comments_identity_created_at ON comments(identity_hash, created_at);
+
+                CREATE TABLE IF NOT EXISTS online_visitors (
+                  page TEXT NOT NULL,
+                  visitor_hash TEXT NOT NULL,
+                  session_id TEXT NOT NULL,
+                  ip_hash TEXT NOT NULL,
+                  user_agent TEXT NOT NULL,
+                  accept_language TEXT NOT NULL DEFAULT '',
+                  last_seen TEXT NOT NULL,
+                  PRIMARY KEY (page, visitor_hash)
+                );
+
+                CREATE INDEX IF NOT EXISTS idx_online_visitors_last_seen ON online_visitors(last_seen);
+                CREATE INDEX IF NOT EXISTS idx_online_visitors_page_last_seen ON online_visitors(page, last_seen);
                 """
             )
             self.migrate_schema(conn)
@@ -251,6 +286,8 @@ class MetricsStore:
         conn.execute("CREATE INDEX IF NOT EXISTS idx_comments_page_created_at ON comments(page, created_at)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_comments_page_status_id ON comments(page, status, id DESC)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_comments_identity_created_at ON comments(identity_hash, created_at)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_online_visitors_last_seen ON online_visitors(last_seen)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_online_visitors_page_last_seen ON online_visitors(page, last_seen)")
 
     def client_ip_from_headers(self, headers: Any, client_ip: str) -> str:
         forwarded_for = clamp_text(headers.get("X-Forwarded-For", ""), 240)
@@ -271,6 +308,13 @@ class MetricsStore:
 
     def anonymize_commenter(self, ip: str, user_agent: str, accept_language: str, client_id: str) -> str:
         material = f"{self.salt}:comment:{ip}:{user_agent[:180]}:{accept_language[:80]}:{client_id[:120]}".encode(
+            "utf-8",
+            errors="ignore",
+        )
+        return hashlib.sha256(material).hexdigest()[:24]
+
+    def anonymize_online_visitor(self, ip: str, user_agent: str, accept_language: str, client_id: str) -> str:
+        material = f"{self.salt}:online:{ip}:{user_agent[:180]}:{accept_language[:80]}:{client_id[:120]}".encode(
             "utf-8",
             errors="ignore",
         )
@@ -451,6 +495,74 @@ class MetricsStore:
             },
         }
 
+    def online_counts(self, conn: sqlite3.Connection, page: str, cutoff_iso: str) -> Dict[str, int]:
+        page_row = conn.execute(
+            """
+            SELECT COUNT(DISTINCT visitor_hash) AS total
+            FROM online_visitors
+            WHERE page = ? AND last_seen >= ?
+            """,
+            (page, cutoff_iso),
+        ).fetchone()
+        site_row = conn.execute(
+            """
+            SELECT COUNT(DISTINCT visitor_hash) AS total
+            FROM online_visitors
+            WHERE last_seen >= ?
+            """,
+            (cutoff_iso,),
+        ).fetchone()
+        return {
+            "page": int(page_row["total"] or 0),
+            "site": int(site_row["total"] or 0),
+            "window_seconds": ONLINE_WINDOW_SECONDS,
+        }
+
+    def online(self, payload: Dict[str, Any], headers: Any, client_ip: str) -> Dict[str, Any]:
+        page = self.normalize_page(payload.get("page") or "overview")
+        now = utc_now_iso()
+        cutoff = datetime.now(timezone.utc) - timedelta(seconds=ONLINE_WINDOW_SECONDS)
+        cutoff_iso = cutoff.replace(microsecond=0).isoformat()
+        user_agent = clamp_text(headers.get("User-Agent", ""), 240)
+        accept_language = clamp_text(headers.get("Accept-Language", ""), 120)
+        client_identity_ip = self.client_ip_from_headers(headers, client_ip)
+        client_id = clamp_text(payload.get("client_id"), 120)
+        session_id = clamp_text(payload.get("session_id"), 80)
+        ip_hash = self.anonymize_ip(client_identity_ip)
+        visitor_hash = self.anonymize_online_visitor(client_identity_ip, user_agent, accept_language, client_id)
+
+        with self.connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            conn.execute("DELETE FROM online_visitors WHERE last_seen < ?", (cutoff_iso,))
+            conn.execute("DELETE FROM online_visitors WHERE visitor_hash = ? AND page <> ?", (visitor_hash, page))
+            conn.execute(
+                """
+                INSERT INTO online_visitors (
+                  page, visitor_hash, session_id, ip_hash, user_agent, accept_language, last_seen
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(page, visitor_hash)
+                DO UPDATE SET
+                  session_id = excluded.session_id,
+                  ip_hash = excluded.ip_hash,
+                  user_agent = excluded.user_agent,
+                  accept_language = excluded.accept_language,
+                  last_seen = excluded.last_seen
+                """,
+                (page, visitor_hash, session_id, ip_hash, user_agent, accept_language, now),
+            )
+            counts = self.online_counts(conn, page, cutoff_iso)
+            conn.commit()
+        return {"ok": True, "page": page, "online": counts}
+
+    def online_summary(self, page: str) -> Dict[str, Any]:
+        page_key = self.normalize_page(page or "overview")
+        cutoff = datetime.now(timezone.utc) - timedelta(seconds=ONLINE_WINDOW_SECONDS)
+        cutoff_iso = cutoff.replace(microsecond=0).isoformat()
+        with self.connect() as conn:
+            conn.execute("DELETE FROM online_visitors WHERE last_seen < ?", (cutoff_iso,))
+            counts = self.online_counts(conn, page_key, cutoff_iso)
+        return {"ok": True, "page": page_key, "online": counts}
+
     def stats(self, items: List[str]) -> Dict[str, Any]:
         pairs = []
         for item in items:
@@ -592,7 +704,7 @@ class MetricsHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         endpoint = self.api_endpoint()
-        if endpoint not in {"track", "stats", "comments"}:
+        if endpoint not in {"track", "stats", "comments", "online"}:
             json_response(self, HTTPStatus.NOT_FOUND, {"error": "not found"})
             return
         if not self.request_origin_allowed():
@@ -617,6 +729,8 @@ class MetricsHandler(BaseHTTPRequestHandler):
                 result = self.app.store.stats([str(item) for item in items])
             elif endpoint == "comments":
                 result = self.app.store.add_comment(payload, self.headers, self.client_address[0])
+            elif endpoint == "online":
+                result = self.app.store.online(payload, self.headers, self.client_address[0])
             else:
                 result = self.app.store.track(payload, self.headers, self.client_address[0])
             json_response(self, HTTPStatus.OK, result)
@@ -662,6 +776,14 @@ class MetricsHandler(BaseHTTPRequestHandler):
                 limit = COMMENT_PAGE_SIZE
             try:
                 json_response(self, HTTPStatus.OK, self.app.store.list_comments(page, limit))
+            except ValueError as error:
+                json_response(self, HTTPStatus.BAD_REQUEST, {"error": str(error)})
+            return
+        if endpoint == "online":
+            query = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            page = (query.get("page") or ["overview"])[0]
+            try:
+                json_response(self, HTTPStatus.OK, self.app.store.online_summary(page))
             except ValueError as error:
                 json_response(self, HTTPStatus.BAD_REQUEST, {"error": str(error)})
             return

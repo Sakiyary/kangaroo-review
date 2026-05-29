@@ -30,6 +30,9 @@ async function checkViewport(name, viewport) {
   const overviewMetricBadges = await page.locator(".page-metrics .metric-badge").count();
   const commentsPanelVisible = await page.locator(".comments-panel").count();
   const checklistToolsVisible = await page.locator(".checklist-tools").count();
+  await page.waitForFunction(() => /\d+/.test(document.querySelector("[data-online-page]")?.textContent || ""), null, { timeout: 5000 });
+  const onlineBadgeText = await page.locator("[data-online-indicator]").innerText();
+  const onlineBadgeUpdated = /\d+/.test(onlineBadgeText) && /当前页在线|online here/.test(onlineBadgeText);
   await page.click('button[data-lang="en"]');
   const englishNav = await page.locator(".nav-link").evaluateAll((nodes) => nodes.map((node) => node.textContent.trim()).join("|"));
   await page.click('button[data-lang="mix"]');
@@ -231,6 +234,8 @@ async function checkViewport(name, viewport) {
     title,
     disclaimerHasCodex: /Codex|GPT-5\.5/.test(disclaimer),
     overviewMetricBadges,
+    onlineBadgeUpdated,
+    onlineBadgeText,
     checklistToolsVisible: checklistToolsVisible > 0,
     commentsPanelVisible: commentsPanelVisible > 0,
     checklistLegacyMigrated,
@@ -291,6 +296,7 @@ for (const result of [desktop, mobile]) {
     "rewardAlipayLoaded",
     "checklistToolsVisible",
     "commentsPanelVisible",
+    "onlineBadgeUpdated",
     "checklistLegacyMigrated",
     "checklistRestored",
     "checklistRoundTripped",

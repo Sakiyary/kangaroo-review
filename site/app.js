@@ -10,6 +10,11 @@ const state = {
   sourceGroup: "all",
   metricCounts: {},
   metricsAvailable: true,
+  onlineCounts: { page: null, site: null, window_seconds: 90 },
+  onlineAvailable: true,
+  lastOnlineHeartbeatAt: 0,
+  lastOnlineHeartbeatPage: "",
+  onlineTimer: 0,
   metricsSessionId: "",
   lastTrackedPage: "",
   lastTrackedTopic: "",
@@ -44,6 +49,7 @@ const browserIdentityKey = "kangaroo-review-browser-id";
 const checklistStorageKey = "kangaroo-review-checklist-v1";
 const commentNicknameKey = "kangaroo-review-comment-nickname";
 const checklistExportMarker = "KANGAROO_REVIEW_CHECKLIST_JSON:";
+const onlineHeartbeatMs = 30 * 1000;
 const rewardOptions = {
   wechat: {
     label: { zh: "微信", en: "WeChat" },
@@ -202,6 +208,11 @@ function metricCount(eventType, key) {
   return state.metricsAvailable ? "…" : (state.lang === "en" ? "off" : "离线");
 }
 
+function onlineCount(value) {
+  if (Number.isFinite(value)) return String(value);
+  return state.onlineAvailable ? "…" : (state.lang === "en" ? "off" : "离线");
+}
+
 function renderMetricBadge(eventType, key, label = metricLabel(eventType)) {
   return `
     <span class="metric-badge" data-metric-type="${escapeHtml(eventType)}" data-metric-key="${escapeHtml(key)}">
@@ -211,11 +222,26 @@ function renderMetricBadge(eventType, key, label = metricLabel(eventType)) {
   `;
 }
 
+function renderOnlineBadge() {
+  const pageText = state.lang === "en" ? "online here" : "当前页在线";
+  const siteText = state.lang === "en" ? "site-wide" : "全站在线";
+  return `
+    <span class="online-badge${state.onlineAvailable ? "" : " offline"}" data-online-indicator title="${state.lang === "en" ? "Estimated from recent browser heartbeats." : "根据最近浏览器心跳估算。"}">
+      <em>${escapeHtml(pageText)}</em>
+      <b data-online-page>${escapeHtml(onlineCount(state.onlineCounts.page))}</b>
+      <span aria-hidden="true">·</span>
+      <em>${escapeHtml(siteText)}</em>
+      <b data-online-site>${escapeHtml(onlineCount(state.onlineCounts.site))}</b>
+    </span>
+  `;
+}
+
 function pageMetricFooter() {
   const key = pageMetricKey();
   return `
     ${renderChecklistTools()}
     <footer class="page-metrics" aria-label="${state.lang === "en" ? "Page metrics" : "页面统计"}">
+      ${renderOnlineBadge()}
       ${renderMetricBadge("site_visit", "site")}
       ${renderMetricBadge("page_view", key)}
       ${renderMetricBadge("page_click", key)}
@@ -665,6 +691,22 @@ function formatCommentTime(value) {
   });
 }
 
+function commentSubmitErrorMessage(message) {
+  if (/blocked words/i.test(message || "")) {
+    return state.lang === "en"
+      ? "This comment contains words blocked by the simple moderation list. Please rephrase it before posting."
+      : "这条评论包含屏蔽词，请换一种表达后再发布。";
+  }
+  if (/rate limit/i.test(message || "")) {
+    return state.lang === "en"
+      ? "Posting too quickly. Please wait a little before trying again."
+      : "发布太频繁了，稍等一会儿再试。";
+  }
+  return state.lang === "en"
+    ? `Post failed: ${message}`
+    : `发布失败：${message}`;
+}
+
 async function loadComments(page = state.page, force = false) {
   const apiBase = metricApiBase();
   if (!apiBase) return;
@@ -723,9 +765,7 @@ async function submitComment(form) {
     state.commentsStatusByPage[page] = state.lang === "en" ? "Posted." : "已发布。";
     await loadComments(page, true);
   } catch (error) {
-    state.commentsStatusByPage[page] = state.lang === "en"
-      ? `Post failed: ${error.message}`
-      : `发布失败：${error.message}`;
+    state.commentsStatusByPage[page] = commentSubmitErrorMessage(error.message);
     refreshCommentsPanel(page);
   }
 }
@@ -793,6 +833,65 @@ function updateMetricBadges() {
     if (number) number.textContent = value;
     node.classList.toggle("offline", !state.metricsAvailable);
   });
+}
+
+function updateOnlineBadge() {
+  const node = document.querySelector("[data-online-indicator]");
+  if (!node) return;
+  const pageCount = node.querySelector("[data-online-page]");
+  const siteCount = node.querySelector("[data-online-site]");
+  if (pageCount) pageCount.textContent = onlineCount(state.onlineCounts.page);
+  if (siteCount) siteCount.textContent = onlineCount(state.onlineCounts.site);
+  node.classList.toggle("offline", !state.onlineAvailable);
+}
+
+async function heartbeatOnline(force = false) {
+  const apiBase = metricApiBase();
+  if (!apiBase) {
+    state.onlineAvailable = false;
+    updateOnlineBadge();
+    return;
+  }
+  const now = Date.now();
+  const page = state.page;
+  if (!force && state.lastOnlineHeartbeatPage === page && now - state.lastOnlineHeartbeatAt < onlineHeartbeatMs) {
+    updateOnlineBadge();
+    return;
+  }
+  state.lastOnlineHeartbeatAt = now;
+  state.lastOnlineHeartbeatPage = page;
+  try {
+    const response = await fetch(`${apiBase}/online`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        page,
+        client_id: ensureBrowserIdentity(),
+        session_id: ensureMetricSession()
+      }),
+      keepalive: true
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.online) throw new Error(data.error || `HTTP ${response.status}`);
+    if (page === state.page) {
+      state.onlineCounts = {
+        page: Number(data.online.page),
+        site: Number(data.online.site),
+        window_seconds: Number(data.online.window_seconds || 90)
+      };
+      state.onlineAvailable = true;
+    }
+  } catch {
+    state.onlineAvailable = false;
+  }
+  updateOnlineBadge();
+}
+
+function startOnlineHeartbeat() {
+  if (state.onlineTimer || !metricApiBase()) return;
+  state.onlineTimer = window.setInterval(() => {
+    heartbeatOnline(false);
+  }, onlineHeartbeatMs);
 }
 
 function trackPageView(page) {
@@ -1467,6 +1566,7 @@ function renderAll() {
   trackCurrentDetailView();
   refreshVisibleMetrics();
   loadComments(state.page);
+  heartbeatOnline(state.lastOnlineHeartbeatPage !== state.page);
 }
 
 function setPageFromHash() {
@@ -1891,6 +1991,7 @@ async function boot() {
   state.page = pages.has(window.location.hash.replace("#", "")) ? window.location.hash.replace("#", "") : "overview";
   setupEvents();
   renderAll();
+  startOnlineHeartbeat();
   trackMetric("site_visit", "site", "Software Architecture Review", {
     path: window.location.pathname
   });
