@@ -107,21 +107,36 @@ function termByKey(key) {
   return content.glossary.find((term) => glossaryMetricKey(term) === key);
 }
 
+function termAliasValues(term) {
+  const aliases = term.aliases || [];
+  if (Array.isArray(aliases)) return aliases;
+  if (aliases && typeof aliases === "object") {
+    return Object.values(aliases).flat().filter(Boolean);
+  }
+  return [];
+}
+
+function addTermVariant(variants, value) {
+  const text = normalizeTermVariant(value);
+  if (!text) return;
+  variants.add(text);
+  const withoutParentheses = normalizeTermVariant(text.replace(/\s*\([^)]*\)\s*/g, " "));
+  if (withoutParentheses && withoutParentheses !== text) variants.add(withoutParentheses);
+  for (const match of text.matchAll(/\(([A-Za-z][A-Za-z0-9+/.-]{1,16})\)/g)) {
+    variants.add(match[1]);
+    variants.add(`${match[1]}s`);
+  }
+  text.split(/[\/,，、;；]/).map(normalizeTermVariant).filter(Boolean).forEach((part) => {
+    if (part.length >= 3 || /[\u4e00-\u9fff]{2,}/.test(part)) variants.add(part);
+  });
+  if (/^[A-Za-z][A-Za-z0-9+.-]{1,16}$/.test(text) && !/s$/i.test(text)) {
+    variants.add(`${text}s`);
+  }
+}
+
 function termVariantStrings(term) {
   const variants = new Set();
-  [term.zh, term.en].forEach((value) => {
-    const text = normalizeTermVariant(value);
-    if (!text) return;
-    variants.add(text);
-    const withoutParentheses = normalizeTermVariant(text.replace(/\s*\([^)]*\)\s*/g, " "));
-    if (withoutParentheses && withoutParentheses !== text) variants.add(withoutParentheses);
-    for (const match of text.matchAll(/\(([A-Za-z][A-Za-z0-9+/.-]{1,16})\)/g)) {
-      variants.add(match[1]);
-    }
-    text.split(/[\/,，、;；]/).map(normalizeTermVariant).filter(Boolean).forEach((part) => {
-      if (part.length >= 3 || /[\u4e00-\u9fff]{2,}/.test(part)) variants.add(part);
-    });
-  });
+  [term.zh, term.en, term.id, ...termAliasValues(term)].forEach((value) => addTermVariant(variants, value));
   return Array.from(variants).filter((variant) => {
     if (/^[A-Za-z0-9+/.-]+$/.test(variant)) return variant.length >= 2;
     return variant.length >= 2;
@@ -222,8 +237,11 @@ function splitStudyText(value) {
   rawLines.forEach((line) => {
     const stripped = line.replace(/^([0-9]+[.)、]\s*|[-*•]\s*)/, "").trim();
     if (!stripped) return;
+    const sentenceMarks = /[A-Za-z]/.test(stripped) && !/[\u4e00-\u9fff]/.test(stripped)
+      ? ".!?;"
+      : "。！？；;";
     const chunks = stripped.length > 84
-      ? splitAfterMarks(stripped, "。！？；;")
+      ? splitAfterMarks(stripped, sentenceMarks)
       : [stripped];
     chunks.forEach((chunk) => {
       const part = chunk.trim();
@@ -270,6 +288,27 @@ function diagramSource(diagram) {
   if (state.lang === "zh") return diagram.srcZh || diagram.src || diagram.srcEn || "";
   if (state.lang === "en") return diagram.srcEn || diagram.src || diagram.srcZh || "";
   return diagram.src || diagram.srcZh || diagram.srcEn || "";
+}
+
+const diagramPriorityOverrides = {
+  "three-tier-reference": "P2",
+  "cache-invalidation-reference": "P2",
+  "mvc-cnc-reference": "P2",
+  "soa-cnc-reference": "P2",
+  "pipe-filter-text-pipeline": "P2",
+  "broker-pattern-topology": "P2",
+  "atam-phase-outputs": "P2",
+  "enterprise-4a": "P1",
+  "enterprise-methods-togaf-cbm": "P1"
+};
+
+function diagramPriority(diagram) {
+  if (!diagram) return "";
+  return diagram.priority || diagramPriorityOverrides[diagram.id] || "P0";
+}
+
+function relatedTopicsForDiagram(diagramId) {
+  return content.topics.filter((topic) => (topic.diagramIds || []).includes(diagramId));
 }
 
 function localizedPair(item, zhKey, enKey) {
@@ -533,12 +572,14 @@ function checklistCurrentItems() {
       page: "glossary"
     });
   });
-  content.whiteboards.forEach((board) => {
+  content.diagrams.forEach((diagram) => {
+    const priority = diagramPriority(diagram);
+    if (isOutOfScopePriority(priority)) return;
     items.push({
-      key: checklistKey("whiteboard", board.id),
-      kind: "whiteboard",
-      label: labelText(board.title),
-      priority: "",
+      key: checklistKey("diagram", diagram.id),
+      kind: "diagram",
+      label: labelText(diagram.title),
+      priority,
       page: "whiteboards"
     });
   });
@@ -1173,9 +1214,9 @@ function sourceLabel(source) {
 
 function sourceGroupName(group) {
   return ({
-    primary_review_recording: state.lang === "en" ? "Complete recording baseline" : "完整录音最高纲领",
-    primary_review_outline: state.lang === "en" ? "Review-class outline" : "复习课整理纲领",
-    review_class_slides: state.lang === "en" ? "Review-class slides" : "复习课课件",
+    primary_review_recording: state.lang === "en" ? "Primary review material" : "核心复习材料",
+    primary_review_outline: state.lang === "en" ? "Review outline" : "复习提纲",
+    review_class_slides: state.lang === "en" ? "Review slides" : "复习课件",
     archived_feishu_notes: state.lang === "en" ? "Archived Feishu notes" : "飞书纪要归档",
     teacher_slides: state.lang === "en" ? "Teacher slides" : "教师课件",
     recent_current_past_papers: state.lang === "en" ? "Recent current-course papers" : "近年本课真题",
@@ -1239,20 +1280,20 @@ function scopeMeta(item = {}) {
       className: "historical-scope",
       label: state.lang === "en" ? "Historical backup" : "历史保底，低优先",
       title: state.lang === "en"
-        ? "May help with older papers, but it is not a current-scope first pass."
-        : "可辅助看旧题，但不是今年主线第一轮复习范围。"
+        ? "Useful for backup practice, but not part of the first pass."
+        : "可作为补充练习，不放入第一轮主背。"
     };
   }
   if (priority === "P1") {
     return {
       className: "adjacent-scope",
-      label: state.lang === "en" ? "Current-adjacent" : "主线相邻",
+      label: state.lang === "en" ? "Core-adjacent" : "核心相邻",
       title: state.lang === "en" ? "Review after P0." : "P0 之后复习。"
     };
   }
   return {
     className: "current-scope",
-    label: state.lang === "en" ? "Current review focus" : "今年主线",
+    label: state.lang === "en" ? "Core focus" : "核心范围",
     title: state.lang === "en" ? "Counted in the review checklist." : "计入复习清单。"
   };
 }
@@ -1274,7 +1315,7 @@ function currentTopics() {
   return content.topics
     .filter((topic) => state.priority === "all" || topic.priority === state.priority)
     .filter((topic) => state.topicGroup === "all" || topic.group === state.topicGroup)
-    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.deepDive, topic.lectureNotes, topic.memorize, topic.examTemplate, topic.sources, topic.sourceConfidence));
+    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.deepDive, topic.lectureNotes, topic.memorize, topic.examTemplate));
 }
 
 function currentSources() {
@@ -1347,40 +1388,6 @@ function renderOverview() {
       </article>
     </section>
 
-    <section class="panel">
-      <div class="section-head">
-        <p class="section-kicker">Coverage Audit</p>
-        <h2>${state.lang === "en" ? "What is covered, what is deliberately lower priority" : "覆盖校对与降权说明"}</h2>
-      </div>
-      <div class="coverage-table">
-        ${content.coverage.map((row) => `
-          <div class="coverage-row">
-            <strong>${htmlText(row.area)}</strong>
-            <span>${htmlText(row.status)}</span>
-            <em>${escapeHtml(row.evidence)}</em>
-          </div>
-        `).join("")}
-      </div>
-    </section>
-
-    <section class="panel evidence-panel" aria-label="${state.lang === "en" ? "Source and scope evidence" : "来源与范围依据"}">
-      <div class="section-head">
-        <p class="section-kicker">Evidence Boundary</p>
-        <h2>${state.lang === "en" ? "Source basis and scope boundary" : "来源依据与适用边界"}</h2>
-      </div>
-      <div class="evidence-band">
-        ${content.meta.evidence.map((item) => {
-          const label = item.label || { zh: "依据", en: "Evidence" };
-          const body = item.body || item;
-          return `
-            <article class="evidence-card">
-              <b>${htmlText(label)}</b>
-              <p>${htmlText(body)}</p>
-            </article>
-          `;
-        }).join("")}
-      </div>
-    </section>
   `;
 }
 
@@ -1558,21 +1565,13 @@ function renderTopicDetail(topic) {
     </section>
     ${renderTopicStudyAid(topic)}
     ${renderLectureNotes(topic)}
-    <section class="detail-columns">
+    <section class="detail-columns single">
       <div>
         <h3>${state.lang === "en" ? "Key points" : "关键点"}</h3>
         <ul class="dense-list">
           ${(topic.bullets || []).map((item) => `<li>${richText(item)}</li>`).join("")}
         </ul>
       </div>
-      <aside>
-        <h3>${state.lang === "en" ? "Evidence" : "证据链"}</h3>
-        <p>${escapeHtml(topic.sourceConfidence || "")}</p>
-        <div class="tag-stack">
-          ${(topic.sources || []).map((source) => `<span>${escapeHtml(source)}</span>`).join("")}
-        </div>
-        <small>${related ? `${related} related question clusters` : ""}</small>
-      </aside>
     </section>
     ${renderDeepDive(topic)}
     ${diagrams.length ? `
@@ -1642,8 +1641,8 @@ function renderLectureNotes(topic) {
         <div>
           <h3>${state.lang === "en" ? "Full study notes" : "详细讲义：这块到底怎么理解"}</h3>
           <p>${state.lang === "en"
-            ? "Open the parts you are not fluent with. Each block separates understanding, memorization, exam wording, and source boundary."
-            : "按不会的地方展开看。每块都分成怎么理解、背什么、怎么答和来源边界，尽量不让框架词自己悬空。"}</p>
+            ? "Open the parts you are not fluent with. Each block separates understanding, memorization, and exam wording."
+            : "按不会的地方展开看。每块都分成怎么理解、背什么和怎么答，尽量不让框架词自己悬空。"}</p>
         </div>
         <span>${notes.length} ${state.lang === "en" ? "blocks" : "块"}</span>
       </header>
@@ -1667,10 +1666,6 @@ function renderLectureNotes(topic) {
               <section>
                 <h4>${state.lang === "en" ? "How to answer" : "怎么写答案"}</h4>
                 ${renderPointList(item.answer, "note-list")}
-              </section>
-              <section>
-                <h4>${state.lang === "en" ? "Source boundary" : "来源边界"}</h4>
-                ${renderPointList(item.boundary, "note-list")}
               </section>
             </div>
           </details>
@@ -1743,7 +1738,7 @@ function renderPapers() {
   const clusters = ["all", ...new Set(priorityQuestions.map((q) => q.cluster).sort())];
   const questions = priorityQuestions
     .filter((question) => state.cluster === "all" || question.cluster === state.cluster)
-    .filter((question) => includesQuery(question.cluster, question.priority, question.priority_reason_zh, question.priority_reason_en, question.source_audit_zh, question.source_audit_en, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords, question.appearances));
+    .filter((question) => includesQuery(question.cluster, question.priority, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords));
   const openQuestionId = questions.some((question) => questionId(question) === state.openQuestionId)
     ? state.openQuestionId
     : "";
@@ -1762,8 +1757,8 @@ function renderPapers() {
         </label>
       </div>
       <p class="source-note">${state.lang === "en"
-        ? "P0/P1 are the current review scope. P2/P3 are historical backup or outside-scope context and are not counted in the checklist."
-        : "P0/P1 按今年完整录音与复习课 slides 作为当前复习范围；P2/P3 只作历史保底或范围外背景，不计入复习清单。"}</p>
+        ? "P0/P1 are the core review scope. P2/P3 are backup practice or background and are not counted in the checklist."
+        : "P0/P1 是核心复习范围；P2/P3 只作补充练习或背景了解，不计入复习清单。"}</p>
       <div class="question-list">
         ${questions.map((question, index) => renderQuestion(question, openQuestionId ? questionId(question) === openQuestionId : index === 0)).join("") || `<p class="empty">${state.lang === "en" ? "No question matches current filters." : "当前筛选下没有真题。"}</p>`}
       </div>
@@ -1774,13 +1769,11 @@ function renderPapers() {
 function renderQuestionBody(question) {
   const zhAnswer = question.answer_zh || question.likely_answer_pattern;
   const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
-  const sourceAudit = localizedPair(question, "source_audit_zh", "source_audit_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
   const drawingSteps = localizedList(question, "drawing_steps_zh", "drawing_steps_en");
   const answerPoints = localizedList(question, "answer_points_zh", "answer_points_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
   const answer = textForLanguage(zhAnswer, question.likely_answer_pattern);
-  const priorityReason = localizedPair(question, "priority_reason_zh", "priority_reason_en");
   const title = textForLanguage(question.question_zh || question.canonical_question, question.canonical_question);
   const answerPointItems = answerPoints.length ? answerPoints : splitStudyText(sample || answer);
   return `
@@ -1807,12 +1800,6 @@ function renderQuestionBody(question) {
           ${renderPointList(sample, "sample-list")}
         </section>
       ` : ""}
-      ${sourceAudit ? `
-        <details class="source-audit">
-          <summary>${state.lang === "en" ? "Grounding note" : "依据说明"}</summary>
-          <p>${richText(sourceAudit)}</p>
-        </details>
-      ` : ""}
       ${drawingSteps.length ? `
         <section class="drawing-guide">
           <h3>${state.lang === "en" ? "How to draw it in the exam" : "考场怎么画图"}</h3>
@@ -1837,8 +1824,6 @@ function renderQuestionBody(question) {
         <div class="tag-stack">
           ${[...(question.english_keywords || question.recurring_terms || [])].map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
         </div>
-        ${priorityReason ? `<small class="priority-reason">${richText(priorityReason)}</small>` : ""}
-        <small>${escapeHtml((question.appearances || []).join(" · "))}</small>
       </div>
     </div>`;
 }
@@ -1854,7 +1839,7 @@ function renderQuestion(question, open) {
         <span class="question-kicker">
           <em class="question-priority ${escapeHtml(priority.toLowerCase())}">${escapeHtml(priority)} · ${escapeHtml(priorityName(priority))}</em>
           ${renderScopeTag(question)}
-          ${escapeHtml(question.cluster)} · ${(question.appearances || []).length} hits
+          ${escapeHtml(question.cluster)}
         </span>
         <strong>${htmlText(title)}</strong>
         ${renderMetricBadge("question_view", questionMetricKey(question))}
@@ -1864,11 +1849,71 @@ function renderQuestion(question, open) {
   `;
 }
 
+function glossaryTermByLabel(label) {
+  const needle = normalizeTermVariant(label).toLocaleLowerCase();
+  if (!needle) return null;
+  return content.glossary.find((term) => {
+    const values = [term.id, term.zh, term.en, ...termAliasValues(term)]
+      .map((value) => normalizeTermVariant(value).toLocaleLowerCase())
+      .filter(Boolean);
+    return values.includes(needle);
+  }) || null;
+}
+
+function renderGraphTerm(label) {
+  const term = glossaryTermByLabel(label);
+  if (!term) return `<span class="term-graph-node muted">${escapeHtml(label)}</span>`;
+  return `
+    <button type="button" class="term-graph-node" data-action="term-ref" data-term-key="${escapeHtml(glossaryMetricKey(term))}">
+      ${escapeHtml(textForLanguage(term.zh || term.en, term.en || term.zh, " / "))}
+    </button>
+  `;
+}
+
+function renderGlossaryGraph() {
+  const graph = content.glossaryGraph || [];
+  if (!graph.length) return "";
+  return `
+    <section class="term-graph">
+      <div class="term-graph-head">
+        <div>
+          <p class="section-kicker">Context Graph</p>
+          <h2>${state.lang === "en" ? "Term Context Map" : "术语语境知识图谱"}</h2>
+        </div>
+        <p>${state.lang === "en"
+          ? "Similar terms are grouped by instructor/topic context so they are not mixed in exam answers."
+          : "相近术语按老师和知识语境分组，避免把不同部分的概念混答。"}
+        </p>
+      </div>
+      <div class="term-graph-grid">
+        ${graph.map((group) => `
+          <article class="term-graph-lane">
+            <header>
+              <strong>${htmlText(group.title)}</strong>
+              <p>${richText(localize(group.note || ""))}</p>
+            </header>
+            <div class="term-graph-nodes">
+              ${(group.terms || []).map(renderGraphTerm).join("")}
+            </div>
+            ${(group.edges || []).length ? `
+              <div class="term-graph-edges">
+                ${(group.edges || []).map(([from, relation, to]) => `
+                  <span>${escapeHtml(from)} <b>${escapeHtml(relation)}</b> ${escapeHtml(to)}</span>
+                `).join("")}
+              </div>
+            ` : ""}
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function renderGlossary() {
   const categories = ["all", ...new Set(content.glossary.map((item) => item.category).sort())];
   const items = content.glossary
     .filter((item) => state.glossary === "all" || item.category === state.glossary)
-    .filter((item) => includesQuery(item.category, item.zh, item.en, item.noteZh, item.noteEn));
+    .filter((item) => includesQuery(item.category, item.zh, item.en, item.noteZh, item.noteEn, item.context, item.boundaryType, termAliasValues(item), item.related));
   return `
     <section class="panel">
       <div class="section-head split">
@@ -1883,15 +1928,22 @@ function renderGlossary() {
           </select>
         </label>
       </div>
+      ${renderGlossaryGraph()}
       <div class="glossary-table">
         ${items.map((item) => {
           const key = glossaryMetricKey(item);
+          const aliases = termAliasValues(item).slice(0, 6);
           return `
           <div class="term-row" data-action="glossary-term" data-term-key="${escapeHtml(key)}">
             <span>${escapeHtml(item.category)}</span>
             <strong>${state.lang === "en" ? escapeHtml(item.en) : escapeHtml(item.zh)}</strong>
             <b>${state.lang === "en" ? escapeHtml(item.zh) : escapeHtml(item.en)}</b>
-            <p>${textForLanguage(escapeHtml(item.noteZh), escapeHtml(item.noteEn), " / ")}</p>
+            <p>
+              ${textForLanguage(escapeHtml(item.noteZh), escapeHtml(item.noteEn), " / ")}
+              ${item.context ? `<small class="term-context">${escapeHtml(item.context)}</small>` : ""}
+              ${item.boundaryType ? `<small class="term-context">${state.lang === "en" ? "Boundary: " : "边界语境："}${escapeHtml(item.boundaryType)}</small>` : ""}
+              ${aliases.length ? `<small class="term-context">${state.lang === "en" ? "Aliases: " : "别名："}${escapeHtml(aliases.join(" / "))}</small>` : ""}
+            </p>
             <div class="term-actions">
               ${renderMetricBadge("glossary_view", key)}
               ${renderChecklistControl("glossary", key, `${item.zh || ""} / ${item.en || ""}`, "compact-check")}
@@ -1904,30 +1956,86 @@ function renderGlossary() {
   `;
 }
 
-function renderWhiteboards() {
+function renderDiagramGallery() {
+  const groups = [
+    {
+      priority: "P0",
+      title: { zh: "P0 核心图解", en: "P0 Core Diagrams" },
+      note: { zh: "优先背图和图下详解，并能把图转成分点答案。", en: "Memorize these with the topic notes first, and turn each diagram into answer points." }
+    },
+    {
+      priority: "P1",
+      title: { zh: "P1 概念理解图解", en: "P1 Concept Diagrams" },
+      note: { zh: "用于基础分析和检查视角，不需要像 P0 一样反复刷。", en: "Useful for basic analysis/checking questions, but lighter than P0." }
+    },
+    {
+      priority: "P2",
+      title: { zh: "P2 补充题参考图", en: "P2 Backup Diagrams" },
+      note: { zh: "补充练习使用，不计入首轮清单。", en: "Backup practice only; not counted in the first-pass checklist." }
+    }
+  ];
   return `
     <section class="panel">
       <div class="section-head">
-        <p class="section-kicker">Whiteboards</p>
-        <h1>${state.lang === "en" ? "Readable Redraws + Zoomable Originals" : "画板重绘摘要 + 原图放大"}</h1>
+        <p class="section-kicker">Diagram Gallery</p>
+        <h1>${state.lang === "en" ? "Grounded Diagram Library" : "图解库：按图背知识点"}</h1>
+        <p>${state.lang === "en"
+          ? "This page now prioritizes site-owned diagrams redrawn from slides and the complete review recording. Feishu/AI whiteboards are kept only as archived source references."
+          : "这一页现在以本站按 slides 与完整复习课录音重绘的图解为主。飞书/AI 画板只保留在下方归档区，作为原始参考。"
+        }</p>
       </div>
-      <div class="whiteboard-list">
-        ${content.whiteboards.map((board) => `
-          <article class="whiteboard-row">
-            <button class="whiteboard-thumb" type="button" data-action="open-whiteboard" data-board-id="${escapeHtml(board.id)}">
-              <img src="${escapeHtml(board.src)}" alt="${escapeHtml(labelText(board.title))}" loading="lazy" />
-              <span>${state.lang === "en" ? "Zoom" : "点击放大"}</span>
-            </button>
-            <div>
-              <h2>${htmlText(board.title)}</h2>
-              ${renderChecklistControl("whiteboard", board.id, labelText(board.title), "compact-check")}
-              <p>${htmlText(board.note)}</p>
-              <ol>
-                ${board.points.map((point) => `<li>${htmlText(point)}</li>`).join("")}
-              </ol>
-            </div>
-          </article>
-        `).join("")}
+      <div class="diagram-gallery-list">
+        ${groups.map((group) => {
+          const diagrams = content.diagrams.filter((diagram) => diagramPriority(diagram) === group.priority);
+          if (!diagrams.length) return "";
+          return `
+            <section class="diagram-gallery-group">
+              <header>
+                <div>
+                  <span>${escapeHtml(group.priority)}</span>
+                  <h2>${htmlText(group.title)}</h2>
+                  <p>${htmlText(group.note)}</p>
+                </div>
+                <strong>${diagrams.length}</strong>
+              </header>
+              ${diagrams.map((diagram) => {
+                const topics = relatedTopicsForDiagram(diagram.id);
+                return `
+                  <article class="diagram-gallery-row">
+                    ${renderDiagramCard(diagram)}
+                    <div class="diagram-gallery-meta">
+                      ${group.priority !== "P2" ? renderChecklistControl("diagram", diagram.id, labelText(diagram.title), "compact-check") : ""}
+                      <p>${htmlText(diagram.use || diagram.note)}</p>
+                      ${topics.length ? `
+                        <div class="diagram-topic-links">
+                          <span>${state.lang === "en" ? "Related topics" : "关联知识点"}</span>
+                          ${topics.map((topic) => `<a href="#knowledge" data-action="jump-topic" data-topic-id="${escapeHtml(topic.id)}">${htmlText(topic.title)}</a>`).join("")}
+                        </div>
+                      ` : ""}
+                    </div>
+                  </article>
+                `;
+              }).join("")}
+            </section>
+          `;
+        }).join("")}
+        <details class="archived-whiteboards">
+          <summary>${state.lang === "en" ? "Archived Feishu / AI whiteboards" : "归档：飞书 / AI 画板原图"}</summary>
+          <div class="whiteboard-list">
+            ${content.whiteboards.map((board) => `
+              <article class="whiteboard-row">
+                <button class="whiteboard-thumb" type="button" data-action="open-whiteboard" data-board-id="${escapeHtml(board.id)}">
+                  <img src="${escapeHtml(board.src)}" alt="${escapeHtml(labelText(board.title))}" loading="lazy" />
+                  <span>${state.lang === "en" ? "Zoom" : "点击放大"}</span>
+                </button>
+                <div>
+                  <h2>${htmlText(board.title)}</h2>
+                  <p>${htmlText(board.note)}</p>
+                </div>
+              </article>
+            `).join("")}
+          </div>
+        </details>
       </div>
     </section>
   `;
@@ -2012,7 +2120,7 @@ function renderCurrentPage() {
     knowledge: renderKnowledge,
     papers: renderPapers,
     glossary: renderGlossary,
-    whiteboards: renderWhiteboards,
+    whiteboards: renderDiagramGallery,
     sources: renderSources
   };
   view.innerHTML = `${renderers[state.page]()}${renderCommentsPanel()}${pageMetricFooter()}`;
@@ -2028,7 +2136,7 @@ function renderMeta() {
     knowledge: { zh: "知识库", en: "Knowledge" },
     papers: { zh: "真题", en: "Papers" },
     glossary: { zh: "术语", en: "Glossary" },
-    whiteboards: { zh: "画板", en: "Whiteboards" },
+    whiteboards: { zh: "图解", en: "Diagrams" },
     sources: { zh: "资料库", en: "Sources" }
   };
   document.querySelectorAll(".nav-link[data-page]").forEach((link) => {
@@ -2072,13 +2180,21 @@ function trackQuestionOpen(question) {
 }
 
 function relatedTermsFor(term) {
+  const explicit = (term.related || [])
+    .map((label) => glossaryTermByLabel(label))
+    .filter(Boolean);
   const haystack = `${term.noteZh || ""}\n${term.noteEn || ""}`.toLocaleLowerCase();
-  if (!haystack.trim()) return [];
   const currentKey = glossaryMetricKey(term);
-  return content.glossary
+  const inferred = haystack.trim() ? content.glossary
     .filter((candidate) => glossaryMetricKey(candidate) !== currentKey)
     .filter((candidate) => termVariantStrings(candidate).some((variant) => haystack.includes(variant.toLocaleLowerCase())))
-    .slice(0, 6);
+    : [];
+  const byKey = new Map();
+  [...explicit, ...inferred].forEach((item) => {
+    const key = glossaryMetricKey(item);
+    if (key !== currentKey && !byKey.has(key)) byKey.set(key, item);
+  });
+  return [...byKey.values()].slice(0, 8);
 }
 
 function closeTermPopover() {

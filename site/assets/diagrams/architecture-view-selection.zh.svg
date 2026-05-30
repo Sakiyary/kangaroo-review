@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title desc">
+  <title id="title">视图选择与最小文档包</title>
+  <desc id="desc">按 Lecture 12 Views and Beyond 重绘：最少视图、选择视图方法、跨视图文档信息。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#333"/></marker>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.must{fill:#f7e8e5;stroke:#b54634;stroke-width:2}.method{fill:#e9eef5;stroke:#38669b;stroke-width:2}.doc{fill:#e9f4f2;stroke:#14756f;stroke-width:2}.line{stroke:#333;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .title{font:700 36px Georgia,"Times New Roman","PingFang SC",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 20px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 16px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.num{font:900 28px Georgia,"Times New Roman",serif;fill:#b54634}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="980"/>
+  <text class="title" x="54" y="62">Views and Beyond：视图选择与最小文档包</text>
+  <text class="sub" x="54" y="94">Ground truth: Lecture 12 pages 96-109. 视图不是越多越好，而是按 stakeholder 信息需求选择。</text>
+  <rect class="panel" x="54" y="132" width="1572" height="760" rx="16"/>
+
+  <g transform="translate(96 178)">
+    <text class="h" x="0" y="0">最小视图集合</text>
+    <rect class="must" x="0" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="145" y="80" text-anchor="middle">Module View</text>
+    <text class="small" x="145" y="112" text-anchor="middle">模块 / 分解 / 依赖 / 分层</text>
+    <rect class="must" x="340" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="485" y="80" text-anchor="middle">C&amp;C View</text>
+    <text class="small" x="485" y="112" text-anchor="middle">运行时组件、连接器、交互</text>
+    <rect class="must" x="680" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="825" y="80" text-anchor="middle">Allocation View</text>
+    <text class="small" x="825" y="112" text-anchor="middle">部署、团队、文件、环境映射</text>
+    <text class="txt" x="1020" y="76">至少：1 个 Module + 1 个 C&amp;C；</text>
+    <text class="txt" x="1020" y="112">大型系统再加 1 个 Allocation。</text>
+  </g>
+
+  <g transform="translate(96 404)">
+    <text class="h" x="0" y="0">选择方法</text>
+    <rect class="method" x="0" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="26" y="80">1</text>
+    <text class="h" x="72" y="80">建 stakeholder / view 表</text>
+    <text class="txt" x="72" y="118">行：stakeholders；列：候选 views；</text>
+    <text class="txt" x="72" y="150">格子标 none / overview / moderate / high。</text>
+    <rect class="method" x="530" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="556" y="80">2</text>
+    <text class="h" x="602" y="80">合并边缘视图</text>
+    <text class="txt" x="602" y="118">只服务少数人或只需概览的视图，</text>
+    <text class="txt" x="602" y="150">合并到更强需求的视图。</text>
+    <rect class="method" x="1060" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="1086" y="80">3</text>
+    <text class="h" x="1132" y="80">排序与分阶段</text>
+    <text class="txt" x="1132" y="118">分解视图适合较早发布，</text>
+    <text class="txt" x="1132" y="150">便于排团队、培训、预算和外包。</text>
+    <path class="line" d="M390 115H520"/>
+    <path class="line" d="M920 115H1050"/>
+  </g>
+
+  <g transform="translate(96 684)">
+    <text class="h" x="0" y="0">Beyond Views：视图外信息</text>
+    <rect class="doc" x="0" y="34" width="1440" height="144" rx="14"/>
+    <text class="txt" x="34" y="78">文档路线图：scope、组织方式、view overview、stakeholder 如何使用文档。</text>
+    <text class="txt" x="34" y="112">视图如何文档化 + 系统概览：函数、用户、背景和重要约束。</text>
+    <text class="txt" x="34" y="146">跨视图映射表：C&amp;C “is implemented by” Module；Module “implements” C&amp;C；Decomposition “included in” Layered。</text>
+  </g>
+  <text class="small" x="96" y="934">考场句式：文档化不是列 UML 图名，要先说 stakeholder concern，再说最小视图集合、选择方法和 beyond-view 映射/rationale。</text>
+</svg>

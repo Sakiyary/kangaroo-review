@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1080" viewBox="0 0 1680 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Microservice pattern groups</title>
+  <desc id="desc">A review-slide grounded diagram grouping microservice patterns into decomposition, communication, deployment, and observability.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.head{fill:#1f2328}.split{fill:#f7e8e5;stroke:#b54634;stroke-width:2}.comm{fill:#e9eef5;stroke:#38669b;stroke-width:2}.deploy{fill:#fff7e8;stroke:#bd861b;stroke-width:2}.obs{fill:#e9f4f2;stroke:#14756f;stroke-width:2}
+      .title{font:700 38px Georgia,"Times New Roman",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.label{font:800 26px "Avenir Next","PingFang SC",sans-serif;fill:#fff}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 21px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 17px "Avenir Next","PingFang SC",sans-serif;fill:#667078}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="1080"/>
+  <text class="title" x="56" y="66">Microservice Pattern Groups: memorize by four problems</text>
+  <text class="sub" x="56" y="100">Ground truth: Lecture 14 Course Review - 3 slides, pages 5-8. Group first, then state problem, requirements and pattern names.</text>
+  <g transform="translate(56 144)">
+    <rect class="head" x="0" y="0" width="1568" height="60" rx="8"/>
+    <text class="label" x="42" y="39">Group</text>
+    <text class="label" x="330" y="39">Problem</text>
+    <text class="label" x="820" y="39">Requirements / constraints</text>
+    <text class="label" x="1220" y="39">Pattern list</text>
+    <g transform="translate(0 86)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="split" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">Decomposition</text>
+      <text class="small" x="138" y="110" text-anchor="middle">拆分模式</text>
+      <text class="txt" x="310" y="66">How should an application be split</text>
+      <text class="txt" x="310" y="104">into microservices?</text>
+      <text class="txt" x="780" y="52">High cohesion, loose coupling</text>
+      <text class="txt" x="780" y="88">SRP, CCP, two-pizza team</text>
+      <text class="txt" x="780" y="124">Team autonomy</text>
+      <text class="txt" x="1180" y="62">By business capability</text>
+      <text class="txt" x="1180" y="100">By subdomain</text>
+      <text class="small" x="1180" y="136">DDD bounded context helps boundaries.</text>
+    </g>
+    <g transform="translate(0 288)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="comm" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">Communication</text>
+      <text class="small" x="138" y="110" text-anchor="middle">通信模式</text>
+      <text class="txt" x="310" y="54">How to avoid cascading failures?</text>
+      <text class="txt" x="310" y="88">How do clients discover service</text>
+      <text class="txt" x="310" y="122">instances and call external APIs?</text>
+      <text class="txt" x="780" y="62">Partial failure, discovery</text>
+      <text class="txt" x="780" y="100">External access governance</text>
+      <text class="txt" x="1180" y="52">Circuit Breaker</text>
+      <text class="txt" x="1180" y="86">Application/platform discovery</text>
+      <text class="txt" x="1180" y="120">API Gateway</text>
+    </g>
+    <g transform="translate(0 490)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="deploy" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">Deployment</text>
+      <text class="small" x="138" y="110" text-anchor="middle">部署模式</text>
+      <text class="txt" x="310" y="54">Each service has multiple instances:</text>
+      <text class="txt" x="310" y="88">how to build, deploy, scale and isolate</text>
+      <text class="txt" x="310" y="122">them quickly and economically?</text>
+      <text class="txt" x="780" y="54">Heterogeneous technologies</text>
+      <text class="txt" x="780" y="92">Resource limits, isolation</text>
+      <text class="txt" x="780" y="130">Throughput and availability</text>
+      <text class="txt" x="1180" y="50">Virtual machines / containers</text>
+      <text class="txt" x="1180" y="84">Service deployment platform</text>
+      <text class="txt" x="1180" y="118">Serverless deployment</text>
+    </g>
+    <g transform="translate(0 692)">
+      <rect class="panel" x="0" y="0" width="1568" height="198" rx="14"/>
+      <rect class="obs" x="28" y="44" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="88" text-anchor="middle">Observability</text>
+      <text class="small" x="138" y="120" text-anchor="middle">可观测性</text>
+      <text class="txt" x="310" y="56">Requests span services and instances:</text>
+      <text class="txt" x="310" y="90">how do we understand behavior,</text>
+      <text class="txt" x="310" y="124">debug faults, and detect unhealthy instances?</text>
+      <text class="txt" x="780" y="56">Standard logs and tracing</text>
+      <text class="txt" x="780" y="94">Runtime state and exceptions</text>
+      <text class="txt" x="780" y="132">Health checks</text>
+      <text class="txt" x="1180" y="42">Log aggregation, audit log</text>
+      <text class="txt" x="1180" y="76">Application metrics</text>
+      <text class="txt" x="1180" y="110">Distributed / exception tracing</text>
+      <text class="txt" x="1180" y="144">Health Check API</text>
+    </g>
+  </g>
+  <text class="small" x="56" y="1040">Exam sentence: microservices are not a definition-only topic; organize the answer by these four pattern groups and their tradeoffs.</text>
+</svg>

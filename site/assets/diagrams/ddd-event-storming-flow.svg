@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title desc">
+  <title id="title">DDD event-storming flow</title>
+  <desc id="desc">A review-slide grounded redraw of event-storming concepts and modeling flow.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#333"/></marker>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.event{fill:#ff8a32;stroke:#9d4d11;stroke-width:2}.actor{fill:#ffd24a;stroke:#b8841f;stroke-width:2}.policy{fill:#b36ad8;stroke:#6b3b8f;stroke-width:2}.external{fill:#8ccf72;stroke:#4e7348;stroke-width:2}.hot{fill:#e34f64;stroke:#a12a3a;stroke-width:2}.agg{fill:#e9eef5;stroke:#38669b;stroke-width:2}.line{stroke:#333;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .title{font:700 38px Georgia,"Times New Roman",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 20px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 16px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.white{font:800 18px "Avenir Next","PingFang SC",sans-serif;fill:#fff}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="980"/>
+  <text class="title" x="56" y="64">DDD Event Storming: from business facts to aggregates and contexts</text>
+  <text class="sub" x="56" y="96">Ground truth: Lecture 14 Course Review - 3 page 10. A domain event is a past business fact, often named noun + past-tense verb.</text>
+  <rect class="panel" x="56" y="132" width="1568" height="210" rx="16"/>
+  <text class="h" x="90" y="176">Legend / Core concepts</text>
+  <rect class="event" x="90" y="214" width="210" height="72" rx="10"/><text class="white" x="195" y="258" text-anchor="middle">Domain Event</text><text class="small" x="90" y="310">Past business fact;</text><text class="small" x="90" y="334">changes object state.</text>
+  <rect class="actor" x="392" y="214" width="210" height="72" rx="10"/><text class="h" x="497" y="258" text-anchor="middle">Participant</text><text class="small" x="392" y="310">Role, policy, external;</text><text class="small" x="392" y="334">prior event.</text>
+  <rect class="policy" x="694" y="214" width="210" height="72" rx="10"/><text class="white" x="799" y="258" text-anchor="middle">Policy / Timer</text><text class="small" x="694" y="310">Rules trigger</text><text class="small" x="694" y="334">commands/events.</text>
+  <rect class="external" x="996" y="214" width="210" height="72" rx="10"/><text class="h" x="1101" y="258" text-anchor="middle">External System</text><text class="small" x="996" y="310">Collaborator outside</text><text class="small" x="996" y="334">the boundary.</text>
+  <rect class="hot" x="1298" y="214" width="210" height="72" rx="10"/><text class="white" x="1403" y="258" text-anchor="middle">Hotspot</text><text class="small" x="1298" y="310">Disagreement/branch;</text><text class="small" x="1298" y="334">important logic.</text>
+
+  <rect class="panel" x="56" y="386" width="1568" height="318" rx="16"/>
+  <text class="h" x="90" y="430">Modeling flow</text>
+  <g transform="translate(90 470)">
+    <rect class="event" x="0" y="0" width="240" height="86" rx="12"/><text class="white" x="120" y="36" text-anchor="middle">1 First event</text><text class="white" x="120" y="66" text-anchor="middle">identify</text>
+    <rect class="event" x="300" y="0" width="250" height="86" rx="12"/><text class="white" x="425" y="36" text-anchor="middle">2 Full timeline</text><text class="white" x="425" y="66" text-anchor="middle">all events</text>
+    <rect class="actor" x="610" y="0" width="250" height="86" rx="12"/><text class="h" x="735" y="36" text-anchor="middle">3 Participants</text><text class="small" x="735" y="66" text-anchor="middle">role / policy / external</text>
+    <rect class="agg" x="920" y="0" width="250" height="86" rx="12"/><text class="h" x="1045" y="36" text-anchor="middle">4 Aggregates</text><text class="small" x="1045" y="66" text-anchor="middle">consistency boundary</text>
+    <rect class="agg" x="1230" y="0" width="250" height="86" rx="12"/><text class="h" x="1355" y="32" text-anchor="middle">5 Bounded</text><text class="h" x="1355" y="58" text-anchor="middle">Contexts</text><text class="small" x="1355" y="80" text-anchor="middle">read / write model</text>
+    <path class="line" d="M246 43H290"/><path class="line" d="M556 43H600"/><path class="line" d="M866 43H910"/><path class="line" d="M1176 43H1220"/>
+  </g>
+  <text class="txt" x="90" y="636">Example wording: DiagnosisStarted, OrderSubmitted, PaymentCompleted, MaterialShipped.</text>
+  <text class="txt" x="90" y="670">Key aggregates may include diagnosis, enrollment, order, course, refund request.</text>
+
+  <rect class="panel" x="56" y="744" width="1568" height="150" rx="16"/>
+  <text class="h" x="90" y="788">How to use it in design answers</text>
+  <text class="txt" x="90" y="826">1. Use events to find process/changes; 2. use aggregates for consistency boundaries;</text>
+  <text class="txt" x="90" y="858">3. use bounded contexts for model boundaries; 4. map to services, APIs, data ownership and collaboration.</text>
+  <text class="small" x="90" y="884">Do not draw a generic flowchart; derive aggregates and contexts from events and participants.</text>
+</svg>

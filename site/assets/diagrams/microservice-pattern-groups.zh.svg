@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1080" viewBox="0 0 1680 1080" role="img" aria-labelledby="title desc">
+  <title id="title">微服务核心模式分组</title>
+  <desc id="desc">按复习课 slide 重绘微服务拆分、通信、部署和可观测性四组模式。</desc>
+  <defs>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.head{fill:#1f2328}.split{fill:#f7e8e5;stroke:#b54634;stroke-width:2}.comm{fill:#e9eef5;stroke:#38669b;stroke-width:2}.deploy{fill:#fff7e8;stroke:#bd861b;stroke-width:2}.obs{fill:#e9f4f2;stroke:#14756f;stroke-width:2}
+      .title{font:700 38px Georgia,"Times New Roman","PingFang SC",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.label{font:800 26px "Avenir Next","PingFang SC",sans-serif;fill:#fff}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 21px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 17px "Avenir Next","PingFang SC",sans-serif;fill:#667078}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="1080"/>
+  <text class="title" x="56" y="66">微服务核心模式分组：按四类问题背</text>
+  <text class="sub" x="56" y="100">Ground truth: Lecture 14 Course Review - 3 slides, pages 5-8. 答题先分组，再写问题、需求和模式名。</text>
+  <g transform="translate(56 144)">
+    <rect class="head" x="0" y="0" width="1568" height="60" rx="8"/>
+    <text class="label" x="42" y="39">分组</text>
+    <text class="label" x="330" y="39">问题</text>
+    <text class="label" x="820" y="39">需求 / 约束</text>
+    <text class="label" x="1220" y="39">模式列表</text>
+    <g transform="translate(0 86)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="split" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">拆分模式</text>
+      <text class="small" x="138" y="110" text-anchor="middle">Decomposition</text>
+      <text class="txt" x="310" y="66">如何将应用拆分为微服务？</text>
+      <text class="txt" x="310" y="104">拆分结果怎样才算好？</text>
+      <text class="txt" x="780" y="52">高内聚、松耦合、API 交互</text>
+      <text class="txt" x="780" y="88">SRP、CCP、双披萨团队</text>
+      <text class="txt" x="780" y="124">团队自治</text>
+      <text class="txt" x="1180" y="62">按业务能力拆分</text>
+      <text class="txt" x="1180" y="100">按子域拆分</text>
+      <text class="small" x="1180" y="136">服务边界参考 DDD 限界上下文</text>
+    </g>
+    <g transform="translate(0 288)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="comm" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">通信模式</text>
+      <text class="small" x="138" y="110" text-anchor="middle">Communication</text>
+      <text class="txt" x="310" y="54">如何避免服务故障或网络中断</text>
+      <text class="txt" x="310" y="88">蔓延到其他服务？</text>
+      <text class="txt" x="310" y="122">客户端如何发现服务实例？</text>
+      <text class="txt" x="780" y="62">局部故障、服务发现</text>
+      <text class="txt" x="780" y="100">外部客户端访问治理</text>
+      <text class="txt" x="1180" y="52">Circuit Breaker 断路器</text>
+      <text class="txt" x="1180" y="86">应用层 / 平台层服务发现</text>
+      <text class="txt" x="1180" y="120">API Gateway</text>
+    </g>
+    <g transform="translate(0 490)">
+      <rect class="panel" x="0" y="0" width="1568" height="178" rx="14"/>
+      <rect class="deploy" x="28" y="34" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="78" text-anchor="middle">部署模式</text>
+      <text class="small" x="138" y="110" text-anchor="middle">Deployment</text>
+      <text class="txt" x="310" y="54">每个服务部署为多组实例，</text>
+      <text class="txt" x="310" y="88">如何快速构建、独立部署、扩展？</text>
+      <text class="txt" x="310" y="122">如何限制资源并保持经济高效？</text>
+      <text class="txt" x="780" y="54">技术异构、实例隔离</text>
+      <text class="txt" x="780" y="92">CPU/内存资源限制</text>
+      <text class="txt" x="780" y="130">吞吐量与可用性</text>
+      <text class="txt" x="1180" y="50">虚拟机 / 容器</text>
+      <text class="txt" x="1180" y="84">服务部署平台</text>
+      <text class="txt" x="1180" y="118">Serverless</text>
+    </g>
+    <g transform="translate(0 692)">
+      <rect class="panel" x="0" y="0" width="1568" height="198" rx="14"/>
+      <rect class="obs" x="28" y="44" width="220" height="110" rx="16"/>
+      <text class="h" x="138" y="88" text-anchor="middle">可观测性</text>
+      <text class="small" x="138" y="120" text-anchor="middle">Observability</text>
+      <text class="txt" x="310" y="56">请求跨越多个服务实例，</text>
+      <text class="txt" x="310" y="90">如何理解用户与应用行为？</text>
+      <text class="txt" x="310" y="124">如何检测实例仍运行但无法处理请求？</text>
+      <text class="txt" x="780" y="56">标准化日志、链路追踪</text>
+      <text class="txt" x="780" y="94">运行状态、异常定位</text>
+      <text class="txt" x="780" y="132">健康检查</text>
+      <text class="txt" x="1180" y="42">日志聚合、审计日志</text>
+      <text class="txt" x="1180" y="76">应用程序指标</text>
+      <text class="txt" x="1180" y="110">分布式跟踪、异常跟踪</text>
+      <text class="txt" x="1180" y="144">健康检查 API</text>
+    </g>
+  </g>
+  <text class="small" x="56" y="1040">考场句式：微服务不是只背定义，要按拆分、通信、部署、可观测性四组模式说明设计取舍。</text>
+</svg>

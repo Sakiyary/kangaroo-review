@@ -1,17 +1,17 @@
 [
   {
     "path": "data/复习课完整录音-张贺吕骏李杉杉.txt",
-    "title": "复习课完整录音原始转写（张贺、吕骏、李杉杉）",
+    "title": "课程复习原始转写（张贺、吕骏、李杉杉）",
     "kind": "complete-transcript",
     "source_group": "primary_review_recording",
     "trust": "highest_ground_truth_raw_recording",
     "preview_path": "../data/复习课完整录音-张贺吕骏李杉杉.txt",
     "open_path": "../data/复习课完整录音-张贺吕骏李杉杉.txt",
-    "summary": "未经飞书智能纪要清洗的完整录音转写，是本轮复习范围判断的最高原始证据。"
+    "summary": "复习课原始转写，适合在需要核对课堂表述时查看。"
   },
   {
     "path": "data/复习课完整录音-术语清洗说明.md",
-    "title": "复习课完整录音术语清洗说明",
+    "title": "课程复习术语清洗说明",
     "kind": "cleanup-notes",
     "source_group": "primary_review_recording",
     "trust": "highest_ground_truth_cleanup_log",
@@ -21,13 +21,13 @@
   },
   {
     "path": "data/review-class/complete-review-minutes.md",
-    "title": "2026 软件体系结构复习课完整录音纪要",
+    "title": "2026 软件体系结构课程复习纪要",
     "kind": "review-outline",
     "source_group": "primary_review_outline",
     "trust": "highest_ground_truth_curated_outline",
     "preview_path": "../data/review-class/complete-review-minutes.md",
     "open_path": "../data/review-class/complete-review-minutes.md",
-    "summary": "由完整录音结合对应 slides 整理出的纪要，是网页知识库和真题优先级的中心纲领。"
+    "summary": "由课程录音和对应课件整理出的复习纪要，适合按章节回看。"
   },
   {
     "path": "data/review-class/exam-scope-mindmap.mmd",
@@ -37,7 +37,7 @@
     "trust": "highest_ground_truth_scope_map",
     "preview_path": "../data/review-class/exam-scope-mindmap.mmd",
     "open_path": "../data/review-class/exam-scope-mindmap.mmd",
-    "summary": "按完整录音整理的考试范围 mindmap，已同步到站点“纲领”页面。"
+    "summary": "按课程复习材料整理的考试范围 mindmap，已同步到站点“纲领”页面。"
   },
   {
     "path": "slides/Lecture 14: Course Review - 3 - 课程复习.pdf",
@@ -53,7 +53,7 @@
     "trust": "highest_ground_truth_slides",
     "preview_path": "../data/extracted/slides/lecture-14-course-review-3-b3aa4814.json",
     "open_path": "../slides/Lecture 14: Course Review - 3 - 课程复习.pdf",
-    "summary": "复习课直接使用的课件，和完整录音一起作为考试范围判断的最高依据。"
+    "summary": "复习课直接使用的课件，适合与整理后的知识点对照查看。"
   },
   {
     "path": "slides/Lecture 14: Course Review - softarch2026-review-1.pdf",
@@ -69,7 +69,7 @@
     "trust": "highest_ground_truth_slides",
     "preview_path": "../data/extracted/slides/lecture-14-course-review-softarch2026-review-1-f8f5184a.json",
     "open_path": "../slides/Lecture 14: Course Review - softarch2026-review-1.pdf",
-    "summary": "复习课直接使用的课件，和完整录音一起作为考试范围判断的最高依据。"
+    "summary": "复习课直接使用的课件，适合与整理后的知识点对照查看。"
   },
   {
     "path": "slides/Lecture 3: Architectural Patterns - 软件架构模式.pdf",
@@ -85,7 +85,7 @@
     "trust": "highest_ground_truth_slides",
     "preview_path": "../data/extracted/slides/lecture-3-architectural-patterns-d02afd64.json",
     "open_path": "../slides/Lecture 3: Architectural Patterns - 软件架构模式.pdf",
-    "summary": "复习课直接使用的课件，和完整录音一起作为考试范围判断的最高依据。"
+    "summary": "复习课直接使用的课件，适合与整理后的知识点对照查看。"
   },
   {
     "path": "slides/Lecture 1: Introduction - 2026_PG_SoftArch01_Introduction.pdf",
@@ -101,7 +101,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-1-introduction-2026-pg-softarch01-introduction-93cba6f3.json",
     "open_path": "../slides/Lecture 1: Introduction - 2026_PG_SoftArch01_Introduction.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 10-11: Enterprise Architecture - 企业架构设计实战课-南京大学_课件版.pdf",
@@ -117,7 +117,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-10-11-enterprise-architecture-1f9f773d.json",
     "open_path": "../slides/Lecture 10-11: Enterprise Architecture - 企业架构设计实战课-南京大学_课件版.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.pdf",
@@ -133,7 +133,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-12-attribute-driven-design-designing-software-architectures-add-3-0-75b29884.json",
     "open_path": "../slides/Lecture 12: Attribute-Driven Design - Designing Software Architectures - ADD 3.0.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 13: Attributes Driven Design - Case Study.pdf",
@@ -149,7 +149,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-13-attributes-driven-design-case-study-a3b8610c.json",
     "open_path": "../slides/Lecture 13: Attributes Driven Design - Case Study.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 2-4: Quality Attributes & Tactics - 2026_PG_SoftArch02-04_Quality Attributes.pdf",
@@ -165,7 +165,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-2-4-quality-attributes-tactics-2026-pg-softarch02-04-quality-attributes-93bd935c.json",
     "open_path": "../slides/Lecture 2-4: Quality Attributes & Tactics - 2026_PG_SoftArch02-04_Quality Attributes.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 6-7: Microservices Architecture - Microservices Patterns.pdf",
@@ -181,7 +181,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-6-7-microservices-architecture-microservices-patterns-1f858a3c.json",
     "open_path": "../slides/Lecture 6-7: Microservices Architecture - Microservices Patterns.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "slides/Lecture 8-9: Domain Driven Design - 领域驱动设计项目实战讲解.pdf",
@@ -197,7 +197,7 @@
     "trust": "authoritative_slide_detail",
     "preview_path": "../data/extracted/slides/lecture-8-9-domain-driven-design-bb7471b5.json",
     "open_path": "../slides/Lecture 8-9: Domain Driven Design - 领域驱动设计项目实战讲解.pdf",
-    "summary": "教师课件或课程复习 slide，是知识点校对的主证据。"
+    "summary": "教师课件或课程复习 slide，适合对照查看原始页面。"
   },
   {
     "path": "raw/2021 痛苦回忆.pdf",
@@ -298,20 +298,6 @@
     "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
   },
   {
-    "path": "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
-    "bytes": 102902,
-    "kind": "docx",
-    "extraction": "python-docx",
-    "text_chars": 36739,
-    "extracted_path": "data/extracted/raw/2016-2-a-67650907.md",
-    "title": "体系结构2016年春季2班A卷.docx",
-    "source_group": "historical_past_papers",
-    "trust": "historical_past_paper_or_answer",
-    "preview_path": "../data/extracted/raw/2016-2-a-67650907.md",
-    "open_path": "../raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
-    "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
-  },
-  {
     "path": "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.pdf",
     "bytes": 574041,
     "kind": "pdf",
@@ -388,20 +374,6 @@
     "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
   },
   {
-    "path": "raw/zqx考试复习资料/往年资料以及答案.docx",
-    "bytes": 3868376,
-    "kind": "docx",
-    "extraction": "python-docx",
-    "text_chars": 21598,
-    "extracted_path": "data/extracted/raw/source-c5d7e0a3.md",
-    "title": "往年资料以及答案.docx",
-    "source_group": "historical_past_papers",
-    "trust": "historical_past_paper_or_answer",
-    "preview_path": "../data/extracted/raw/source-c5d7e0a3.md",
-    "open_path": "../raw/zqx考试复习资料/往年资料以及答案.docx",
-    "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
-  },
-  {
     "path": "raw/zqx考试复习资料/往年资料以及答案.pdf",
     "bytes": 1917230,
     "kind": "pdf",
@@ -415,20 +387,6 @@
     "trust": "historical_past_paper_or_answer",
     "preview_path": "../data/extracted/raw/source-3a31afa4.json",
     "open_path": "../raw/zqx考试复习资料/往年资料以及答案.pdf",
-    "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
-  },
-  {
-    "path": "raw/zqx考试复习资料/考题手敲中文版.rtf",
-    "bytes": 129,
-    "kind": "rtf",
-    "extraction": "textutil",
-    "text_chars": 0,
-    "extracted_path": "data/extracted/raw/source-f7f91a6d.md",
-    "title": "考题手敲中文版.rtf",
-    "source_group": "historical_past_papers",
-    "trust": "historical_past_paper_or_answer",
-    "preview_path": "../data/extracted/raw/source-f7f91a6d.md",
-    "open_path": "../raw/zqx考试复习资料/考题手敲中文版.rtf",
     "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
   },
   {
@@ -458,7 +416,7 @@
     "trust": "auxiliary_2025_current_course",
     "preview_path": "../data/extracted/raw/source-0157f2b0.md",
     "open_path": "../raw/老师复习大纲（答案方式）.docx",
-    "summary": "2025 本课程前人冲刺资料，只在不冲突时辅助今年完整录音主纲。"
+    "summary": "2025 本课程前人冲刺资料，可作为补充复习材料。"
   },
   {
     "path": "raw/考前关键词提示版本.pdf",
@@ -474,7 +432,7 @@
     "trust": "auxiliary_2025_current_course",
     "preview_path": "../data/extracted/raw/source-f1c00c82.json",
     "open_path": "../raw/考前关键词提示版本.pdf",
-    "summary": "2025 本课程前人冲刺资料，只在不冲突时辅助今年完整录音主纲。"
+    "summary": "2025 本课程前人冲刺资料，可作为补充复习材料。"
   },
   {
     "path": "blog/eaglebear-46472-ddd",
@@ -592,7 +550,7 @@
     "trust": "auxiliary_adjacent_2025_architecture_only",
     "preview_path": "../data/extracted/raw/mubu-softsys-architecture-outline.md",
     "open_path": "https://mubu.com/doc/Klk_SUrzZB",
-    "summary": "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点并保留颜色标签。剔除设计模式外延后，只作今年复习主纲的辅助证据。"
+    "summary": "相邻课程架构部分思维导图，已从 Mubu share 接口递归抽取 287 个节点并保留颜色标签；设计模式外延已筛除。"
   },
   {
     "path": "blog/eaglebear-30257-system-design-review",
@@ -619,44 +577,6 @@
     "trust": "auxiliary",
     "preview_path": "../data/extracted/raw/2025-05-21-2024-timeerrors-83813858.md",
     "open_path": "../raw/(2025-05-21)南京大学软件学院-2024-软件体系结构（研究生）期末复习参考_timeErrors.md",
-    "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
-  },
-  {
-    "path": "raw/架构.assets/image-20230612212533133.png",
-    "bytes": 2135688,
-    "kind": "png",
-    "extraction": "image-meta",
-    "text_chars": 0,
-    "image": {
-      "width": 2610,
-      "height": 1582,
-      "mode": "RGBA"
-    },
-    "needs_ocr": true,
-    "title": "image-20230612212533133.png",
-    "source_group": "raw_predecessor_notes",
-    "trust": "auxiliary",
-    "preview_path": null,
-    "open_path": "../raw/架构.assets/image-20230612212533133.png",
-    "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
-  },
-  {
-    "path": "raw/架构.assets/image-20230612213442775.png",
-    "bytes": 389065,
-    "kind": "png",
-    "extraction": "image-meta",
-    "text_chars": 0,
-    "image": {
-      "width": 1556,
-      "height": 888,
-      "mode": "RGBA"
-    },
-    "needs_ocr": true,
-    "title": "image-20230612213442775.png",
-    "source_group": "raw_predecessor_notes",
-    "trust": "auxiliary",
-    "preview_path": null,
-    "open_path": "../raw/架构.assets/image-20230612213442775.png",
     "summary": "前人复习资料或往年题整理，仅作为辅助参考，遇到冲突以教师 slide/复习课为准。"
   },
   {
@@ -788,7 +708,7 @@
     "needs_ocr": false,
     "preview_path": "../data/feishu/lu-jun-architectural-patterns-review.md",
     "open_path": "../data/feishu/lu-jun-architectural-patterns-review.md",
-    "summary": "旧飞书智能纪要归档保留，可供回查，但已经被完整录音与复习课整理稿替代，不再作为网页答案的佐证。"
+    "summary": "飞书智能纪要归档，可供回查课堂摘要。"
   },
   {
     "path": "feishu/zhang-he-course-review.md",
@@ -801,7 +721,7 @@
     "needs_ocr": false,
     "preview_path": "../data/feishu/zhang-he-course-review.md",
     "open_path": "../data/feishu/zhang-he-course-review.md",
-    "summary": "旧飞书智能纪要归档保留，可供回查，但已经被完整录音与复习课整理稿替代，不再作为网页答案的佐证。"
+    "summary": "飞书智能纪要归档，可供回查课堂摘要。"
   },
   {
     "path": "feishu/li-shanshan-course-review.md",
@@ -814,6 +734,6 @@
     "needs_ocr": false,
     "preview_path": "../data/feishu/li-shanshan-course-review.md",
     "open_path": "../data/feishu/li-shanshan-course-review.md",
-    "summary": "旧飞书智能纪要归档保留，可供回查，但已经被完整录音与复习课整理稿替代，不再作为网页答案的佐证。"
+    "summary": "飞书智能纪要归档，可供回查课堂摘要。"
   }
 ]

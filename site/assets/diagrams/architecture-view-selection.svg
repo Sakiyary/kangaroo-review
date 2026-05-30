@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title desc">
+  <title id="title">View selection and minimum documentation set</title>
+  <desc id="desc">A Lecture 12 grounded redraw of minimum view set, view selection method, and beyond-view documentation information.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#333"/></marker>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.must{fill:#f7e8e5;stroke:#b54634;stroke-width:2}.method{fill:#e9eef5;stroke:#38669b;stroke-width:2}.doc{fill:#e9f4f2;stroke:#14756f;stroke-width:2}.line{stroke:#333;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .title{font:700 36px Georgia,"Times New Roman",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 20px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 16px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.num{font:900 28px Georgia,"Times New Roman",serif;fill:#b54634}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="980"/>
+  <text class="title" x="54" y="62">Views and Beyond: View Selection and Minimum Documentation Set</text>
+  <text class="sub" x="54" y="94">Ground truth: Lecture 12 pages 96-109. More views are not automatically better; select by stakeholder information needs.</text>
+  <rect class="panel" x="54" y="132" width="1572" height="760" rx="16"/>
+
+  <g transform="translate(96 178)">
+    <text class="h" x="0" y="0">Minimum view set</text>
+    <rect class="must" x="0" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="145" y="80" text-anchor="middle">Module View</text>
+    <text class="small" x="145" y="108" text-anchor="middle">modules, decomposition</text>
+    <text class="small" x="145" y="132" text-anchor="middle">dependencies, layers</text>
+    <rect class="must" x="340" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="485" y="80" text-anchor="middle">C&amp;C View</text>
+    <text class="small" x="485" y="108" text-anchor="middle">runtime components</text>
+    <text class="small" x="485" y="132" text-anchor="middle">connectors, interactions</text>
+    <rect class="must" x="680" y="34" width="290" height="124" rx="14"/>
+    <text class="h" x="825" y="80" text-anchor="middle">Allocation View</text>
+    <text class="small" x="825" y="108" text-anchor="middle">deployment, teams</text>
+    <text class="small" x="825" y="132" text-anchor="middle">files, environments</text>
+    <text class="txt" x="1020" y="76">At least: one Module view + one C&amp;C view;</text>
+    <text class="txt" x="1020" y="112">larger systems add one Allocation view.</text>
+  </g>
+
+  <g transform="translate(96 404)">
+    <text class="h" x="0" y="0">Selection method</text>
+    <rect class="method" x="0" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="26" y="80">1</text>
+    <text class="h" x="72" y="72">Build stakeholder</text>
+    <text class="h" x="72" y="104">/ view table</text>
+    <text class="txt" x="72" y="136">Rows = stakeholders;</text>
+    <text class="txt" x="72" y="162">columns = views.</text>
+    <text class="small" x="72" y="184">Cells: none / overview / moderate / high.</text>
+    <rect class="method" x="530" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="556" y="80">2</text>
+    <text class="h" x="602" y="72">Combine marginal</text>
+    <text class="h" x="602" y="104">views</text>
+    <text class="txt" x="602" y="138">Few stakeholders or overview-only</text>
+    <text class="small" x="602" y="166">views can be merged into stronger views.</text>
+    <rect class="method" x="1060" y="36" width="380" height="158" rx="14"/>
+    <text class="num" x="1086" y="80">3</text>
+    <text class="h" x="1132" y="80">Prioritize and stage</text>
+    <text class="txt" x="1132" y="118">Release decomposition early.</text>
+    <text class="small" x="1132" y="150">It supports teams, training and budgets.</text>
+    <path class="line" d="M390 115H520"/>
+    <path class="line" d="M920 115H1050"/>
+  </g>
+
+  <g transform="translate(96 684)">
+    <text class="h" x="0" y="0">Beyond Views</text>
+    <rect class="doc" x="0" y="34" width="1440" height="144" rx="14"/>
+    <text class="txt" x="34" y="78">Documentation roadmap: scope, organization, view overview, and how stakeholders use the documentation.</text>
+    <text class="txt" x="34" y="112">How a view is documented + system overview: function, users, background and important constraints.</text>
+    <text class="txt" x="34" y="146">View mapping table: C&amp;C “is implemented by” Module; Module “implements” C&amp;C; Decomposition “included in” Layered.</text>
+  </g>
+  <text class="small" x="96" y="934">Exam sentence: do not list random UML diagram names; start from stakeholder concerns, then minimum views, selection method, mappings and rationale.</text>
+</svg>

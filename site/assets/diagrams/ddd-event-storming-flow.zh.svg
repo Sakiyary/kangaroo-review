@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title desc">
+  <title id="title">DDD 事件风暴流程</title>
+  <desc id="desc">按李杉杉复习课 slide 重绘事件风暴核心概念和建模流程。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#333"/></marker>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.event{fill:#ff8a32;stroke:#9d4d11;stroke-width:2}.actor{fill:#ffd24a;stroke:#b8841f;stroke-width:2}.policy{fill:#b36ad8;stroke:#6b3b8f;stroke-width:2}.external{fill:#8ccf72;stroke:#4e7348;stroke-width:2}.hot{fill:#e34f64;stroke:#a12a3a;stroke-width:2}.agg{fill:#e9eef5;stroke:#38669b;stroke-width:2}.line{stroke:#333;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .title{font:700 38px Georgia,"Times New Roman","PingFang SC",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.h{font:800 24px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 20px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 16px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.white{font:800 18px "Avenir Next","PingFang SC",sans-serif;fill:#fff}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="980"/>
+  <text class="title" x="56" y="64">DDD 事件风暴：从业务事实到聚合和限界上下文</text>
+  <text class="sub" x="56" y="96">Ground truth: Lecture 14 Course Review - 3 page 10. 领域事件是过去发生的业务事实，命名常用名词 + 过去式动词。</text>
+  <rect class="panel" x="56" y="132" width="1568" height="210" rx="16"/>
+  <text class="h" x="90" y="176">图例 / 核心概念</text>
+  <rect class="event" x="90" y="214" width="210" height="72" rx="10"/><text class="white" x="195" y="258" text-anchor="middle">领域事件</text><text class="small" x="90" y="316">过去事实：OrderCreated，会改变对象状态。</text>
+  <rect class="actor" x="392" y="214" width="210" height="72" rx="10"/><text class="h" x="497" y="258" text-anchor="middle">参与者</text><text class="small" x="392" y="316">角色、策略、外部系统、前置事件。</text>
+  <rect class="policy" x="694" y="214" width="210" height="72" rx="10"/><text class="white" x="799" y="258" text-anchor="middle">策略 / 定时器</text><text class="small" x="694" y="316">规则触发下一步命令或事件。</text>
+  <rect class="external" x="996" y="214" width="210" height="72" rx="10"/><text class="h" x="1101" y="258" text-anchor="middle">外部系统</text><text class="small" x="996" y="316">边界外协作者或系统。</text>
+  <rect class="hot" x="1298" y="214" width="210" height="72" rx="10"/><text class="white" x="1403" y="258" text-anchor="middle">热点标记</text><text class="small" x="1298" y="316">分歧、暂不考虑分支、需强调逻辑。</text>
+
+  <rect class="panel" x="56" y="386" width="1568" height="318" rx="16"/>
+  <text class="h" x="90" y="430">建模流程</text>
+  <g transform="translate(90 470)">
+    <rect class="event" x="0" y="0" width="240" height="86" rx="12"/><text class="white" x="120" y="36" text-anchor="middle">1 识别首个事件</text><text class="white" x="120" y="66" text-anchor="middle">First event</text>
+    <rect class="event" x="300" y="0" width="250" height="86" rx="12"/><text class="white" x="425" y="36" text-anchor="middle">2 时间轴梳理</text><text class="white" x="425" y="66" text-anchor="middle">All events</text>
+    <rect class="actor" x="610" y="0" width="250" height="86" rx="12"/><text class="h" x="735" y="36" text-anchor="middle">3 识别参与者</text><text class="small" x="735" y="66" text-anchor="middle">Role / policy / external</text>
+    <rect class="agg" x="920" y="0" width="250" height="86" rx="12"/><text class="h" x="1045" y="36" text-anchor="middle">4 划分聚合</text><text class="small" x="1045" y="66" text-anchor="middle">Aggregate</text>
+    <rect class="agg" x="1230" y="0" width="250" height="86" rx="12"/><text class="h" x="1355" y="36" text-anchor="middle">5 限界上下文</text><text class="small" x="1355" y="66" text-anchor="middle">Read / write model</text>
+    <path class="line" d="M246 43H290"/><path class="line" d="M556 43H600"/><path class="line" d="M866 43H910"/><path class="line" d="M1176 43H1220"/>
+  </g>
+  <text class="txt" x="90" y="640">案例化表达：诊断已开始、订单已提交、支付已完成、教材已发货；关键聚合可写诊断、报名单、订单、课程、退费申请。</text>
+
+  <rect class="panel" x="56" y="744" width="1568" height="150" rx="16"/>
+  <text class="h" x="90" y="788">怎么用于设计题</text>
+  <text class="txt" x="90" y="832">1. 用事件找流程和变化点；2. 用聚合确定一致性/事务边界；3. 用限界上下文确定模型边界；4. 再映射到服务边界、API、数据归属和跨服务协作。</text>
+  <text class="small" x="90" y="868">不要把事件风暴画成普通流程图；它的关键是事件、参与者、热点、聚合和限界上下文之间的推导。</text>
+</svg>

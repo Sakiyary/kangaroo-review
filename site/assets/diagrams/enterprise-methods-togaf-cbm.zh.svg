@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title desc">
+  <title id="title">TOGAF ADM 与 CBM 企业架构方法</title>
+  <desc id="desc">按李杉杉复习课企业架构 slide 重绘 TOGAF ADM 和 CBM 两套方法的记忆图。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#333"/></marker>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.phase{fill:#e9eef5;stroke:#38669b;stroke-width:2}.center{fill:#1f2328}.cbm{fill:#e9f4f2;stroke:#14756f;stroke-width:2}.cap{fill:#fff7e8;stroke:#bd861b;stroke-width:2}.line{stroke:#333;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .title{font:700 38px Georgia,"Times New Roman","PingFang SC",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.h{font:800 23px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 20px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 16px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.white{font:800 22px "Avenir Next","PingFang SC",sans-serif;fill:#fff}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="980"/>
+  <text class="title" x="56" y="64">企业架构方法：TOGAF 回答过程，CBM 回答能力颗粒度</text>
+  <text class="sub" x="56" y="96">Ground truth: Lecture 14 Course Review - 3 pages 13 and 15. 今年按 P1 理解，案例细节降权。</text>
+
+  <rect class="panel" x="56" y="132" width="760" height="720" rx="16"/>
+  <text class="h" x="90" y="176">TOGAF / ADM 架构开发周期</text>
+  <circle class="center" cx="436" cy="476" r="104"/>
+  <text class="white" x="436" y="452" text-anchor="middle">需求管理</text>
+  <text class="white" x="436" y="490" text-anchor="middle">贯穿全程</text>
+  <g>
+    <rect class="phase" x="318" y="260" width="236" height="58" rx="12"/><text class="txt" x="436" y="296" text-anchor="middle">预备 / Preliminary</text>
+    <rect class="phase" x="574" y="292" width="172" height="58" rx="12"/><text class="txt" x="660" y="328" text-anchor="middle">愿景</text>
+    <rect class="phase" x="574" y="422" width="172" height="58" rx="12"/><text class="txt" x="660" y="458" text-anchor="middle">业务架构</text>
+    <rect class="phase" x="574" y="552" width="172" height="58" rx="12"/><text class="txt" x="660" y="588" text-anchor="middle">信息系统</text>
+    <rect class="phase" x="318" y="676" width="236" height="58" rx="12"/><text class="txt" x="436" y="712" text-anchor="middle">技术架构</text>
+    <rect class="phase" x="126" y="552" width="172" height="58" rx="12"/><text class="txt" x="212" y="588" text-anchor="middle">机会方案</text>
+    <rect class="phase" x="126" y="422" width="172" height="58" rx="12"/><text class="txt" x="212" y="458" text-anchor="middle">迁移规划</text>
+    <rect class="phase" x="126" y="292" width="172" height="58" rx="12"/><text class="txt" x="212" y="328" text-anchor="middle">实施治理</text>
+    <rect class="phase" x="318" y="184" width="236" height="58" rx="12"/><text class="txt" x="436" y="220" text-anchor="middle">变更管理</text>
+  </g>
+  <text class="small" x="90" y="812">治理关键词：架构委员会、架构存储库、企业连续统一体。</text>
+
+  <rect class="panel" x="864" y="132" width="760" height="720" rx="16"/>
+  <text class="h" x="900" y="176">CBM 业务组件模型</text>
+  <rect class="cap" x="914" y="226" width="660" height="112" rx="14"/>
+  <text class="h" x="1244" y="268" text-anchor="middle">Business Capability / 业务能力</text>
+  <text class="txt" x="1244" y="306" text-anchor="middle">核心：先识别企业要稳定沉淀的能力</text>
+  <path class="line" d="M1244 342V404"/>
+  <rect class="cbm" x="914" y="408" width="660" height="126" rx="14"/>
+  <text class="h" x="1244" y="452" text-anchor="middle">Business Components / 业务组件</text>
+  <text class="txt" x="1244" y="492" text-anchor="middle">能力载体：高内聚、低耦合、可复用、可组装</text>
+  <g transform="translate(914 600)">
+    <rect class="panel" x="0" y="0" width="300" height="96" rx="12"/><text class="h" x="150" y="38" text-anchor="middle">流程聚类</text><text class="small" x="150" y="68" text-anchor="middle">五级流程 + 标准动词库</text>
+    <rect class="panel" x="360" y="0" width="300" height="96" rx="12"/><text class="h" x="510" y="38" text-anchor="middle">数据聚类</text><text class="small" x="510" y="68" text-anchor="middle">5W1H + A/B/C/D 数据分层</text>
+  </g>
+  <text class="txt" x="900" y="770">答题口径：TOGAF 解决“按什么流程做架构”；CBM 解决“按什么颗粒度拆业务能力”。</text>
+  <text class="small" x="900" y="812">实践中可混合方法，以完成目标为首要原则；不要把 CBM 画成数据库表或微服务图。</text>
+</svg>

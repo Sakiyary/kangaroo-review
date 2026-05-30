@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1000" viewBox="0 0 1680 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Seven categories of design decisions</title>
+  <desc id="desc">The seven design decision categories from the review-class slide, with exam-oriented examples.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fffdf8}.panel{fill:#fff;stroke:#d9d2c4;stroke-width:2}.center{fill:#1f2328}.box{fill:#fff;stroke:#b54634;stroke-width:2}.box2{fill:#e9eef5;stroke:#38669b;stroke-width:2}.box3{fill:#e9f4f2;stroke:#14756f;stroke-width:2}.box4{fill:#fff7e8;stroke:#bd861b;stroke-width:2}.line{stroke:#d9d2c4;stroke-width:3}
+      .title{font:700 38px Georgia,"Times New Roman",serif;fill:#1f2328}.sub{font:600 18px "Avenir Next","PingFang SC",sans-serif;fill:#667078}.white{font:800 26px "Avenir Next","PingFang SC",sans-serif;fill:#fff}.h{font:800 23px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.txt{font:500 18px "Avenir Next","PingFang SC",sans-serif;fill:#1f2328}.small{font:500 15px "Avenir Next","PingFang SC",sans-serif;fill:#667078}
+    </style>
+  </defs>
+  <rect class="bg" width="1680" height="1000"/>
+  <text class="title" x="54" y="64">Seven Design-Decision Categories: architecture is not only diagrams</text>
+  <text class="sub" x="54" y="98">Ground truth: Lecture 14 softarch2026-review-1 page 7. Answer as “decision item -> example -> quality impact/tradeoff”.</text>
+  <circle class="center" cx="840" cy="500" r="150"/>
+  <text class="white" x="840" y="474" text-anchor="middle">Architecture</text>
+  <text class="white" x="840" y="512" text-anchor="middle">= structures</text>
+  <text class="white" x="840" y="550" text-anchor="middle">+ decisions</text>
+  <path class="line" d="M720 420L330 240"/><path class="line" d="M840 350L840 170"/><path class="line" d="M960 420L1350 240"/>
+  <path class="line" d="M690 520L300 520"/><path class="line" d="M990 520L1380 520"/><path class="line" d="M740 615L410 760"/><path class="line" d="M940 615L1270 760"/>
+  <rect class="box" x="92" y="160" width="420" height="148" rx="14"/><text class="h" x="122" y="204">1. Allocation of responsibilities</text><text class="txt" x="122" y="244">Who owns functions and qualities?</text><text class="small" x="122" y="278">Example: Auth Service owns identity checks.</text>
+  <rect class="box2" x="630" y="80" width="420" height="148" rx="14"/><text class="h" x="660" y="124">2. Coordination model</text><text class="txt" x="660" y="164">How do elements communicate and sync?</text><text class="small" x="660" y="198">REST, events, broker, pub-sub.</text>
+  <rect class="box3" x="1168" y="160" width="420" height="148" rx="14"/><text class="h" x="1198" y="204">3. Data model</text><text class="txt" x="1198" y="244">What data exists, who owns it?</text><text class="small" x="1198" y="278">Example: Order service owns order data.</text>
+  <rect class="box4" x="92" y="450" width="420" height="148" rx="14"/><text class="h" x="122" y="494">4. Management of resources</text><text class="txt" x="122" y="534">CPU, threads, connections, cache.</text><text class="small" x="122" y="568">Example: thread pool, rate limit, pool.</text>
+  <rect class="box" x="1168" y="450" width="420" height="148" rx="14"/><text class="h" x="1198" y="494">5. Mapping among elements</text><text class="txt" x="1198" y="534">Modules, runtime components, nodes.</text><text class="small" x="1198" y="568">Module implements service; service runs in container.</text>
+  <rect class="box2" x="182" y="724" width="520" height="148" rx="14"/><text class="h" x="212" y="768">6. Binding time decisions</text><text class="txt" x="212" y="808">Compile, deploy, startup, or runtime?</text><text class="small" x="212" y="842">Later binding is flexible but harder to test.</text>
+  <rect class="box3" x="978" y="724" width="520" height="148" rx="14"/><text class="h" x="1008" y="768">7. Choice of technology</text><text class="txt" x="1008" y="808">Framework, middleware, DB, cloud.</text><text class="small" x="1008" y="842">Explain rationale, constraints and quality impact.</text>
+  <text class="small" x="54" y="948">Exam sentence: make each category concrete in the target system; do not only list seven English phrases.</text>
+</svg>

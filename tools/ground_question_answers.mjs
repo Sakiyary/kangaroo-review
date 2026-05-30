@@ -30,6 +30,10 @@ const allowedDiagramIds = new Set([
   "review-microservice-decomposition",
   "ddd-core-model",
   "enterprise-4a",
+  "architecture-view-selection",
+  "design-decision-categories",
+  "microservice-pattern-groups",
+  "enterprise-methods-togaf-cbm",
   "three-tier-reference",
   "cache-invalidation-reference",
   "mvc-cnc-reference",
@@ -74,7 +78,7 @@ const expectedPriorities = {
   q_soa_quality: "P1",
   q_operability_performance_scenarios: "P1",
   q_microservice_food_delivery_design: "P1",
-  q_arch_sources: "P1",
+  q_arch_sources: "P0",
   q_stakeholder_concerns: "P1",
   q_cnc_mvc: "P1",
   q_enterprise_architecture_outline: "P1"
@@ -157,7 +161,8 @@ const normalized = questions.map((question) => ({
 }));
 
 const jsonOutput = `${JSON.stringify(normalized, null, 2)}\n`;
-const jsOutput = `window.reviewQuestions = ${JSON.stringify(normalized, null, 2)};\n`;
+const questionsHeader = "// Maintenance note: source_audit_* and priority_reason_* fields are internal grounding notes for future edits. They are not rendered in the study UI.\n";
+const jsOutput = `${questionsHeader}window.reviewQuestions = ${JSON.stringify(normalized, null, 2)};\n`;
 
 if (checkMode) {
   if (fs.readFileSync(qPath, "utf8") !== jsonOutput) {

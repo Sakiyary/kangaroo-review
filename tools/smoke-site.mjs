@@ -247,13 +247,13 @@ async function checkViewport(name, viewport) {
   });
 
   await page.click('a[data-page="whiteboards"]');
-  await page.waitForSelector(".whiteboard-thumb");
-  const whiteboardCount = await page.locator(".whiteboard-row").count();
-  const aiWhiteboard = page.locator('.whiteboard-row:has-text("AI Wiki") .whiteboard-thumb').first();
-  const hasAiWhiteboard = await aiWhiteboard.count();
-  await (hasAiWhiteboard ? aiWhiteboard : page.locator(".whiteboard-thumb").first()).click();
+  await page.waitForSelector(".diagram-gallery-row .diagram-card button");
+  const diagramGalleryCount = await page.locator(".diagram-gallery-row").count();
+  const archivedWhiteboardCount = await page.locator(".archived-whiteboards .whiteboard-row").count();
+  const firstDiagramButton = page.locator(".diagram-gallery-row .diagram-card button").first();
+  await firstDiagramButton.click();
   await page.waitForSelector(".modal-image");
-  const whiteboardNaturalWidth = await page.locator(".modal-image").evaluate((element) => element.naturalWidth);
+  const diagramGalleryNaturalWidth = await page.locator(".modal-image").evaluate((element) => element.naturalWidth);
   await page.locator('button[data-action="close-modal"]').last().click();
 
   await page.click('a[data-page="sources"]');
@@ -336,9 +336,9 @@ async function checkViewport(name, viewport) {
     sampleAnswerHasChinese: /架构|需求|系统|质量|服务/.test(sampleAnswer),
     drawingGuideVisible: drawingGuideCount > 0 && /画|Draw|How to draw|考场/.test(drawingGuideText),
     drawingGuideCount,
-    whiteboardCount,
-    hasAiWhiteboard: hasAiWhiteboard > 0,
-    whiteboardNaturalWidth,
+    diagramGalleryCount,
+    archivedWhiteboardCount,
+    diagramGalleryNaturalWidth,
     sourceGroups,
     hasNewSourceGroups: sourceGroups.includes("primary_review_recording")
       && sourceGroups.includes("primary_review_outline")
@@ -374,7 +374,6 @@ for (const result of [desktop, mobile]) {
     "relatedQuestionJumped",
     "relatedQuestionChecklistSynced",
     "hasNewSourceGroups",
-    "hasAiWhiteboard",
     "aiSourceVisible",
     "questionHasChinese",
     "sampleAnswerHasChinese",
@@ -405,8 +404,9 @@ for (const result of [desktop, mobile]) {
   }
   if (result.overviewMetricBadges < 3) errors.push(`${result.name}: metric badges missing`);
   if (result.questionCount < 39) errors.push(`${result.name}: expected at least 39 question clusters`);
-  if (result.whiteboardCount < 4) errors.push(`${result.name}: expected at least 4 whiteboards`);
-  if (result.whiteboardNaturalWidth < 1000) errors.push(`${result.name}: whiteboard image did not load`);
+  if (result.diagramGalleryCount < 23) errors.push(`${result.name}: expected at least 23 diagram gallery items`);
+  if (result.archivedWhiteboardCount < 4) errors.push(`${result.name}: expected archived whiteboards to remain available`);
+  if (result.diagramGalleryNaturalWidth < 1000) errors.push(`${result.name}: diagram gallery image did not load`);
 }
 
 console.log(JSON.stringify({ desktop, mobile, errors }, null, 2));

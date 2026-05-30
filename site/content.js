@@ -1,3 +1,4 @@
+// Maintenance note: grounding details for future edits live in question source_audit_* fields, tooling, git history, and .omx/context notes. The public UI keeps study copy separate from audit wording.
 window.reviewContent = {
   "meta": {
     "title": {
@@ -21,48 +22,6 @@ window.reviewContent = {
         "zh": "个别题目可能需要画图，带铅笔等画图工具",
         "en": "Some questions may require diagrams; bring drawing tools"
       }
-    ],
-    "evidence": [
-      {
-        "label": {
-          "zh": "最高纲领",
-          "en": "Top Ground Truth"
-        },
-        "body": {
-          "zh": "以复习课完整录音、术语清洗稿、完整纪要和三份复习课 slides 为最高依据；旧飞书智能纪要仅归档保留，不再作为答案佐证。",
-          "en": "The complete review-class recording, cleaned transcript, complete minutes, and three review-class slide decks are the highest evidence. Old Feishu smart notes are archived only."
-        }
-      },
-      {
-        "label": {
-          "zh": "适用边界",
-          "en": "Scope Boundary"
-        },
-        "body": {
-          "zh": "专门面向 2026 南京大学软件学院研究生《软件体系结构》期末复习；不保证适用于未来年份或本科《软件系统设计》。",
-          "en": "Built specifically for the 2026 NJU Software Institute graduate Software Architecture final review; not guaranteed for future offerings or undergraduate Software System Design."
-        }
-      },
-      {
-        "label": {
-          "zh": "材料优先级",
-          "en": "Evidence Priority"
-        },
-        "body": {
-          "zh": "排序为：完整录音+复习课 slides > 课程 slides > 近年本课/相邻课程真题 > 2025 前人资料与学长博客 > 其他旧资料。",
-          "en": "Priority: complete recording + review slides > course slides > recent current/adjacent past papers > 2025 senior materials and blogs > older auxiliary notes."
-        }
-      },
-      {
-        "label": {
-          "zh": "纳入规则",
-          "en": "Inclusion Rule"
-        },
-        "body": {
-          "zh": "相邻课程只吸收体系结构重合内容；GoF/OOP/代码实现题排除。复习课明确“不考”的 AI 增强/AI 原生降到 P3 背景。",
-          "en": "Adjacent-course material contributes only overlapping architecture content; GoF/OOP/coding questions are excluded. Review-class non-exam AI-enabled/native content is P3 background."
-        }
-      }
     ]
   },
   "priorities": [
@@ -70,12 +29,12 @@ window.reviewContent = {
       "level": "P0",
       "weight": "必会 / Must know",
       "title": {
-        "zh": "完整录音明确点名的主线",
-        "en": "Mainline From Complete Review Recording"
+        "zh": "核心复习内容",
+        "en": "Core Review Topics"
       },
       "summary": {
-        "zh": "优先啃这些：基础概念、4+1、质量属性/ASR、tactics/patterns/styles、架构演进、七类设计决定、ADD 3.0、微服务和 DDD。它们来自完整录音与复习 slides，是答题语言和设计题骨架。",
-        "en": "Start here: foundations, 4+1, quality/ASR, tactics/patterns/styles, architecture evolution, seven design decisions, ADD 3.0, microservices, and DDD. These come from the complete recording and review slides."
+        "zh": "优先啃这些：基础概念、4+1、质量属性/ASR、战术/模式/风格、架构演进、七类设计决定、ADD 3.0、微服务和 DDD。它们来自课程材料与课程讲义，是答题语言和设计题骨架。",
+        "en": "Start here: foundations, 4+1, quality/ASR, tactics/patterns/styles, architecture evolution, seven design decisions, ADD 3.0, microservices, and DDD. These come from the review material and review slides."
       },
       "items": [
         {
@@ -85,7 +44,7 @@ window.reviewContent = {
         },
         {
           "topicId": "views",
-          "zh": "4+1 views 与架构文档化",
+          "zh": "4+1 视图 与架构文档化",
           "en": "4+1 views and architecture documentation"
         },
         {
@@ -95,7 +54,7 @@ window.reviewContent = {
         },
         {
           "topicId": "asr",
-          "zh": "ASR、Utility tree 与优先级排序",
+          "zh": "ASR、效用树 与优先级排序",
           "en": "ASRs, utility tree, and prioritization"
         },
         {
@@ -105,12 +64,12 @@ window.reviewContent = {
         },
         {
           "topicId": "design-decisions",
-          "zh": "七类设计决定与 rationale",
+          "zh": "七类设计决定与 设计理由",
           "en": "Seven design-decision categories and rationale"
         },
         {
           "topicId": "add",
-          "zh": "ADD 3.0 七步、driver、iteration、documentation",
+          "zh": "ADD 3.0 七步、驱动因素、迭代、文档化",
           "en": "ADD 3.0 steps, drivers, iteration, documentation"
         },
         {
@@ -129,11 +88,11 @@ window.reviewContent = {
       "level": "P1",
       "weight": "应会 / Should know",
       "title": {
-        "zh": "今年会用到的展开材料",
+        "zh": "可用于展开作答的材料",
         "en": "Useful Expansion Topics"
       },
       "summary": {
-        "zh": "用于把 P0 写成完整论述或设计题：企业架构 4A/TOGAF/CBM、HPS ADD case、微服务+DDD 设计题模板。",
+        "zh": "用于把 P0 写成完整论述或设计题：企业架构 4A/TOGAF/CBM、HPS ADD 案例、微服务+DDD 设计题模板。",
         "en": "Use these to expand P0 answers: EA 4A/TOGAF/CBM, the HPS ADD case, and microservice + DDD design templates."
       },
       "items": [
@@ -144,7 +103,7 @@ window.reviewContent = {
         },
         {
           "topicId": "add",
-          "zh": "HPS ADD case：用作流程支撑，不当唯一答案",
+          "zh": "HPS ADD 案例：用作流程支撑，不当唯一答案",
           "en": "HPS ADD case: support the process, not the only answer"
         },
         {
@@ -163,23 +122,23 @@ window.reviewContent = {
       "level": "P2",
       "weight": "保底 / Backup",
       "title": {
-        "zh": "历史高频但今年未抬高",
-        "en": "Historical But Lower Priority"
+        "zh": "保底掌握内容",
+        "en": "Backup Topics"
       },
       "summary": {
-        "zh": "ATAM、SPL/MDA/复用、Broker/缓存/三层等旧题保留为保底；遇到能写，但不抢 P0 时间。",
-        "en": "ATAM, SPL/MDA/reuse, Broker/cache/three-tier old questions remain as backup; answer if asked, but do not steal P0 time."
+        "zh": "ATAM、SPL/MDA/复用、代理模式、缓存、三层等内容掌握到能识别、能简答；第一轮复习仍应先完成核心内容。",
+        "en": "ATAM, SPL/MDA/reuse, Broker, cache, and three-tier topics should be recognizable and answerable at a basic level; finish core topics first."
       },
       "items": [
         {
           "topicId": "evaluation-atam",
-          "zh": "ATAM：输出、角色、risk/sensitivity/tradeoff 只背骨架",
-          "en": "ATAM: outputs, roles, risk/sensitivity/tradeoff skeleton"
+          "zh": "ATAM：输出、角色、风险/敏感点/权衡 掌握骨架",
+          "en": "ATAM: outputs, roles, risk/sensitivity/tradeoff core skeleton"
         },
         {
           "topicId": "reuse-variability",
-          "zh": "SPL/MDA/复用与可变性：旧题保底",
-          "en": "SPL/MDA/reuse and variability: old-paper backup"
+          "zh": "SPL/MDA/复用与可变性：概念与三要素",
+          "en": "SPL/MDA/reuse and variability: concepts and key elements"
         }
       ]
     },
@@ -187,12 +146,12 @@ window.reviewContent = {
       "level": "P3",
       "weight": "只读 / Background",
       "title": {
-        "zh": "明确不考或极低优先级",
-        "en": "Non-Exam Or Very Low Priority"
+        "zh": "背景了解",
+        "en": "Background"
       },
       "summary": {
-        "zh": "吕骏明确说 AI 增强、AI 原生不会考；GoF 设计模式和代码实现题不属于本课程主线。只保留为资料库背景。",
-        "en": "Lu Jun explicitly said AI-enabled and AI-native architecture will not be tested; GoF design-pattern and coding questions are outside this course mainline."
+        "zh": "AI 增强、AI 原生、GoF 设计模式和代码实现类题目只作背景了解；复习时不占用核心内容时间。",
+        "en": "AI-enabled/native architecture, GoF design-pattern questions, and coding-style questions are background only; do not spend core review time on them."
       },
       "items": [
         {
@@ -216,13 +175,13 @@ window.reviewContent = {
         "en": "Architecture is high-level design about elements, relations, properties, and evolution; it is not only static structure, but also runtime dependencies, communication, and dynamics."
       },
       "answerFrame": {
-        "zh": "答题先说定义，再区分 design/structure，最后落到“解决用户与开发者的矛盾”：用户要更多功能和快速变化，开发者要易开发、低成本、易维护。",
+        "zh": "答题先说定义，再区分设计/结构，最后落到“解决用户与开发者的矛盾”：用户要更多功能和快速变化，开发者要易开发、低成本、易维护。",
         "en": "Answer by defining architecture, distinguishing it from design/structure, then connecting it to the core tension: users want more features and fast change; developers need ease of development, lower cost, and maintainability."
       },
       "bullets": [
         {
-          "zh": "复习 PPT 的稳定来源：NFRs / Quality Requirements、ASRs、Stakeholders、Organisations、Technical Environments；业务目标和既有系统可作为补充约束。旧卷“五类来源”只在对应旧题中使用。",
-          "en": "Stable review-slide sources: NFRs / Quality Requirements, ASRs, Stakeholders, Organisations, and Technical Environments. Business goals and existing systems are supplementary constraints. The old-paper five-source wording is old-question-specific."
+          "zh": "架构来自会塑造结构与关键设计决定的架构驱动因素，核心是 NFR/质量需求、ASR、利益相关者关注点、组织因素、技术/运行环境；业务目标用于排序和取舍。",
+          "en": "2026 standard wording: architecture comes from architectural drivers that shape structures and key decisions. The main line is NFRs/quality requirements, ASRs, stakeholder concerns, organisations, and technical environments; business goals prioritize tradeoffs."
         },
         {
           "zh": "架构师四类工作：协调利益相关者、软件工程经验/最佳实践、技术知识、风险管理。",
@@ -233,7 +192,7 @@ window.reviewContent = {
           "en": "Use the process figure's four activities: specify ASRs, design the architecture, document it, and evaluate it; evolution/maintenance is lifecycle context, not a fifth step in this figure."
         },
         {
-          "zh": "“Architecture is not only box-and-line”：只画框线不够，还要说明元素的行为、外部可见属性、关系约束和设计理由。",
+          "zh": "“架构不是只画框线”：只画框线不够，还要说明元素的行为、外部可见属性、关系约束和设计理由。",
           "en": "“Architecture is not only box-and-line”: boxes and lines are insufficient; explain behavior, externally visible properties, relationship constraints, and rationale."
         },
         {
@@ -244,10 +203,9 @@ window.reviewContent = {
       "sources": [
         "Complete review recording transcript",
         "Complete review minutes",
-        "Review-class slides OCR"
+        "Review slides OCR"
       ],
       "group": "core",
-      "sourceConfidence": "完整录音 + 复习课整理稿 + 对应 review slides/OCR",
       "examWeight": "稳拿基础分",
       "deepDive": [
         {
@@ -256,7 +214,7 @@ window.reviewContent = {
             "en": "Definition boundary"
           },
           "summary": {
-            "zh": "先把 architecture / design / structure 三者说清。",
+            "zh": "先把架构/设计/结构三者说清。",
             "en": "Clarify architecture, design, and structure first."
           },
           "must": {
@@ -264,11 +222,11 @@ window.reviewContent = {
             "en": "Architecture is high-level design and significant decisions; structure is elements, relations, and visible properties; all architecture is design, but not all design is architecture."
           },
           "answer": {
-            "zh": "先定义 architecture，再比较 design/structure，最后落到架构为什么重要：它约束后续设计、影响质量属性、协调 stakeholder。",
+            "zh": "先定义架构，再比较设计/结构，最后落到架构为什么重要：它约束后续设计、影响质量属性、协调利益相关者。",
             "en": "Define architecture, compare with design/structure, then explain why it matters: constrains later design, shapes quality attributes, coordinates stakeholders."
           },
           "trap": {
-            "zh": "不要只写 “box-and-line”。如果只画框线，没有职责、关系、约束和设计理由，不能算完整架构答案。",
+            "zh": "不要只写 “框线图”。如果只画框线，没有职责、关系、约束和设计理由，不能算完整架构答案。",
             "en": "Do not stop at box-and-line; responsibilities, relations, constraints, and rationale are required."
           }
         },
@@ -278,20 +236,20 @@ window.reviewContent = {
             "en": "Architecture sources"
           },
           "summary": {
-            "zh": "按复习 PPT 的稳定术语答；旧卷“五类来源”只在旧题语境中使用。",
-            "en": "Use the stable review-slide wording; the old-paper five-source list is only for the old-question wording."
+            "zh": "先说明“架构来自架构驱动因素”，再分点说明各类驱动因素和排序依据。",
+            "en": "Answer with the complete-recording and review-slide notion of architectural drivers."
           },
           "must": {
-            "zh": "NFRs / Quality Requirements、ASRs、Stakeholders、Organisations、Technical Environments。可补充业务目标、组织约束、既有系统，但不要扩成无据固定清单。",
-            "en": "NFRs / Quality Requirements, ASRs, Stakeholders, Organisations, Technical Environments. Business goals, organizational constraints, and existing systems may be supplementary, not an unsupported fixed list."
+            "zh": "NFR/质量需求是最主要来源；ASR 是其中会显著影响架构的少数需求；利益相关者关注点补全质量场景；组织因素和技术/运行环境给出约束；业务目标用于排序和取舍。",
+            "en": "NFRs/quality requirements are the main source; ASRs are the subset that significantly affects architecture; stakeholder concerns complete scenarios; organisations and technical environments constrain choices; business goals prioritize tradeoffs."
           },
           "answer": {
-            "zh": "先按 PPT 五组词说明来源，再解释它们如何变成架构 driver：质量需求和 ASR 决定结构，stakeholder/organisation/environment 决定约束与取舍。",
-            "en": "List the five review-slide source groups, then explain how they become architectural drivers: quality requirements and ASRs shape structure; stakeholders, organisations, and environments shape constraints and tradeoffs."
+            "zh": "先总述“架构来自架构驱动因素”，再分点写：质量需求/NFR 描述系统做得多好；ASR 是早期必须优先处理的关键需求；利益相关者通过工作坊/访谈提出关注点；组织因素包括团队能力、进度、成本和治理；技术/运行环境包括遗留系统、基础设施、平台、中间件和部署环境；最后写业务目标用于解决冲突并确定优先级。",
+            "en": "Start with “architecture comes from architectural drivers”. Then explain: quality requirements/NFRs describe how well the system must behave; ASRs are key requirements to handle early; stakeholders provide concerns through workshops/interviews; organisations add team, schedule, cost, and governance constraints; technical environments include legacy systems, infrastructure, platforms, middleware, and deployment; business goals resolve conflicts and set priorities."
           },
           "trap": {
-            "zh": "不要把“业务目标”写成旧卷五源之一；也不要把旧卷五项当今年所有题的唯一标准。",
-            "en": "Do not make business goals one of the old-paper five sources; do not treat the old five-source list as the universal 2026 answer."
+            "zh": "不要把所有需求都写成 ASR；只有会显著影响结构、部署、技术选择或关键取舍的需求才是 ASR。",
+            "en": "Do not call every requirement an ASR; only requirements that significantly affect structure, deployment, technology choices, or major tradeoffs are ASRs."
           }
         }
       ],
@@ -299,8 +257,8 @@ window.reviewContent = {
         "architecture-design-process"
       ],
       "memorize": {
-        "zh": "一句话定义：软件架构是高层设计，是软件系统的一组结构；结构由元素、关系和外部可见属性组成。\n必背区分：架构属于设计，但不是所有设计都是架构；会影响质量属性和全局结构的设计才是架构层设计。\n来源/driver：需求、利益相关者、组织、架构师经验、技术与运行环境；今年答题时优先用质量需求、ASR、Stakeholder concern、Organisation、Technical Environment 的口径。",
-        "en": "Definition: software architecture is high-level design and a set of structures; a structure consists of elements, relations, and externally visible properties.\nDistinction: architecture is design, but not every design decision is architectural; architectural decisions shape qualities and global structure.\nDrivers: requirements, stakeholders, organizations, architects' experience, and technical/runtime environments; for 2026, phrase them as quality requirements, ASRs, stakeholder concerns, organisations, and technical environments."
+        "zh": "一句话定义：软件架构是高层设计，是软件系统的一组结构；结构由元素、关系和外部可见属性组成。\n必背区分：架构属于设计，但不是所有设计都是架构；会影响质量属性和全局结构的设计才是架构层设计。\n答题要点：架构来自架构驱动因素，优先写 NFR/质量需求、ASR、利益相关者关注点、组织因素、技术/运行环境，并说明业务目标用于排序。",
+        "en": "Definition: software architecture is high-level design and a set of structures; a structure consists of elements, relations, and externally visible properties.\nDistinction: architecture is design, but not every design decision is architectural; architectural decisions shape qualities and global structure.\n2026 wording: architecture comes from architectural drivers: NFRs/quality requirements, ASRs, stakeholder concerns, organisations, and technical environments; business goals prioritize them."
       },
       "examTemplate": {
         "zh": "遇到定义题，按“定义 -> 构成 -> 作用 -> 例子”答。例：架构不是代码细节，而是模块、运行时组件、部署节点及其关系；它决定可用性、性能、可修改性等质量属性。",
@@ -313,8 +271,8 @@ window.reviewContent = {
             "en": "Architecture, design, and structure"
           },
           "summary": {
-            "zh": "这组概念是张贺复习课点名基础题，不能只背一句定义。",
-            "en": "This is a review-class basic question, not a one-sentence definition."
+            "zh": "这组概念是张贺基础题，不能只背一句定义。",
+            "en": "This is a review basic question, not a one-sentence definition."
           },
           "explain": {
             "zh": "软件架构可以理解为“会长期约束系统演化的高层设计”。它关心模块、运行时组件、部署节点、数据、接口、连接器和它们之间的关系。设计的范围更大，包含界面细节、类设计、算法、代码实现等；其中会影响全局结构、质量属性和关键约束的设计，才上升为架构。结构是架构的可观察骨架，回答有哪些元素、元素之间如何连接、外部能看到哪些属性。",
@@ -329,34 +287,34 @@ window.reviewContent = {
             "en": "Use three paragraphs: define architecture, distinguish design, then distinguish structure. Example: choosing microservice boundaries is architectural because it affects modifiability, deployment, and team collaboration; button color is not."
           },
           "boundary": {
-            "zh": "依据完整录音和 Lecture 1/复习课 slides；不要把“原则/理由”写成架构定义本体，但可以作为 rationale 补充。",
-            "en": "Grounded in the complete recording and Lecture 1/review slides; do not turn principles/rationale into the definition itself, but they can be added as rationale."
+            "zh": "依据第 1 讲/课程讲义；不要把“原则/理由”写成架构定义本体，但可以作为 设计理由 补充。",
+            "en": "Grounded in the review material and Lecture 1/review slides; do not turn principles/rationale into the definition itself, but they can be added as rationale."
           }
         },
         {
           "title": {
-            "zh": "架构从哪里来：driver 而不是灵感",
-            "en": "Where architecture comes from: drivers"
+            "zh": "架构从哪里来：架构驱动因素",
+            "en": "Where Architecture Comes From: Architectural Drivers"
           },
           "summary": {
-            "zh": "旧题问五个来源，今年更稳的口径是架构 driver。",
-            "en": "Old papers ask five sources; the 2026-safe framing is architecture drivers."
+            "zh": "按课程材料和 课程 幻灯片 的驱动因素表述背。",
+            "en": "For 2026, memorize the driver wording from the review material and review slides."
           },
           "explain": {
-            "zh": "架构来源可以统一理解为 architecture drivers：会迫使架构做出结构选择的因素。需求给出功能、质量和约束；利益相关者给出不同 concerns；组织给出团队、技能、进度和成本边界；架构师经验给出模式和技术判断；技术/运行环境给出遗留系统、平台、中间件、部署和运行约束。业务目标不一定作为旧题五源之一，但它决定这些 driver 谁更重要。",
-            "en": "Architecture comes from drivers: factors that force structural choices. Requirements provide functionality, qualities, and constraints; stakeholders provide concerns; organisations provide team, skill, schedule, and cost boundaries; architects bring pattern and technology judgment; technical/runtime environments provide legacy, platform, middleware, deployment, and runtime constraints. Business goals may not be one of the old five sources, but they prioritize the drivers."
+            "zh": "架构不是灵感产物，而是被一组驱动因素推出来的。NFR/质量需求说明系统必须“做得多好”，其中少数会显著影响架构的需求就是 ASR。利益相关者关注点通过工作坊或访谈补齐需求文档中没有写清的质量场景。组织因素规定团队能力、预算、进度、治理流程和责任边界。技术/运行环境规定遗留系统、基础设施、平台、中间件、云环境和部署限制。业务目标用于在这些因素冲突时排序和取舍。",
+            "en": "Architecture is not inspiration; it is driven by forces. NFRs/quality requirements describe how well the system must behave, and the subset that significantly affects architecture becomes ASRs. Stakeholder concerns, collected through workshops or interviews, complete missing quality scenarios. Organisations impose team, budget, schedule, governance, and responsibility constraints. Technical environments impose legacy, infrastructure, platform, middleware, cloud, and deployment constraints. Business goals prioritize tradeoffs when these forces conflict."
           },
           "memorize": {
-            "zh": "需求、利益相关者、组织、架构师经验、技术/运行环境；今年写作时优先说 quality requirements、ASR、stakeholder concerns、organisations、technical environments。",
-            "en": "Requirements, stakeholders, organisation, architect experience, and technical/runtime environment; for 2026 wording, prefer quality requirements, ASRs, stakeholder concerns, organisations, and technical environments."
+            "zh": "NFR/质量需求 -> ASR -> 利益相关者关注点 -> 组织因素 -> 技术/运行环境 -> 用业务目标排序。",
+            "en": "NFRs/quality requirements -> ASRs -> stakeholder concerns -> organisations -> technical environments -> prioritized by business goals."
           },
           "answer": {
-            "zh": "如果题干写“five sources”，直接列五类并各解释一句；如果题干写 driver/ASR，先说质量需求和 ASR，再说 stakeholders、organisation、technical environment。",
-            "en": "If the prompt says “five sources”, list and explain five categories. If it says drivers/ASRs, start with quality requirements and ASRs, then stakeholders, organisation, and technical environment."
+            "zh": "考场可写六句：1. 架构来自架构驱动因素。2. NFR/质量需求是最主要来源。3. ASR 是其中必须优先处理的少数需求。4. 利益相关者关注点补充并细化质量场景。5. 组织因素和技术/运行环境给出约束。6. 业务目标用于排序、冲突解决和取舍。",
+            "en": "In the exam, write six sentences: architecture comes from architectural drivers; NFRs/quality requirements are the main source; ASRs are the subset to handle early; stakeholder concerns refine quality scenarios; organisations and technical environments constrain choices; business goals prioritize and resolve conflicts."
           },
           "boundary": {
-            "zh": "旧卷五源有历史依据；复习课主线以 slides 的 driver 口径更稳。",
-            "en": "The old five-source answer is historically grounded; the review-class mainline is safer with the slide driver wording."
+            "zh": "依据完整课程录音、张贺 第一份课程讲义 和 ASR/效用树 幻灯片；按“架构驱动因素”表述组织答案。",
+            "en": "Grounded in the complete review recording, Zhang He review-1 slides, and ASR/utility-tree slides; historical fixed lists are not the primary 2026 answer."
           }
         }
       ]
@@ -373,7 +331,7 @@ window.reviewContent = {
         "en": "Quality attributes are primary drivers of architecture. Only scenario-based quality requirements are suitable architectural inputs."
       },
       "answerFrame": {
-        "zh": "固定六要素按 ground-truth 表格顺序背：source of stimulus、stimulus、artifact、environment、response、response measure。可用性原表响应是“通知操作者继续操作”，响应度量是“没有停机时间”。",
+        "zh": "固定六要素按六要素参考表格顺序背：刺激源、刺激、制品、环境、响应、响应度量。可用性原表响应是“通知操作者继续操作”，响应度量是“没有停机时间”。",
         "en": "Memorize the six-part ground-truth table order: source of stimulus, stimulus, artifact, environment, response, response measure. In the original Availability row, the response is notifying the operator to continue operation and the measure is no downtime."
       },
       "bullets": [
@@ -386,25 +344,24 @@ window.reviewContent = {
           "en": "Internal attributes: modifiability, maintainability, testability, portability, etc.; mostly developer concerns."
         },
         {
-          "zh": "tactic 是解决质量属性问题的原子设计决定，多个 tactic 可组合成 pattern。",
+          "zh": "战术 是解决质量属性问题的原子设计决定，多个 战术 可组合成 模式。",
           "en": "A tactic is an atomic design decision for a quality concern; multiple tactics can combine into a pattern."
         },
         {
-          "zh": "常考属性要至少能各举一例：availability、interoperability、modifiability、performance、security、testability、usability。",
+          "zh": "常考属性要至少能各举一例：可用性、互操作性、可修改性、性能、安全性、可测试性、易用性。",
           "en": "For common attributes, be able to give at least one example each: availability, interoperability, modifiability, performance, security, testability, usability."
         },
         {
-          "zh": "如果题目给一个模糊 NFR，要先重写成可测量场景，再谈 tactic/pattern。",
+          "zh": "如果题目给一个模糊 NFR，要先重写成可测量场景，再谈 战术/模式。",
           "en": "If the question gives a vague NFR, rewrite it as a measurable scenario before discussing tactics/patterns."
         }
       ],
       "sources": [
         "Complete review recording transcript",
         "Complete review minutes",
-        "Review-class slides OCR"
+        "Review slides OCR"
       ],
       "group": "core",
-      "sourceConfidence": "完整录音 + 复习课整理稿 + 对应 review slides/OCR",
       "examWeight": "质量场景必背",
       "deepDive": [
         {
@@ -417,15 +374,15 @@ window.reviewContent = {
             "en": "This is the safest template for quality questions."
           },
           "must": {
-            "zh": "source of stimulus、stimulus、artifact、environment、response、response measure。中文可背：刺激源、刺激、制品、环境、响应、响应度量。",
+            "zh": "刺激源、刺激、制品、环境、响应、响应度量。中文可背：刺激源、刺激、制品、环境、响应、响应度量。",
             "en": "Source of stimulus, stimulus, artifact, environment, response, response measure."
           },
           "answer": {
-            "zh": "先把题目中的模糊词改写成场景，再用六要素逐项填表。最后补一两条 tactic，例如冗余、缓存、认证、隔离、监控。",
+            "zh": "先把题目中的模糊词改写成场景，再用六要素逐项填表。最后补一两条 战术，例如冗余、缓存、认证、隔离、监控。",
             "en": "Rewrite vague quality into a scenario, fill six elements, then add tactics such as redundancy, caching, authentication, isolation, monitoring."
           },
           "trap": {
-            "zh": "最容易漏 environment 和 response measure；“系统要快”不是答案，“95% 请求 2s 内完成”才是度量。",
+            "zh": "最容易漏 环境 和 响应度量；“系统要快”不是答案，“95% 请求 2s 内完成”才是度量。",
             "en": "Environment and response measure are often omitted; “fast” is not enough, “95% under 2s” is measurable."
           }
         },
@@ -439,15 +396,15 @@ window.reviewContent = {
             "en": "A quality attribute must map to design actions."
           },
           "must": {
-            "zh": "性能常见 caching/load balancing/control resource demand；可用性常见 heartbeat/redundancy/failover；安全常见 authentication/authorization/audit。",
+            "zh": "性能常见缓存、负载均衡、控制资源需求；可用性常见心跳检测、冗余、故障转移；安全性常见认证、授权、记录。",
             "en": "Performance: caching/load balancing/control resource demand; availability: heartbeat/redundancy/failover; security: authentication/authorization/audit."
           },
           "answer": {
-            "zh": "按“质量属性 -> 场景 -> tactic -> tradeoff”写。例如缓存提高性能但增加一致性复杂度。",
+            "zh": "按“质量属性 -> 场景 -> 战术 -> 权衡”写。例如缓存提高性能，但增加一致性复杂度。",
             "en": "Use “attribute -> scenario -> tactic -> tradeoff”. For example, caching improves performance but complicates consistency."
           },
           "trap": {
-            "zh": "不要把 tactic 写成万能药。每个 tactic 都会牺牲其他质量属性或增加复杂度。",
+            "zh": "不要把 战术 写成万能药。每个 战术 都会牺牲其他质量属性或增加复杂度。",
             "en": "No tactic is free; each may hurt another quality or add complexity."
           }
         }
@@ -486,8 +443,8 @@ window.reviewContent = {
             "en": "Classify first, then give examples. Do not write vague “fast/stable/maintainable”; add scenario and measure."
           },
           "boundary": {
-            "zh": "完整录音和复习课 slides 明确三类需求；质量需求要场景化。",
-            "en": "The complete recording and review slides explicitly name the three requirement types; quality requirements must be scenario-based."
+            "zh": "课程材料和课程讲义 明确三类需求；质量需求要场景化。",
+            "en": "The review material and review slides explicitly name the three requirement types; quality requirements must be scenario-based."
           }
         },
         {
@@ -500,7 +457,7 @@ window.reviewContent = {
             "en": "The six parts are a direct scoring template."
           },
           "explain": {
-            "zh": "质量场景把抽象质量属性变成可评估句子。刺激源是谁发起事件；刺激是发生了什么；环境是正常、峰值、故障、维护等条件；制品是被影响的系统部分；响应是系统做什么；响应度量是用数字或可判定标准说明做得多好。比如可用性：Heartbeat 监视器发现服务器无响应，在正常操作环境下影响处理器，系统通知操作者并继续操作，响应度量是没有停机时间。",
+            "zh": "质量场景把抽象质量属性变成可评估句子。刺激源是谁发起事件；刺激是发生了什么；环境是正常、峰值、故障、维护等条件；制品是被影响的系统部分；响应是系统做什么；响应度量是用数字或可判定标准说明做得多好。比如可用性：心跳监视器发现服务器无响应，在正常操作环境下影响处理器，系统通知操作者并继续操作，响应度量是没有停机时间。",
             "en": "A quality scenario turns an abstract quality into an evaluable sentence. Source is who triggers the event; stimulus is what happens; environment is normal, peak, failure, maintenance, etc.; artifact is the affected part; response is what the system does; response measure quantifies or judges how well. Example for availability: a heartbeat monitor detects a server not responding; under normal operation, the processor is affected; the system notifies the operator and continues operation; the response measure is no downtime."
           },
           "memorize": {
@@ -512,8 +469,8 @@ window.reviewContent = {
             "en": "Use a table or one long sentence. A table is safer: columns are the six parts and the row is a concrete example."
           },
           "boundary": {
-            "zh": "以重绘质量场景表和复习课讲解为准；不同质量属性示例可以换，但六要素不能少。",
-            "en": "Grounded in the redrawn quality-scenario table and review class; examples may vary, but the six parts must remain."
+            "zh": "以重绘质量场景表和课程讲解为准；不同质量属性示例可以换，但六要素不能少。",
+            "en": "Grounded in the redrawn quality-scenario table and review material; examples may vary, but the six parts must remain."
           }
         }
       ]
@@ -526,7 +483,7 @@ window.reviewContent = {
         "en": "ASRs and Utility Tree"
       },
       "takeaway": {
-        "zh": "ASR 是会显著影响架构设计决定的需求，不等于所有需求。复习课强调要从需求文档、访谈/workshop 和业务目标中补齐。",
+        "zh": "ASR 是会显著影响架构设计决定的需求，不等于所有需求。需要从需求文档、访谈/工作坊和业务目标中补齐。",
         "en": "An ASR is a requirement that significantly affects architectural decisions. It is not every requirement. The complete review recording/minutes emphasize documents, interviews/workshops, and business goals."
       },
       "answerFrame": {
@@ -535,7 +492,7 @@ window.reviewContent = {
       },
       "bullets": [
         {
-          "zh": "需求文档里的 NFR 常不够场景化，需要 stakeholder workshop 或 interview。",
+          "zh": "需求文档里的 NFR 常不够场景化，需要 利益相关者工作坊或访谈。",
           "en": "NFRs in requirement documents are often not scenario-based enough; use stakeholder workshops or interviews."
         },
         {
@@ -558,10 +515,9 @@ window.reviewContent = {
       "sources": [
         "Complete review recording transcript",
         "Complete review minutes",
-        "Review-class slides OCR"
+        "Review slides OCR"
       ],
       "group": "core",
-      "sourceConfidence": "完整录音 + 复习课整理稿 + 对应 review slides/OCR",
       "examWeight": "高频简答",
       "deepDive": [
         {
@@ -578,7 +534,7 @@ window.reviewContent = {
             "en": "Functions, quality attributes, and constraints can become ASRs; important and hard quality needs are common."
           },
           "answer": {
-            "zh": "先定义，再说来源/方法：需求文档、stakeholder workshop/interview 或 QAW、业务目标、约束，以及质量属性场景化表达。",
+            "zh": "先定义，再说来源/方法：需求文档、利益相关者工作坊/访谈 或 QAW、业务目标、约束，以及质量属性场景化表达。",
             "en": "Define ASR, then list sources/methods: requirement documents, stakeholder workshops/interviews or QAW, business goals, constraints, and scenario-based quality expression."
           },
           "trap": {
@@ -596,11 +552,11 @@ window.reviewContent = {
             "en": "A utility tree turns qualities into analyzable leaf scenarios."
           },
           "must": {
-            "zh": "树根是 utility，中间是质量属性，叶子是具体场景和度量；叶子常按业务价值与架构影响/难度排序。",
+            "zh": "树根是系统效用，中间是质量属性，叶子是具体场景和度量；叶子常按业务价值与架构影响/难度排序。",
             "en": "Root is utility, branches are qualities, leaves are scenarios and measures, prioritized by business value and architectural impact/difficulty."
           },
           "answer": {
-            "zh": "画树后圈出 H/H 或 high/high 叶子，说这些最先进入架构设计和评估。",
+            "zh": "画树后圈出 H/H 或高/高叶子，说这些最先进入架构设计和评估。",
             "en": "Draw the tree, mark H/H leaves, and state that they drive design and evaluation first."
           },
           "trap": {
@@ -615,7 +571,7 @@ window.reviewContent = {
         "quality-scenario-table"
       ],
       "memorize": {
-        "zh": "ASR 的判断标准：它是否改变架构结构、技术选型、部署方式、通信方式或关键设计决策。\n获取 ASR 的常见方式：需求文档、利益相关者访谈/Workshop、业务目标、质量属性场景、Utility Tree。\n优先级判断：重要性高、实现风险高、冲突多、影响范围大的 ASR 要先处理。",
+        "zh": "ASR 的判断标准：它是否改变架构结构、技术选型、部署方式、通信方式或关键设计决策。\n获取 ASR 的常见方式：需求文档、利益相关者访谈/工作坊、业务目标、质量属性场景、效用树。\n优先级判断：重要性高、实现风险高、冲突多、影响范围大的 ASR 要先处理。",
         "en": "ASR test: does it change structures, technology choices, deployment, communication, or key design decisions?\nCommon sources: requirement documents, stakeholder interviews/workshops, business goals, quality-attribute scenarios, and utility trees.\nPrioritize ASRs with high business importance, high technical risk, many conflicts, or broad impact."
       },
       "examTemplate": {
@@ -645,13 +601,13 @@ window.reviewContent = {
             "en": "Define first, give 2-3 examples, then state that ASRs feed ADD and architecture evaluation first."
           },
           "boundary": {
-            "zh": "复习课明确 ASR 是架构输入，通常来自重要且困难的质量需求和强约束。",
-            "en": "The review class states ASRs are architecture inputs, often from important/difficult quality requirements and strong constraints."
+            "zh": "ASR 是架构输入，通常来自重要且困难的质量需求和强约束。",
+            "en": "The review material states ASRs are architecture inputs, often from important/difficult quality requirements and strong constraints."
           }
         },
         {
           "title": {
-            "zh": "Utility Tree 到底怎么用",
+            "zh": "效用树 到底怎么用",
             "en": "How to use a Utility Tree"
           },
           "summary": {
@@ -659,20 +615,20 @@ window.reviewContent = {
             "en": "A utility tree is not decoration; it prioritizes quality requirements."
           },
           "explain": {
-            "zh": "Utility Tree 从总目标 utility 往下分解到质量属性，再分解到具体场景。每个叶子场景要标重要性和风险/难度，帮助架构师先处理高重要、高风险的 ASR。它把“性能好、可用性高”这种模糊词，变成“峰值下 95% 请求 2 秒内返回”“服务器无响应时无停机”这种可讨论场景。",
+            "zh": "效用树从总目标“系统效用”往下分解到质量属性，再分解到具体场景。每个叶子场景要标重要性和风险/难度，帮助架构师先处理高重要、高风险的 ASR。它把“性能好、可用性高”这种模糊词，变成“峰值下 95% 请求 2 秒内返回”“服务器无响应时无停机”这种可讨论场景。",
             "en": "A utility tree decomposes overall utility into quality attributes and then concrete scenarios. Each leaf scenario is ranked by importance and risk/difficulty, helping architects address high-importance/high-risk ASRs first. It turns vague “fast/high availability” into scenarios such as “95% requests return within 2 seconds under peak load” or “no downtime when a server does not respond”."
           },
           "memorize": {
-            "zh": "Utility -> Quality Attribute -> Scenario；叶子标重要性和风险/难度。",
+            "zh": "系统效用 -> 质量属性 -> 场景；叶子标重要性和风险/难度。",
             "en": "Utility -> Quality Attribute -> Scenario; leaves carry importance and risk/difficulty."
           },
           "answer": {
-            "zh": "如果题目问识别 ASR，可以写：访谈/Workshop 收集 concern，写成质量场景，放进效用树，用重要性和风险排序。",
+            "zh": "如果题目问识别 ASR，可以写：访谈/工作坊 收集 关注点，写成质量场景，放进效用树，用重要性和风险排序。",
             "en": "For ASR identification: collect concerns via interviews/workshops, express them as quality scenarios, place them in a utility tree, and rank by importance and risk."
           },
           "boundary": {
-            "zh": "完整录音和 slides 支持 requirements、workshop/interviews、business goals、utility tree 这条线。",
-            "en": "The complete recording and slides support the requirements, workshops/interviews, business goals, and utility tree line."
+            "zh": "课程讲义与课程材料 支持 需求、工作坊/访谈、业务目标、效用树 这条线。",
+            "en": "The review material and slides support the requirements, workshops/interviews, business goals, and utility tree line."
           }
         }
       ]
@@ -689,55 +645,54 @@ window.reviewContent = {
         "en": "ADD is a structured, iterative architecture design method. The key is not the definition, but using drivers to organize design iterations."
       },
       "answerFrame": {
-        "zh": "按 Lecture 12 的 7 步答：1 Review inputs；2 Establish iteration goal by selecting drivers；3 Choose elements to refine；4 Choose design concepts；5 Instantiate architectural elements / allocate responsibilities / define interfaces；6 Sketch views and record design decisions；7 Perform analysis of current design and review iteration goal and achievement of design purpose，然后必要时继续迭代。",
+        "zh": "按 第 12 讲 的七步答：1. 审查输入；2. 通过选择驱动因素建立迭代目标；3. 选择要细化的系统元素；4. 选择设计概念；5. 实例化架构元素、分配职责并定义接口；6. 绘制视图草图并记录设计决定；7. 分析当前设计，并检查迭代目标和设计目的是否达成；必要时继续迭代。",
         "en": "Use the Lecture 12 seven-step process: 1 Review inputs; 2 Establish the iteration goal by selecting drivers; 3 Choose elements to refine; 4 Choose design concepts; 5 Instantiate architectural elements, allocate responsibilities, and define interfaces; 6 Sketch views and record design decisions; 7 Perform analysis of the current design and review the iteration goal and achievement of the design purpose, then iterate if necessary."
       },
       "bullets": [
         {
-          "zh": "图中红色 driver 是 Design Purpose、Primary Functionality、Quality Attributes、Architectural Concerns、Constraints；上一轮设计或 brownfield 既有系统通过 artifact flow 进入 Step 1。",
+          "zh": "图中红色驱动因素是设计目的、主要功能、质量属性、架构关注点和约束；上一轮设计或棕地既有系统通过制品流进入第 1 步。",
           "en": "The red drivers in the slide are Design Purpose, Primary Functionality, Quality Attributes, Architectural Concerns, and Constraints; previous-iteration or brownfield designs enter Step 1 through the artifact-flow path."
         },
         {
-          "zh": "Step 1 是 Review inputs，不是建立目标；Step 2 才是在驱动因素中选择本轮 iteration goal。",
+          "zh": "第 1 步是审查输入，不是建立目标；第 2 步才是在驱动因素中选择本轮迭代目标。",
           "en": "Step 1 is Review inputs, not goal establishment; Step 2 selects the iteration goal from the drivers."
         },
         {
-          "zh": "复习课案例里的 iteration goal 可参考：整体结构、核心功能、质量属性、开发/部署/运营需求；但这不是 ADD 3.0 固定步骤，固定步骤仍以上面的 Step 1-7 为准。",
+          "zh": "课程案例里的 迭代目标 可参考：整体结构、核心功能、质量属性、开发/部署/运营需求；但这不是 ADD 3.0 固定步骤，固定步骤仍以上面的 第 1-7 步 为准。",
           "en": "Review-class cases may choose iteration goals such as overall structure, core functionality, quality attributes, and development/deployment/operations concerns; these are not fixed ADD 3.0 steps, whose fixed process remains Step 1-7 above."
         },
         {
-          "zh": "终止条件：所有 driving architectural requirements 已有设计决策、重要技术风险已缓解，或架构设计时间耗尽；不要把 ADD 画成一次性瀑布。",
+          "zh": "终止条件：所有 架构驱动需求 已有设计决策、重要技术风险已缓解，或架构设计时间耗尽；不要把 ADD 画成一次性瀑布。",
           "en": "Termination criteria: design decisions have covered the driving architectural requirements, key technical risks have been mitigated, or the architecture-design timebox is consumed; do not draw ADD as one-shot waterfall."
         }
       ],
       "sources": [
         "Complete review minutes",
-        "Li Shanshan review-class slides",
+        "Li Shanshan review slides",
         "Lecture 12 ADD 3.0 slide OCR"
       ],
       "group": "process",
-      "sourceConfidence": "完整录音李杉杉段 + Lecture 12 ADD 原图 + 复习课 slides",
       "examWeight": "设计题核心",
       "deepDive": [
         {
           "title": {
-            "zh": "ADD 3.0 课程原图口径",
+            "zh": "ADD 3.0 课程原图表述",
             "en": "ADD 3.0 slide-faithful process"
           },
           "summary": {
-            "zh": "复习课明确说 ADD 是今年主线之一；图解必须以 Lecture 12 的 ADD 3.0 method 图为准。",
-            "en": "The review class made ADD a major focus; the diagram should follow the Lecture 12 ADD 3.0 method figure."
+            "zh": "ADD 3.0 是重点内容；图解以第 12 讲的 ADD 3.0 方法图为准。",
+            "en": "The review material made ADD a major focus; the diagram should follow the Lecture 12 ADD 3.0 method figure."
           },
           "must": {
-            "zh": "五类 driver + 七步：Review inputs；Establish iteration goal by selecting drivers；Choose elements to refine；Choose design concepts；Instantiate/allocate/define interfaces；Sketch views and record decisions；Perform analysis of current design and review goal/purpose。",
+            "zh": "五类驱动因素 + 七步：审查输入；通过选择驱动因素建立迭代目标；选择要细化的元素；选择设计概念；实例化元素、分配职责、定义接口；绘制视图并记录设计决定；分析当前设计并检查目标/设计目的。",
             "en": "Five driver classes plus seven steps: Review inputs; Establish iteration goal by selecting drivers; Choose elements to refine; Choose design concepts; Instantiate/allocate/define interfaces; Sketch views and record decisions; Perform analysis of current design and review goal/purpose."
           },
           "answer": {
-            "zh": "手画时先画上方五个红色 driver，再画 Step 1-7 的纵向流程；Step 7 后写 Iterate if necessary，并输出 (Refined) Software Architecture Design。",
+            "zh": "手画时先画上方五个红色驱动因素，再画第 1-7 步的纵向流程；第 7 步后写“必要时迭代”，并输出“精化后的软件架构设计”。",
             "en": "When drawing by hand, put the five red drivers on top, then draw the vertical Step 1-7 flow; after Step 7 write Iterate if necessary and output (Refined) Software Architecture Design."
           },
           "trap": {
-            "zh": "不要用自创简化图替代课程图；不要漏 Architectural Concerns，也不要把 Step 1 写成建立目标。",
+            "zh": "不要用自创简化图替代课程图；不要漏“架构关注点”，也不要把第 1 步写成建立目标。",
             "en": "Do not replace the course figure with an unsupported simplification; do not omit Architectural Concerns or turn Step 1 into goal establishment."
           }
         },
@@ -751,15 +706,15 @@ window.reviewContent = {
             "en": "ADD needs concrete design concepts in the middle."
           },
           "must": {
-            "zh": "设计概念包括 reference architecture、pattern、style、tactic、externally developed component。",
+            "zh": "设计概念包括 参考架构、模式、风格、战术、外部开发组件。",
             "en": "Design concepts include reference architectures, patterns, styles, tactics, and externally developed components."
           },
           "answer": {
-            "zh": "举例：性能 driver 可选缓存和负载均衡；可修改性 driver 可选分层和信息隐藏；领域复杂可选 DDD 和 bounded context。",
+            "zh": "举例：性能 驱动因素 可选缓存和负载均衡；可修改性 驱动因素 可选分层和信息隐藏；领域复杂可选 DDD 和 限界上下文。",
             "en": "Examples: performance uses caching/load balancing; modifiability uses layering/information hiding; domain complexity uses DDD/bounded contexts."
           },
           "trap": {
-            "zh": "只写“根据需求设计架构”太空，必须写出可选择的 pattern/tactic。",
+            "zh": "只写“根据需求设计架构”太空，必须写出可选择的 模式/战术。",
             "en": "“Design according to requirements” is too empty; name patterns/tactics."
           }
         }
@@ -768,11 +723,11 @@ window.reviewContent = {
         "add-roadmap"
       ],
       "memorize": {
-        "zh": "ADD 3.0 输入五类 driver：设计目的、主要功能、质量属性、架构关注点、约束。\n七步流程：Review inputs -> Establish iteration goal by selecting drivers -> Choose elements to refine -> Choose design concepts -> Instantiate elements/allocate responsibilities/define interfaces -> Sketch views and record decisions -> Analyze current design and review goal achievement。\nStep 7 分析后若没有达成目标，回到 Step 2 重新选择 driver 迭代；旧系统可从既有系统或上一轮迭代进入。",
+        "zh": "ADD 3.0 输入五类驱动因素：设计目的、主要功能、质量属性、架构关注点、约束。\n七步流程：审查输入 -> 通过选择驱动因素建立迭代目标 -> 选择要细化的系统元素 -> 选择设计概念 -> 实例化元素、分配职责、定义接口 -> 绘制视图并记录设计决定 -> 分析当前设计并检查目标达成情况。\n第 7 步分析后若没有达成目标，回到第 2 步重新选择驱动因素迭代；旧系统可从既有架构或上一轮迭代进入。",
         "en": "ADD 3.0 inputs: design purpose, primary functionality, quality attributes, architectural concerns, and constraints.\nSeven steps: review inputs; establish iteration goal by selecting drivers; choose elements to refine; choose design concepts; instantiate elements, allocate responsibilities, and define interfaces; sketch views and record decisions; analyze the design and review goal achievement.\nIf Step 7 shows the goal is not achieved, iterate back to Step 2; brownfield work can start from an existing system or a previous iteration."
       },
       "examTemplate": {
-        "zh": "画 ADD 图时先画顶部五个红色 driver，再画中间七个步骤，最后画底部 refined software architecture design；把 Step 7 到 Step 2 的迭代箭头和左侧 brownfield 输入虚线补全。",
+        "zh": "画 ADD 图时先画顶部五个红色驱动因素，再画中间七个步骤，最后画底部“精化后的软件架构设计”；把第 7 步到第 2 步的迭代箭头和左侧棕地输入虚线补全。",
         "en": "When drawing ADD, place the five red drivers at the top, the seven process steps in the middle, and the refined architecture at the bottom. Include the Step 7 -> Step 2 iteration arrow and the left brownfield artifact-flow arrow."
       },
       "lectureNotes": [
@@ -782,24 +737,24 @@ window.reviewContent = {
             "en": "What each ADD 3.0 step produces"
           },
           "summary": {
-            "zh": "ADD 按七步标题和迭代推进逻辑一起背：输入驱动每一轮目标，目标决定 refinement element 与 design concept，最后记录决策并分析是否达到目标。",
+            "zh": "ADD 按七步标题和迭代推进逻辑一起背：输入驱动每一轮目标，目标决定 细化元素 与 设计概念，最后记录决策并分析是否达到目标。",
             "en": "Do not only memorize the seven titles; know how the iteration advances design."
           },
           "explain": {
-            "zh": "ADD 先 Review inputs，确认设计目的、主要功能、质量属性、架构关注点和约束。然后 Establish iteration goal，从 driver 中挑本轮目标。第三步选择要细化的系统元素，可能是整个系统、一个子系统或一个已有组件。第四步选择设计概念，例如风格、模式、战术或技术机制。第五步实例化架构元素、分配职责、定义接口。第六步画视图并记录设计决策。第七步分析当前设计是否达到目标；没有达到就回到 Step 2 继续迭代。",
+            "zh": "ADD 先审查输入，确认设计目的、主要功能、质量属性、架构关注点和约束。然后通过选择驱动因素建立迭代目标。第三步选择要细化的系统元素，可能是整个系统、一个子系统或一个已有组件。第四步选择设计概念，例如风格、模式、战术或技术机制。第五步实例化架构元素、分配职责、定义接口。第六步画视图并记录设计决定。第七步分析当前设计是否达到目标；没有达到就回到第 2 步继续迭代。",
             "en": "ADD first reviews inputs: design purpose, primary functionality, quality attributes, architectural concerns, and constraints. It then establishes an iteration goal by selecting drivers. Step 3 chooses the system element to refine: the whole system, a subsystem, or an existing component. Step 4 chooses design concepts, such as styles, patterns, tactics, or technologies. Step 5 instantiates elements, allocates responsibilities, and defines interfaces. Step 6 sketches views and records decisions. Step 7 analyzes whether the design meets the goal; if not, iterate back to Step 2."
           },
           "memorize": {
-            "zh": "五类 driver + 七步 + Step 7 回 Step 2 迭代。",
+            "zh": "五类驱动因素 + 七步 + 第 7 步回第 2 步迭代。",
             "en": "Five driver types + seven steps + Step 7 iterates back to Step 2."
           },
           "answer": {
-            "zh": "简答题按“输入 -> 七步 -> 产物 -> 迭代”写；画图题按重绘 ADD 图画顶部 drivers、中间步骤、底部 refined architecture 和两条回路。",
+            "zh": "简答题按“输入 -> 七步 -> 产物 -> 迭代”写；画图题按重绘 ADD 图画顶部驱动因素、中间步骤、底部精化后的架构和两条回路。",
             "en": "For short answers, use “inputs -> seven steps -> outputs -> iteration”; for drawing, reproduce top drivers, middle steps, bottom refined architecture, and the feedback/artifact loops."
           },
           "boundary": {
-            "zh": "以用户提供 ground truth 和重绘 ADD 图为最高基准。",
-            "en": "The user-provided ground truth and redrawn ADD diagram are the highest reference."
+            "zh": "以用户提供的原图依据和重绘 ADD 图为最高基准。",
+            "en": "The user-provided reference and redrawn ADD diagram are the highest reference."
           }
         },
         {
@@ -808,15 +763,15 @@ window.reviewContent = {
             "en": "ADD, documentation, and views"
           },
           "summary": {
-            "zh": "ADD 不是只做脑内设计，Step 6 要把设计落成可沟通文档。",
+            "zh": "ADD 不是只做脑内设计，第 6 步 要把设计落成可沟通文档。",
             "en": "ADD is not only mental design; Step 6 records communicable documents."
           },
           "explain": {
-            "zh": "Step 6 的“sketch views and record design decisions”对应架构文档化。视图用来给不同 stakeholder 看：开发看模块分解，运维看部署，性能/并发看运行时组件和连接器。设计决定要记录 rationale，不然别人只能看到图，看不到为什么这么选。",
+            "zh": "第 6 步“绘制视图草图并记录设计决定”对应架构文档化。视图用来给不同利益相关者看：开发看模块分解，运维看部署，性能/并发看运行时组件和连接器。设计决定要记录设计理由，否则别人只能看到图，看不到为什么这么选。",
             "en": "Step 6 maps to architecture documentation. Views communicate with stakeholders: developers use module decomposition, operators use deployment, performance/concurrency uses runtime components and connectors. Design decisions need rationale; otherwise people see the diagram but not why choices were made."
           },
           "memorize": {
-            "zh": "画视图 + 记设计决策 + 记 rationale。",
+            "zh": "画视图 + 记设计决策 + 记 设计理由。",
             "en": "Sketch views + record design decisions + record rationale."
           },
           "answer": {
@@ -824,8 +779,8 @@ window.reviewContent = {
             "en": "If asked about ADD outputs, write: selected/candidate views, element responsibilities, interfaces, design decisions, rationale, and risks to analyze."
           },
           "boundary": {
-            "zh": "复习课把 ADD 流程和文档化列为高优先级，但大规模 ADD case 不是设计大题主来源。",
-            "en": "The review class keeps ADD process and documentation high priority, but a large ADD case is not expected as the main design question."
+            "zh": "课程把 ADD 流程和文档化列为高优先级，但大规模 ADD 案例 不是设计大题主依据。",
+            "en": "The review material keeps ADD process and documentation high priority, but a large ADD case is not expected as the main design question."
           }
         }
       ]
@@ -851,15 +806,15 @@ window.reviewContent = {
           "en": "Decomposition: by business capability or subdomain; goals are high cohesion, loose coupling, SRP, CCP, team autonomy."
         },
         {
-          "zh": "通信：Circuit Breaker、服务发现、API Gateway，处理局部故障和外部访问。",
+          "zh": "通信：断路器、服务发现、API 网关，处理局部故障和外部访问。",
           "en": "Communication: Circuit Breaker, service discovery, API Gateway; handle partial failure and external access."
         },
         {
-          "zh": "部署：容器、服务部署平台、serverless，解决隔离、扩展、成本与异构技术。",
+          "zh": "部署：容器、服务部署平台、无服务器，解决隔离、扩展、成本与异构技术。",
           "en": "Deployment: containers, service deployment platform, serverless; handle isolation, scaling, cost, and technology heterogeneity."
         },
         {
-          "zh": "可观测性：日志聚合、审计日志、指标、分布式追踪、异常跟踪、健康检查 API。",
+          "zh": "可观测性：日志聚合、记录日志、指标、分布式追踪、异常跟踪、健康检查 API。",
           "en": "Observability: log aggregation, audit logging, metrics, distributed tracing, exception tracking, health check API."
         },
         {
@@ -877,12 +832,11 @@ window.reviewContent = {
       ],
       "sources": [
         "Complete review minutes",
-        "Li Shanshan review-class slides",
+        "Li Shanshan review slides",
         "Lecture 6-7 Microservices slide OCR"
       ],
       "group": "modern",
-      "sourceConfidence": "完整录音李杉杉段 + Lecture 6-7 OCR + 复习课 slides",
-      "examWeight": "今年高阶重点",
+      "examWeight": "高阶重点",
       "deepDive": [
         {
           "title": {
@@ -920,7 +874,7 @@ window.reviewContent = {
             "en": "Service discovery, network failures, distributed transactions, consistency, tracing, monitoring, staged release/rollback, configuration governance."
           },
           "answer": {
-            "zh": "结构图画完后补一句 tradeoff：局部自治提高可修改性和交付速度，但系统级调试和一致性更难。",
+            "zh": "结构图画完后补一句 权衡：局部自治提高可修改性和交付速度，但系统级调试和一致性更难。",
             "en": "After the diagram, add the tradeoff: local autonomy improves modifiability/delivery, but debugging and consistency are harder."
           },
           "trap": {
@@ -930,6 +884,7 @@ window.reviewContent = {
         }
       ],
       "diagramIds": [
+        "microservice-pattern-groups",
         "microservice-style-comparison",
         "review-microservice-decomposition"
       ],
@@ -938,8 +893,8 @@ window.reviewContent = {
         "en": "Microservice core: decompose around business capabilities or subdomains, use small services, independent deployment, independent teams, lightweight communication, service-owned data, and automated infrastructure.\nCompared with SOA: SOA is often enterprise-integration and centralized-governance oriented, with larger services and possibly ESB; microservices emphasize autonomous teams, continuous delivery, and decentralized governance.\nFor design questions, cover service boundaries, data ownership, APIs, event collaboration, fault tolerance, observability, and deployment governance."
       },
       "examTemplate": {
-        "zh": "遇到外卖/电商设计题，按“业务能力拆服务 -> 每个服务管自己的数据 -> 同步接口 + 异步事件 -> Saga/补偿处理跨服务一致性 -> API Gateway、熔断、监控、日志追踪”组织答案。",
-        "en": "For food-delivery/e-commerce design prompts, organize the answer as “split services by business capability -> each service owns its data -> synchronous APIs plus asynchronous events -> Saga/compensation for cross-service consistency -> API Gateway, circuit breaker, monitoring, logging, tracing”."
+        "zh": "遇到外卖/电商设计题，按“业务能力拆服务 -> 每个服务管自己的数据 -> 同步接口 + 异步事件 -> Saga/补偿处理跨服务一致性 -> API 网关、熔断、监控、日志追踪”组织答案。",
+        "en": "For food-delivery/e-commerce design 题目s, organize the answer as “split services by business capability -> each service owns its data -> synchronous APIs plus asynchronous events -> Saga/compensation for cross-service consistency -> API Gateway, circuit breaker, monitoring, logging, tracing”."
       },
       "lectureNotes": [
         {
@@ -948,8 +903,8 @@ window.reviewContent = {
             "en": "How detailed microservice traits should be"
           },
           "summary": {
-            "zh": "复习课说不考定义，考特性、对比和模式。",
-            "en": "The review class says definition is not the target; traits, comparison, and patterns are."
+            "zh": "微服务题通常考特性、对比和模式，而不是单纯定义。",
+            "en": "The review material says definition is not the target; traits, comparison, and patterns are."
           },
           "explain": {
             "zh": "微服务不是“很多小服务”这么简单。它通常围绕业务能力或子域拆分，每个服务有清晰职责和数据归属，可以独立开发、测试、部署和扩缩容。团队按服务或业务能力自治，通信多用轻量 API 或消息，基础设施依赖自动化部署、监控、日志、追踪、服务发现、配置管理、熔断和限流。它换来局部演进和持续交付，也带来分布式一致性、网络故障、观测和运维复杂度。",
@@ -964,8 +919,8 @@ window.reviewContent = {
             "en": "Answer “why split -> how split -> how collaborate -> how govern -> tradeoffs”."
           },
           "boundary": {
-            "zh": "Lecture 6-7 slides 和完整录音均支持微服务特性/对比为高优先级。",
-            "en": "Lecture 6-7 slides and complete recording support microservice traits/comparison as high priority."
+            "zh": "第 6-7 讲 幻灯片 和课程材料均支持微服务特性/对比为高优先级。",
+            "en": "Lecture 6-7 slides and review material support microservice traits/comparison as high priority."
           }
         },
         {
@@ -975,10 +930,10 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "外卖/电商类题要写服务、数据、接口和质量取舍。",
-            "en": "Food-delivery/e-commerce prompts need services, data, APIs, and quality tradeoffs."
+            "en": "Food-delivery/e-commerce 题目s need services, data, APIs, and quality tradeoffs."
           },
           "explain": {
-            "zh": "先从业务能力或 DDD 子域找服务，例如用户、商家/菜单、订单、支付、配送、通知、结算。每个服务拥有自己的数据，避免共享数据库。用户请求通过 API Gateway 进入，服务间用同步 API 处理查询或短事务，用异步事件处理状态传播。跨服务一致性不能写成单体事务，可以写 Saga、补偿、最终一致性。最后补可用性和可观测性：熔断、重试、超时、日志、指标、链路追踪。",
+            "zh": "先从业务能力或 DDD 子域找服务，例如用户、商家/菜单、订单、支付、配送、通知、结算。每个服务拥有自己的数据，避免共享数据库。用户请求通过 API 网关进入，服务间用同步 API 处理查询或短事务，用异步事件处理状态传播。跨服务一致性不能写成单体事务，可以写 Saga、补偿、最终一致性。最后补可用性和可观测性：熔断、重试、超时、日志、指标、链路追踪。",
             "en": "Start from business capabilities or DDD subdomains: user, restaurant/menu, order, payment, delivery, notification, settlement. Each service owns its data; avoid shared databases. User requests enter through an API Gateway. Services use synchronous APIs for queries/short transactions and asynchronous events for state propagation. Cross-service consistency is not a monolithic transaction; use Saga, compensation, and eventual consistency. Add availability and observability: circuit breaker, retry, timeout, logs, metrics, tracing."
           },
           "memorize": {
@@ -986,12 +941,38 @@ window.reviewContent = {
             "en": "Service boundary, data ownership, APIs/events, consistency, gateway, fault tolerance, monitoring/tracing."
           },
           "answer": {
-            "zh": "如果要求画图：画客户端/API Gateway，后面列服务框，每个服务下面画独立数据库，用事件总线连接订单、支付、配送。",
+            "zh": "如果要求画图：画客户端/API 网关，后面列服务框，每个服务下面画独立数据库，用事件总线连接订单、支付、配送。",
             "en": "If drawing: draw client/API Gateway, service boxes behind it, one database per service, and an event bus connecting order/payment/delivery."
           },
           "boundary": {
             "zh": "Saga/事件协作是合理示例，不是题干唯一标准答案；要说明取舍。",
             "en": "Saga/event collaboration is an illustrative solution, not the only standard answer; state tradeoffs."
+          }
+        },
+        {
+          "title": {
+            "zh": "图解怎么背：四组模式",
+            "en": "How to memorize the diagram: four pattern groups"
+          },
+          "summary": {
+            "zh": "课程把微服务拆成拆分、通信、部署、可观测性四类问题。",
+            "en": "The review material organizes microservices into decomposition, communication, deployment, and observability."
+          },
+          "explain": {
+            "zh": "拆分模式回答“怎么切服务”：按业务能力或子域，目标是高内聚、低耦合、SRP、CCP 和团队自治。通信模式回答“服务之间怎么可靠通信”：断路器防止故障蔓延，服务发现找到实例，API 网关管理外部入口。部署模式回答“服务实例怎么运行”：虚拟机、容器、部署平台或无服务器支持隔离、扩缩容、资源限制和成本控制。可观测性模式回答“怎么知道系统正在发生什么”：日志聚合、记录、指标、分布式追踪、异常跟踪和健康检查 API。",
+            "en": "Decomposition answers how to split services: by business capability or subdomain, aiming at cohesion, loose coupling, SRP, CCP, and team autonomy. Communication answers how services interact reliably: circuit breakers prevent cascading failure, service discovery locates instances, and API Gateway governs external access. Deployment answers how instances run: VMs, containers, deployment platforms, or serverless support isolation, scaling, resource limits, and cost control. Observability answers how to know what is happening: log aggregation, audit log, metrics, distributed tracing, exception tracking, and health check APIs."
+          },
+          "memorize": {
+            "zh": "拆分=业务能力/子域；通信=断路器/服务发现/API 网关；部署=容器/平台/无服务器；可观测性=日志/指标/追踪/健康检查。",
+            "en": "Decomposition = capability/subdomain; communication = circuit breaker/discovery/API Gateway; deployment = containers/platform/serverless; observability = logs/metrics/tracing/health checks."
+          },
+          "answer": {
+            "zh": "设计题先用拆分图说明服务边界，再补通信、部署和可观测性，不要只写“微服务很多小服务”。",
+            "en": "In design answers, use decomposition for service boundaries, then add communication, deployment, and observability; do not stop at “many small services”."
+          },
+          "boundary": {
+            "zh": "以李杉杉课程微服务 页 5-8 为准。",
+            "en": "Grounded in Li Shanshan review pages 5-8."
           }
         }
       ]
@@ -1039,11 +1020,10 @@ window.reviewContent = {
       ],
       "sources": [
         "Complete review minutes",
-        "Li Shanshan review-class slides",
+        "Li Shanshan review slides",
         "Lecture 8-9 DDD slide OCR"
       ],
       "group": "modern",
-      "sourceConfidence": "完整录音李杉杉段 + Lecture 8-9 OCR + 2025 DDD 学长博客辅助",
       "examWeight": "设计分析题高概率",
       "deepDive": [
         {
@@ -1060,11 +1040,11 @@ window.reviewContent = {
             "en": "Subdomain, core domain, ubiquitous language, bounded context, context map, anti-corruption layer."
           },
           "answer": {
-            "zh": "以订单系统举例：订单、支付、库存是不同 bounded contexts，通过事件和契约协同。",
+            "zh": "以订单系统举例：订单、支付、库存是不同 限界上下文，通过事件和契约协同。",
             "en": "Example: ordering, payment, and inventory are bounded contexts cooperating through events/contracts."
           },
           "trap": {
-            "zh": "不要把 bounded context 等同微服务或数据库表。它首先是模型边界。",
+            "zh": "不要把 限界上下文 等同微服务或数据库表。它首先是模型边界。",
             "en": "Do not equate bounded context with a microservice or database table; it is primarily a model boundary."
           }
         },
@@ -1078,7 +1058,7 @@ window.reviewContent = {
             "en": "After strategic boundaries, design the internal model."
           },
           "must": {
-            "zh": "Entity、Value Object、Aggregate、Domain Service、Repository、Domain Event。",
+            "zh": "实体、值对象、聚合、领域服务、仓储、领域事件。",
             "en": "Entity, Value Object, Aggregate, Domain Service, Repository, Domain Event."
           },
           "answer": {
@@ -1092,6 +1072,7 @@ window.reviewContent = {
         }
       ],
       "diagramIds": [
+        "ddd-event-storming-flow",
         "ddd-core-model",
         "review-microservice-decomposition"
       ],
@@ -1122,12 +1103,12 @@ window.reviewContent = {
             "en": "Ubiquitous language, bounded context, context mapping; strategic before tactical."
           },
           "answer": {
-            "zh": "答题不要一上来列 Entity/Value Object；先说明模型边界，再落到聚合和事件。",
+            "zh": "答题不要一上来列 实体/值对象；先说明模型边界，再落到聚合和事件。",
             "en": "Do not start by listing Entity/Value Object; first explain model boundaries, then aggregates and events."
           },
           "boundary": {
-            "zh": "Lecture 8-9 和复习课强调 DDD 与微服务设计结合。",
-            "en": "Lecture 8-9 and the review class emphasize DDD with microservice design."
+            "zh": "第 8-9 讲 和课程重点强调 DDD 与微服务设计结合。",
+            "en": "Lecture 8-9 and the review material emphasize DDD with microservice design."
           }
         },
         {
@@ -1144,7 +1125,7 @@ window.reviewContent = {
             "en": "Entities have identity; value objects are equal by attributes; domain services express domain behavior that belongs to no single object; repositories persist aggregates; domain events express important facts that have happened. An aggregate is a consistency boundary, not a pile of objects. An Order aggregate may maintain items, total, and state transitions. Consistency across order/payment/delivery usually uses domain events and eventual consistency, not one giant aggregate."
           },
           "memorize": {
-            "zh": "Entity、Value Object、Aggregate、Domain Service、Repository、Domain Event；聚合=一致性边界。",
+            "zh": "实体、值对象、聚合、领域服务、仓储、领域事件；聚合=一致性边界。",
             "en": "Entity, Value Object, Aggregate, Domain Service, Repository, Domain Event; aggregate = consistency boundary."
           },
           "answer": {
@@ -1154,6 +1135,32 @@ window.reviewContent = {
           "boundary": {
             "zh": "微服务边界可参考限界上下文，但不要机械一一对应。",
             "en": "Microservice boundaries may follow bounded contexts, but not mechanically one-to-one."
+          }
+        },
+        {
+          "title": {
+            "zh": "图解怎么背：事件风暴推导边界",
+            "en": "How to memorize the diagram: event storming derives boundaries"
+          },
+          "summary": {
+            "zh": "事件风暴不是普通流程图，它用业务事实推导聚合和限界上下文。",
+            "en": "Event storming is not a generic flowchart; it derives aggregates and bounded contexts from business facts."
+          },
+          "explain": {
+            "zh": "先识别领域事件，它是过去发生的业务事实，例如 OrderCreated；再沿时间轴梳理全量事件；然后识别参与者，包括角色、策略、外部系统和前置事件；接着根据事件和规则划分聚合，聚合给出一致性和事务边界；最后划分限界上下文，并区分读模型和写模型。设计题中，限界上下文可指导服务边界，聚合指导服务内部事务边界，领域事件指导服务间协作。",
+            "en": "First identify domain events, which are past business facts such as OrderCreated. Then arrange all events on the timeline. Next identify participants: roles, policies, external systems, and prior events. Then group events and rules into aggregates, which define consistency and transaction boundaries. Finally divide bounded contexts and distinguish read/write models. In design questions, bounded contexts guide service boundaries, aggregates guide internal transaction boundaries, and domain events guide service collaboration."
+          },
+          "memorize": {
+            "zh": "事件 -> 时间轴 -> 参与者 -> 聚合 -> 限界上下文 -> 读/写模型。",
+            "en": "Events -> timeline -> participants -> aggregates -> bounded contexts -> read/write models."
+          },
+          "answer": {
+            "zh": "DDD + 微服务题可按“事件找流程，聚合定一致性，限界上下文定服务边界”作答。",
+            "en": "For DDD + microservice questions: events find process, aggregates set consistency, bounded contexts set service boundaries."
+          },
+          "boundary": {
+            "zh": "以李杉杉课程 DDD 页 10 为准。",
+            "en": "Grounded in Li Shanshan review page 10."
           }
         }
       ]
@@ -1205,11 +1212,10 @@ window.reviewContent = {
       ],
       "sources": [
         "Complete review minutes",
-        "Li Shanshan review-class slides",
-        "Lecture 10-11 Enterprise Architecture slide OCR"
+        "Li Shanshan review slides",
+        "Lecture 10-11 Enterprise 架构 slide OCR"
       ],
       "group": "modern",
-      "sourceConfidence": "完整录音李杉杉段 + Lecture 10-11 OCR",
       "examWeight": "概念理解题",
       "deepDive": [
         {
@@ -1218,7 +1224,7 @@ window.reviewContent = {
             "en": "Definition and exam form"
           },
           "summary": {
-            "zh": "没有往年真题也可能以概念简答出现，重点不是案例细节，而是能把体系说完整。",
+            "zh": "没有往年资料真题也可能以概念简答出现，重点不是案例细节，而是能把体系说完整。",
             "en": "Even without past-paper frequency, it can appear as a concept short-answer question; the focus is the framework, not case details."
           },
           "must": {
@@ -1296,12 +1302,13 @@ window.reviewContent = {
             "en": "State three scenarios: complex cross-department collaboration, many legacy systems with duplicated construction, and strategy needing transformation of processes/data/applications/technology."
           },
           "trap": {
-            "zh": "案例华为/建行了解即可，不要把案例细节当作背诵主线。",
+            "zh": "案例华为/建行了解即可，不要把案例细节当作背诵核心。",
             "en": "Huawei/CCB case details are background; the main line is definition, 4A, TOGAF/ADM, CBM, value, and scenarios."
           }
         }
       ],
       "diagramIds": [
+        "enterprise-methods-togaf-cbm",
         "enterprise-4a"
       ],
       "memorize": {
@@ -1335,7 +1342,7 @@ window.reviewContent = {
             "en": "First paragraph definition, second basic components, third relationships, fourth governance principles."
           },
           "boundary": {
-            "zh": "依据 Lecture 10-11 企业架构概念页、4A 页、全景图页和李杉杉复习 slide。",
+            "zh": "依据 第 10-11 讲 企业架构概念页、4A 页、全景图页和李杉杉复习 幻灯片。",
             "en": "Grounded in Lecture 10-11 concept/4A/panorama slides and Li Shanshan review slides."
           }
         },
@@ -1353,7 +1360,7 @@ window.reviewContent = {
             "en": "TOGAF ADM answers “what process develops enterprise architecture”: preliminary and vision, business architecture, information-system architecture, technology architecture, opportunities/solutions, migration planning, implementation governance, and change management. CBM answers “what granularity decomposes business capability”: business capability is the core and business components carry capabilities, pursuing high cohesion, low coupling, reuse, and composability. Modeling methods answer “how to identify capabilities concretely”: five-level processes and a standard verb library normalize tasks, 5W1H identifies business objects, A/B/C/D layers structure data, and process-task/data-entity clustering derives business components."
           },
           "memorize": {
-            "zh": "TOGAF=过程；CBM=能力颗粒度；五级流程/5W1H/A-B-C-D/聚类=建模落地。",
+            "zh": "TOGAF=过程；CBM=能力颗粒度；五级流程/5W1H/A/B/C/D/聚类=建模落地。",
             "en": "TOGAF = process; CBM = capability granularity; five-level process/5W1H/A-B-C-D/clustering = modeling implementation."
           },
           "answer": {
@@ -1363,6 +1370,32 @@ window.reviewContent = {
           "boundary": {
             "zh": "案例细节降权；方法骨架和建模术语要会。",
             "en": "Case details are low priority; method skeleton and modeling terms should be known."
+          }
+        },
+        {
+          "title": {
+            "zh": "图解怎么背：TOGAF 回答过程，CBM 回答颗粒度",
+            "en": "How to memorize the diagram: TOGAF is process, CBM is granularity"
+          },
+          "summary": {
+            "zh": "企业架构 P1 不要求背案例细节，但要能说清方法论。",
+            "en": "EA is P1; case details are not the memorization line, but methodology must be clear."
+          },
+          "explain": {
+            "zh": "TOGAF 的 ADM 架构开发周期从预备和愿景开始，依次推进业务架构、信息系统架构、技术架构、机会与解决方案、迁移规划、实施治理和变更管理，需求管理贯穿全程。治理可写架构委员会、架构存储库和企业连续统一体。CBM 的核心是业务能力，业务组件是能力载体，组件要求高内聚、低耦合、可复用、可组装。落地识别能力时，可用五级流程和标准动词库做流程聚类，用 5W1H 和 A/B/C/D 数据分层做数据聚类。",
+            "en": "TOGAF ADM starts with preliminary and vision, then business architecture, information-system architecture, technology architecture, opportunities and solutions, migration planning, implementation governance, and change management, with requirements management throughout. Governance keywords include architecture board, architecture repository, and enterprise continuum. CBM centers on business capability; business components carry capabilities and should be cohesive, loosely coupled, reusable, and composable. Capability identification can use five-level process and a verb library for process clustering, plus 5W1H and A/B/C/D data layers for data clustering."
+          },
+          "memorize": {
+            "zh": "TOGAF=ADM 过程；CBM=业务能力和组件；建模=流程聚类 + 数据聚类。",
+            "en": "TOGAF = ADM process; CBM = business capability and components; modeling = process clustering + data clustering."
+          },
+          "answer": {
+            "zh": "企业架构题若问方法论，按 TOGAF/ADM、CBM、建模方法三段写。",
+            "en": "For EA methodology questions, write three parts: TOGAF/ADM, CBM, and modeling methods."
+          },
+          "boundary": {
+            "zh": "以李杉杉课程企业架构 页 13/15 为准。",
+            "en": "Grounded in Li Shanshan enterprise-architecture review pages 13 and 15."
           }
         }
       ]
@@ -1375,7 +1408,7 @@ window.reviewContent = {
         "en": "Architectural Patterns, Styles, and Evolution"
       },
       "takeaway": {
-        "zh": "吕骏复习强调：可能考每一代架构的结构骨架与演进理由。不要死背模式名，要理解旧矛盾如何推出现代架构。",
+        "zh": "吕骏课程强调：可能考每一代架构的结构骨架与演进理由。不要死背模式名，要理解已有矛盾如何推出现代架构。",
         "en": "Lu Jun emphasized that each architecture generation may be tested by skeleton and evolution rationale: explain how old tensions lead to newer architectures."
       },
       "answerFrame": {
@@ -1384,7 +1417,7 @@ window.reviewContent = {
       },
       "bullets": [
         {
-          "zh": "主线：算力稀缺 -> 多用户共享 -> 富交互 -> 系统分层 -> 企业协同 -> 团队自治发布 -> 平台化韧性。",
+          "zh": "核心：算力稀缺 -> 多用户共享 -> 富交互 -> 系统分层 -> 企业协同 -> 团队自治发布 -> 平台化韧性。",
           "en": "Main line: scarce computation -> multi-user sharing -> rich interaction -> system layering -> enterprise collaboration -> autonomous team releases -> platform resilience."
         },
         {
@@ -1400,7 +1433,7 @@ window.reviewContent = {
           "en": "Event-driven design turns synchronous call chains asynchronous, improving resilience while adding ordering and debugging complexity."
         },
         {
-          "zh": "博客补充分类型记忆：Module patterns（Layered）、C&C patterns（Broker/MVC/Pipe-filter/Client-server/P2P/SOA/Pub-sub/Shared-data）、Allocation patterns（Map-reduce/Multi-tier）。",
+          "zh": "博客补充分类型记忆：模块模式（分层）、组件-连接器模式（代理模式/MVC/管道-过滤器/客户端-服务器/P2P/SOA/发布-订阅/共享数据）、分配模式（MapReduce/多层部署）。",
           "en": "Blog classification: Module patterns (Layered), C&C patterns (Broker/MVC/Pipe-filter/Client-server/P2P/SOA/Pub-sub/Shared-data), Allocation patterns (Map-reduce/Multi-tier)."
         },
         {
@@ -1410,12 +1443,11 @@ window.reviewContent = {
       ],
       "sources": [
         "Complete review minutes",
-        "Lu Jun review-class slides",
+        "Lu Jun review slides",
         "Lecture 3 OCR"
       ],
       "group": "patterns",
-      "sourceConfidence": "完整录音吕骏段 + Lecture 3 OCR",
-      "examWeight": "今年理解题",
+      "examWeight": "理解题",
       "deepDive": [
         {
           "title": {
@@ -1427,11 +1459,11 @@ window.reviewContent = {
             "en": "Clarify granularity before examples."
           },
           "must": {
-            "zh": "Style 是结构家族，pattern 是命名复用方案，tactic 是针对质量属性的小设计动作。",
+            "zh": "风格 是结构家族，模式 是命名复用方案，战术 是针对质量属性的小设计动作。",
             "en": "Style is a family of structures, pattern is a named reusable solution, tactic is a small quality-driven design move."
           },
           "answer": {
-            "zh": "答 pattern 按“上下文 -> 结构 -> 优点 -> 局限”写；答 tactic 按“质量属性 -> 机制 -> 取舍”写。",
+            "zh": "答 模式 按“上下文 -> 结构 -> 优点 -> 局限”写；答 战术 按“质量属性 -> 机制 -> 取舍”写。",
             "en": "For patterns use context, structure, benefits, limits; for tactics use quality, mechanism, tradeoff."
           },
           "trap": {
@@ -1445,7 +1477,7 @@ window.reviewContent = {
             "en": "Evolution tension"
           },
           "summary": {
-            "zh": "吕骏复习强调按时代矛盾理解架构模式。",
+            "zh": "吕骏课程强调按时代矛盾理解架构模式。",
             "en": "Lu Jun emphasized historical tensions behind patterns."
           },
           "must": {
@@ -1468,7 +1500,7 @@ window.reviewContent = {
         "microservice-style-comparison"
       ],
       "memorize": {
-        "zh": "模式、风格、策略/战术的关系：质量目标驱动策略/战术，战术组合形成模式，模式在视图里体现为结构。\n今年 Lecture 3 复习主线更偏架构演进与模式理解；GoF 设计模式不是本课程架构模式主线。\n回答模式题要写上下文、解决的问题、结构、收益、代价，不能只背名字。",
+        "zh": "模式、风格、策略/战术的关系：质量目标驱动策略/战术，战术组合形成模式，模式在视图里体现为结构。\n第 3 讲 复习核心更偏架构演进与模式理解；GoF 设计模式不是本课程架构模式核心。\n回答模式题要写上下文、解决的问题、结构、收益、代价，不能只背名字。",
         "en": "Relationship: quality goals drive tactics; tactics combine into patterns; patterns appear as structures in views.\nThe 2026 Lecture 3 review line emphasizes architecture evolution and architectural-pattern understanding; GoF design patterns are not the main line.\nFor pattern questions, answer context, problem, structure, benefits, and tradeoffs, not just the name."
       },
       "examTemplate": {
@@ -1478,19 +1510,19 @@ window.reviewContent = {
       "lectureNotes": [
         {
           "title": {
-            "zh": "style、pattern、tactic 不要混",
+            "zh": "风格、模式、战术 不要混",
             "en": "Do not mix style, pattern, and tactic"
           },
           "summary": {
-            "zh": "复习课强调它们的层级关系。",
-            "en": "The review class emphasizes their hierarchy."
+            "zh": "课程重点强调它们的层级关系。",
+            "en": "The review material emphasizes their hierarchy."
           },
           "explain": {
-            "zh": "质量属性目标会驱动 tactics，例如提高可用性可以检测故障、恢复、冗余；提高性能可以缓存、并发、资源管理。多个 tactics 和结构经验组合成 architectural patterns。Architectural style 是更抽象的结构约束和组织方式，例如 layered、pipe-and-filter、client-server、microservices。答题时不要把 GoF 设计模式当作本课程架构模式主线。",
+            "zh": "质量属性目标会驱动战术，例如提高可用性可以检测故障、恢复、冗余；提高性能可以缓存、并发、资源管理。多个战术和结构经验组合成架构模式。架构风格是更抽象的结构约束和组织方式，例如分层、管道-过滤器、客户端-服务器、微服务。答题时不要把 GoF 设计模式当作本课程架构模式核心。",
             "en": "Quality goals drive tactics: availability may use fault detection, recovery, redundancy; performance may use caching, concurrency, resource management. Multiple tactics and structural experience combine into architectural patterns. Architectural style is a more abstract structural constraint and organisation, such as layered, pipe-and-filter, client-server, microservices. Keep GoF design patterns outside the main architecture-pattern answer line."
           },
           "memorize": {
-            "zh": "Tactic=质量属性手段；Pattern=结构化解法；Style=更抽象的组织约束。",
+            "zh": "战术=质量属性手段；模式=结构化解法；风格=更抽象的组织约束。",
             "en": "Tactic = quality technique; pattern = structured solution; style = abstract organisation constraint."
           },
           "answer": {
@@ -1498,7 +1530,7 @@ window.reviewContent = {
             "en": "For pattern questions, answer context, problem, structure, benefits, costs; do not only list names."
           },
           "boundary": {
-            "zh": "Lecture 3 今年更偏架构演进/模式理解，设计模式部分不作为主线。",
+            "zh": "第 3 讲 更偏架构演进/模式理解，设计模式部分不作为核心。",
             "en": "Lecture 3 this year leans toward architecture evolution/pattern understanding; design patterns are not the main line."
           }
         },
@@ -1512,7 +1544,7 @@ window.reviewContent = {
             "en": "Evolution questions often ask why one architecture led to another."
           },
           "explain": {
-            "zh": "可以按主线理解：早期集中式计算解决资源稀缺；多用户和交互推动 client-server；复杂业务推动分层和模块化；企业集成推动 SOA；快速交付和自治团队推动微服务；云原生继续把弹性、自动化、可观测性和平台能力放进架构。每次演进都不是新架构无条件更好，而是在质量属性和组织约束下做取舍。",
+            "zh": "可以按核心理解：早期集中式计算解决资源稀缺；多用户和交互推动 客户端-服务器；复杂业务推动分层和模块化；企业集成推动 SOA；快速交付和自治团队推动微服务；云原生继续把弹性、自动化、可观测性和平台能力放进架构。每次演进都不是新架构无条件更好，而是在质量属性和组织约束下做取舍。",
             "en": "Understand the mainline: centralized computing addressed scarce resources; multi-user interaction pushed client-server; business complexity pushed layering and modularity; enterprise integration pushed SOA; rapid delivery and autonomous teams pushed microservices; cloud-native emphasizes elasticity, automation, observability, and platform capability. Each evolution is not unconditional improvement but a tradeoff under quality and organizational constraints."
           },
           "memorize": {
@@ -1520,11 +1552,11 @@ window.reviewContent = {
             "en": "Resource sharing -> interaction -> layering/modularity -> enterprise integration -> autonomous delivery -> cloud-native resilience."
           },
           "answer": {
-            "zh": "答演进题时写“旧架构解决什么、暴露什么问题、新架构用什么结构缓解、代价是什么”。",
+            "zh": "答演进题时写“已有架构解决什么、暴露什么问题、新架构用什么结构缓解、代价是什么”。",
             "en": "For evolution, write “what the old architecture solved, what problem it exposed, what structure the new architecture uses, and what cost it introduces”."
           },
           "boundary": {
-            "zh": "以吕骏复习 Lecture 3 的演进主线为准；具体历史细节不抢 P0 时间。",
+            "zh": "以吕骏课程 第 3 讲 的演进核心为准；具体历史细节只作理解背景。",
             "en": "Grounded in Lu Jun's Lecture 3 review line; detailed history should not consume P0 time."
           }
         }
@@ -1538,35 +1570,34 @@ window.reviewContent = {
         "en": "Views and Architecture Documentation"
       },
       "takeaway": {
-        "zh": "4+1 views 是张贺复习课明确主线；Views and Beyond 用于补充文档化，不要把一堆 UML 图名当答案。",
-        "en": "4+1 views are explicit review-class mainline. Views and Beyond supports documentation; do not answer by listing random UML diagram names."
+        "zh": "4+1 视图 要和 视图及视图外信息 一起背；答题重点是视图类型、关注点和视图外信息，而不只是列 UML 图名。",
+        "en": "4+1 views are explicit review mainline. Views and Beyond supports documentation; do not answer by listing random UML diagram names."
       },
       "answerFrame": {
-        "zh": "4+1：逻辑、过程、物理、开发 + 用例场景。Views and Beyond：先文档化视图，再补充跨视图信息、接口、映射、理由、质量属性。",
+        "zh": "4+1：逻辑、过程、物理、开发 + 用例场景。视图及视图外信息：先文档化视图，再补充跨视图信息、接口、映射、理由、质量属性。",
         "en": "4+1: logical, process, physical, development + use-case scenarios. Views and Beyond: document views first, then beyond-view information, interfaces, mappings, rationale, and quality attributes."
       },
       "bullets": [
         {
-          "zh": "Module viewtype：分解、使用、泛化、分层、数据模型等。",
+          "zh": "模块视图类型：分解、使用、泛化、分层、数据模型等。",
           "en": "Module viewtype: decomposition, uses, generalization, layered, data model, etc."
         },
         {
-          "zh": "Component-and-connector viewtype：运行时组件、连接器、交互。",
+          "zh": "组件-连接器视图类型：运行时组件、连接器、交互。",
           "en": "Component-and-connector viewtype: runtime components, connectors, interactions."
         },
         {
-          "zh": "Allocation viewtype：软件到环境、硬件、团队、文件系统等的映射。",
+          "zh": "分配视图类型：软件到环境、硬件、团队、文件系统等的映射。",
           "en": "Allocation viewtype: mapping software to environment, hardware, teams, filesystems, etc."
         }
       ],
       "sources": [
         "Complete review recording transcript",
         "Complete review minutes",
-        "Review-class slides OCR"
+        "Review slides OCR"
       ],
       "group": "process",
-      "sourceConfidence": "完整录音 + 复习课整理稿 + 对应 review slides/OCR",
-      "examWeight": "历史高频，今年降权",
+      "examWeight": "往年高频，补充掌握",
       "deepDive": [
         {
           "title": {
@@ -1574,19 +1605,19 @@ window.reviewContent = {
             "en": "Why multiple views"
           },
           "summary": {
-            "zh": "不同 stakeholder 需要不同视角。",
+            "zh": "不同 利益相关者 需要不同视角。",
             "en": "Different stakeholders need different perspectives."
           },
           "must": {
-            "zh": "Module 看实现单元，C&C 看运行时交互，Allocation 看软件到硬件/团队/文件的映射。",
+            "zh": "模块 看实现单元，C&C 看运行时交互，分配 看软件到硬件/团队/文件的映射。",
             "en": "Module concerns implementation units, C&C runtime interaction, Allocation software-to-environment mapping."
           },
           "answer": {
-            "zh": "先说为什么不能只用一个图，再列 3 类 viewtype 或 4+1 并说明目的。",
+            "zh": "先说为什么不能只用一个图，再列 3 类 视图类型 或 4+1 并说明目的。",
             "en": "Explain why one diagram is insufficient, then list three viewtypes or 4+1 and their purposes."
           },
           "trap": {
-            "zh": "不要把“视图”写成随机 UML 图名。视图要对应 stakeholder concern。",
+            "zh": "不要把“视图”写成随机 UML 图名。视图要对应 利益相关者 关注点。",
             "en": "Do not list random UML diagrams; views must match stakeholder concerns."
           }
         },
@@ -1596,29 +1627,30 @@ window.reviewContent = {
             "en": "Documentation package"
           },
           "summary": {
-            "zh": "Views and Beyond 要写 view 内和 view 外。",
+            "zh": "视图及视图外信息 要写 视图 内和 视图 外。",
             "en": "Views and Beyond includes view and beyond-view information."
           },
           "must": {
-            "zh": "每个 view 要有主表示、元素目录、关系、接口、行为、上下文、理由；beyond-view 有路线图、概览、术语、约束、映射。",
+            "zh": "每个 视图 要有主表示、元素目录、关系、接口、行为、上下文、理由；视图外 有路线图、概览、术语、约束、映射。",
             "en": "Each view needs primary presentation, element catalog, relations, interfaces, behavior, context, rationale; beyond-view includes roadmap, overview, glossary, constraints, mappings."
           },
           "answer": {
-            "zh": "架构文档题按“overview -> views -> beyond-view -> mappings/rationale”答。",
+            "zh": "架构文档题按“概览 -> 视图 -> 视图外信息 -> 映射/设计理由”答。",
             "en": "Answer architecture documentation as overview, views, beyond-view, mappings/rationale."
           },
           "trap": {
-            "zh": "只写“画类图、部署图、时序图”不够。要说每个视图服务谁、解决什么 concern。",
+            "zh": "只写“画类图、部署图、时序图”不够。要说每个视图服务谁、解决什么 关注点。",
             "en": "Class/deployment/sequence diagrams alone are insufficient; state audience and concern."
           }
         }
       ],
       "diagramIds": [
+        "architecture-view-selection",
         "review-4-plus-1-views",
         "architecture-design-process"
       ],
       "memorize": {
-        "zh": "Views and Beyond 三类视图：Module、Component-and-Connector、Allocation。\n4+1 视图：Logical、Process、Physical、Development，加 Use Cases/Scenarios。\n视图不是越多越好；根据 stakeholder concerns 选择并记录视图、元素、关系、约束和 rationale。",
+        "zh": "视图及视图外信息 三类视图：模块、组件-连接器、分配。\n4+1 视图：逻辑视图、进程视图、物理视图、开发视图，加 用例/场景。\n视图不是越多越好；根据 利益相关者关注点 选择并记录视图、元素、关系、约束和 设计理由。",
         "en": "Views and Beyond has three view types: Module, Component-and-Connector, and Allocation.\n4+1 views: Logical, Process, Physical, Development, plus Use Cases/Scenarios.\nMore views are not always better; select views by stakeholder concerns and record elements, relations, constraints, and rationale."
       },
       "examTemplate": {
@@ -1632,11 +1664,11 @@ window.reviewContent = {
             "en": "Why multiple views are needed"
           },
           "summary": {
-            "zh": "视图是面向 stakeholder concern 的沟通工具。",
+            "zh": "视图是面向 利益相关者 关注点 的沟通工具。",
             "en": "Views communicate with stakeholder concerns."
           },
           "explain": {
-            "zh": "同一个系统的架构不能靠一张图表达完。开发人员关心模块分解和依赖，运维人员关心部署节点和网络，性能分析关心运行时组件和连接器，项目管理关心工作分配和责任边界。因此架构文档要根据 stakeholder concerns 选择视图，而不是图越多越好。",
+            "zh": "同一个系统的架构不能靠一张图表达完。开发人员关心模块分解和依赖，运维人员关心部署节点和网络，性能分析关心运行时组件和连接器，项目管理关心工作分配和责任边界。因此架构文档要根据 利益相关者关注点 选择视图，而不是图越多越好。",
             "en": "One diagram cannot express the whole architecture. Developers care about module decomposition and dependencies; operators care about deployment nodes and networks; performance analysis cares about runtime components and connectors; project management cares about work assignment and responsibility. Documentation selects views by stakeholder concerns, not by drawing more diagrams."
           },
           "memorize": {
@@ -1644,17 +1676,17 @@ window.reviewContent = {
             "en": "View = architecture seen through one concern; one architecture has multiple views."
           },
           "answer": {
-            "zh": "答题先说 stakeholder concerns，再列视图类型，最后给每类视图适合谁看。",
+            "zh": "答题先说 利益相关者关注点，再列视图类型，最后给每类视图适合谁看。",
             "en": "Start with stakeholder concerns, list view types, then state who each view serves."
           },
           "boundary": {
-            "zh": "完整录音与 slides 点名 architecture views/4+1。",
-            "en": "The complete recording and slides name architecture views/4+1."
+            "zh": "课程讲义与课程材料 点名 架构 视图/4+1。",
+            "en": "The review material and slides name architecture views/4+1."
           }
         },
         {
           "title": {
-            "zh": "Views and Beyond 与 4+1 怎么背",
+            "zh": "视图及视图外信息 与 4+1 怎么背",
             "en": "How to memorize Views and Beyond and 4+1"
           },
           "summary": {
@@ -1662,20 +1694,46 @@ window.reviewContent = {
             "en": "This is the stable skeleton for documentation questions."
           },
           "explain": {
-            "zh": "Views and Beyond 常用三类：Module view 看静态代码/模块分解和依赖；Component-and-Connector view 看运行时组件、连接器、数据流和交互；Allocation view 看软件元素到环境的映射，例如部署到节点、分配给团队、映射到文件/目录。4+1 视图是 Logical、Process、Physical、Development 加 Use Cases/Scenarios，用场景把其他视图串起来。",
+            "zh": "视图及视图外信息 常用三类：模块视图 看静态代码/模块分解和依赖；组件-连接器 视图 看运行时组件、连接器、数据流和交互；分配 视图 看软件元素到环境的映射，例如部署到节点、分配给团队、映射到文件/目录。4+1 视图是 逻辑视图、进程视图、物理视图、开发视图 加 用例/场景，用场景把其他视图串起来。",
             "en": "Views and Beyond has three common types: Module view shows static code/module decomposition and dependencies; Component-and-Connector view shows runtime components, connectors, data flow, and interactions; Allocation view maps software elements to environments, such as deployment to nodes, assignment to teams, or files/directories. 4+1 views are Logical, Process, Physical, Development plus Use Cases/Scenarios, where scenarios tie the other views together."
           },
           "memorize": {
-            "zh": "Module、C&C、Allocation；Logical、Process、Physical、Development + Use Cases。",
+            "zh": "模块、C&C、分配；逻辑视图、进程视图、物理视图、开发视图 + 用例。",
             "en": "Module, C&C, Allocation; Logical, Process, Physical, Development + Use Cases."
           },
           "answer": {
-            "zh": "如果题问文档包，写视图、元素、关系、接口、行为、约束、设计决策和 rationale。",
+            "zh": "如果题问文档包，写视图、元素、关系、接口、行为、约束、设计决策和 设计理由。",
             "en": "If asked about a documentation package, include views, elements, relations, interfaces, behavior, constraints, design decisions, and rationale."
           },
           "boundary": {
             "zh": "视图例子按课程常见分类保守回答，不要自创过多分类。",
             "en": "Use conservative course categories; do not invent too many classifications."
+          }
+        },
+        {
+          "title": {
+            "zh": "图解怎么背：视图不是越多越好",
+            "en": "How to memorize the diagram: views are not more-is-better"
+          },
+          "summary": {
+            "zh": "第 12 讲 的重点是按 利益相关者 信息需求选择视图。",
+            "en": "Lecture 12 emphasizes selecting views by stakeholder information needs."
+          },
+          "explain": {
+            "zh": "最小文档通常至少有一个模块视图和一个组件-连接器视图，大系统还要一个分配视图。选择视图时先建利益相关者/视图表：行写利益相关者，列写候选视图，每个格子填无、概览、中等细节或高细节。第二步合并边缘视图，特别是只服务少数人或只需要概览的视图。第三步排序并分阶段发布；分解视图常适合较早发布，因为项目经理可据此安排团队、培训、预算和外包。视图外信息则补充文档路线图、系统概览、跨视图映射、设计理由、术语表等。",
+            "en": "A minimal document usually has at least one Module view and one C&C view; larger systems add one Allocation view. Selection begins with a stakeholder/view table: rows are stakeholders, columns are candidate views, and each cell records none, overview, moderate, or high detail. Then combine marginal views, especially views serving few stakeholders or needing only overview. Finally prioritize and stage; decomposition is often released early because managers can staff teams, training, budgets, and outsourcing. Beyond-view information adds roadmap, system overview, mappings, rationale, glossary, and related material."
+          },
+          "memorize": {
+            "zh": "最少 模块 + C&C；大系统加 分配；选视图=建表、合并、排序；视图外=路线图/概览/映射/设计理由。",
+            "en": "Minimum Module + C&C; larger systems add Allocation; choose views by table, combine, prioritize; beyond-view = roadmap/overview/mapping/rationale."
+          },
+          "answer": {
+            "zh": "文档化题先说 利益相关者关注点，再说最小视图集合、选择方法和 视图外 信息。",
+            "en": "For documentation questions, start from stakeholder concerns, then minimum views, selection method, and beyond-view information."
+          },
+          "boundary": {
+            "zh": "以 第 12 讲 页 96-109 为准。",
+            "en": "Grounded in Lecture 12 pages 96-109."
           }
         }
       ]
@@ -1685,40 +1743,39 @@ window.reviewContent = {
       "group": "core",
       "priority": "P0",
       "examWeight": "质量属性扩展题",
-      "sourceConfidence": "完整录音张贺段 + Lecture 2-4 OCR",
       "title": {
         "zh": "质量属性战术",
         "en": "Quality Attribute Tactics"
       },
       "takeaway": {
-        "zh": "tactic 是把质量属性落到架构设计决定的最小工具，答题要从“属性 -> 场景 -> tactic -> tradeoff”走。",
+        "zh": "战术 是把质量属性落到架构设计决定的最小工具，答题要从“属性 -> 场景 -> 战术 -> 权衡”走。",
         "en": "A tactic is the smallest tool that turns a quality attribute into architectural decisions; answer through “attribute -> scenario -> tactic -> tradeoff”."
       },
       "answerFrame": {
-        "zh": "先写六要素场景，再选 tactic：可用性用故障检测/恢复/预防，性能用资源需求控制/资源管理，安全用认证授权/检测/恢复，可测试性用控制与观察。",
+        "zh": "先写六要素场景，再选 战术：可用性用故障检测/恢复/预防，性能用资源需求控制/资源管理，安全用认证授权/检测/恢复，可测试性用控制与观察。",
         "en": "Start with the six-part scenario, then choose tactics: availability uses fault detection/recovery/prevention; performance uses resource demand/control and resource management; security uses authenticate/authorize/detect/recover; testability uses control and observe."
       },
       "bullets": [
         {
-          "zh": "Availability：ping/echo、heartbeat、exception detection、rollback、active/passive redundancy。",
+          "zh": "可用性：ping/echo 检测、心跳检测、异常检测、回滚、主动/被动冗余。",
           "en": "Availability: ping/echo, heartbeat, exception detection, rollback, active/passive redundancy."
         },
         {
-          "zh": "Performance：limit event response、prioritize events、resource pooling、concurrency、caching、load balancing。",
+          "zh": "性能：限制事件响应、事件优先级、资源池、并发、缓存、负载均衡。",
           "en": "Performance: limit event response, prioritize events, resource pooling, concurrency, caching, load balancing."
         },
         {
-          "zh": "Modifiability：encapsulate、use an intermediary、restrict dependencies、defer binding time。",
+          "zh": "可修改性：封装、使用中介、限制依赖、延迟绑定时间。",
           "en": "Modifiability: encapsulate, use an intermediary, restrict dependencies, defer binding time."
         },
         {
-          "zh": "Security：authenticate users、authorize users、limit access、detect attacks、recover。",
+          "zh": "安全性：认证用户、授权用户、限制访问、检测攻击、恢复。",
           "en": "Security: authenticate users, authorize users, limit access, detect attacks, recover."
         }
       ],
       "sources": [
         "Complete review minutes",
-        "Lecture 2-4 Quality Attributes OCR"
+        "Lecture 2-4 质量属性 OCR"
       ],
       "deepDive": [
         {
@@ -1727,19 +1784,19 @@ window.reviewContent = {
             "en": "Tactic memory"
           },
           "summary": {
-            "zh": "tactic 是质量属性到设计的桥。",
+            "zh": "战术 是质量属性到设计的桥。",
             "en": "A tactic bridges quality attributes and design."
           },
           "must": {
-            "zh": "可用性：detect/recover/prevent；性能：resource demand/management/arbitration；安全：抵抗、检测、恢复；可测试：控制和观察。",
+            "zh": "可用性：检测、恢复、预防；性能：控制资源需求、管理资源、资源仲裁；安全性：抵抗、检测、恢复；可测试性：控制和观察。",
             "en": "Availability: detect/recover/prevent; performance: resource demand/management/arbitration; security: resist/detect/recover; testability: control and observe."
           },
           "answer": {
-            "zh": "看到属性题，先写场景，再选 tactic，并说明它改变了哪一段响应。",
+            "zh": "看到属性题，先写场景，再选 战术，并说明它改变了哪一段响应。",
             "en": "For an attribute question, write scenario, choose tactic, and say which response it changes."
           },
           "trap": {
-            "zh": "不要把 tactic 当完整 pattern。多个 tactic 组合后才可能形成 broker、microservices、layered 等模式。",
+            "zh": "不要把战术当完整模式。多个战术组合后才可能形成代理模式、微服务、分层等模式。",
             "en": "Do not treat tactic as a complete pattern; patterns combine multiple tactics."
           }
         },
@@ -1749,7 +1806,7 @@ window.reviewContent = {
             "en": "Tradeoff wording"
           },
           "summary": {
-            "zh": "战术题要用 tradeoff 把答案收住。",
+            "zh": "战术题要用 权衡 把答案收住。",
             "en": "Tactic answers need tradeoff closure."
           },
           "must": {
@@ -1757,11 +1814,11 @@ window.reviewContent = {
             "en": "Caching improves performance but complicates consistency; redundancy improves availability but costs more; authentication improves security but may hurt usability."
           },
           "answer": {
-            "zh": "最后一句写“因此该 tactic 适用于……但需要……配套”。",
+            "zh": "最后一句写“因此该 战术 适用于……但需要……配套”。",
             "en": "End with “therefore this tactic suits ..., but needs ... support”."
           },
           "trap": {
-            "zh": "只列 tactic 名字不得分高，要解释用途和代价。",
+            "zh": "只列 战术 名字不得分高，要解释用途和代价。",
             "en": "Listing tactic names alone is weak; explain purpose and cost."
           }
         }
@@ -1789,7 +1846,7 @@ window.reviewContent = {
             "en": "Names are insufficient; explain which response/measure changes."
           },
           "explain": {
-            "zh": "战术是实现质量属性的设计手段。它不是孤立词表，而要服务质量场景。例如可用性场景里服务器无响应，战术可以是 heartbeat 检测、冗余副本、故障转移和恢复；响应从“服务中断”变成“通知操作者并继续操作”，响应度量从不可测变成“无停机时间/30 秒内恢复”。性能场景里高负载导致慢响应，战术可以是缓存、并发、资源池、负载均衡，度量是 95% 请求 2 秒内返回。",
+            "zh": "战术是实现质量属性的设计手段。它不是孤立词表，而要服务质量场景。例如可用性场景里服务器无响应，战术可以是 心跳检测 检测、冗余副本、故障转移和恢复；响应从“服务中断”变成“通知操作者并继续操作”，响应度量从不可测变成“无停机时间/30 秒内恢复”。性能场景里高负载导致慢响应，战术可以是缓存、并发、资源池、负载均衡，度量是 95% 请求 2 秒内返回。",
             "en": "A tactic is a design technique for a quality attribute. It is not an isolated word list; it serves a quality scenario. For availability, when a server does not respond, tactics include heartbeat detection, redundancy, failover, and recovery; the response becomes “notify operator and continue operation”, and the measure becomes “no downtime/recover within 30 seconds”. For performance, high load causing slow response can use caching, concurrency, resource pools, and load balancing, with a measure such as 95% requests within 2 seconds."
           },
           "memorize": {
@@ -1801,7 +1858,7 @@ window.reviewContent = {
             "en": "Do not stop at “use cache to improve performance”; add that caching reduces repeated computation/remote access and lowers average latency."
           },
           "boundary": {
-            "zh": "以质量属性场景和 tactics/patterns 关系为准；具体战术例子保守即可。",
+            "zh": "以质量属性场景和 战术/模式 关系为准；具体战术例子保守即可。",
             "en": "Grounded in quality scenarios and the tactics/patterns relationship; keep tactic examples conservative."
           }
         },
@@ -1815,7 +1872,7 @@ window.reviewContent = {
             "en": "Availability, performance, modifiability, and security are most reusable in design answers."
           },
           "explain": {
-            "zh": "可用性关注故障下继续服务，可写检测、恢复、冗余。性能关注响应时间、吞吐和资源，可写缓存、并发、负载均衡、资源管理。可修改性关注变化成本，可写模块化、信息隐藏、接口稳定、低耦合。安全关注防止未授权访问和追踪，可写认证、授权、加密、审计、最小权限。所有例子都要回到具体场景和度量。",
+            "zh": "可用性关注故障下继续服务，可写检测、恢复、冗余。性能关注响应时间、吞吐和资源，可写缓存、并发、负载均衡、资源管理。可修改性关注变化成本，可写模块化、信息隐藏、接口稳定、低耦合。安全关注防止未授权访问和追踪，可写认证、授权、加密、记录、最小权限。所有例子都要回到具体场景和度量。",
             "en": "Availability concerns continued service under failure: detection, recovery, redundancy. Performance concerns latency, throughput, and resources: cache, concurrency, load balancing, resource management. Modifiability concerns change cost: modularity, information hiding, stable interfaces, low coupling. Security concerns unauthorized access and traceability: authentication, authorization, encryption, audit, least privilege. Each example must return to scenario and measure."
           },
           "memorize": {
@@ -1823,7 +1880,7 @@ window.reviewContent = {
             "en": "Availability = continue under failure; performance = time/throughput/resource; modifiability = low-cost change; security = authorization/protection/tracing."
           },
           "answer": {
-            "zh": "设计题可以在组件图旁边标注质量战术，例如 Gateway 处限流和认证，服务间熔断，数据库旁缓存或读写分离。",
+            "zh": "设计题可以在组件图旁边标注质量战术，例如网关处限流和认证，服务间熔断，数据库旁缓存或读写分离。",
             "en": "In design questions, annotate tactics next to components, e.g. rate limiting/authentication at Gateway, circuit breaker between services, cache/read-write split near database."
           },
           "boundary": {
@@ -1837,15 +1894,14 @@ window.reviewContent = {
       "id": "design-decisions",
       "group": "process",
       "priority": "P0",
-      "examWeight": "复习课点名概念",
-      "sourceConfidence": "完整录音 + 复习课整理稿 + 对应 review slides/OCR",
+      "examWeight": "重点覆盖概念",
       "title": {
         "zh": "设计决定七分类",
         "en": "Seven Categories of Design Decisions"
       },
       "takeaway": {
-        "zh": "架构设计不是只选 pattern，而是系统性做一组设计决定；复习课明确点到七类决定。",
-        "en": "Architecture design is not merely choosing a pattern; it is a systematic set of design decisions. The review class explicitly named seven categories."
+        "zh": "架构设计不是只选 模式，而是系统性做一组设计决定；七类设计决定要能分点说明。",
+        "en": "Architecture design is not merely choosing a pattern; it is a systematic set of design decisions. The review material explicitly named seven categories."
       },
       "answerFrame": {
         "zh": "按七类展开：责任分配、协调/配置模型、数据模型、资源管理、架构元素映射、绑定时间、技术选择。每类给一个例子即可。",
@@ -1857,7 +1913,7 @@ window.reviewContent = {
           "en": "Responsibility allocation: assign function/quality responsibilities to elements, e.g. an auth service handles identity checks."
         },
         {
-          "zh": "协调/配置：定义元素如何交互，选择同步调用、异步事件、broker 或 pub-sub。",
+          "zh": "协调/配置：定义元素如何交互，选择同步调用、异步事件、代理模式 或 发布-订阅。",
           "en": "Coordination/configuration: define element interaction, such as synchronous calls, events, broker, or pub-sub."
         },
         {
@@ -1872,7 +1928,7 @@ window.reviewContent = {
       "sources": [
         "Complete review recording transcript",
         "Complete review minutes",
-        "Review-class slides OCR"
+        "Review slides OCR"
       ],
       "deepDive": [
         {
@@ -1889,7 +1945,7 @@ window.reviewContent = {
             "en": "Responsibility assignment, coordination model, data model, resource management, element mapping, binding time, technology choice."
           },
           "answer": {
-            "zh": "每类给一个例子：如把支付职责放入 Payment Service，通信选事件，数据归服务所有，运行时绑定策略。",
+            "zh": "每类给一个例子：如把支付职责放入支付服务，通信选事件，数据归服务所有，运行时绑定策略。",
             "en": "Give examples: payment responsibility in Payment Service, events for coordination, service-owned data, runtime binding."
           },
           "trap": {
@@ -1903,7 +1959,7 @@ window.reviewContent = {
             "en": "Binding time"
           },
           "summary": {
-            "zh": "binding time 常与可修改性/可测试性一起考。",
+            "zh": "绑定时间 常与可修改性/可测试性一起考。",
             "en": "Binding time often appears with modifiability/testability."
           },
           "must": {
@@ -1915,17 +1971,18 @@ window.reviewContent = {
             "en": "Use plug-ins, configuration, compile-time choice, runtime strategy selection as examples."
           },
           "trap": {
-            "zh": "不要单向吹 late binding。考试更喜欢双向 tradeoff。",
+            "zh": "不要单向吹 晚绑定。考试更喜欢双向 权衡。",
             "en": "Do not praise late binding one-sidedly; exams prefer two-way tradeoffs."
           }
         }
       ],
       "diagramIds": [
+        "design-decision-categories",
         "architecture-design-process",
         "add-roadmap"
       ],
       "memorize": {
-        "zh": "架构不仅是图，还包括设计决策和 rationale。\n七类设计决定：元素职责、协调模型、数据模型、资源管理、元素映射、绑定时间、技术选择。\n好答案要说明“为什么这么选”，并写出取舍。",
+        "zh": "架构不仅是图，还包括设计决策和 设计理由。\n七类设计决定：元素职责、协调模型、数据模型、资源管理、元素映射、绑定时间、技术选择。\n好答案要说明“为什么这么选”，并写出取舍。",
         "en": "Architecture is not only diagrams; it also includes design decisions and rationale.\nSeven decision categories: responsibilities, coordination model, data model, resource management, mapping among elements, binding time, and technology choices.\nA strong answer explains why the choice is made and states tradeoffs."
       },
       "examTemplate": {
@@ -1955,25 +2012,25 @@ window.reviewContent = {
             "en": "Answer with “decision item -> alternatives -> rationale -> affected qualities -> tradeoffs”."
           },
           "boundary": {
-            "zh": "复习课明确七类设计决定；这是 P0 口径。",
-            "en": "The review class explicitly lists seven decision categories; this is P0."
+            "zh": "七类设计决定；这是 P0 表述。",
+            "en": "The review material explicitly lists seven decision categories; this is P0."
           }
         },
         {
           "title": {
-            "zh": "rationale 为什么要写",
+            "zh": "设计理由 为什么要写",
             "en": "Why rationale matters"
           },
           "summary": {
-            "zh": "没有 rationale，架构文档只有结果没有推理。",
+            "zh": "没有 设计理由，架构文档只有结果没有推理。",
             "en": "Without rationale, documentation has results but no reasoning."
           },
           "explain": {
-            "zh": "架构常常是取舍。选择微服务提高独立部署和团队自治，但引入分布式一致性和运维复杂度；选择共享数据库降低短期开发成本，但削弱服务自治；选择缓存提高性能，但引入一致性和失效问题。rationale 要记录 driver、备选方案、为什么选、放弃了什么、风险是什么。",
+            "zh": "架构常常是取舍。选择微服务提高独立部署和团队自治，但引入分布式一致性和运维复杂度；选择共享数据库降低短期开发成本，但削弱服务自治；选择缓存提高性能，但引入一致性和失效问题。设计理由 要记录 驱动因素、备选方案、为什么选、放弃了什么、风险是什么。",
             "en": "Architecture is tradeoff. Microservices improve independent deployment and team autonomy but introduce distributed consistency and operational complexity; shared database lowers short-term development cost but weakens service autonomy; cache improves performance but adds consistency/invalidation problems. Rationale records drivers, alternatives, why this choice, what was sacrificed, and risks."
           },
           "memorize": {
-            "zh": "rationale=驱动因素 + 备选方案 + 选择理由 + 代价风险。",
+            "zh": "设计理由=驱动因素 + 备选方案 + 选择理由 + 代价风险。",
             "en": "Rationale = drivers + alternatives + reason + tradeoffs/risks."
           },
           "answer": {
@@ -1981,8 +2038,34 @@ window.reviewContent = {
             "en": "Adding tradeoffs often improves design answers: independent evolution vs consistency complexity, performance vs freshness, flexibility vs governance cost."
           },
           "boundary": {
-            "zh": "和 ADD Step 6、架构文档化、设计决定七类一致。",
+            "zh": "和 ADD 第 6 步、架构文档化、设计决定七类一致。",
             "en": "Consistent with ADD Step 6, documentation, and the seven decision categories."
+          }
+        },
+        {
+          "title": {
+            "zh": "图解怎么背：七类设计决定落到例子",
+            "en": "How to memorize the diagram: make seven decisions concrete"
+          },
+          "summary": {
+            "zh": "七类名称要会背，但得配系统例子才像答案。",
+            "en": "Memorize the names, but examples make the answer real."
+          },
+          "explain": {
+            "zh": "职责分配说明每个元素做什么；协调模型说明同步调用、异步事件、代理模式 或 发布-订阅 如何协作；数据模型说明数据对象、归属和一致性边界；资源管理说明 CPU、线程、连接、缓存、带宽等资源如何分配；元素映射说明模块、运行时组件和部署节点如何对应；绑定时间说明变化点是在编译、部署、启动还是运行时决定；技术选择说明框架、中间件、数据库和云平台选择。答题时每类给一句例子，再写它影响的质量属性。",
+            "en": "Responsibility allocation states what each element does. Coordination states whether collaboration uses synchronous calls, asynchronous events, broker, or pub-sub. Data model states data objects, ownership, and consistency boundaries. Resource management covers CPU, threads, connections, cache, bandwidth, and other resources. Mapping explains how modules, runtime components, and deployment nodes correspond. Binding time states whether variation is fixed at compile, deployment, startup, or runtime. Technology choice covers frameworks, middleware, databases, and cloud platforms. Give one example per category and state quality impact."
+          },
+          "memorize": {
+            "zh": "职责、协调、数据、资源、映射、绑定时间、技术选择。",
+            "en": "Responsibilities, coordination, data, resources, mapping, binding time, technology choices."
+          },
+          "answer": {
+            "zh": "架构图旁要能补设计决定和 设计理由；否则图只说明“是什么”，没有说明“为什么”。",
+            "en": "A diagram should be accompanied by decisions and rationale; otherwise it says what, but not why."
+          },
+          "boundary": {
+            "zh": "以张贺第一份课程讲义第 7 页为准。",
+            "en": "Grounded in Zhang He review-1 page 7."
           }
         }
       ]
@@ -1991,37 +2074,36 @@ window.reviewContent = {
       "id": "evaluation-atam",
       "group": "historical",
       "priority": "P2",
-      "examWeight": "往年高频，今年复习课降权",
-      "sourceConfidence": "历史题 + 质量属性/Utility tree 课程资料；今年未抬到主线",
+      "examWeight": "往年高频，补充掌握",
       "title": {
         "zh": "ATAM 架构评估",
         "en": "ATAM Architecture Evaluation"
       },
       "takeaway": {
-        "zh": "ATAM 今年未被复习课强调，但往年反复考输出、参与者和风险/敏感点/权衡点，建议作为历史高频保留。",
+        "zh": "ATAM 未被课程重点强调，但往年资料中较常见输出、参与者和风险/敏感点/权衡点，建议作为往年高频保留。",
         "en": "ATAM was not emphasized this year, but past papers repeatedly ask outputs, stakeholders, and risks/sensitivity/tradeoff points; keep it as historical high-frequency material."
       },
       "answerFrame": {
-        "zh": "按阶段背输出，再用三概念收尾：risk 是潜在问题，sensitivity point 影响单一质量属性，tradeoff point 同时影响多个质量属性。",
+        "zh": "按阶段背输出，再用三概念收尾：风险 是潜在问题，敏感点 影响单一质量属性，权衡点 同时影响多个质量属性。",
         "en": "Memorize outputs by phase, then close with three concepts: risk is a potential problem, sensitivity point affects one quality attribute, tradeoff point affects multiple attributes."
       },
       "bullets": [
         {
-          "zh": "Phase 1 核心输出：业务驱动、架构方法、效用树、场景、风险/非风险、敏感点/权衡点。",
+          "zh": "第 1 阶段 核心输出：业务驱动、架构方法、效用树、场景、风险/非风险、敏感点/权衡点。",
           "en": "Phase 1 outputs: business drivers, architectural approaches, utility tree, scenarios, risks/non-risks, sensitivity/tradeoff points."
         },
         {
-          "zh": "Phase 2 加入更广泛 stakeholder 生成和排序场景，并归纳风险主题。",
+          "zh": "第 2 阶段 加入更广泛 利益相关者 生成和排序场景，并归纳风险主题。",
           "en": "Phase 2 involves broader stakeholders to generate/prioritize scenarios and summarize risk themes."
         },
         {
-          "zh": "Phase 3 输出最终报告，包含风险主题、敏感点、权衡点和推荐行动。",
+          "zh": "第 3 阶段输出最终报告，包含风险主题、敏感点、权衡点和推荐行动。",
           "en": "Phase 3 produces the final report with risk themes, sensitivity points, tradeoff points, and recommended actions."
         }
       ],
       "sources": [
         "Historical past papers",
-        "Lecture 2-4 Quality Attributes OCR"
+        "Lecture 2-4 质量属性 OCR"
       ],
       "deepDive": [
         {
@@ -2030,11 +2112,11 @@ window.reviewContent = {
             "en": "Phase outputs"
           },
           "summary": {
-            "zh": "ATAM 历史高频，按阶段表背。",
+            "zh": "ATAM 往年高频，按阶段表背。",
             "en": "ATAM is historically frequent; memorize phase-output table."
           },
           "must": {
-            "zh": "Phase 0 计划；Phase 1 业务目标、架构、效用树、风险/非风险、敏感点/权衡点；Phase 2 stakeholder 场景和风险主题；Phase 3 报告。",
+            "zh": "第 0 阶段 计划；第 1 阶段 业务目标、架构、效用树、风险/非风险、敏感点/权衡点；第 2 阶段 利益相关者场景和风险主题；第 3 阶段 报告。",
             "en": "Phase 0 plan; Phase 1 business drivers, architecture, utility tree, risks/non-risks, sensitivity/tradeoff points; Phase 2 stakeholder scenarios/risk themes; Phase 3 report."
           },
           "answer": {
@@ -2052,11 +2134,11 @@ window.reviewContent = {
             "en": "Three concepts"
           },
           "summary": {
-            "zh": "risk / sensitivity / tradeoff 要有例子。",
+            "zh": "风险 / 敏感点 / 权衡 要有例子。",
             "en": "Risk, sensitivity, and tradeoff need examples."
           },
           "must": {
-            "zh": "risk 是潜在负面结果；sensitivity point 是某参数影响一个质量；tradeoff point 是一个决定影响多个质量且方向可能冲突。",
+            "zh": "风险 是潜在负面结果；敏感点 是某参数影响一个质量；权衡点 是一个决定影响多个质量且方向可能冲突。",
             "en": "Risk is a potential negative outcome; sensitivity point affects one quality; tradeoff point affects multiple qualities in potentially conflicting directions."
           },
           "answer": {
@@ -2087,8 +2169,8 @@ window.reviewContent = {
             "en": "What ATAM evaluates"
           },
           "summary": {
-            "zh": "今年不是最高优先级，但旧题出现时要能保底。",
-            "en": "Not highest priority this year, but useful for old-paper backup."
+            "zh": "掌握到能辨认、能简答即可。",
+            "en": "Not highest priority this year, but useful for backup-material backup."
           },
           "explain": {
             "zh": "ATAM 用来评价一个架构是否能满足重要质量属性目标。它不是写新架构，而是围绕业务目标、质量属性场景和架构方案找风险。核心产物包括效用树、质量属性场景、风险、非风险、敏感点、权衡点。敏感点是某个设计参数变化会显著影响质量属性；权衡点是一个设计决定同时影响多个质量属性，且可能一好一坏。",
@@ -2099,12 +2181,12 @@ window.reviewContent = {
             "en": "Utility tree, scenarios, risks, sensitivity points, tradeoff points."
           },
           "answer": {
-            "zh": "答题流程：收集 business goals -> 生成质量场景/效用树 -> 描述架构方案 -> 分析风险/敏感点/权衡点 -> 给评价结论。",
+            "zh": "答题流程：收集 业务目标 -> 生成质量场景/效用树 -> 描述架构方案 -> 分析风险/敏感点/权衡点 -> 给评价结论。",
             "en": "Process: collect business goals -> generate scenarios/utility tree -> describe architectural approaches -> analyze risks/sensitivity/tradeoffs -> conclude."
           },
           "boundary": {
-            "zh": "主要来自 ATAM/历史题，完整录音未抬到 P0。",
-            "en": "Mainly ATAM/historical-paper grounded; complete recording does not raise it to P0."
+            "zh": "主要来自 ATAM/补充资料，未列入 P0。",
+            "en": "Mainly ATAM/historical-paper grounded; review material does not raise it to P0."
           }
         },
         {
@@ -2130,7 +2212,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "示例是讲解用，考试以题干架构为准。",
-            "en": "Examples are explanatory; use the prompt architecture in the exam."
+            "en": "Examples are explanatory; use the 题目 architecture in the exam."
           }
         }
       ]
@@ -2140,14 +2222,13 @@ window.reviewContent = {
       "group": "historical",
       "priority": "P2",
       "examWeight": "往年题补充",
-      "sourceConfidence": "历史题保底；完整录音未作为今年重点",
       "title": {
         "zh": "复用、SPL、MDA 与可变性",
         "en": "Reuse, SPL, MDA, and Variability"
       },
       "takeaway": {
-        "zh": "这部分不是今年复习课主线，但往年题出现过，适合作为“遇到就能写”的补充模块。",
-        "en": "This is not the current review-class mainline, but it appears in past papers; keep it as a backup module."
+        "zh": "这部分不是课程复习核心，但往年资料中出现过，适合作为“遇到就能写”的补充模块。",
+        "en": "This is not the current review mainline, but it appears in past papers; keep it as a backup module."
       },
       "answerFrame": {
         "zh": "SPL 复用核心资产和产品线架构，MDA 复用平台无关模型和转换，SOA 复用服务契约与组合；共同点是用抽象和变化机制管理多个产品/平台/场景。",
@@ -2155,11 +2236,11 @@ window.reviewContent = {
       },
       "bullets": [
         {
-          "zh": "SPL 的关键是 commonality/variability，不是一个产品的版本发布。",
+          "zh": "SPL 的关键是 共性/可变性，不是一个产品的版本发布。",
           "en": "SPL centers on commonality/variability, not releases of one product."
         },
         {
-          "zh": "Variation point 是允许变化的位置，binding time 决定变化何时被绑定。",
+          "zh": "变化点 是允许变化的位置，绑定时间 决定变化何时被绑定。",
           "en": "A variation point is where variation is allowed; binding time decides when the variation is bound."
         },
         {
@@ -2182,7 +2263,7 @@ window.reviewContent = {
             "en": "A product line is not copy-paste products."
           },
           "must": {
-            "zh": "core assets、product line architecture、commonality、variability、variation points、feature model。",
+            "zh": "核心资产、产品线 架构、共性、可变性、变化点、特征模型。",
             "en": "Core assets, product line architecture, commonality, variability, variation points, feature model."
           },
           "answer": {
@@ -2200,7 +2281,7 @@ window.reviewContent = {
             "en": "Reuse trio"
           },
           "summary": {
-            "zh": "SPL/MDA/SOA 复用对象不同。",
+            "zh": "常见问法包括变化点、变化机制、绑定时间。",
             "en": "SPL, MDA, and SOA reuse different things."
           },
           "must": {
@@ -2208,7 +2289,7 @@ window.reviewContent = {
             "en": "SPL reuses core assets; MDA reuses models/transformations; SOA reuses service contracts/compositions."
           },
           "answer": {
-            "zh": "比较题按 reuse object / mechanism / suitable context 三列写。",
+            "zh": "比较题按复用对象、复用机制、适用语境三列写。",
             "en": "For comparison, use reuse object, mechanism, suitable context."
           },
           "trap": {
@@ -2219,8 +2300,8 @@ window.reviewContent = {
       ],
       "diagramIds": [],
       "memorize": {
-        "zh": "复用题今年优先级低于主线，但旧题会问：SPL 通过共性/可变性和核心资产复用一族产品。\n可变性三件事：变更点、变更机制、绑定时间。\n不要把所有复用都写成复制代码；架构级复用关注资产、平台、生成、配置和产品线。",
-        "en": "Reuse is lower priority than the mainline this year, but old papers ask SPL: reuse core assets across a product family through commonality and variability.\nVariability has three parts: variation point, variation mechanism, and binding time.\nDo not reduce reuse to copying code; architectural reuse concerns assets, platforms, generation, configuration, and product lines."
+        "zh": "复用题常见问法：SPL 通过共性/可变性和核心资产复用一族产品。\n可变性三件事：变更点、变更机制、绑定时间。\n不要把所有复用都写成复制代码；架构级复用关注资产、平台、生成、配置和产品线。",
+        "en": "Reuse is lower priority than the mainline this year, but backup materials ask SPL: reuse core assets across a product family through commonality and variability.\nVariability has three parts: variation point, variation mechanism, and binding time.\nDo not reduce reuse to copying code; architectural reuse concerns assets, platforms, generation, configuration, and product lines."
       },
       "examTemplate": {
         "zh": "SPL 题按“领域工程建核心资产 -> 应用工程派生产品 -> 管理共性和可变性 -> 说明收益和成本”答。",
@@ -2233,8 +2314,8 @@ window.reviewContent = {
             "en": "What SPL reuses"
           },
           "summary": {
-            "zh": "这部分今年降权，但旧题能考概念。",
-            "en": "Lower priority this year, but old papers may ask the concept."
+            "zh": "这部分掌握概念即可，常见问法是定义和三要素。",
+            "en": "Lower priority this year, but backup materials may ask the concept."
           },
           "explain": {
             "zh": "软件产品线不是复制粘贴代码，而是围绕一族相似产品识别共性和可变性。领域工程构建核心资产，包括架构、组件、需求、测试、配置、生成脚本和文档；应用工程根据具体产品需求选择和绑定可变点，派生产品。收益是规模化复用和一致性，成本是前期投入、治理和可变性管理复杂。",
@@ -2249,8 +2330,8 @@ window.reviewContent = {
             "en": "For SPL, write “product family -> commonality/variability -> core assets -> product derivation -> benefits/costs”."
           },
           "boundary": {
-            "zh": "完整录音未列为今年主线；作为 P2 保底。",
-            "en": "The complete recording does not make it a 2026 mainline; keep as P2 backup."
+            "zh": "掌握概念边界，避免与微服务、DDD 和 ADD 混答。",
+            "en": "Keep the concept boundary clear and avoid mixing it with microservices, DDD, or ADD."
           }
         },
         {
@@ -2259,8 +2340,8 @@ window.reviewContent = {
             "en": "The three variability questions"
           },
           "summary": {
-            "zh": "旧题常问 variation point / mechanism / binding time。",
-            "en": "Old papers often ask variation point, mechanism, and binding time."
+            "zh": "常见问法包括 变化点 / 机制 / 绑定时间。",
+            "en": "backup materials often ask variation point, mechanism, and binding time."
           },
           "explain": {
             "zh": "可变点是哪里可以变，例如支付方式、推荐算法、部署区域；可变机制是怎么实现变化，例如配置、插件、策略、继承、生成；绑定时间是什么时候确定变化，例如编译期、部署期、启动期、运行期。绑定越晚越灵活，但运行复杂度、测试难度和治理成本通常越高。",
@@ -2275,7 +2356,7 @@ window.reviewContent = {
             "en": "Give an example: payment method is a variation point, plugin/configuration is the mechanism, and binding occurs at deployment or runtime."
           },
           "boundary": {
-            "zh": "和设计决定七类里的 binding time 有交叉，但今年主线较弱。",
+            "zh": "和设计决定七类里的 绑定时间 有交叉；掌握概念边界即可。",
             "en": "Overlaps with binding time in design decisions, but weaker in this year's mainline."
           }
         }
@@ -2286,22 +2367,21 @@ window.reviewContent = {
       "group": "exam",
       "priority": "P0",
       "examWeight": "设计分析题模板",
-      "sourceConfidence": "完整录音 + 微服务/DDD 设计题主线 + 往年题练习",
       "title": {
         "zh": "设计分析题答题模板",
         "en": "Design-Analysis Answer Playbooks"
       },
       "takeaway": {
-        "zh": "设计题要让老师看到你在用架构方法。2026 主模板应围绕 ASR/ADD、微服务、DDD，而不是旧三层/缓存题。",
+        "zh": "设计题要让老师看到你在用架构方法。核心答题模板应围绕 ASR/ADD、微服务、DDD，而不是三层/缓存设计题。",
         "en": "Design answers should show architectural method. The 2026 main template should center ASR/ADD, microservices, and DDD, not old three-tier/cache questions."
       },
       "answerFrame": {
-        "zh": "通用结构：识别 stakeholders/ASRs/constraints -> 用 ADD 或 DDD/微服务推导边界 -> 画核心结构 -> 分配职责/API/数据归属 -> 补质量属性 tradeoff 与验证。",
+        "zh": "通用结构：识别利益相关者、ASR 和约束 -> 用 ADD 或 DDD/微服务推导边界 -> 画核心结构 -> 分配职责/API/数据归属 -> 补质量属性取舍与验证。",
         "en": "General structure: identify stakeholders/ASRs/constraints -> use ADD or DDD/microservices to derive boundaries -> draw the core structure -> assign responsibilities/APIs/data ownership -> add quality tradeoffs and validation."
       },
       "bullets": [
         {
-          "zh": "ADD/ASR 题：从 stakeholder concerns、质量属性场景和约束选择 driver，再按 ADD 七步组织迭代和文档化。",
+          "zh": "ADD/ASR 题：从 利益相关者关注点、质量属性场景和约束选择 驱动因素，再按 ADD 七步组织迭代和文档化。",
           "en": "ADD/ASR questions: select drivers from stakeholder concerns, quality scenarios, and constraints, then organize iterations and documentation with ADD seven steps."
         },
         {
@@ -2313,13 +2393,13 @@ window.reviewContent = {
           "en": "DDD design: identify subdomains/bounded contexts, then add aggregates, domain events, context mapping, and service-boundary mapping."
         },
         {
-          "zh": "旧三层/缓存题只作为 P2 历史题练习，遇到再写，不放进 2026 主模板。",
-          "en": "Old three-tier/cache prompts are P2 historical practice only; answer if asked, but keep them out of the 2026 main template."
+          "zh": "三层/缓存设计题按设计练习处理：会画职责与协作图，会写视图外信息。",
+          "en": "Old three-tier/cache 题目s are backup practice only; answer if asked, but keep them out of the 2026 main template."
         }
       ],
       "sources": [
         "Complete review minutes",
-        "Li Shanshan review-class slides",
+        "Li Shanshan review slides",
         "Recent past-paper clusters"
       ],
       "deepDive": [
@@ -2337,8 +2417,8 @@ window.reviewContent = {
             "en": "Identify ASRs, choose patterns/tactics, draw core structure, assign responsibilities/interfaces, discuss quality tradeoffs, document/verify."
           },
           "answer": {
-            "zh": "哪怕题目只说“design”，也要把图转成文字说明，避免阅卷看不懂。",
-            "en": "Even if the prompt only says “design”, translate the diagram into written responsibilities."
+            "zh": "哪怕题目只说“设计”，也要把图转成文字说明，避免阅卷看不懂。",
+            "en": "Even if the 题目 only says “design”, translate the diagram into written responsibilities."
           },
           "trap": {
             "zh": "不要只堆术语。图里出现的每个组件都要有存在理由。",
@@ -2347,15 +2427,15 @@ window.reviewContent = {
         },
         {
           "title": {
-            "zh": "今年主设计模板",
+            "zh": "核心设计模板",
             "en": "Current design template"
           },
           "summary": {
-            "zh": "围绕微服务 + DDD + ADD 文档化，不再让三层/缓存旧题抢主线。",
-            "en": "Center microservices + DDD + ADD documentation; old three-tier/cache prompts should not dominate."
+            "zh": "围绕微服务 + DDD + ADD 文档化，三层/缓存题重点写职责、协作和文档项。",
+            "en": "Center microservices + DDD + ADD documentation; old three-tier/cache 题目s should not dominate."
           },
           "must": {
-            "zh": "服务边界、数据边界、API/事件协作、部署与可观测性、质量属性 tradeoff。",
+            "zh": "服务边界、数据边界、API/事件协作、部署与可观测性、质量属性 权衡。",
             "en": "Service boundaries, data boundaries, API/event collaboration, deployment/observability, and quality tradeoffs."
           },
           "answer": {
@@ -2363,7 +2443,7 @@ window.reviewContent = {
             "en": "Draw the mapping from business capabilities/bounded contexts to services, then describe responsibilities, data ownership, and cross-service collaboration."
           },
           "trap": {
-            "zh": "不要把 Saga、API Gateway、某个服务名写成唯一标准答案；它们是可用的示例设计手段。",
+            "zh": "不要把 Saga、API 网关、某个服务名写成唯一标准答案；它们是可用的示例设计手段。",
             "en": "Do not treat Saga, API Gateway, or a specific service name as the only standard answer; they are illustrative design choices."
           }
         }
@@ -2375,7 +2455,7 @@ window.reviewContent = {
         "review-microservice-decomposition"
       ],
       "memorize": {
-        "zh": "设计题不是背唯一答案，而是把 driver、边界、数据、接口、质量取舍讲清楚。\n万能骨架：需求/ASR -> 分解原则 -> 元素和职责 -> 连接器和数据流 -> 视图/部署 -> 质量战术 -> 风险与取舍。\n画图题先画边界和主要元素，再画连接关系，最后补图例、关键数据/事件和质量战术标注。",
+        "zh": "设计题不是背唯一答案，而是把 驱动因素、边界、数据、接口、质量取舍讲清楚。\n万能骨架：需求/ASR -> 分解原则 -> 元素和职责 -> 连接器和数据流 -> 视图/部署 -> 质量战术 -> 风险与取舍。\n画图题先画边界和主要元素，再画连接关系，最后补图例、关键数据/事件和质量战术标注。",
         "en": "Design questions do not have a single memorized answer; explain drivers, boundaries, data, interfaces, and quality tradeoffs.\nGeneral skeleton: requirements/ASRs -> decomposition principle -> elements and responsibilities -> connectors and data flow -> views/deployment -> quality tactics -> risks and tradeoffs.\nFor drawing questions, draw the boundary and main elements first, then connectors, then legends, key data/events, and quality-tactic annotations."
       },
       "examTemplate": {
@@ -2389,7 +2469,7 @@ window.reviewContent = {
             "en": "How to start any design question"
           },
           "summary": {
-            "zh": "先写 driver，再画结构，最后讲取舍。",
+            "zh": "先写 驱动因素，再画结构，最后讲取舍。",
             "en": "Start with drivers, draw structure, then discuss tradeoffs."
           },
           "explain": {
@@ -2401,11 +2481,11 @@ window.reviewContent = {
             "en": "ASR -> decomposition principle -> structure diagram -> responsibilities/connectors -> tactics -> tradeoffs."
           },
           "answer": {
-            "zh": "无论题目是外卖、缓存、三层、SOA，都先把业务和质量 driver 写出来。",
-            "en": "Whether the prompt is food delivery, cache, three-tier, or SOA, first write business and quality drivers."
+            "zh": "无论题目是外卖、缓存、三层、SOA，都先把业务和质量 驱动因素 写出来。",
+            "en": "Whether the 题目 is food delivery, cache, three-tier, or SOA, first write business and quality drivers."
           },
           "boundary": {
-            "zh": "今年设计题优先微服务 + DDD + ADD 文档化；旧题设计模板仅保底。",
+            "zh": "设计题先识别业务边界和质量需求，再用微服务、DDD、ADD 文档化或三层/缓存等合适模板组织答案。",
             "en": "This year's design priority is microservices + DDD + ADD documentation; old design templates are backup."
           }
         },
@@ -2419,7 +2499,7 @@ window.reviewContent = {
             "en": "A diagram should express boundaries, responsibilities, connectors, and qualities."
           },
           "explain": {
-            "zh": "先画系统边界和外部角色；再画主要组件或服务，名称用业务能力而不是技术炫词；每个数据归属画在服务旁边；连接器用箭头标同步 API、异步事件或数据访问；最后加少量质量战术标注，例如 API Gateway 认证限流、服务间熔断、消息队列削峰、监控追踪。图下方用文字补充为什么这样拆，以及牺牲了什么。",
+            "zh": "先画系统边界和外部角色；再画主要组件或服务，名称用业务能力而不是技术炫词；每个数据归属画在服务旁边；连接器用箭头标同步 API、异步事件或数据访问；最后加少量质量战术标注，例如 API 网关认证限流、服务间熔断、消息队列削峰、监控追踪。图下方用文字补充为什么这样拆，以及牺牲了什么。",
             "en": "Draw system boundary and external actors first. Then draw main components/services with business-capability names rather than flashy technology terms. Put each data store beside its owning service. Label connectors as synchronous API, asynchronous event, or data access. Finally add a few quality-tactic annotations: API Gateway authentication/rate limiting, circuit breakers, message queue smoothing, monitoring/tracing. Under the diagram, explain why this decomposition was chosen and what it sacrifices."
           },
           "memorize": {
@@ -2432,7 +2512,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "参考当前站内重绘图；题干未给的技术细节要用“例如/可选”表达。",
-            "en": "Use current redrawn diagrams as references; technology details not in the prompt should be phrased as examples/options."
+            "en": "Use current redrawn diagrams as references; technology details not in the 题目 should be phrased as examples/options."
           }
         }
       ]
@@ -2441,15 +2521,14 @@ window.reviewContent = {
       "id": "ai",
       "group": "modern",
       "priority": "P3",
-      "examWeight": "背景了解，不当主线",
-      "sourceConfidence": "吕骏完整录音明确 AI 增强/AI 原生不考；仅作背景",
+      "examWeight": "背景了解，不当核心",
       "title": {
         "zh": "AI 增强 / AI 原生架构",
         "en": "AI-Enabled / AI-Native Architecture"
       },
       "takeaway": {
-        "zh": "完整录音中吕骏明确说 AI 增强、AI 原生不会考；这里只保留背景概念，P3 只读。",
-        "en": "In the complete recording, Lu Jun explicitly says AI-enabled and AI-native architecture will not be tested. Keep this as P3 background only."
+        "zh": "AI 增强和 AI 原生架构只作背景了解。",
+        "en": "Keep AI-enabled and AI-native architecture as background concepts."
       },
       "answerFrame": {
         "zh": "不用背。若阅读资料库时看到相关内容，只理解它是架构演进趋势，不写进常规真题答案模板。",
@@ -2465,7 +2544,7 @@ window.reviewContent = {
           "en": "DDD for AI: clarify logical inputs and business boundaries to reduce model/agent-system complexity."
         },
         {
-          "zh": "考试优先级低于 ADD、DDD、微服务、企业架构。",
+          "zh": "与 ADD、DDD、微服务、企业架构相比，只需了解基本含义和应用场景。",
           "en": "Exam priority is lower than ADD, DDD, microservices, and enterprise architecture."
         }
       ],
@@ -2481,11 +2560,11 @@ window.reviewContent = {
             "en": "Exam position"
           },
           "summary": {
-            "zh": "复习课说 AI 不是主考试重点。",
+            "zh": "AI 部分只需作为架构趋势背景理解。",
             "en": "Review notes say AI is not the main exam focus."
           },
           "must": {
-            "zh": "了解 AI-enabled architecture、AI-native architecture、AI for DDD、DDD for AI 即可。",
+            "zh": "了解 AI 增强架构、AI 原生架构、AI for DDD、DDD for AI 即可。",
             "en": "Know AI-enabled architecture, AI-native architecture, AI for DDD, and DDD for AI as background."
           },
           "answer": {
@@ -2500,8 +2579,8 @@ window.reviewContent = {
       ],
       "diagramIds": [],
       "memorize": {
-        "zh": "AI/LLM 在复习课中属于趋势和辅助，不是核心高分主线。\n能写的点：需求分析、业务建模、数据建模、应用设计、代码生成、测试验证的辅助。\n回答时保持保守：AI 帮助产出和检查，但架构决策仍要由人基于业务目标、质量需求和约束负责。",
-        "en": "AI/LLM is a trend and assistant in the review class, not the highest-scoring core line.\nPoints to mention: support requirement analysis, business modeling, data modeling, application design, code generation, and test verification.\nBe conservative: AI helps produce and check artifacts, but humans remain responsible for architecture decisions based on business goals, quality requirements, and constraints."
+        "zh": "AI/LLM 在课程中属于趋势和辅助，不是核心高分核心。\n能写的点：需求分析、业务建模、数据建模、应用设计、代码生成、测试验证的辅助。\n回答时保持保守：AI 帮助产出和检查，但架构决策仍要由人基于业务目标、质量需求和约束负责。",
+        "en": "AI/LLM is a trend and assistant in the review material, not the highest-scoring core line.\nPoints to mention: support requirement analysis, business modeling, data modeling, application design, code generation, and test verification.\nBe conservative: AI helps produce and check artifacts, but humans remain responsible for architecture decisions based on business goals, quality requirements, and constraints."
       },
       "examTemplate": {
         "zh": "若问 AI 与架构，按“能辅助什么 -> 产出什么 -> 风险是什么 -> 人如何治理”答。",
@@ -2510,19 +2589,19 @@ window.reviewContent = {
       "lectureNotes": [
         {
           "title": {
-            "zh": "AI 增强为什么是 P3",
-            "en": "Why AI-enabled architecture is P3"
+            "zh": "AI 增强为什么只作背景",
+            "en": "Why AI-enabled architecture is background"
           },
           "summary": {
             "zh": "老师明确降权，理解趋势即可。",
             "en": "The instructors lowered its priority; understand the trend only."
           },
           "explain": {
-            "zh": "AI/LLM 在复习课中作为架构设计趋势和工具能力出现，而不是今年核心考点。可以理解为它能辅助需求分析、业务建模、数据建模、应用设计、代码生成、测试验证和文档生成，但它不能替代架构师对业务目标、质量需求、约束、风险和治理的判断。",
-            "en": "AI/LLM appears in the review class as a trend and tool capability, not a core exam focus. It can assist requirement analysis, business modeling, data modeling, application design, code generation, test verification, and documentation, but it does not replace architects' judgment over business goals, quality requirements, constraints, risks, and governance."
+            "zh": "AI/LLM 可以作为架构设计趋势和工具能力理解：它能辅助需求分析、业务建模、数据建模、应用设计、代码生成、测试验证和文档生成，但不能替代架构师对业务目标、质量需求、约束、风险和治理的判断。",
+            "en": "AI/LLM appears in the review material as a trend and tool capability, not a core exam focus. It can assist requirement analysis, business modeling, data modeling, application design, code generation, test verification, and documentation, but it does not replace architects' judgment over business goals, quality requirements, constraints, risks, and governance."
           },
           "memorize": {
-            "zh": "能辅助全流程，但不替代架构决策；今年只理解不主背。",
+            "zh": "能辅助全流程，但不替代架构决策；只理解，不主背。",
             "en": "Can assist the whole process but does not replace architectural decisions; understand only for this year."
           },
           "answer": {
@@ -2543,35 +2622,111 @@ window.reviewContent = {
       "zh": "软件架构",
       "en": "Software Architecture",
       "noteZh": "系统元素、关系、属性及演化原则的高层设计。",
-      "noteEn": "High-level design of system elements, relations, properties, and evolution principles."
+      "noteEn": "High-level design of system elements, relations, properties, and evolution principles.",
+      "id": "software-architecture",
+      "context": "张贺：基础定义",
+      "related": [
+        "设计决定",
+        "架构驱动因素",
+        "质量属性"
+      ],
+      "aliases": {
+        "zh": [
+          "体系结构"
+        ],
+        "en": [
+          "Software Architectures"
+        ]
+      }
     },
     {
       "category": "foundation",
       "zh": "架构师",
       "en": "Software Architect",
       "noteZh": "协调利益相关者、做技术/工程决策并管理架构风险的人。",
-      "noteEn": "A role coordinating stakeholders, making technical/engineering decisions, and managing architectural risks."
+      "noteEn": "A role coordinating stakeholders, making technical/engineering decisions, and managing architectural risks.",
+      "id": "software-architect",
+      "context": "张贺：角色职责",
+      "related": [
+        "利益相关者",
+        "风险",
+        "设计决定"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Architect"
+        ]
+      }
     },
     {
       "category": "requirements",
       "zh": "架构相关需求",
       "en": "Architecturally Significant Requirement (ASR)",
-      "noteZh": "会显著影响架构设计决定的需求。",
-      "noteEn": "A requirement with significant impact on architectural decisions."
+      "noteZh": "会显著影响架构设计决定的需求；它不等于所有 NFR，关键功能和强约束也可能成为 ASR。",
+      "noteEn": "A requirement with significant impact on architectural decisions. It is not every NFR; key functionality and strong constraints can also become ASRs.",
+      "aliases": {
+        "en": [
+          "ASR",
+          "ASRs",
+          "Architecturally Significant Requirements"
+        ],
+        "zh": [
+          "架构显著需求",
+          "架构驱动需求"
+        ]
+      },
+      "context": "张贺：NFR/质量需求核心；李杉杉：ADD 输入",
+      "related": [
+        "非功能需求",
+        "质量需求",
+        "质量属性场景",
+        "效用树",
+        "属性驱动设计"
+      ],
+      "id": "asr"
     },
     {
       "category": "requirements",
       "zh": "质量属性",
       "en": "Quality Attribute",
-      "noteZh": "系统“做得好不好”的性质，如可用性、性能、可修改性。",
-      "noteEn": "A property describing how well a system behaves, such as availability, performance, or modifiability."
+      "noteZh": "系统“做得好不好”的性质，如可用性、性能、可修改性、安全性；作为架构设计的重要依据时要场景化。",
+      "noteEn": "A property describing how well a system behaves, such as availability, performance, modifiability, or security; when used as architectural input, express it as scenarios.",
+      "aliases": {
+        "en": [
+          "Quality Attributes"
+        ],
+        "zh": [
+          "质量特性"
+        ]
+      },
+      "context": "张贺：质量场景；李杉杉：ADD 质量属性场景",
+      "related": [
+        "质量需求",
+        "质量属性场景",
+        "非功能需求"
+      ]
     },
     {
       "category": "requirements",
       "zh": "约束",
       "en": "Constraint",
       "noteZh": "设计前已经确定且必须满足的设计决定。",
-      "noteEn": "A pre-made design decision that must be satisfied."
+      "noteEn": "A pre-made design decision that must be satisfied.",
+      "id": "constraint",
+      "context": "张贺：需求分类；李杉杉：ADD 输入",
+      "related": [
+        "架构约束",
+        "技术/运行环境"
+      ],
+      "aliases": {
+        "zh": [
+          "限制"
+        ],
+        "en": [
+          "Constraints"
+        ]
+      }
     },
     {
       "category": "scenario",
@@ -2655,49 +2810,144 @@ window.reviewContent = {
       "zh": "战术",
       "en": "Tactic",
       "noteZh": "解决质量属性问题的原子设计决定。",
-      "noteEn": "An atomic design decision addressing a quality attribute."
+      "noteEn": "An atomic design decision addressing a quality attribute.",
+      "id": "tactic",
+      "context": "吕骏/张贺：质量属性到设计决定",
+      "related": [
+        "质量属性",
+        "模式",
+        "风格"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Tactics"
+        ]
+      }
     },
     {
       "category": "decision",
       "zh": "模式",
       "en": "Pattern",
       "noteZh": "对反复出现问题的可复用解决方案，常由多个战术组合。",
-      "noteEn": "A reusable solution to a recurring problem, often combining tactics."
+      "noteEn": "A reusable solution to a recurring problem, often combining tactics.",
+      "id": "pattern",
+      "context": "吕骏：反复出现问题的架构级解法",
+      "related": [
+        "战术",
+        "风格"
+      ],
+      "aliases": {
+        "zh": [
+          "架构模式"
+        ],
+        "en": [
+          "Patterns",
+          "Architectural Pattern",
+          "Architectural Patterns"
+        ]
+      }
     },
     {
       "category": "decision",
       "zh": "风格",
       "en": "Style",
       "noteZh": "一类架构组织方式及其约束。",
-      "noteEn": "A way of organizing architecture with characteristic constraints."
+      "noteEn": "A way of organizing architecture with characteristic constraints.",
+      "id": "style",
+      "context": "吕骏：架构组织方式与约束",
+      "related": [
+        "模式",
+        "组件-连接器视图"
+      ],
+      "aliases": {
+        "zh": [
+          "架构风格"
+        ],
+        "en": [
+          "Styles",
+          "Architectural Style",
+          "Architectural Styles"
+        ]
+      }
     },
     {
       "category": "views",
       "zh": "逻辑视图",
       "en": "Logical View",
       "noteZh": "描述重要元素及其关系。",
-      "noteEn": "Describes significant elements and their relationships."
+      "noteEn": "Describes significant elements and their relationships.",
+      "id": "logical-view",
+      "context": "张贺：4+1 视图",
+      "related": [
+        "视图",
+        "用例场景"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Logical Views"
+        ]
+      }
     },
     {
       "category": "views",
       "zh": "过程视图",
       "en": "Process View",
       "noteZh": "描述并发、通信和运行时行为。",
-      "noteEn": "Describes concurrency, communication, and runtime behavior."
+      "noteEn": "Describes concurrency, communication, and runtime behavior.",
+      "id": "process-view",
+      "context": "张贺：4+1 视图",
+      "related": [
+        "视图",
+        "用例场景"
+      ],
+      "aliases": {
+        "zh": [
+          "进程视图"
+        ],
+        "en": [
+          "Process Views"
+        ]
+      }
     },
     {
       "category": "views",
       "zh": "物理视图",
       "en": "Physical View",
       "noteZh": "描述进程/软件到硬件或部署环境的映射。",
-      "noteEn": "Describes mapping of processes/software to hardware or deployment environments."
+      "noteEn": "Describes mapping of processes/software to hardware or deployment environments.",
+      "id": "physical-view",
+      "context": "张贺：4+1 视图",
+      "related": [
+        "视图",
+        "部署视图"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Physical Views"
+        ]
+      }
     },
     {
       "category": "views",
       "zh": "开发视图",
       "en": "Development View",
       "noteZh": "描述软件内部组织及开发结构。",
-      "noteEn": "Describes internal software organization and development structure."
+      "noteEn": "Describes internal software organization and development structure.",
+      "id": "development-view",
+      "context": "张贺：4+1 视图",
+      "related": [
+        "视图",
+        "模块视图"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Development Views"
+        ]
+      }
     },
     {
       "category": "views",
@@ -2710,8 +2960,26 @@ window.reviewContent = {
       "category": "methods",
       "zh": "属性驱动设计",
       "en": "Attribute-Driven Design (ADD)",
-      "noteZh": "按驱动因素迭代推导架构设计的方法。",
-      "noteEn": "An iterative method deriving architecture from design drivers."
+      "noteZh": "按驱动因素迭代推导架构设计的方法。ADD 3.0 输入包括设计目的、主要功能、质量属性场景、架构关注点、约束和既有架构。",
+      "noteEn": "An iterative method deriving architecture from design drivers. ADD 3.0 inputs include design purpose, primary functionality, quality-attribute scenarios, architectural concerns, constraints, and existing architecture.",
+      "aliases": {
+        "en": [
+          "ADD",
+          "ADD 3.0",
+          "ADD3.0"
+        ],
+        "zh": [
+          "属性驱动设计 3.0"
+        ]
+      },
+      "context": "李杉杉：架构设计方法",
+      "related": [
+        "架构驱动因素",
+        "设计目的",
+        "主要功能",
+        "架构约束",
+        "既有架构"
+      ]
     },
     {
       "category": "methods",
@@ -2724,15 +2992,47 @@ window.reviewContent = {
       "category": "methods",
       "zh": "效用树",
       "en": "Utility Tree",
-      "noteZh": "把质量目标分解成场景与度量，并排序优先级。",
-      "noteEn": "A tree decomposing quality goals into scenarios and measures for prioritization."
+      "noteZh": "把总效用分解为质量属性和具体场景，并按重要性和实现难度/风险排序，用来识别优先处理的 ASR。",
+      "noteEn": "Decomposes utility into quality attributes and concrete scenarios, then ranks them by importance and difficulty/risk to identify priority ASRs.",
+      "aliases": {
+        "en": [
+          "Utility Trees"
+        ],
+        "zh": [
+          "质量效用树"
+        ]
+      },
+      "context": "张贺：ASR 排序；ATAM：场景优先级",
+      "related": [
+        "业务目标",
+        "质量属性场景",
+        "架构相关需求"
+      ],
+      "id": "utility-tree"
     },
     {
       "category": "ddd",
       "zh": "限界上下文",
       "en": "Bounded Context",
-      "noteZh": "模型和语言保持一致的业务/知识边界。",
-      "noteEn": "A boundary within which a model and language stay consistent."
+      "noteZh": "模型和统一语言成立的边界。同一个词在不同上下文可以含义不同；服务边界可参考限界上下文，但不机械等同。",
+      "noteEn": "The boundary within which a model and ubiquitous language stay consistent. A term may mean different things in different contexts; service boundaries can follow bounded contexts but are not mechanically identical.",
+      "aliases": {
+        "en": [
+          "Bounded Contexts"
+        ],
+        "zh": [
+          "模型边界"
+        ]
+      },
+      "context": "李杉杉：DDD 语境",
+      "boundaryType": "模型语言边界",
+      "related": [
+        "统一语言",
+        "上下文映射",
+        "服务边界",
+        "聚合"
+      ],
+      "id": "bounded-context"
     },
     {
       "category": "ddd",
@@ -2752,15 +3052,44 @@ window.reviewContent = {
       "category": "ddd",
       "zh": "聚合",
       "en": "Aggregate",
-      "noteZh": "由聚合根控制一致性边界的一组领域对象。",
-      "noteEn": "A consistency boundary of domain objects controlled by an aggregate root."
+      "noteZh": "围绕业务不变量组织的一组对象，是事务和一致性边界；通常由聚合根对外暴露访问入口。",
+      "noteEn": "A cluster of objects organised around business invariants; it is a transaction/consistency boundary and is usually accessed through an aggregate root.",
+      "aliases": {
+        "en": [
+          "Aggregates"
+        ],
+        "zh": [
+          "聚合边界"
+        ]
+      },
+      "context": "李杉杉：DDD 战术设计",
+      "boundaryType": "一致性边界",
+      "related": [
+        "聚合根",
+        "领域事件",
+        "数据边界"
+      ],
+      "id": "aggregate"
     },
     {
       "category": "ddd",
       "zh": "领域事件",
       "en": "Domain Event",
       "noteZh": "过去发生且对业务有意义的事实。",
-      "noteEn": "A meaningful business fact that has already happened."
+      "noteEn": "A meaningful business fact that has already happened.",
+      "id": "domain-event",
+      "context": "李杉杉：DDD/事件风暴",
+      "related": [
+        "事件风暴",
+        "聚合",
+        "服务边界"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Domain Events"
+        ]
+      }
     },
     {
       "category": "microservices",
@@ -2795,28 +3124,76 @@ window.reviewContent = {
       "zh": "业务架构",
       "en": "Business Architecture",
       "noteZh": "描述业务能力、流程、组织和价值链。",
-      "noteEn": "Describes capabilities, processes, organization, and value chains."
+      "noteEn": "Describes capabilities, processes, organization, and value chains.",
+      "id": "business-architecture",
+      "context": "李杉杉：企业架构 4A",
+      "related": [
+        "企业架构",
+        "业务能力"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Business Architectures"
+        ]
+      }
     },
     {
       "category": "enterprise",
       "zh": "数据架构",
       "en": "Data Architecture",
       "noteZh": "描述数据资产、标准、责任与模型。",
-      "noteEn": "Describes data assets, standards, responsibilities, and models."
+      "noteEn": "Describes data assets, standards, responsibilities, and models.",
+      "id": "data-architecture",
+      "context": "李杉杉：企业架构 4A",
+      "related": [
+        "企业架构",
+        "数据边界"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Data Architectures"
+        ]
+      }
     },
     {
       "category": "enterprise",
       "zh": "应用架构",
       "en": "Application Architecture",
       "noteZh": "描述应用蓝图、组件与服务共享关系。",
-      "noteEn": "Describes application blueprint, components, and shared services."
+      "noteEn": "Describes application blueprint, components, and shared services.",
+      "id": "application-architecture",
+      "context": "李杉杉：企业架构 4A",
+      "related": [
+        "企业架构",
+        "服务边界"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Application Architectures"
+        ]
+      }
     },
     {
       "category": "enterprise",
       "zh": "技术架构",
       "en": "Technology Architecture",
       "noteZh": "描述技术组件、基础设施和标准。",
-      "noteEn": "Describes technology components, infrastructure, and standards."
+      "noteEn": "Describes technology components, infrastructure, and standards.",
+      "id": "technology-architecture",
+      "context": "李杉杉：企业架构 4A",
+      "related": [
+        "企业架构",
+        "技术/运行环境"
+      ],
+      "aliases": {
+        "zh": [],
+        "en": [
+          "Technology Architectures"
+        ]
+      }
     },
     {
       "category": "enterprise",
@@ -2857,7 +3234,7 @@ window.reviewContent = {
       "category": "requirements",
       "zh": "质量属性工作坊",
       "en": "Quality Attribute Workshop (QAW)",
-      "noteZh": "通过 stakeholder 讨论把质量目标场景化的方法。",
+      "noteZh": "通过 利益相关者 讨论把质量目标场景化的方法。",
       "noteEn": "A workshop method that turns quality goals into scenarios."
     },
     {
@@ -2906,7 +3283,7 @@ window.reviewContent = {
       "category": "patterns",
       "zh": "代理模式",
       "en": "Broker Pattern",
-      "noteZh": "用 broker 中介客户端与服务端通信的 C&C 模式。",
+      "noteZh": "用 代理模式 中介客户端与服务端通信的 C&C 模式。",
       "noteEn": "A C&C pattern where a broker mediates client-server communication."
     },
     {
@@ -2927,7 +3304,7 @@ window.reviewContent = {
       "category": "patterns",
       "zh": "多层部署",
       "en": "Multi-tier",
-      "noteZh": "把系统逻辑分配到不同部署层或机器上的 allocation 模式。",
+      "noteZh": "把系统逻辑分配到不同部署层或机器上的 分配 模式。",
       "noteEn": "An allocation pattern distributing system logic across deployment tiers or machines."
     },
     {
@@ -3074,14 +3451,14 @@ window.reviewContent = {
       "category": "quality",
       "zh": "错误",
       "en": "Error",
-      "noteZh": "系统内部状态不正确，可能导致 failure。",
+      "noteZh": "系统内部状态不正确，可能导致故障。",
       "noteEn": "An incorrect internal state that may lead to a failure."
     },
     {
       "category": "quality",
       "zh": "缺陷/故障源",
       "en": "Fault",
-      "noteZh": "导致 error 的潜在缺陷、bug 或硬件问题。",
+      "noteZh": "导致错误的潜在缺陷、bug 或硬件问题。",
       "noteEn": "A latent defect, bug, or hardware problem that can cause an error."
     },
     {
@@ -3090,12 +3467,1078 @@ window.reviewContent = {
       "en": "Six Microservice Traits",
       "noteZh": "粒度小、围绕业务能力、自治、独立部署、去中心化治理/数据、基础设施自动化。",
       "noteEn": "Small services, business capability orientation, autonomy, independent deployment, decentralized governance/data, infrastructure automation."
+    },
+    {
+      "id": "functional-requirement",
+      "category": "requirements",
+      "zh": "功能需求",
+      "en": "Functional Requirement",
+      "aliases": {
+        "en": [
+          "Functional Requirements"
+        ],
+        "zh": [
+          "功能性需求"
+        ]
+      },
+      "context": "张贺/李杉杉：需求分类与 ADD 输入",
+      "related": [
+        "质量需求",
+        "非功能需求",
+        "架构相关需求"
+      ],
+      "noteZh": "描述系统必须提供什么功能。关键功能也可能成为 ASR，但功能需求本身不等于架构。",
+      "noteEn": "Describes what functions the system must provide. Key functions can become ASRs, but functionality itself is not the architecture."
+    },
+    {
+      "id": "non-functional-requirement",
+      "category": "requirements",
+      "zh": "非功能需求",
+      "en": "Non-Functional Requirement (NFR)",
+      "aliases": {
+        "en": [
+          "NFR",
+          "NFRs",
+          "Nonfunctional Requirement",
+          "Non-functional Requirements",
+          "Nonfunctional Requirements"
+        ],
+        "zh": [
+          "非功能性需求"
+        ]
+      },
+      "context": "张贺：架构来源核心",
+      "related": [
+        "质量需求",
+        "架构相关需求",
+        "质量属性场景"
+      ],
+      "noteZh": "区别于功能需求，描述系统做得多好或受到什么限制。课程中质量需求是 NFR 里最重要的架构依据。",
+      "noteEn": "Different from functional requirements; describes how well the system behaves or what constraints apply. In the review material, quality requirements are the most important architectural source within NFRs."
+    },
+    {
+      "id": "quality-requirement",
+      "category": "requirements",
+      "zh": "质量需求",
+      "en": "Quality Requirement",
+      "aliases": {
+        "en": [
+          "Quality Requirements",
+          "Quality Attribute Requirement",
+          "Quality Attribute Requirements"
+        ],
+        "zh": [
+          "质量属性需求"
+        ]
+      },
+      "context": "张贺：NFR -> ASR 核心",
+      "related": [
+        "非功能需求",
+        "质量属性",
+        "质量属性场景",
+        "架构相关需求"
+      ],
+      "noteZh": "描述质量属性目标，如可用性、性能、可修改性。它通常要写成可度量的质量属性场景，其中一部分会成为 ASR。",
+      "noteEn": "A requirement describing a quality goal such as availability, performance, or modifiability. It should usually be expressed as a measurable quality scenario; some become ASRs."
+    },
+    {
+      "id": "quality-scenario",
+      "category": "scenario",
+      "zh": "质量属性场景",
+      "en": "Quality Attribute Scenario",
+      "aliases": {
+        "en": [
+          "Quality Scenario",
+          "Quality Attribute Scenarios",
+          "Quality Scenarios"
+        ],
+        "zh": [
+          "质量场景"
+        ]
+      },
+      "context": "张贺：六要素与 ASR 表达",
+      "related": [
+        "刺激源",
+        "刺激",
+        "环境",
+        "制品",
+        "响应",
+        "响应度量"
+      ],
+      "noteZh": "把模糊质量需求改写成六要素：刺激源、刺激、环境、制品、响应、响应度量。考试答案要可观察、可测量。",
+      "noteEn": "Turns a vague quality requirement into six parts: source, stimulus, environment, artifact, response, and response measure. Exam answers should be observable and measurable."
+    },
+    {
+      "id": "architectural-driver",
+      "category": "requirements",
+      "zh": "架构驱动因素",
+      "en": "Architectural Driver",
+      "aliases": {
+        "en": [
+          "Architectural Drivers",
+          "Driver",
+          "Drivers"
+        ],
+        "zh": [
+          "驱动因素"
+        ]
+      },
+      "context": "张贺/李杉杉：架构来源与 ADD 输入",
+      "related": [
+        "非功能需求",
+        "质量需求",
+        "架构相关需求",
+        "业务目标",
+        "技术/运行环境"
+      ],
+      "noteZh": "会迫使架构做出结构选择或关键设计决定的因素。张贺部分强调 NFR/质量需求、ASR、利益相关者、组织和技术环境；李杉杉 ADD 部分还包括设计目的、主要功能、关注点和既有架构。",
+      "noteEn": "A force that causes structural choices or key design decisions. Zhang He emphasizes NFRs/quality requirements, ASRs, stakeholders, organisations, and technical environments; Li Shanshan’s ADD input also includes design purpose, primary functionality, concerns, and existing architecture."
+    },
+    {
+      "id": "stakeholder",
+      "category": "requirements",
+      "zh": "利益相关者",
+      "en": "Stakeholder",
+      "aliases": {
+        "en": [
+          "Stakeholders"
+        ],
+        "zh": [
+          "系统利益相关者"
+        ]
+      },
+      "context": "张贺：需求获取、场景和视图",
+      "related": [
+        "利益相关者关注点",
+        "质量属性工作坊",
+        "访谈"
+      ],
+      "noteZh": "会影响系统或被系统影响的人/组织角色，如用户、运维、测试、管理者、监管者。不同利益相关者会提出不同关注点。",
+      "noteEn": "A role or organisation that affects or is affected by the system, such as users, operators, testers, managers, or regulators. Different stakeholders bring different concerns."
+    },
+    {
+      "id": "stakeholder-concern",
+      "category": "requirements",
+      "zh": "利益相关者关注点",
+      "en": "Stakeholder Concern",
+      "aliases": {
+        "en": [
+          "Stakeholder Concerns",
+          "Concern",
+          "Concerns"
+        ],
+        "zh": [
+          "关注点"
+        ]
+      },
+      "context": "张贺：ASR 获取；李杉杉：ADD 输入",
+      "related": [
+        "利益相关者",
+        "质量属性场景",
+        "架构驱动因素"
+      ],
+      "noteZh": "利益相关者关心的问题或目标，如性能、可用性、安全、成本、进度、合规。需要进一步转成质量属性场景或设计约束。",
+      "noteEn": "Something a stakeholder cares about, such as performance, availability, security, cost, schedule, or compliance. It should be refined into scenarios or design constraints."
+    },
+    {
+      "id": "organisation",
+      "category": "requirements",
+      "zh": "组织因素",
+      "en": "Organisation",
+      "aliases": {
+        "en": [
+          "Organisations",
+          "Organization",
+          "Organizations",
+          "Development Organization"
+        ],
+        "zh": [
+          "开发组织",
+          "组织约束"
+        ]
+      },
+      "context": "张贺：架构来源；李杉杉：企业架构治理",
+      "related": [
+        "业务目标",
+        "组织边界",
+        "企业架构"
+      ],
+      "noteZh": "团队结构、技能、预算、进度、治理流程和责任边界等，会限制架构选择并影响服务/模块拆分。",
+      "noteEn": "Team structure, skills, budget, schedule, governance, and responsibility boundaries constrain architectural choices and influence service/module decomposition."
+    },
+    {
+      "id": "technical-environment",
+      "category": "requirements",
+      "zh": "技术/运行环境",
+      "en": "Technical Environment",
+      "aliases": {
+        "en": [
+          "Technical Environments",
+          "Operational Environment",
+          "Runtime Environment"
+        ],
+        "zh": [
+          "技术环境",
+          "运行环境"
+        ]
+      },
+      "context": "张贺：架构来源；ADD：输入约束",
+      "related": [
+        "约束",
+        "架构约束",
+        "既有架构"
+      ],
+      "noteZh": "遗留系统、基础设施、平台、中间件、数据库、云环境和部署环境等外部技术条件，决定方案可行边界。",
+      "noteEn": "External technical conditions such as legacy systems, infrastructure, platforms, middleware, databases, cloud, and deployment environments that constrain feasible choices."
+    },
+    {
+      "id": "business-goal",
+      "category": "requirements",
+      "zh": "业务目标",
+      "en": "Business Goal",
+      "aliases": {
+        "en": [
+          "Business Goals",
+          "Business Objective",
+          "Business Objectives"
+        ],
+        "zh": [
+          "业务目的"
+        ]
+      },
+      "context": "张贺：ASR 排序与取舍；企业架构：战略对齐",
+      "related": [
+        "架构驱动因素",
+        "效用树",
+        "组织因素"
+      ],
+      "noteZh": "业务上最想达成的目标，用来给质量需求和 ASR 排优先级，也用来在不同利益相关者关注点冲突时取舍。",
+      "noteEn": "The business outcome to achieve. It prioritizes quality requirements/ASRs and resolves conflicts among stakeholder concerns."
+    },
+    {
+      "id": "requirement-document",
+      "category": "requirements",
+      "zh": "需求文档",
+      "en": "Requirement Document",
+      "aliases": {
+        "en": [
+          "Requirement Documents",
+          "Requirements Document",
+          "Requirements Documents"
+        ],
+        "zh": [
+          "需求规格说明"
+        ]
+      },
+      "context": "张贺：ASR 获取依据",
+      "related": [
+        "非功能需求",
+        "质量需求",
+        "利益相关者工作坊"
+      ],
+      "noteZh": "ASR 识别的第一手材料，但往往偏功能需求，NFR/质量需求可能不够场景化。",
+      "noteEn": "The first source for ASR identification, but it often focuses on functionality and leaves NFRs/quality requirements insufficiently scenario-based."
+    },
+    {
+      "id": "stakeholder-workshop",
+      "category": "requirements",
+      "zh": "利益相关者工作坊",
+      "en": "Stakeholder Workshop",
+      "aliases": {
+        "en": [
+          "Stakeholder Workshops",
+          "Workshop",
+          "Workshops"
+        ],
+        "zh": [
+          "工作坊",
+          "研讨会"
+        ]
+      },
+      "context": "张贺：ASR 获取方法",
+      "related": [
+        "利益相关者",
+        "质量属性工作坊",
+        "访谈"
+      ],
+      "noteZh": "把不同利益相关者拉到一起，收集关注点、补充质量场景并讨论优先级。",
+      "noteEn": "Brings stakeholders together to collect concerns, complete quality scenarios, and discuss priorities."
+    },
+    {
+      "id": "interview",
+      "category": "requirements",
+      "zh": "访谈",
+      "en": "Interview",
+      "aliases": {
+        "en": [
+          "Interviews"
+        ],
+        "zh": [
+          "面谈"
+        ]
+      },
+      "context": "张贺：ASR 获取方法",
+      "related": [
+        "利益相关者",
+        "利益相关者工作坊",
+        "需求文档"
+      ],
+      "noteZh": "通过一对一或小范围交流补充需求文档中没有写清的质量目标、风险和约束。",
+      "noteEn": "One-on-one or small-group elicitation used to complete quality goals, risks, and constraints missing from documents."
+    },
+    {
+      "id": "design-purpose",
+      "category": "methods",
+      "zh": "设计目的",
+      "en": "Design Purpose",
+      "aliases": {
+        "en": [
+          "Design Purposes"
+        ],
+        "zh": [
+          "设计目标"
+        ]
+      },
+      "context": "李杉杉：ADD 输入",
+      "related": [
+        "属性驱动设计",
+        "架构驱动因素",
+        "主要功能"
+      ],
+      "noteZh": "ADD 3.0 输入之一，说明本轮架构设计要服务什么目的，如新建系统、演化系统或评估方案。",
+      "noteEn": "An ADD 3.0 input stating what this design iteration is for, such as new design, evolution, or evaluation."
+    },
+    {
+      "id": "primary-functionality",
+      "category": "methods",
+      "zh": "主要功能",
+      "en": "Primary Functionality",
+      "aliases": {
+        "en": [
+          "Primary Functionalities"
+        ],
+        "zh": [
+          "核心功能"
+        ]
+      },
+      "context": "李杉杉：ADD 输入",
+      "related": [
+        "功能需求",
+        "属性驱动设计"
+      ],
+      "noteZh": "ADD 输入之一，指系统最核心、最能代表业务价值的功能。关键功能也可能成为架构驱动因素。",
+      "noteEn": "An ADD input describing the system’s core business functionality. Key functionality can become an architectural driver."
+    },
+    {
+      "id": "architectural-constraint",
+      "category": "methods",
+      "zh": "架构约束",
+      "en": "Architectural Constraint",
+      "aliases": {
+        "en": [
+          "Architectural Constraints"
+        ],
+        "zh": [
+          "架构限制"
+        ]
+      },
+      "context": "李杉杉：ADD 输入；张贺：需求分类",
+      "related": [
+        "约束",
+        "技术/运行环境",
+        "属性驱动设计"
+      ],
+      "noteZh": "架构设计前已经确定、必须满足的限制，如指定平台、合规要求、遗留系统或部署条件。",
+      "noteEn": "A constraint fixed before architecture design and must be satisfied, such as platform, compliance, legacy, or deployment conditions."
+    },
+    {
+      "id": "existing-architecture",
+      "category": "methods",
+      "zh": "既有架构",
+      "en": "Existing Architecture",
+      "aliases": {
+        "en": [
+          "Existing Architecture Design",
+          "Brownfield Architecture"
+        ],
+        "zh": [
+          "棕地系统",
+          "已有架构"
+        ]
+      },
+      "context": "李杉杉：ADD 棕地迭代输入",
+      "related": [
+        "属性驱动设计",
+        "技术/运行环境"
+      ],
+      "noteZh": "棕地开发中已有的系统架构，会作为下一轮 ADD 迭代的输入和限制。",
+      "noteEn": "The current architecture in brownfield development; it becomes an input and constraint for the next ADD iteration."
+    },
+    {
+      "id": "module-boundary",
+      "category": "views",
+      "zh": "模块边界",
+      "en": "Module Boundary",
+      "aliases": {
+        "en": [
+          "Module Boundaries"
+        ],
+        "zh": [
+          "代码模块边界"
+        ]
+      },
+      "context": "张贺：模块视图/开发结构语境",
+      "boundaryType": "代码组织边界",
+      "related": [
+        "模块视图",
+        "设计决定",
+        "责任分配"
+      ],
+      "noteZh": "在模块视图中划分代码职责和依赖的边界，关注可修改性、职责分配和编译/开发依赖。不要和 DDD 的限界上下文或组织边界混用。",
+      "noteEn": "A code-organisation boundary in the module view, focused on modifiability, responsibility allocation, and development dependencies. Do not confuse it with bounded context or organisational boundary."
+    },
+    {
+      "id": "system-boundary",
+      "category": "views",
+      "zh": "系统边界",
+      "en": "System Boundary",
+      "aliases": {
+        "en": [
+          "System Boundaries"
+        ],
+        "zh": [
+          "系统范围边界"
+        ]
+      },
+      "context": "设计题/画图题语境",
+      "boundaryType": "内外部范围边界",
+      "related": [
+        "外部系统",
+        "接口",
+        "服务边界"
+      ],
+      "noteZh": "画图时先框出系统内部与外部角色/外部系统的分界，帮助判断哪些组件属于本系统，哪些只通过接口交互。",
+      "noteEn": "A drawing boundary that separates the system internals from external actors/systems, clarifying what belongs inside and what interacts through interfaces."
+    },
+    {
+      "id": "organisation-boundary",
+      "category": "enterprise",
+      "zh": "组织边界",
+      "en": "Organizational Boundary",
+      "aliases": {
+        "en": [
+          "Organisation Boundary",
+          "Organizational Boundaries",
+          "Organisation Boundaries"
+        ],
+        "zh": [
+          "组织责任边界"
+        ]
+      },
+      "context": "张贺：架构来源；李杉杉：企业架构/治理语境",
+      "boundaryType": "团队与治理边界",
+      "related": [
+        "组织因素",
+        "企业架构",
+        "康威定律"
+      ],
+      "noteZh": "由团队、部门、职责、治理和预算形成的边界，会影响服务边界、系统归属和演化方式。",
+      "noteEn": "A boundary formed by teams, departments, responsibilities, governance, and budgets; it affects service boundaries, ownership, and evolution."
+    },
+    {
+      "id": "service-boundary",
+      "category": "microservices",
+      "zh": "服务边界",
+      "en": "Service Boundary",
+      "aliases": {
+        "en": [
+          "Service Boundaries"
+        ],
+        "zh": [
+          "微服务边界"
+        ]
+      },
+      "context": "李杉杉：微服务/DDD 语境",
+      "boundaryType": "部署与业务能力边界",
+      "related": [
+        "限界上下文",
+        "数据边界",
+        "业务能力"
+      ],
+      "noteZh": "微服务拆分时每个服务负责的业务能力、接口、数据归属和部署单元边界。通常参考限界上下文，但不机械等同。",
+      "noteEn": "The boundary of a microservice’s business capability, interface, data ownership, and deployable unit. It often follows bounded contexts but is not mechanically identical."
+    },
+    {
+      "id": "data-boundary",
+      "category": "microservices",
+      "zh": "数据边界",
+      "en": "Data Boundary",
+      "aliases": {
+        "en": [
+          "Data Boundaries"
+        ],
+        "zh": [
+          "数据归属边界"
+        ]
+      },
+      "context": "李杉杉：微服务数据归属",
+      "boundaryType": "数据所有权边界",
+      "related": [
+        "服务自有数据",
+        "服务边界",
+        "聚合"
+      ],
+      "noteZh": "说明数据由哪个服务/聚合拥有和修改，是处理跨服务一致性与可修改性的关键。",
+      "noteEn": "Defines which service/aggregate owns and changes data; important for consistency and modifiability across services."
+    },
+    {
+      "id": "business-capability",
+      "category": "enterprise",
+      "zh": "业务能力",
+      "en": "Business Capability",
+      "aliases": {
+        "en": [
+          "Business Capabilities"
+        ],
+        "zh": [
+          "业务功能能力"
+        ]
+      },
+      "context": "李杉杉：企业架构/微服务拆分",
+      "related": [
+        "业务架构",
+        "服务边界",
+        "业务组件模型"
+      ],
+      "noteZh": "组织为了实现业务目标必须具备的能力，可用于企业架构梳理和微服务按业务能力拆分。",
+      "noteEn": "A capability the organisation needs to achieve business goals; useful for enterprise architecture and business-capability service decomposition."
+    },
+    {
+      "id": "view",
+      "category": "views",
+      "zh": "视图",
+      "en": "View",
+      "aliases": {
+        "zh": [
+          "架构视图"
+        ],
+        "en": [
+          "Views",
+          "Architecture View",
+          "Architecture Views"
+        ]
+      },
+      "context": "张贺：面向利益相关者关注点的架构表达",
+      "related": [
+        "利益相关者关注点",
+        "模块视图",
+        "组件-连接器视图",
+        "分配视图",
+        "4+1 视图"
+      ],
+      "noteZh": "从某一类关注点观察同一架构的表达。视图不是随机 UML 图，而是为特定利益相关者和关注点服务。",
+      "noteEn": "A representation of architecture from one class of concerns. A view is not a random UML diagram; it serves specific stakeholders and concerns."
+    },
+    {
+      "id": "module-view",
+      "category": "views",
+      "zh": "模块视图",
+      "en": "Module View",
+      "aliases": {
+        "zh": [
+          "模块视图类型"
+        ],
+        "en": [
+          "Module Views",
+          "Module Viewtype",
+          "Module Viewtypes"
+        ]
+      },
+      "context": "张贺：视图及视图外信息；开发结构语境",
+      "boundaryType": "代码组织边界",
+      "related": [
+        "模块边界",
+        "分解视图",
+        "使用视图",
+        "分层架构"
+      ],
+      "noteZh": "描述静态代码/实现单元的分解、依赖、使用、泛化或分层关系，常服务开发人员、项目经理和维护人员。",
+      "noteEn": "Shows static code or implementation units: decomposition, dependency, uses, generalization, or layered relations. Useful for developers, managers, and maintainers."
+    },
+    {
+      "id": "component-connector-view",
+      "category": "views",
+      "zh": "组件-连接器视图",
+      "en": "Component-and-Connector View (C&C View)",
+      "aliases": {
+        "zh": [
+          "C&C 视图",
+          "组件连接器视图"
+        ],
+        "en": [
+          "C&C View",
+          "C&C Views",
+          "Component Connector View",
+          "Component-and-Connector Views"
+        ]
+      },
+      "context": "张贺：运行时结构语境；吕骏：风格表达",
+      "related": [
+        "连接器",
+        "接口",
+        "运行时组件",
+        "管道-过滤器",
+        "发布-订阅"
+      ],
+      "noteZh": "描述运行时组件、连接器、数据流和交互，常用于性能、并发、通信、可用性分析。",
+      "noteEn": "Shows runtime components, connectors, data flow, and interactions; useful for performance, concurrency, communication, and availability analysis."
+    },
+    {
+      "id": "allocation-view",
+      "category": "views",
+      "zh": "分配视图",
+      "en": "Allocation View",
+      "aliases": {
+        "zh": [
+          "部署/分配视图"
+        ],
+        "en": [
+          "Allocation Views"
+        ]
+      },
+      "context": "张贺：软件到环境映射语境",
+      "boundaryType": "部署/团队/文件映射边界",
+      "related": [
+        "物理视图",
+        "技术/运行环境",
+        "组织边界"
+      ],
+      "noteZh": "描述软件元素如何映射到硬件节点、运行环境、团队、文件系统或部署单元。",
+      "noteEn": "Shows how software elements map to hardware nodes, runtime environments, teams, filesystems, or deployment units."
+    },
+    {
+      "id": "connector",
+      "category": "views",
+      "zh": "连接器",
+      "en": "Connector",
+      "aliases": {
+        "zh": [
+          "架构连接器"
+        ],
+        "en": [
+          "Connectors"
+        ]
+      },
+      "context": "张贺：组件-连接器视图",
+      "related": [
+        "组件-连接器视图",
+        "接口",
+        "管道-过滤器"
+      ],
+      "noteZh": "运行时组件之间交互的机制，如调用、消息、管道、事件总线或协议适配。",
+      "noteEn": "The interaction mechanism between runtime components, such as calls, messages, pipes, event buses, or protocol adapters."
+    },
+    {
+      "id": "interface",
+      "category": "decision",
+      "zh": "接口",
+      "en": "Interface",
+      "aliases": {
+        "zh": [
+          "服务接口"
+        ],
+        "en": [
+          "Interfaces"
+        ]
+      },
+      "context": "ADD 第 5 步；微服务协作；文档化",
+      "related": [
+        "属性驱动设计",
+        "服务边界",
+        "连接器"
+      ],
+      "noteZh": "元素对外暴露的服务契约。ADD 第 5 步要求定义接口，文档化时要说明接口行为和约束。",
+      "noteEn": "The externally visible contract of an element. ADD Step 5 defines interfaces; documentation records interface behavior and constraints."
+    },
+    {
+      "id": "architectural-concern",
+      "category": "methods",
+      "zh": "架构关注点",
+      "en": "Architectural Concern",
+      "aliases": {
+        "zh": [
+          "架构关切"
+        ],
+        "en": [
+          "Architectural Concerns"
+        ]
+      },
+      "context": "李杉杉：ADD 输入；张贺：利益相关者关注点",
+      "related": [
+        "利益相关者关注点",
+        "架构驱动因素",
+        "属性驱动设计"
+      ],
+      "noteZh": "会影响架构设计的关注点或问题，ADD 3.0 把它列为五类红色驱动因素之一。",
+      "noteEn": "A concern that affects architecture design; ADD 3.0 lists it as one of the five red driver classes."
+    },
+    {
+      "id": "iteration-goal",
+      "category": "methods",
+      "zh": "迭代目标",
+      "en": "Iteration Goal",
+      "aliases": {
+        "zh": [
+          "本轮迭代目标"
+        ],
+        "en": [
+          "Iteration Goals"
+        ]
+      },
+      "context": "李杉杉：ADD 第 2 步",
+      "related": [
+        "属性驱动设计",
+        "架构驱动因素",
+        "设计目的"
+      ],
+      "noteZh": "ADD 每一轮通过选择驱动因素建立的本轮设计目标，用来决定要细化的元素和设计概念。",
+      "noteEn": "The goal established in each ADD iteration by selecting drivers; it guides the element to refine and design concepts to use."
+    },
+    {
+      "id": "rationale",
+      "category": "documentation",
+      "zh": "设计理由",
+      "en": "Rationale",
+      "aliases": {
+        "zh": [
+          "架构理由",
+          "决策理由"
+        ],
+        "en": [
+          "Design Rationale",
+          "Architectural Rationale"
+        ]
+      },
+      "context": "张贺：文档化；ADD 第 6 步",
+      "related": [
+        "设计决定",
+        "视图",
+        "属性驱动设计"
+      ],
+      "noteZh": "记录为什么选择某个架构方案、它满足哪些驱动因素以及接受哪些取舍。没有设计理由，图只能说明“是什么”，不能说明“为什么”。",
+      "noteEn": "Explains why a design choice was made, which drivers it addresses, and what tradeoffs it accepts."
+    },
+    {
+      "id": "responsibility-allocation",
+      "category": "decision",
+      "zh": "责任分配",
+      "en": "Allocation of Responsibilities",
+      "aliases": {
+        "zh": [
+          "职责分配"
+        ],
+        "en": [
+          "Responsibility Allocation"
+        ]
+      },
+      "context": "张贺：七类设计决定；ADD 第 5 步",
+      "related": [
+        "设计决定",
+        "模块边界",
+        "服务边界"
+      ],
+      "noteZh": "决定哪些元素承担哪些职责，是模块拆分、服务拆分和 ADD 第 5 步的基础。",
+      "noteEn": "Decides which elements own which responsibilities; foundational for module/service decomposition and ADD Step 5."
+    },
+    {
+      "id": "coordination-model",
+      "category": "decision",
+      "zh": "协调模型",
+      "en": "Coordination Model",
+      "aliases": {
+        "zh": [
+          "协作模型"
+        ],
+        "en": [
+          "Coordination Models"
+        ]
+      },
+      "context": "张贺：七类设计决定",
+      "related": [
+        "组件-连接器视图",
+        "连接器",
+        "发布-订阅"
+      ],
+      "noteZh": "决定元素之间如何通信、同步、并发和协作，例如同步调用、异步消息、事件或共享数据。",
+      "noteEn": "Decides how elements communicate, synchronize, run concurrently, and collaborate, e.g. calls, messages, events, or shared data."
+    },
+    {
+      "id": "data-model",
+      "category": "decision",
+      "zh": "数据模型",
+      "en": "Data Model",
+      "aliases": {
+        "zh": [
+          "数据设计"
+        ],
+        "en": [
+          "Data Models"
+        ]
+      },
+      "context": "张贺：七类设计决定；李杉杉：DDD/企业架构",
+      "related": [
+        "数据边界",
+        "聚合",
+        "数据架构"
+      ],
+      "noteZh": "决定系统核心数据、数据关系、数据归属和一致性规则。不要把领域模型简单等同数据库表。",
+      "noteEn": "Decides core data, relationships, ownership, and consistency rules. Do not reduce domain models to database tables."
+    },
+    {
+      "id": "resource-management",
+      "category": "decision",
+      "zh": "资源管理",
+      "en": "Management of Resources",
+      "aliases": {
+        "zh": [
+          "资源治理"
+        ],
+        "en": [
+          "Resource Management"
+        ]
+      },
+      "context": "张贺：七类设计决定；性能/可用性战术",
+      "related": [
+        "性能",
+        "可用性",
+        "战术"
+      ],
+      "noteZh": "决定线程、连接、缓存、带宽、计算资源等如何分配、复用、限制和监控。",
+      "noteEn": "Decides how threads, connections, caches, bandwidth, compute, and other resources are allocated, reused, limited, and monitored."
+    },
+    {
+      "id": "mapping-among-elements",
+      "category": "decision",
+      "zh": "架构元素映射",
+      "en": "Mapping Among Architecture Elements",
+      "aliases": {
+        "zh": [
+          "元素映射",
+          "映射关系"
+        ],
+        "en": [
+          "Mappings Among Architecture Elements"
+        ]
+      },
+      "context": "张贺：七类设计决定；文档化",
+      "related": [
+        "视图",
+        "分配视图",
+        "设计理由"
+      ],
+      "noteZh": "说明不同视图或不同层次的元素如何对应，例如模块到运行时组件、组件到部署节点。",
+      "noteEn": "Explains how elements across views or levels correspond, e.g. modules to runtime components or components to deployment nodes."
+    },
+    {
+      "id": "technology-choice",
+      "category": "decision",
+      "zh": "技术选择",
+      "en": "Choice of Technology",
+      "aliases": {
+        "zh": [
+          "技术选型"
+        ],
+        "en": [
+          "Technology Choice",
+          "Technology Choices"
+        ]
+      },
+      "context": "张贺：七类设计决定；ADD 设计概念",
+      "related": [
+        "技术/运行环境",
+        "架构约束",
+        "设计决定"
+      ],
+      "noteZh": "决定采用哪些平台、框架、中间件、数据库、协议或云服务。技术选择应服务架构驱动因素，而不是先入为主。",
+      "noteEn": "Decides platforms, frameworks, middleware, databases, protocols, or cloud services. Technology choices should serve drivers, not dominate them."
+    },
+    {
+      "id": "core-subdomain",
+      "category": "ddd",
+      "zh": "核心域",
+      "en": "Core Subdomain",
+      "aliases": {
+        "zh": [
+          "核心子域"
+        ],
+        "en": [
+          "Core Domain",
+          "Core Subdomains"
+        ]
+      },
+      "context": "李杉杉：DDD 战略设计",
+      "related": [
+        "子域",
+        "限界上下文",
+        "业务能力"
+      ],
+      "noteZh": "最能体现业务差异化和竞争优势的子域，通常应投入最多建模精力。",
+      "noteEn": "The subdomain that provides business differentiation and competitive advantage; it usually deserves the most modeling effort."
+    },
+    {
+      "id": "supporting-subdomain",
+      "category": "ddd",
+      "zh": "支撑子域",
+      "en": "Supporting Subdomain",
+      "aliases": {
+        "zh": [
+          "支撑域"
+        ],
+        "en": [
+          "Supporting Subdomains"
+        ]
+      },
+      "context": "李杉杉：DDD 战略设计",
+      "related": [
+        "子域",
+        "核心域"
+      ],
+      "noteZh": "支撑核心业务但不直接形成差异化优势的子域，可以自研但优先级低于核心域。",
+      "noteEn": "Supports the core business but is not the main differentiator; may be built in-house with lower priority than the core domain."
+    },
+    {
+      "id": "generic-subdomain",
+      "category": "ddd",
+      "zh": "通用子域",
+      "en": "Generic Subdomain",
+      "aliases": {
+        "zh": [
+          "通用域"
+        ],
+        "en": [
+          "Generic Subdomains"
+        ]
+      },
+      "context": "李杉杉：DDD 战略设计",
+      "related": [
+        "子域",
+        "核心域"
+      ],
+      "noteZh": "许多企业都有的通用能力，通常可购买或复用现成方案。",
+      "noteEn": "A common capability shared by many organizations; often purchased or reused."
+    },
+    {
+      "id": "aggregate-root",
+      "category": "ddd",
+      "zh": "聚合根",
+      "en": "Aggregate Root",
+      "aliases": {
+        "zh": [
+          "聚合根实体"
+        ],
+        "en": [
+          "Aggregate Roots"
+        ]
+      },
+      "context": "李杉杉：DDD 一致性边界",
+      "related": [
+        "聚合",
+        "实体",
+        "数据边界"
+      ],
+      "noteZh": "聚合对外访问和修改的入口，负责维护聚合内部不变量。",
+      "noteEn": "The entry point for accessing and modifying an aggregate; responsible for maintaining invariants inside the aggregate."
+    },
+    {
+      "id": "domain-service",
+      "category": "ddd",
+      "zh": "领域服务",
+      "en": "Domain Service",
+      "aliases": {
+        "zh": [
+          "领域层服务"
+        ],
+        "en": [
+          "Domain Services"
+        ]
+      },
+      "context": "李杉杉：DDD 战术设计",
+      "related": [
+        "实体",
+        "值对象",
+        "聚合"
+      ],
+      "noteZh": "表达不自然属于某个实体或值对象的领域行为，仍应属于领域层，而不是应用编排。",
+      "noteEn": "Expresses domain behavior that does not naturally belong to an entity or value object; it belongs in the domain layer rather than application orchestration."
+    },
+    {
+      "id": "shared-kernel",
+      "category": "ddd",
+      "zh": "共享内核",
+      "en": "Shared Kernel",
+      "aliases": {
+        "zh": [
+          "共享核心"
+        ],
+        "en": [
+          "Shared Kernels"
+        ]
+      },
+      "context": "李杉杉：上下文映射",
+      "related": [
+        "上下文映射",
+        "限界上下文"
+      ],
+      "noteZh": "多个限界上下文共同维护的一小部分模型或代码，共享范围必须小且治理清楚。",
+      "noteEn": "A small shared part of model/code maintained by multiple bounded contexts; it must stay small and governed."
+    },
+    {
+      "id": "open-host-service",
+      "category": "ddd",
+      "zh": "开放主机服务",
+      "en": "Open Host Service",
+      "aliases": {
+        "zh": [
+          "开放宿主服务"
+        ],
+        "en": [
+          "Open Host Services"
+        ]
+      },
+      "context": "李杉杉：上下文映射",
+      "related": [
+        "上下文映射",
+        "接口"
+      ],
+      "noteZh": "一个上下文通过公开协议或服务接口为多个外部上下文提供稳定访问方式。",
+      "noteEn": "A context offers stable access to multiple external contexts through a published protocol or service interface."
+    },
+    {
+      "id": "customer-supplier",
+      "category": "ddd",
+      "zh": "客户方/供应方",
+      "en": "Customer/Supplier",
+      "aliases": {
+        "zh": [
+          "客户-供应商关系"
+        ],
+        "en": [
+          "Customer Supplier"
+        ]
+      },
+      "context": "李杉杉：上下文映射",
+      "related": [
+        "上下文映射",
+        "限界上下文"
+      ],
+      "noteZh": "上下文映射关系：下游客户方依赖上游供应方，上下游需要协商接口、节奏和变化影响。",
+      "noteEn": "A context-map relationship: downstream customer depends on upstream supplier and they coordinate interfaces, cadence, and changes."
     }
   ],
   "assets": [
     {
       "title": {
-        "zh": "张贺复习课画板",
+        "zh": "张贺课程画板",
         "en": "Zhang He review whiteboard"
       },
       "src": "assets/feishu-whiteboards/zhang-he.jpg",
@@ -3106,7 +4549,7 @@ window.reviewContent = {
     },
     {
       "title": {
-        "zh": "李杉杉复习课画板",
+        "zh": "李杉杉课程画板",
         "en": "Li Shanshan review whiteboard"
       },
       "src": "assets/feishu-whiteboards/li-shanshan.jpg",
@@ -3122,7 +4565,7 @@ window.reviewContent = {
       },
       "src": "assets/feishu-whiteboards/lu-jun.jpg",
       "note": {
-        "zh": "对应架构演进与时代矛盾主线。",
+        "zh": "对应架构演进与时代矛盾核心。",
         "en": "Architecture evolution and historical-tension storyline."
       }
     }
@@ -3131,11 +4574,11 @@ window.reviewContent = {
     {
       "id": "core",
       "title": {
-        "zh": "基础主线",
+        "zh": "基础核心",
         "en": "Core Foundations"
       },
       "note": {
-        "zh": "概念、质量属性、ASR 是简答题保底。",
+        "zh": "概念、质量属性、ASR 是简答题辅助。",
         "en": "Definitions, quality attributes, and ASRs stabilize short-answer points."
       }
     },
@@ -3168,18 +4611,18 @@ window.reviewContent = {
         "en": "Modern Architecture"
       },
       "note": {
-        "zh": "微服务、DDD、企业架构是今年高阶重点。",
+        "zh": "微服务、DDD、企业架构是高阶重点。",
         "en": "Microservices, DDD, and EA are the advanced focus this year."
       }
     },
     {
       "id": "historical",
       "title": {
-        "zh": "历史高频",
+        "zh": "往年高频",
         "en": "Historical High-Frequency"
       },
       "note": {
-        "zh": "今年未必重，但往年反复出现。",
+        "zh": "不作为核心，但往年资料反复出现。",
         "en": "Maybe lower priority this year, but frequent in past papers."
       }
     },
@@ -3203,7 +4646,7 @@ window.reviewContent = {
         "en": "Round 1"
       },
       "title": {
-        "zh": "先拿保底分",
+        "zh": "先拿辅助分",
         "en": "Secure baseline points"
       },
       "items": [
@@ -3216,7 +4659,7 @@ window.reviewContent = {
           "en": "Six-part quality scenarios, ASRs, utility tree"
         },
         {
-          "zh": "4+1 和 Views and Beyond 只背骨架",
+          "zh": "4+1 和 视图及视图外信息 只背骨架",
           "en": "Memorize only the skeleton of 4+1 and Views and Beyond"
         }
       ]
@@ -3228,12 +4671,12 @@ window.reviewContent = {
         "en": "Round 2"
       },
       "title": {
-        "zh": "冲今年高阶重点",
+        "zh": "冲高阶重点",
         "en": "Attack current advanced focus"
       },
       "items": [
         {
-          "zh": "ADD 3.0 七步流程 + driver/iteration 口径",
+          "zh": "ADD 3.0 七步流程 + 驱动因素/迭代 表述",
           "en": "ADD 3.0 seven-step process + driver/iteration wording"
         },
         {
@@ -3263,92 +4706,24 @@ window.reviewContent = {
       "items": [
         {
           "zh": "按 39 个真题簇逐条看中文答案，再对照英文题干；2025/2022/2021 相邻课程真题只看架构筛选部分，GoF/OOP 题跳过",
-          "en": "Read Chinese answer frames for all 39 clusters, then compare English prompts; use only the architecture-filtered parts of 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
+          "en": "Read Chinese answer frames for all 39 clusters, then compare English 题目s; use only the architecture-filtered parts of 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
         },
         {
-          "zh": "主练微服务 + DDD + ADD/ASR 文档化；三层、缓存只作为 P2 历史题过一遍",
-          "en": "Main practice: microservices + DDD + ADD/ASR documentation; skim three-tier/cache as P2 historical prompts only"
+          "zh": "主练微服务 + DDD + ADD/ASR 文档化；三层、缓存只作为 P2 补充资料过一遍",
+          "en": "Main practice: microservices + DDD + ADD/ASR documentation; skim three-tier/cache as backup 题目s only"
         },
         {
-          "zh": "ATAM/SPL/MDA/SOA 只保留历史高频简答骨架",
+          "zh": "ATAM/SPL/MDA/SOA 只保留往年高频简答骨架",
           "en": "Keep only short-answer skeletons for historical ATAM/SPL/MDA/SOA topics"
         }
       ]
-    }
-  ],
-  "coverage": [
-    {
-      "area": {
-        "zh": "考试形式与答题要求",
-        "en": "Exam format and answer rules"
-      },
-      "status": {
-        "zh": "以完整录音确认",
-        "en": "Confirmed by complete recording"
-      },
-      "evidence": "data/review-class/complete-review-minutes.md; data/复习课完整录音-张贺吕骏李杉杉.txt"
-    },
-    {
-      "area": {
-        "zh": "P0 基础、质量、ASR、4+1、设计决定",
-        "en": "P0 foundations, quality, ASR, 4+1, design decisions"
-      },
-      "status": {
-        "zh": "重排为主线",
-        "en": "Promoted to mainline"
-      },
-      "evidence": "Complete recording + Lecture 14 softarch2026-review-1 + Lecture 1/2-4 OCR"
-    },
-    {
-      "area": {
-        "zh": "P0 架构演进、ADD、微服务、DDD",
-        "en": "P0 evolution, ADD, microservices, DDD"
-      },
-      "status": {
-        "zh": "按复习课强化",
-        "en": "Strengthened from review class"
-      },
-      "evidence": "Lu Jun Lecture 3 review; Li Shanshan review slides; Lecture 6-9/12 OCR"
-    },
-    {
-      "area": {
-        "zh": "企业架构",
-        "en": "Enterprise architecture"
-      },
-      "status": {
-        "zh": "降为 P1",
-        "en": "Set to P1"
-      },
-      "evidence": "Complete minutes P1; Lecture 10-11 4A/TOGAF/CBM OCR"
-    },
-    {
-      "area": {
-        "zh": "ATAM、SPL/MDA、旧三层/缓存题",
-        "en": "ATAM, SPL/MDA, old three-tier/cache questions"
-      },
-      "status": {
-        "zh": "历史保底",
-        "en": "Historical backup"
-      },
-      "evidence": "Past papers retained but not allowed to override current review-class scope"
-    },
-    {
-      "area": {
-        "zh": "AI 增强/AI 原生、GoF 设计模式",
-        "en": "AI-enabled/native and GoF design patterns"
-      },
-      "status": {
-        "zh": "明确不考/排除",
-        "en": "Non-exam/excluded"
-      },
-      "evidence": "Complete recording Lu Jun segment; adjacent-course filtering rule"
     }
   ],
   "whiteboards": [
     {
       "id": "zhang-he",
       "title": {
-        "zh": "张贺复习课画板",
+        "zh": "张贺课程画板",
         "en": "Zhang He Review Whiteboard"
       },
       "src": "assets/feishu-whiteboards/zhang-he.jpg",
@@ -3366,11 +4741,11 @@ window.reviewContent = {
           "en": "Types: short answer, essay/Q&A, design analysis; some require diagrams."
         },
         {
-          "zh": "基础主线：架构定义、架构/设计/结构关系、架构师职责、用户与开发者矛盾。",
+          "zh": "基础核心：架构定义、架构/设计/结构关系、架构师职责、用户与开发者矛盾。",
           "en": "Foundation line: architecture definition, architecture/design/structure, architect role, user-developer tension."
         },
         {
-          "zh": "质量主线：质量属性六要素场景、ASR 来源、效用树、设计决定/策略/tactic/pattern。",
+          "zh": "质量核心：质量属性六要素场景、ASR 来源、效用树、设计决定/策略/战术/模式。",
           "en": "Quality line: six-part scenarios, ASR sources, utility tree, design decisions/strategy/tactic/pattern."
         }
       ]
@@ -3378,17 +4753,17 @@ window.reviewContent = {
     {
       "id": "li-shanshan",
       "title": {
-        "zh": "李杉杉复习课画板",
+        "zh": "李杉杉课程画板",
         "en": "Li Shanshan Review Whiteboard"
       },
       "src": "assets/feishu-whiteboards/li-shanshan.jpg",
       "note": {
-        "zh": "ADD、微服务、DDD、企业架构是今年复习高阶重点。",
+        "zh": "ADD、微服务、DDD、企业架构是复习高阶重点。",
         "en": "ADD, microservices, DDD, and EA are the advanced focus this year."
       },
       "points": [
         {
-          "zh": "ADD 3.0：Review inputs；按 driver 建立本轮 iteration goal；选择要细化的元素；选择 design concepts；实例化元素、分配职责、定义接口；画视图并记录决策；分析当前设计并评审本轮目标与 design purpose，必要时继续迭代。",
+          "zh": "ADD 3.0：审查输入；按 驱动因素 建立本轮 迭代目标；选择要细化的元素；选择 设计概念；实例化元素、分配职责、定义接口；画视图并记录决策；分析当前设计并评审本轮目标与 设计目的，必要时继续迭代。",
           "en": "ADD 3.0: review inputs; establish the iteration goal by selecting drivers; choose elements to refine; choose design concepts; instantiate elements, allocate responsibilities, and define interfaces; sketch views and record decisions; analyze the current design and review the iteration goal/design purpose, then iterate if necessary."
         },
         {
@@ -3438,17 +4813,17 @@ window.reviewContent = {
     {
       "id": "ai-wiki-mainline",
       "title": {
-        "zh": "AI Wiki 期末主线画板",
+        "zh": "AI Wiki 期末核心画板",
         "en": "AI Wiki Exam Mainline Whiteboard"
       },
       "src": "assets/feishu-whiteboards/ai-wiki-mainline.png",
       "note": {
-        "zh": "把 AI 整理资料中的主线压缩成一条可作答链路：业务目标、驱动因素、架构选择、边界落地、考场输出。",
+        "zh": "把 AI 整理资料中的核心压缩成一条可作答链路：业务目标、驱动因素、架构选择、边界落地、考场输出。",
         "en": "Condenses the AI-organized source into an answerable chain: business goals, drivers, architectural choices, boundaries, and exam output."
       },
       "points": [
         {
-          "zh": "起点：业务目标与 stakeholders，先说明系统要解决什么，以及最关心哪些风险与价值。",
+          "zh": "起点：业务目标与 利益相关者，先说明系统要解决什么，以及最关心哪些风险与价值。",
           "en": "Start with business goals and stakeholders: what problem the system solves, and which risks/value matter most."
         },
         {
@@ -3456,7 +4831,7 @@ window.reviewContent = {
           "en": "Identify drivers: quality-attribute scenarios, ASRs, and constraints turn requirements into designable and evaluable drivers."
         },
         {
-          "zh": "做出选择：用 ADD 3.0、tactics、patterns 或微服务权衡，说明选择改善了哪些质量属性。",
+          "zh": "做出选择：用 ADD 3.0、战术、模式 或微服务权衡，说明选择改善了哪些质量属性。",
           "en": "Make choices: use ADD 3.0, tactics, patterns, or microservice tradeoffs to explain which qualities are improved."
         },
         {
@@ -3477,7 +4852,7 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/quality-scenario-table.zh.svg",
       "srcEn": "assets/diagrams/quality-scenario-table.svg",
       "title": {
-        "zh": "质量属性场景 Ground Truth 表",
+        "zh": "质量属性场景 六要素参考表",
         "en": "Quality Attribute Scenario Ground-Truth Table"
       },
       "note": {
@@ -3485,7 +4860,7 @@ window.reviewContent = {
         "en": "Redrawn from the original course table: quality attribute, source, stimulus, artifact, environment, response, response measure."
       },
       "use": {
-        "zh": "质量场景题直接按此表背；Availability 行不要改成自拟切备用实例。",
+        "zh": "质量场景题直接按此表背；可用性 行不要改成自拟切备用实例。",
         "en": "Use this table directly for quality-scenario questions; do not replace the Availability row with a self-made failover example."
       }
     },
@@ -3499,7 +4874,7 @@ window.reviewContent = {
         "en": "Architecture Design, Documentation, and Evaluation Process"
       },
       "note": {
-        "zh": "可信旧图：ASR、需求/约束、patterns/tactics、文档化和评估反馈的过程。",
+        "zh": "可信重绘图：ASR、需求/约束、模式/策略、文档化和评估反馈的过程。",
         "en": "Trusted existing redraw: process from ASRs, requirements/constraints, patterns/tactics to documentation and evaluation feedback."
       },
       "use": {
@@ -3517,7 +4892,7 @@ window.reviewContent = {
         "en": "ADD 3.0 Roadmap"
       },
       "note": {
-        "zh": "可信旧图：五类 driver 输入 Step 1，Step 1-7 串行推进，必要时迭代。",
+        "zh": "可信重绘图：五类 驱动因素 输入 第 1 步，第 1-7 步 串行推进，必要时迭代。",
         "en": "Trusted existing redraw: five driver categories feed Step 1; Steps 1-7 proceed and iterate if necessary."
       },
       "use": {
@@ -3531,7 +4906,7 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/utility-tree.zh.svg",
       "srcEn": "assets/diagrams/utility-tree.svg",
       "title": {
-        "zh": "ASR 效用树 Utility Tree",
+        "zh": "ASR 效用树 效用树",
         "en": "ASR Utility Tree"
       },
       "note": {
@@ -3553,7 +4928,7 @@ window.reviewContent = {
         "en": "4+1 Views"
       },
       "note": {
-        "zh": "来自完整录音纪要配套重绘：logical、process、physical、development 与 use-case scenarios。",
+        "zh": "来自课程材料纪要配套重绘：逻辑视图、进程视图、物理视图、开发视图与用例场景。",
         "en": "Redrawn with the complete review minutes: logical, process, physical, development, and use-case scenarios."
       },
       "use": {
@@ -3567,11 +4942,11 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/review-architecture-evolution.svg",
       "srcEn": "assets/diagrams/review-architecture-evolution.en.svg",
       "title": {
-        "zh": "软件架构演进主线",
+        "zh": "软件架构演进核心",
         "en": "Software Architecture Evolution"
       },
       "note": {
-        "zh": "吕骏复习段重绘：从主机/终端、C/S、三层、SOA 到微服务、事件驱动/云原生。",
+        "zh": "吕骏课程段重绘：从主机/终端、C/S、三层、SOA 到微服务、事件驱动/云原生。",
         "en": "Redrawn from Lu Jun review: from mainframe/terminal, C/S, three-tier, SOA to microservices and event-driven/cloud-native."
       },
       "use": {
@@ -3607,7 +4982,7 @@ window.reviewContent = {
         "en": "Monolith, Layered, SOA, and Microservice Comparison"
       },
       "note": {
-        "zh": "按 Lecture 6-7 表格口径重绘，突出微服务与 SOA 的通信、数据、粒度差异。",
+        "zh": "按 第 6-7 讲 表格表述重绘，突出微服务与 SOA 的通信、数据、粒度差异。",
         "en": "Redrawn from Lecture 6-7 comparison tables, highlighting communication, data, and granularity differences."
       },
       "use": {
@@ -3625,7 +5000,7 @@ window.reviewContent = {
         "en": "Microservice Decomposition and DDD Boundaries"
       },
       "note": {
-        "zh": "来自完整录音纪要配套重绘：业务能力、子域、限界上下文与服务边界的关系。",
+        "zh": "来自课程材料纪要配套重绘：业务能力、子域、限界上下文与服务边界的关系。",
         "en": "Redrawn with complete review minutes: business capabilities, subdomains, bounded contexts, and service boundaries."
       },
       "use": {
@@ -3643,7 +5018,7 @@ window.reviewContent = {
         "en": "DDD Strategic and Tactical Design Map"
       },
       "note": {
-        "zh": "按 Lecture 8-9 OCR 重绘：子域、限界上下文、上下文映射、聚合和事件风暴。",
+        "zh": "按 第 8-9 讲 OCR 重绘：子域、限界上下文、上下文映射、聚合和事件风暴。",
         "en": "Redrawn from Lecture 8-9 OCR: subdomains, bounded contexts, context mapping, aggregates, and event storming."
       },
       "use": {
@@ -3661,8 +5036,8 @@ window.reviewContent = {
         "en": "Enterprise Architecture 4A / TOGAF / CBM"
       },
       "note": {
-        "zh": "按 Lecture 10-11 与复习课口径重绘，强调 4A 而不是把 5A 放大成主线。",
-        "en": "Redrawn from Lecture 10-11 and review-class wording; emphasizes 4A rather than over-promoting 5A."
+        "zh": "按 第 10-11 讲 与课程表述重绘，强调 4A 而不是把 5A 放大成核心。",
+        "en": "Redrawn from Lecture 10-11 and standard wording; emphasizes 4A rather than over-promoting 5A."
       },
       "use": {
         "zh": "企业架构 P1 题使用。",
@@ -3675,16 +5050,16 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/three-tier-reference.zh.svg",
       "srcEn": "assets/diagrams/three-tier-reference.svg",
       "title": {
-        "zh": "三层架构旧题参考答案图",
-        "en": "Three-Tier Old-Paper Reference Diagram"
+        "zh": "三层架构参考答案图",
+        "en": "Three-Tier backup-material Reference Diagram"
       },
       "note": {
-        "zh": "说明性答题图：订票/ATM 三层职责 + Views and Beyond 文档项，不是今年主线 PPT 原图。",
-        "en": "Illustrative answer diagram: booking/ATM three-tier responsibilities plus Views and Beyond documentation; not a current mainline slide."
+        "zh": "说明性答题图：订票/ATM 三层职责 + 视图及视图外信息文档项。",
+        "en": "Illustrative answer diagram: booking/ATM three-tier responsibilities plus Views and Beyond documentation; not a core focus slide."
       },
       "use": {
-        "zh": "旧题设计题需要画三层时使用，优先级 P2。",
-        "en": "Use for historical three-tier design questions, priority P2."
+        "zh": "三层设计题需要画层次职责时使用。",
+        "en": "Use when a three-tier design question asks for layer responsibilities."
       }
     },
     {
@@ -3693,16 +5068,16 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/cache-invalidation-reference.zh.svg",
       "srcEn": "assets/diagrams/cache-invalidation-reference.svg",
       "title": {
-        "zh": "分布式缓存失效旧题参考图",
+        "zh": "分布式缓存失效参考图",
         "en": "Distributed Cache Invalidation Reference"
       },
       "note": {
-        "zh": "说明性答题图：先提交 DB，再由协调器/Broker 广播失效事件到缓存适配器。",
+        "zh": "说明性答题图：先提交 DB，再由协调器/代理模式 广播失效事件到缓存适配器。",
         "en": "Illustrative answer diagram: commit DB first, then coordinator/broker broadcasts invalidation events to cache adapters."
       },
       "use": {
-        "zh": "缓存一致性旧题使用，优先级 P2。",
-        "en": "Use for historical cache-consistency design questions, priority P2."
+        "zh": "缓存一致性设计题使用。",
+        "en": "Use for cache-consistency design questions."
       }
     },
     {
@@ -3715,7 +5090,7 @@ window.reviewContent = {
         "en": "MVC as C&C Style Reference"
       },
       "note": {
-        "zh": "用 MVC 说明 Component-and-Connector：运行时组件、连接件和交互约束。",
+        "zh": "用 MVC 说明 组件-连接器：运行时组件、连接件和交互约束。",
         "en": "Uses MVC to explain Component-and-Connector: runtime components, connectors, and interaction constraints."
       },
       "use": {
@@ -3737,8 +5112,8 @@ window.reviewContent = {
         "en": "Illustrative answer diagram: services are components; contracts, protocols, ESB, and messaging are connectors."
       },
       "use": {
-        "zh": "SOA/C&C、Web Service/ESB 旧题使用。",
-        "en": "Use for SOA/C&C and Web Service/ESB historical questions."
+        "zh": "SOA/C&C、Web 服务/ESB 题使用。",
+        "en": "Use for SOA/C&C and Web Service/ESB backup questions."
       }
     },
     {
@@ -3747,16 +5122,16 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/pipe-filter-text-pipeline.zh.svg",
       "srcEn": "assets/diagrams/pipe-filter-text-pipeline.svg",
       "title": {
-        "zh": "Pipe-and-Filter 文本处理参考图",
+        "zh": "管道-过滤器 文本处理参考图",
         "en": "Pipe-and-Filter Text Pipeline Reference"
       },
       "note": {
-        "zh": "说明性答题图：每个 Filter 做单步转换，每条 Pipe 标明数据格式。",
+        "zh": "说明性答题图：每个 过滤器 做单步转换，每条 管道 标明数据格式。",
         "en": "Illustrative answer diagram: each filter performs one transformation and each pipe labels the data format."
       },
       "use": {
-        "zh": "Pipe-and-Filter 旧设计题使用，优先级 P2。",
-        "en": "Use for historical Pipe-and-Filter design questions, priority P2."
+        "zh": "管道-过滤器设计题使用。",
+        "en": "Use for Pipe-and-Filter design questions."
       }
     },
     {
@@ -3765,16 +5140,16 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/broker-pattern-topology.zh.svg",
       "srcEn": "assets/diagrams/broker-pattern-topology.svg",
       "title": {
-        "zh": "Broker 架构模式拓扑参考图",
+        "zh": "代理模式 架构模式拓扑参考图",
         "en": "Broker Pattern Topology Reference"
       },
       "note": {
-        "zh": "说明性答题图：Client Proxy、Broker、Server Proxy、Server 与可选注册目录。",
+        "zh": "说明性答题图：客户端代理、代理模式、服务端代理、服务端 与可选注册目录。",
         "en": "Illustrative answer diagram: client proxy, broker, server proxy, server, and optional registry."
       },
       "use": {
-        "zh": "Broker 旧题使用，优先级 P2。",
-        "en": "Use for historical Broker questions, priority P2."
+        "zh": "代理模式拓扑题使用。",
+        "en": "Use for Broker topology questions."
       }
     },
     {
@@ -3787,23 +5162,113 @@ window.reviewContent = {
         "en": "ATAM Phase Outputs Reference"
       },
       "note": {
-        "zh": "旧题说明性表格：只保留 Phase 0-3 输出骨架，不把 ATAM 放成 2026 主线。",
-        "en": "Historical reference table: keep only the Phase 0-3 output skeleton and do not promote ATAM to the 2026 mainline."
+        "zh": "说明性表格：按第 0 阶段到第 3 阶段梳理 ATAM 输出。",
+        "en": "Historical reference table: keep only the Phase 0-3 output skeleton and do not promote ATAM to the main focus."
       },
       "use": {
-        "zh": "ATAM 旧题快速回忆用，优先级 P2。",
-        "en": "Use as a quick recall aid for historical ATAM questions, priority P2."
+        "zh": "ATAM 阶段输出快速回忆用。",
+        "en": "Use as a quick recall aid for ATAM phase outputs."
+      }
+    },
+    {
+      "id": "microservice-pattern-groups",
+      "src": "assets/diagrams/microservice-pattern-groups.svg",
+      "srcZh": "assets/diagrams/microservice-pattern-groups.zh.svg",
+      "srcEn": "assets/diagrams/microservice-pattern-groups.svg",
+      "title": {
+        "zh": "微服务核心模式分组",
+        "en": "Microservice Pattern Groups"
+      },
+      "note": {
+        "zh": "按课程页s 5-8 重绘：拆分、通信、部署、可观测性四类模式。",
+        "en": "Redrawn from review pages 5-8: decomposition, communication, deployment, and observability pattern groups."
+      },
+      "use": {
+        "zh": "微服务特性、对比、设计题都按这四组组织。",
+        "en": "Use these four groups for microservice traits, comparisons, and design answers."
+      }
+    },
+    {
+      "id": "architecture-view-selection",
+      "src": "assets/diagrams/architecture-view-selection.svg",
+      "srcZh": "assets/diagrams/architecture-view-selection.zh.svg",
+      "srcEn": "assets/diagrams/architecture-view-selection.svg",
+      "title": {
+        "zh": "视图选择与最小文档包",
+        "en": "View Selection and Minimum Documentation Set"
+      },
+      "note": {
+        "zh": "按第 12 讲第 96-109 页重绘：最少模块/组件-连接器/分配、视图选择方法、视图外信息。",
+        "en": "Redrawn from Lecture 12 pages 96-109: minimum Module/C&C/Allocation views, selection method, and beyond-view information."
+      },
+      "use": {
+        "zh": "架构文档化和 视图及视图外信息 题使用。",
+        "en": "Use for architecture documentation and Views and Beyond questions."
+      }
+    },
+    {
+      "id": "design-decision-categories",
+      "src": "assets/diagrams/design-decision-categories.svg",
+      "srcZh": "assets/diagrams/design-decision-categories.zh.svg",
+      "srcEn": "assets/diagrams/design-decision-categories.svg",
+      "title": {
+        "zh": "设计决定七分类",
+        "en": "Seven Categories of Design Decisions"
+      },
+      "note": {
+        "zh": "按张贺第一份课程讲义第 7 页重绘：职责、协调、数据、资源、映射、绑定时间、技术选择。",
+        "en": "Redrawn from Zhang He review-1 page 7: responsibilities, coordination, data, resources, mapping, binding time, and technology choices."
+      },
+      "use": {
+        "zh": "设计决定题按七类 + 例子 + 取舍作答。",
+        "en": "Answer design-decision questions with seven categories, examples, and tradeoffs."
+      }
+    },
+    {
+      "id": "ddd-event-storming-flow",
+      "src": "assets/diagrams/ddd-event-storming-flow.svg",
+      "srcZh": "assets/diagrams/ddd-event-storming-flow.zh.svg",
+      "srcEn": "assets/diagrams/ddd-event-storming-flow.svg",
+      "title": {
+        "zh": "DDD 事件风暴流程",
+        "en": "DDD Event-Storming Flow"
+      },
+      "note": {
+        "zh": "按课程页 10 重绘：领域事件、参与者、热点标记，以及从事件到聚合/限界上下文的流程。",
+        "en": "Redrawn from review page 10: domain events, participants, hotspots, and the flow from events to aggregates/bounded contexts."
+      },
+      "use": {
+        "zh": "DDD 设计题用来从业务事实推导聚合、读写模型和服务边界。",
+        "en": "Use for deriving aggregates, read/write models, and service boundaries in DDD design answers."
+      }
+    },
+    {
+      "id": "enterprise-methods-togaf-cbm",
+      "src": "assets/diagrams/enterprise-methods-togaf-cbm.svg",
+      "srcZh": "assets/diagrams/enterprise-methods-togaf-cbm.zh.svg",
+      "srcEn": "assets/diagrams/enterprise-methods-togaf-cbm.svg",
+      "title": {
+        "zh": "TOGAF ADM 与 CBM 方法图",
+        "en": "TOGAF ADM and CBM Method Map"
+      },
+      "note": {
+        "zh": "按企业架构复习页重绘：TOGAF 回答过程，CBM 回答业务能力颗粒度。",
+        "en": "Redrawn from the enterprise-architecture review slides: TOGAF answers process; CBM answers business capability granularity."
+      },
+      "use": {
+        "zh": "企业架构 P1 题补充 4A 图使用。",
+        "en": "Use with the 4A diagram for P1 enterprise architecture answers."
       }
     }
   ],
   "examMindmap": {
     "title": {
-      "zh": "复习课完整录音思维导图",
+      "zh": "课程材料思维导图",
       "en": "Complete Review-Class Scope Mind Map"
     },
     "note": {
-      "zh": "以完整录音和复习课 slides 为最高纲领；节点点击会统计，勾选会进入本地 checklist。",
-      "en": "Highest-level outline from the complete recording and review slides; node clicks are counted and checklist state is local."
+      "zh": "节点点击会统计，勾选会进入本地清单。",
+      "en": "Highest-level outline from the review material and review slides; node clicks are counted and 清单 state is local."
     },
     "groups": [
       {
@@ -3854,7 +5319,7 @@ window.reviewContent = {
               "en": "Architecture foundations"
             },
             "note": {
-              "zh": "Structure / Elements / Relationships / Design decisions。",
+              "zh": "结构 / 元素 / 关系 / 设计决定。",
               "en": "Structure / Elements / Relationships / Design decisions."
             }
           },
@@ -3862,11 +5327,11 @@ window.reviewContent = {
             "id": "mind-views",
             "topicId": "views",
             "title": {
-              "zh": "4+1 Views",
+              "zh": "4+1 视图",
               "en": "4+1 Views"
             },
             "note": {
-              "zh": "Logical、Process、Physical、Development + Use case scenarios。",
+              "zh": "逻辑视图、进程视图、物理视图、开发视图 + 用例场景。",
               "en": "Logical, Process, Physical, Development + Use case scenarios."
             }
           },
@@ -3886,11 +5351,11 @@ window.reviewContent = {
             "id": "mind-asr",
             "topicId": "asr",
             "title": {
-              "zh": "ASR 与 Utility Tree",
+              "zh": "ASR 与 效用树",
               "en": "ASRs and Utility Tree"
             },
             "note": {
-              "zh": "需求文档、访谈/workshop、业务目标，按重要性和架构影响排序。",
+              "zh": "需求文档、访谈/工作坊、业务目标，按重要性和架构影响排序。",
               "en": "Documents, interviews/workshops, business goals; rank by value and architectural impact."
             }
           },
@@ -3914,7 +5379,7 @@ window.reviewContent = {
               "en": "ADD 3.0 seven steps"
             },
             "note": {
-              "zh": "driver 输入、iteration goal、refine element、design concept、instantiate、sketch/document、analyze。",
+              "zh": "驱动因素 输入、迭代目标、选择要细化的元素、设计概念、实例化、绘制视图/记录文档、分析。",
               "en": "Drivers, iteration goal, refine element, design concept, instantiate, sketch/document, analyze."
             }
           },
@@ -3968,11 +5433,11 @@ window.reviewContent = {
             "id": "mind-hps",
             "topicId": "add",
             "title": {
-              "zh": "HPS ADD case",
+              "zh": "HPS ADD 案例",
               "en": "HPS ADD case"
             },
             "note": {
-              "zh": "理解 CQRS、Kafka、command/query/export side 如何支持 ADD 流程。",
+              "zh": "理解 CQRS、Kafka、命令侧/查询侧/导出侧 如何支持 ADD 流程。",
               "en": "Understand CQRS, Kafka, command/query/export side as ADD process support."
             }
           }
@@ -3982,8 +5447,8 @@ window.reviewContent = {
         "id": "p2",
         "priority": "P2",
         "title": {
-          "zh": "P2 历史保底",
-          "en": "P2 Historical Backup"
+          "zh": "P2 补充辅助",
+          "en": "P2 Backup"
         },
         "nodes": [
           {
@@ -3994,7 +5459,7 @@ window.reviewContent = {
               "en": "ATAM skeleton"
             },
             "note": {
-              "zh": "输出、参与者、risk/sensitivity/tradeoff。",
+              "zh": "输出、参与者、风险/敏感点/权衡。",
               "en": "Outputs, participants, risk/sensitivity/tradeoff."
             }
           },
@@ -4006,8 +5471,8 @@ window.reviewContent = {
               "en": "SPL/MDA/reuse and variability"
             },
             "note": {
-              "zh": "旧题保底，不抢 P0 时间。",
-              "en": "Old-paper backup; do not steal P0 time."
+              "zh": "掌握到能识别、能简答即可。",
+              "en": "backup-material backup; do not steal P0 time."
             }
           }
         ]
@@ -4016,8 +5481,8 @@ window.reviewContent = {
         "id": "p3",
         "priority": "P3",
         "title": {
-          "zh": "P3 明确不考/只读",
-          "en": "P3 Non-Exam / Read Only"
+          "zh": "P3 背景了解",
+          "en": "P3 Background"
         },
         "nodes": [
           {
@@ -4028,7 +5493,7 @@ window.reviewContent = {
               "en": "AI-enabled / AI-native"
             },
             "note": {
-              "zh": "吕骏完整录音明确不考。",
+              "zh": "吕骏课程范围原始材料明确不考。",
               "en": "Lu Jun explicitly said this will not be tested."
             }
           },
@@ -4039,12 +5504,312 @@ window.reviewContent = {
               "en": "GoF design patterns and coding questions"
             },
             "note": {
-              "zh": "相邻课程材料中剔除，不纳入本课程主线。",
+              "zh": "相邻课程材料中剔除，不纳入本课程核心。",
               "en": "Filtered from adjacent-course material and excluded from this course mainline."
             }
           }
         ]
       }
     ]
-  }
+  },
+  "glossaryGraph": [
+    {
+      "id": "zhang-quality-asr",
+      "title": {
+        "zh": "张贺：质量需求 -> ASR 核心",
+        "en": "Zhang He: Quality Requirements -> ASRs"
+      },
+      "note": {
+        "zh": "用于回答“架构从哪里来”、ASR 来源、效用树和质量场景题。",
+        "en": "Use for architecture-source, ASR-source, utility-tree, and quality-scenario questions."
+      },
+      "terms": [
+        "非功能需求",
+        "质量需求",
+        "质量属性",
+        "质量属性场景",
+        "效用树",
+        "架构相关需求",
+        "业务目标"
+      ],
+      "edges": [
+        [
+          "非功能需求",
+          "重点包含",
+          "质量需求"
+        ],
+        [
+          "质量需求",
+          "场景化为",
+          "质量属性场景"
+        ],
+        [
+          "质量属性场景",
+          "进入",
+          "效用树"
+        ],
+        [
+          "效用树",
+          "筛出",
+          "架构相关需求"
+        ],
+        [
+          "业务目标",
+          "排序/取舍",
+          "架构相关需求"
+        ]
+      ]
+    },
+    {
+      "id": "zhang-views-docs",
+      "title": {
+        "zh": "张贺：利益相关者、视图与文档化语境",
+        "en": "Zhang He: Stakeholders, Views, Documentation"
+      },
+      "note": {
+        "zh": "用于回答 4+1、视图选择、文档包和架构过程题。这里的“边界”主要是系统/模块/视图边界。",
+        "en": "Use for 4+1, view selection, documentation packages, and architecture process."
+      },
+      "terms": [
+        "利益相关者",
+        "利益相关者关注点",
+        "视图",
+        "模块视图",
+        "组件-连接器视图",
+        "分配视图",
+        "模块边界",
+        "系统边界",
+        "设计理由"
+      ],
+      "edges": [
+        [
+          "利益相关者",
+          "提出",
+          "利益相关者关注点"
+        ],
+        [
+          "利益相关者关注点",
+          "选择",
+          "视图"
+        ],
+        [
+          "视图",
+          "分成",
+          "模块视图"
+        ],
+        [
+          "视图",
+          "分成",
+          "组件-连接器视图"
+        ],
+        [
+          "视图",
+          "分成",
+          "分配视图"
+        ],
+        [
+          "设计理由",
+          "解释",
+          "设计决定"
+        ]
+      ]
+    },
+    {
+      "id": "li-add",
+      "title": {
+        "zh": "李杉杉：ADD 驱动因素语境",
+        "en": "Li Shanshan: ADD Driver Context"
+      },
+      "note": {
+        "zh": "用于回答 ADD 3.0 输入、七步流程和迭代目标。这里的“驱动因素”按 ADD 图中的五类红框理解。",
+        "en": "Use for ADD 3.0 inputs, seven steps, and iteration goals."
+      },
+      "terms": [
+        "属性驱动设计",
+        "架构驱动因素",
+        "设计目的",
+        "主要功能",
+        "质量属性场景",
+        "架构关注点",
+        "架构约束",
+        "既有架构",
+        "迭代目标"
+      ],
+      "edges": [
+        [
+          "架构驱动因素",
+          "作为输入",
+          "属性驱动设计"
+        ],
+        [
+          "设计目的",
+          "影响",
+          "迭代目标"
+        ],
+        [
+          "既有架构",
+          "进入",
+          "棕地迭代"
+        ],
+        [
+          "迭代目标",
+          "指导",
+          "设计概念"
+        ]
+      ]
+    },
+    {
+      "id": "li-ddd-microservice",
+      "title": {
+        "zh": "李杉杉：DDD、微服务与边界语境",
+        "en": "Li Shanshan: DDD, Microservices, Boundaries"
+      },
+      "note": {
+        "zh": "用于区分限界上下文、服务边界、数据边界和组织边界：它们名称相近，但分别属于模型、部署/业务能力、数据所有权和团队治理语境。",
+        "en": "Use to distinguish bounded context, service boundary, data boundary, and organisational boundary."
+      },
+      "terms": [
+        "统一语言",
+        "限界上下文",
+        "上下文映射",
+        "聚合",
+        "聚合根",
+        "领域事件",
+        "服务边界",
+        "数据边界",
+        "组织边界",
+        "业务能力"
+      ],
+      "edges": [
+        [
+          "统一语言",
+          "成立于",
+          "限界上下文"
+        ],
+        [
+          "限界上下文",
+          "指导",
+          "服务边界"
+        ],
+        [
+          "聚合",
+          "确定",
+          "数据边界"
+        ],
+        [
+          "领域事件",
+          "连接",
+          "服务边界"
+        ],
+        [
+          "组织边界",
+          "影响",
+          "服务边界"
+        ],
+        [
+          "业务能力",
+          "拆分",
+          "服务边界"
+        ]
+      ]
+    },
+    {
+      "id": "lu-patterns-evolution",
+      "title": {
+        "zh": "吕骏：模式、风格与演进语境",
+        "en": "Lu Jun: Patterns, Styles, Evolution"
+      },
+      "note": {
+        "zh": "用于理解模式/战术/风格和架构演进，不与 ASR 来源题混答。",
+        "en": "Use for patterns/tactics/styles and architecture evolution; do not mix this into ASR-source answers."
+      },
+      "terms": [
+        "质量属性",
+        "战术",
+        "模式",
+        "风格",
+        "分层架构",
+        "代理模式",
+        "管道-过滤器",
+        "发布-订阅",
+        "组件-连接器视图"
+      ],
+      "edges": [
+        [
+          "质量属性",
+          "落到",
+          "战术"
+        ],
+        [
+          "战术",
+          "组合成",
+          "模式"
+        ],
+        [
+          "模式",
+          "体现为",
+          "风格"
+        ],
+        [
+          "风格",
+          "可用视图表达",
+          "组件-连接器视图"
+        ]
+      ]
+    },
+    {
+      "id": "enterprise-context",
+      "title": {
+        "zh": "李杉杉：企业架构治理语境",
+        "en": "Li Shanshan: Enterprise Architecture Governance"
+      },
+      "note": {
+        "zh": "企业架构中的“架构”面向组织集合体，不等同于单个软件系统结构；核心是 4A、业务能力、TOGAF ADM 和 CBM。",
+        "en": "Enterprise Architecture concerns an organization, not only one software system; focus on 4A, capabilities, TOGAF ADM, and CBM."
+      },
+      "terms": [
+        "企业架构",
+        "业务架构",
+        "数据架构",
+        "应用架构",
+        "技术架构",
+        "业务能力",
+        "TOGAF ADM",
+        "业务组件模型",
+        "组织边界"
+      ],
+      "edges": [
+        [
+          "企业架构",
+          "展开为",
+          "业务架构"
+        ],
+        [
+          "企业架构",
+          "展开为",
+          "数据架构"
+        ],
+        [
+          "企业架构",
+          "展开为",
+          "应用架构"
+        ],
+        [
+          "企业架构",
+          "展开为",
+          "技术架构"
+        ],
+        [
+          "业务能力",
+          "承载于",
+          "业务组件模型"
+        ],
+        [
+          "TOGAF ADM",
+          "治理",
+          "企业架构"
+        ]
+      ]
+    }
+  ]
 };
