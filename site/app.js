@@ -42,6 +42,7 @@ const metricLabels = {
   question_view: { zh: "真题查看", en: "question views" },
   source_preview: { zh: "预览", en: "previews" },
   source_open: { zh: "打开/下载", en: "opens/downloads" },
+  filter_change: { zh: "筛选变更", en: "filter changes" },
   diagram_open: { zh: "图解放大", en: "diagram zooms" },
   mindmap_node_click: { zh: "节点点击", en: "node clicks" },
   whiteboard_open: { zh: "画板放大", en: "whiteboard zooms" },
@@ -438,7 +439,7 @@ function renderMetricBadge(eventType, key, label = metricLabel(eventType)) {
   return `
     <span class="metric-badge" data-metric-type="${escapeHtml(eventType)}" data-metric-key="${escapeHtml(key)}">
       <b>${escapeHtml(metricCount(eventType, key))}</b>
-      <em>${escapeHtml(localize(label))}</em>
+      <em>${htmlText(label)}</em>
     </span>
   `;
 }
@@ -588,7 +589,7 @@ function checklistCurrentItems() {
       key: checklistKey("source", sourceMetricKey(source)),
       kind: "source",
       label: sourceLabel(source),
-      priority: source.trust || "",
+      priority: sourceTrustLabel(source),
       page: "sources"
     });
   });
@@ -1212,6 +1213,25 @@ function sourceLabel(source) {
   return source.title || source.path || source.url || "source";
 }
 
+function sourceKindName(kind) {
+  return ({
+    blog: state.lang === "en" ? "Blog" : "博客",
+    "cleanup-notes": state.lang === "en" ? "Terminology notes" : "术语说明",
+    "complete-transcript": state.lang === "en" ? "Transcript" : "完整转写",
+    docx: state.lang === "en" ? "Document" : "文档",
+    "feishu-docx": state.lang === "en" ? "Archived note" : "归档纪要",
+    "feishu-note": state.lang === "en" ? "Archived note" : "归档纪要",
+    "feishu-wiki": state.lang === "en" ? "Archived wiki" : "归档 Wiki",
+    jpg: state.lang === "en" ? "Image" : "图片",
+    md: state.lang === "en" ? "Notes" : "笔记",
+    "mindmap-source": state.lang === "en" ? "Mind map" : "思维导图",
+    mubu: state.lang === "en" ? "Mind map" : "思维导图",
+    pdf: state.lang === "en" ? "PDF" : "PDF",
+    "review-outline": state.lang === "en" ? "Review outline" : "复习提纲",
+    "whiteboard-raw": state.lang === "en" ? "Archived board" : "归档画板"
+  })[kind] || kind || (state.lang === "en" ? "Source" : "资料");
+}
+
 function sourceGroupName(group) {
   return ({
     primary_review_recording: state.lang === "en" ? "Primary review material" : "核心复习材料",
@@ -1229,6 +1249,27 @@ function sourceGroupName(group) {
     peer_ai_notes: state.lang === "en" ? "Peer AI notes" : "同学 AI 整理",
     ai_generated_notes: state.lang === "en" ? "Peer AI notes" : "同学 AI 整理"
   })[group] || group || "Other";
+}
+
+function sourceTrustLabel(source = {}) {
+  const group = source.source_group || "";
+  const trust = source.trust || "";
+  if (group === "primary_review_recording" || group === "primary_review_outline" || group === "review_class_slides" || trust.startsWith("highest_ground_truth")) {
+    return state.lang === "en" ? "Core material" : "核心材料";
+  }
+  if (group === "teacher_slides" || trust === "authoritative_slide_detail") {
+    return state.lang === "en" ? "Course slides" : "课程课件";
+  }
+  if (group === "recent_current_past_papers" || group === "adjacent_recent_past_papers" || group === "historical_past_papers" || trust.includes("past_paper")) {
+    return state.lang === "en" ? "Past-paper reference" : "真题参考";
+  }
+  if (group === "current_course_2025_review" || group === "current_course_2025_reference" || group === "adjacent_2025_notes" || trust.includes("2025")) {
+    return state.lang === "en" ? "Supplementary review" : "补充复习";
+  }
+  if (group === "archived_feishu_notes" || trust.startsWith("archived_")) {
+    return state.lang === "en" ? "Archived reference" : "归档参考";
+  }
+  return state.lang === "en" ? "Auxiliary reference" : "辅助参考";
 }
 
 function sourceGroupRank(group) {
@@ -1757,8 +1798,8 @@ function renderPapers() {
         </label>
       </div>
       <p class="source-note">${state.lang === "en"
-        ? "P0/P1 are the core review scope. P2/P3 are backup practice or background and are not counted in the checklist."
-        : "P0/P1 是核心复习范围；P2/P3 只作补充练习或背景了解，不计入复习清单。"}</p>
+        ? "P0/P1 are the core review items. P2/P3 are backup practice or background and are not counted in the checklist."
+        : "P0/P1 是核心内容；P2/P3 只作补充练习或背景了解，不计入复习清单。"}</p>
       <div class="question-list">
         ${questions.map((question, index) => renderQuestion(question, openQuestionId ? questionId(question) === openQuestionId : index === 0)).join("") || `<p class="empty">${state.lang === "en" ? "No question matches current filters." : "当前筛选下没有真题。"}</p>`}
       </div>
@@ -1980,8 +2021,8 @@ function renderDiagramGallery() {
         <p class="section-kicker">Diagram Gallery</p>
         <h1>${state.lang === "en" ? "Grounded Diagram Library" : "图解库：按图背知识点"}</h1>
         <p>${state.lang === "en"
-          ? "This page now prioritizes site-owned diagrams redrawn from slides and the complete review recording. Feishu/AI whiteboards are kept only as archived source references."
-          : "这一页现在以本站按 slides 与完整复习课录音重绘的图解为主。飞书/AI 画板只保留在下方归档区，作为原始参考。"
+          ? "This page focuses on course-grounded diagrams redrawn from review slides. Feishu/AI boards are kept below only as archived source references."
+          : "本页以按课程课件重绘的图解为主；飞书/AI 画板归档在下方，作为原始参考。"
         }</p>
       </div>
       <div class="diagram-gallery-list">
@@ -2066,8 +2107,8 @@ function renderSources() {
         </label>
       </div>
       <p class="source-note">${state.lang === "en"
-        ? "On the docs.cpl.icu deployment, previews and source links read the mirrored data/raw/slides files under /kangaroo-review/. The public GitHub repo still excludes private source files."
-        : "服务器部署版会在 /kangaroo-review/ 下镜像 data/raw/slides，因此“预览抽取”和“打开源文件”都可直接阅读；public GitHub 仓库仍不提交这些源文件。"}</p>
+        ? "Use Preview for extracted text and Open file/Open URL for the original material when it is available in this deployment."
+        : "可用“预览抽取”查看整理文本；若当前部署包含源文件，可用“打开源文件/外链”阅读原始材料。"}</p>
       <div class="source-table">
         ${rows.map((source, index) => {
           const key = sourceMetricKey(source);
@@ -2075,11 +2116,11 @@ function renderSources() {
           return `
           <article class="source-row">
             <div>
-              <span>${escapeHtml(source.kind || "source")} · ${escapeHtml(sourceGroupName(source.source_group))}</span>
+              <span>${escapeHtml(sourceKindName(source.kind))} · ${escapeHtml(sourceGroupName(source.source_group))}</span>
               <strong>${escapeHtml(label)}</strong>
               <p>${escapeHtml(source.summary || source.path || "")}</p>
             </div>
-            <em>${escapeHtml(source.trust || "auxiliary")} ${source.needs_ocr ? "· OCR" : ""}</em>
+            <em>${escapeHtml(sourceTrustLabel(source))}${source.needs_ocr ? " · OCR" : ""}</em>
             <small>${source.page_count ? `${source.page_count} pages` : ""}${source.text_chars ? ` · ${source.text_chars} chars` : ""}</small>
             <div class="source-metrics">
               ${renderMetricBadge("source_preview", key)}
@@ -2233,15 +2274,20 @@ function openTermPopover(trigger) {
     ` : ""}
   `;
   document.body.appendChild(popover);
+  const margin = 14;
+  popover.style.maxHeight = `${Math.max(220, window.innerHeight - margin * 2)}px`;
+  popover.style.overflowY = "auto";
   const triggerRect = trigger.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
-  const margin = 14;
   const maxLeft = window.scrollX + window.innerWidth - popoverRect.width - margin;
   const left = Math.max(window.scrollX + margin, Math.min(window.scrollX + triggerRect.left, maxLeft));
   let top = window.scrollY + triggerRect.bottom + 10;
   if (triggerRect.bottom + popoverRect.height + 20 > window.innerHeight && triggerRect.top > popoverRect.height + 20) {
     top = window.scrollY + triggerRect.top - popoverRect.height - 10;
   }
+  const minTop = window.scrollY + margin;
+  const maxTop = window.scrollY + window.innerHeight - popoverRect.height - margin;
+  top = Math.max(minTop, Math.min(top, maxTop));
   popover.style.left = `${Math.round(left)}px`;
   popover.style.top = `${Math.round(top)}px`;
   trackMetric("glossary_view", key, labelText({ zh: term.zh, en: term.en }));
@@ -2512,7 +2558,7 @@ function openWhiteboard(id) {
     <section class="modal-panel wide" role="dialog" aria-modal="true" aria-label="${escapeHtml(labelText(board.title))}">
       <header class="modal-head">
         <div>
-          <p class="section-kicker">Whiteboard</p>
+          <p class="section-kicker">${state.lang === "en" ? "Archived Board" : "归档画板"}</p>
           <h2>${htmlText(board.title)}</h2>
         </div>
         <div class="modal-actions">
@@ -2536,7 +2582,7 @@ function openDiagram(id) {
     <section class="modal-panel wide" role="dialog" aria-modal="true" aria-label="${escapeHtml(labelText(diagram.title))}">
       <header class="modal-head">
         <div>
-          <p class="section-kicker">Exam Diagram</p>
+          <p class="section-kicker">${state.lang === "en" ? "Diagram" : "图解"}</p>
           <h2>${htmlText(diagram.title)}</h2>
           <p>${htmlText(diagram.note)}</p>
         </div>
@@ -2647,19 +2693,17 @@ function sourceFallbackText(source, error) {
   const lines = state.lang === "en"
     ? [
       `Local extracted preview is unavailable here (${error.message}).`,
-      "If this is the public GitHub-only checkout, raw source files may be absent. The docs.cpl.icu deployment mirrors the source library for direct reading.",
+      "Use the source action on this row to open the original material if it is available here.",
       source.summary ? `Summary: ${source.summary}` : "",
       source.path ? `Local path: ${source.path}` : "",
-      source.url ? `Source URL: ${source.url}` : "",
-      source.trust ? `Trust level: ${source.trust}` : ""
+      source.url ? `Source URL: ${source.url}` : ""
     ]
     : [
       `这里无法读取本机抽取预览（${error.message}）。`,
-      "如果你打开的是 public GitHub 版本，原始资料可能不在仓库里；docs.cpl.icu 部署版会镜像完整资料库，支持直接阅读源文件。",
+      "可使用本行的源文件操作打开当前可用的原始材料。",
       source.summary ? `摘要：${source.summary}` : "",
       source.path ? `本机路径：${source.path}` : "",
-      source.url ? `外链：${source.url}` : "",
-      source.trust ? `可信度：${source.trust}` : ""
+      source.url ? `外链：${source.url}` : ""
     ];
   return lines.filter(Boolean).join("\n\n");
 }

@@ -32,7 +32,7 @@ python3 server/metrics_server.py --host 127.0.0.1 --port 18080 --static-root . -
 - `site/`：前端页面、样式、交互和可发布数据。
 - `site/metrics.html` / `site/metrics.js`：隐藏访问统计图表页，不在主导航中展示。
 - `site/assets/reward/`：底部低调打赏弹窗使用的微信/支付宝收款码。
-- `site/content.js`：复习路线、纲领思维导图、15 个知识点、79 条术语、23 张本地图解（中文模式优先显示中文背诵版）和归档画板资源。
+- `site/content.js`：复习路线、纲领思维导图、15 个知识点、125 条术语、23 张本地图解（中文模式优先显示中文背诵版）和归档画板资源。
 - `site/data/questions.json`：40 条往年题聚类，包含中文完整示例答案、英文关键词、优先级、图解关联、画图题作答步骤和逐题来源校对。
 - `site/data/sources.json`：51 个源文件的抽取状态清单，已剔除空白 RTF、独立重复图片和重复 docx 资料条目。
 - `server/metrics_server.py`：Python 标准库 + SQLite 的轻量访问统计 API。
@@ -78,6 +78,7 @@ python3 server/metrics_server.py --host 127.0.0.1 --port 18080 --static-root . -
 - `source_preview` / `source_open`：资料库预览和源文件打开，打开一次按下载一次计。
 - `diagram_open` / `whiteboard_open`：本站重绘图解、归档画板放大查看。
 - `mindmap_node_click`：纲领思维导图节点点击。
+- `filter_change`：页面筛选条件变化。
 - `reward_open`：底部打赏弹窗打开。
 
 统计后端只保存事件类型、对象 key、页面、匿名 session、哈希后的 IP、匿名访客指纹、User-Agent 与 Accept-Language 摘要；不保存明文 IP。访客数用 `X-Forwarded-For` / `X-Real-IP` 中的客户端 IP、User-Agent、Accept-Language 与私有 salt 共同哈希后估算，历史旧数据会退回到 `ip_hash + user_agent` 口径。
@@ -100,7 +101,7 @@ python3 server/metrics_server.py --host 127.0.0.1 --port 18080 --static-root . -
 - `node --check site/app.js site/metrics.js tools/smoke-site.mjs tools/smoke-metrics.mjs`
 - `jq empty site/data/questions.json site/data/sources.json`
 - `python3 -m unittest tools/test_metrics_server.py`
-- Playwright/Chrome 桌面与移动视口验证：纲领思维导图、15 个知识点、40 条真题聚类、79 个术语、51 条资料清单、23 张本地图解、图解中英文切换、画图题步骤、归档画板、免责声明、复习清单导入迁移、评论区入口、打赏弹窗，无控制台错误，无横向溢出。
+- Playwright/Chrome 桌面与移动视口验证：纲领思维导图、15 个知识点、40 条真题聚类、125 个术语、51 条资料清单、23 张本地图解、图解中英文切换、画图题步骤、归档画板、免责声明、复习清单导入迁移、评论区入口、打赏弹窗，无控制台错误，无横向溢出。
 - Playwright/Chrome 隐藏统计页验证：按天/按小时切换、访问人数卡片、事件图表、Top Items、Recent Events 均可渲染。
 
 ## License

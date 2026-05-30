@@ -379,6 +379,7 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  max-width: 100%;
   min-height: 28px;
   border: 1px solid rgba(20, 117, 111, 0.25);
   background: rgba(20, 117, 111, 0.08);
@@ -393,8 +394,16 @@ select {
 }
 
 .metric-badge em {
+  display: grid;
+  min-width: 0;
   color: var(--muted);
   font-style: normal;
+  line-height: 1.15;
+}
+
+.metric-badge em span {
+  display: block;
+  overflow-wrap: anywhere;
 }
 
 .scope-tag,
@@ -723,7 +732,13 @@ select {
 }
 
 .route-step b {
+  display: grid;
   color: var(--red);
+  line-height: 1.18;
+}
+
+.route-step b span {
+  display: block;
 }
 
 .route-step-head {
@@ -1443,30 +1458,35 @@ li {
 .diagram-gallery-group {
   display: grid;
   gap: 12px;
-  border-top: 4px solid var(--red);
-  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
 }
 
 .diagram-gallery-group > header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  align-items: start;
+  align-items: end;
 }
 
-.diagram-gallery-group > header span {
-  display: inline-grid;
-  min-width: 42px;
-  height: 30px;
-  place-items: center;
-  border: 1px solid rgba(181, 70, 52, 0.45);
+.diagram-gallery-group > header > div > span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
   color: var(--red);
+  font-size: 13px;
   font-weight: 900;
+  letter-spacing: 0;
 }
 
 .diagram-gallery-group > header h2 {
-  margin: 8px 0 4px;
+  margin: 4px 0;
   font-size: 24px;
+}
+
+.diagram-gallery-group > header h2 span,
+.diagram-gallery-group > header p span {
+  display: block;
 }
 
 .diagram-gallery-group > header p,
@@ -1477,8 +1497,8 @@ li {
 }
 
 .diagram-gallery-group > header strong {
-  color: var(--muted);
-  font-size: 36px;
+  color: rgba(31, 35, 40, 0.36);
+  font-size: 28px;
   font-family: Georgia, "Times New Roman", serif;
 }
 
@@ -1497,9 +1517,9 @@ li {
   display: grid;
   align-content: start;
   gap: 12px;
-  border: 1px solid var(--line);
-  background: rgba(255, 253, 248, 0.72);
-  padding: 14px;
+  border-left: 3px solid rgba(20, 117, 111, 0.24);
+  background: rgba(255, 253, 248, 0.46);
+  padding: 4px 0 4px 14px;
 }
 
 .diagram-topic-links {
@@ -1973,6 +1993,9 @@ li {
   background: var(--panel);
   box-shadow: 0 18px 40px rgba(31, 35, 40, 0.22);
   padding: 14px;
+  max-height: calc(100dvh - 28px);
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .term-popover-head {
@@ -2745,12 +2768,16 @@ li {
 
   .question-item summary > .metric-badge {
     justify-self: start;
-    max-width: 100%;
+    max-width: min(100%, 11rem);
     white-space: normal;
   }
 
   .metric-badge {
     flex-wrap: wrap;
+  }
+
+  .metric-badge em {
+    white-space: normal;
   }
 
   .topic-index {

@@ -403,7 +403,7 @@ for (const result of [desktop, mobile]) {
     if (!result[key]) errors.push(`${result.name}: ${key} failed`);
   }
   if (result.overviewMetricBadges < 3) errors.push(`${result.name}: metric badges missing`);
-  if (result.questionCount < 39) errors.push(`${result.name}: expected at least 39 question clusters`);
+  if (result.questionCount < 40) errors.push(`${result.name}: expected at least 40 question clusters`);
   if (result.diagramGalleryCount < 23) errors.push(`${result.name}: expected at least 23 diagram gallery items`);
   if (result.archivedWhiteboardCount < 4) errors.push(`${result.name}: expected archived whiteboards to remain available`);
   if (result.diagramGalleryNaturalWidth < 1000) errors.push(`${result.name}: diagram gallery image did not load`);

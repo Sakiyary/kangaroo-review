@@ -298,7 +298,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "按课程材料和 课程 幻灯片 的驱动因素表述背。",
-            "en": "For 2026, memorize the driver wording from the review material and review slides."
+            "en": "Memorize the driver wording from the course material and review slides."
           },
           "explain": {
             "zh": "架构不是灵感产物，而是被一组驱动因素推出来的。NFR/质量需求说明系统必须“做得多好”，其中少数会显著影响架构的需求就是 ASR。利益相关者关注点通过工作坊或访谈补齐需求文档中没有写清的质量场景。组织因素规定团队能力、预算、进度、治理流程和责任边界。技术/运行环境规定遗留系统、基础设施、平台、中间件、云环境和部署限制。业务目标用于在这些因素冲突时排序和取舍。",
@@ -484,7 +484,7 @@ window.reviewContent = {
       },
       "takeaway": {
         "zh": "ASR 是会显著影响架构设计决定的需求，不等于所有需求。需要从需求文档、访谈/工作坊和业务目标中补齐。",
-        "en": "An ASR is a requirement that significantly affects architectural decisions. It is not every requirement. The complete review recording/minutes emphasize documents, interviews/workshops, and business goals."
+        "en": "An ASR is a requirement that significantly affects architectural decisions. It is not every requirement. Course materials emphasize documents, interviews/workshops, and business goals."
       },
       "answerFrame": {
         "zh": "先定义 ASR，再说来源，最后说效用树：系统效用分解为质量属性、场景、度量；叶子节点从用户价值与开发难度/利益两维评估。",
@@ -894,7 +894,7 @@ window.reviewContent = {
       },
       "examTemplate": {
         "zh": "遇到外卖/电商设计题，按“业务能力拆服务 -> 每个服务管自己的数据 -> 同步接口 + 异步事件 -> Saga/补偿处理跨服务一致性 -> API 网关、熔断、监控、日志追踪”组织答案。",
-        "en": "For food-delivery/e-commerce design 题目s, organize the answer as “split services by business capability -> each service owns its data -> synchronous APIs plus asynchronous events -> Saga/compensation for cross-service consistency -> API Gateway, circuit breaker, monitoring, logging, tracing”."
+        "en": "For food-delivery/e-commerce design questions, organize the answer as “split services by business capability -> each service owns its data -> synchronous APIs plus asynchronous events -> Saga/compensation for cross-service consistency -> API Gateway, circuit breaker, monitoring, logging, tracing”."
       },
       "lectureNotes": [
         {
@@ -930,7 +930,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "外卖/电商类题要写服务、数据、接口和质量取舍。",
-            "en": "Food-delivery/e-commerce 题目s need services, data, APIs, and quality tradeoffs."
+            "en": "Food-delivery/e-commerce questions need services, data, APIs, and quality tradeoffs."
           },
           "explain": {
             "zh": "先从业务能力或 DDD 子域找服务，例如用户、商家/菜单、订单、支付、配送、通知、结算。每个服务拥有自己的数据，避免共享数据库。用户请求通过 API 网关进入，服务间用同步 API 处理查询或短事务，用异步事件处理状态传播。跨服务一致性不能写成单体事务，可以写 Saga、补偿、最终一致性。最后补可用性和可观测性：熔断、重试、超时、日志、指标、链路追踪。",
@@ -2152,7 +2152,8 @@ window.reviewContent = {
         }
       ],
       "diagramIds": [
-        "utility-tree"
+        "utility-tree",
+        "atam-phase-outputs"
       ],
       "memorize": {
         "zh": "ATAM 关注架构是否满足质量属性目标，核心产物包括质量属性场景、效用树、风险、敏感点、权衡点。\n效用树从质量属性展开到具体场景，并用重要性和难度/风险排序。\n评价不是证明架构完美，而是暴露风险和取舍。",
@@ -2170,7 +2171,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "掌握到能辨认、能简答即可。",
-            "en": "Not highest priority this year, but useful for backup-material backup."
+            "en": "Not highest priority this year, but useful as backup practice."
           },
           "explain": {
             "zh": "ATAM 用来评价一个架构是否能满足重要质量属性目标。它不是写新架构，而是围绕业务目标、质量属性场景和架构方案找风险。核心产物包括效用树、质量属性场景、风险、非风险、敏感点、权衡点。敏感点是某个设计参数变化会显著影响质量属性；权衡点是一个设计决定同时影响多个质量属性，且可能一好一坏。",
@@ -2212,7 +2213,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "示例是讲解用，考试以题干架构为准。",
-            "en": "Examples are explanatory; use the 题目 architecture in the exam."
+            "en": "Examples are explanatory; use the question architecture in the exam."
           }
         }
       ]
@@ -2394,7 +2395,7 @@ window.reviewContent = {
         },
         {
           "zh": "三层/缓存设计题按设计练习处理：会画职责与协作图，会写视图外信息。",
-          "en": "Old three-tier/cache 题目s are backup practice only; answer if asked, but keep them out of the 2026 main template."
+          "en": "Old three-tier/cache questions are backup practice only; answer if asked, but keep them out of the 2026 main template."
         }
       ],
       "sources": [
@@ -2418,7 +2419,7 @@ window.reviewContent = {
           },
           "answer": {
             "zh": "哪怕题目只说“设计”，也要把图转成文字说明，避免阅卷看不懂。",
-            "en": "Even if the 题目 only says “design”, translate the diagram into written responsibilities."
+            "en": "Even if the question only says “design”, translate the diagram into written responsibilities."
           },
           "trap": {
             "zh": "不要只堆术语。图里出现的每个组件都要有存在理由。",
@@ -2432,7 +2433,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "围绕微服务 + DDD + ADD 文档化，三层/缓存题重点写职责、协作和文档项。",
-            "en": "Center microservices + DDD + ADD documentation; old three-tier/cache 题目s should not dominate."
+            "en": "Center microservices + DDD + ADD documentation; old three-tier/cache questions should not dominate."
           },
           "must": {
             "zh": "服务边界、数据边界、API/事件协作、部署与可观测性、质量属性 权衡。",
@@ -2482,7 +2483,7 @@ window.reviewContent = {
           },
           "answer": {
             "zh": "无论题目是外卖、缓存、三层、SOA，都先把业务和质量 驱动因素 写出来。",
-            "en": "Whether the 题目 is food delivery, cache, three-tier, or SOA, first write business and quality drivers."
+            "en": "Whether the question is food delivery, cache, three-tier, or SOA, first write business and quality drivers."
           },
           "boundary": {
             "zh": "设计题先识别业务边界和质量需求，再用微服务、DDD、ADD 文档化或三层/缓存等合适模板组织答案。",
@@ -2512,7 +2513,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "参考当前站内重绘图；题干未给的技术细节要用“例如/可选”表达。",
-            "en": "Use current redrawn diagrams as references; technology details not in the 题目 should be phrased as examples/options."
+            "en": "Use current redrawn diagrams as references; technology details not in the question should be phrased as examples/options."
           }
         }
       ]
@@ -4705,12 +4706,12 @@ window.reviewContent = {
       },
       "items": [
         {
-          "zh": "按 39 个真题簇逐条看中文答案，再对照英文题干；2025/2022/2021 相邻课程真题只看架构筛选部分，GoF/OOP 题跳过",
-          "en": "Read Chinese answer frames for all 39 clusters, then compare English 题目s; use only the architecture-filtered parts of 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
+          "zh": "按全部真题簇逐条看中文答案，再对照英文题干；2025/2022/2021 相邻课程真题只看架构筛选部分，GoF/OOP 题跳过",
+          "en": "Read Chinese answer frames for all question clusters, then compare English questions; use only the architecture-filtered parts of 2025/2022/2021 adjacent-course papers and skip GoF/OOP-only questions"
         },
         {
           "zh": "主练微服务 + DDD + ADD/ASR 文档化；三层、缓存只作为 P2 补充资料过一遍",
-          "en": "Main practice: microservices + DDD + ADD/ASR documentation; skim three-tier/cache as backup 题目s only"
+          "en": "Main practice: microservices + DDD + ADD/ASR documentation; skim three-tier/cache as backup questions only"
         },
         {
           "zh": "ATAM/SPL/MDA/SOA 只保留往年高频简答骨架",
@@ -4724,7 +4725,7 @@ window.reviewContent = {
       "id": "zhang-he",
       "title": {
         "zh": "张贺课程画板",
-        "en": "Zhang He Review Whiteboard"
+        "en": "Archived Zhang He Review Board"
       },
       "src": "assets/feishu-whiteboards/zhang-he.jpg",
       "note": {
@@ -4754,7 +4755,7 @@ window.reviewContent = {
       "id": "li-shanshan",
       "title": {
         "zh": "李杉杉课程画板",
-        "en": "Li Shanshan Review Whiteboard"
+        "en": "Archived Li Shanshan Review Board"
       },
       "src": "assets/feishu-whiteboards/li-shanshan.jpg",
       "note": {
@@ -4784,7 +4785,7 @@ window.reviewContent = {
       "id": "lu-jun",
       "title": {
         "zh": "吕骏架构模式画板",
-        "en": "Lu Jun Architecture-Patterns Whiteboard"
+        "en": "Archived Lu Jun Architecture-Patterns Board"
       },
       "src": "assets/feishu-whiteboards/lu-jun.jpg",
       "note": {
@@ -4813,13 +4814,13 @@ window.reviewContent = {
     {
       "id": "ai-wiki-mainline",
       "title": {
-        "zh": "AI Wiki 期末核心画板",
-        "en": "AI Wiki Exam Mainline Whiteboard"
+        "zh": "AI Wiki 期末画板归档",
+        "en": "Archived AI Wiki Exam Board"
       },
       "src": "assets/feishu-whiteboards/ai-wiki-mainline.png",
       "note": {
-        "zh": "把 AI 整理资料中的核心压缩成一条可作答链路：业务目标、驱动因素、架构选择、边界落地、考场输出。",
-        "en": "Condenses the AI-organized source into an answerable chain: business goals, drivers, architectural choices, boundaries, and exam output."
+        "zh": "归档展示 AI 整理资料的画板结构；只作历史参考，不作为主背材料。",
+        "en": "Archives the board structure from the peer AI notes; use it as historical reference, not as main memorization material."
       },
       "points": [
         {
@@ -4906,7 +4907,7 @@ window.reviewContent = {
       "srcZh": "assets/diagrams/utility-tree.zh.svg",
       "srcEn": "assets/diagrams/utility-tree.svg",
       "title": {
-        "zh": "ASR 效用树 效用树",
+        "zh": "ASR 效用树",
         "en": "ASR Utility Tree"
       },
       "note": {
@@ -5051,7 +5052,7 @@ window.reviewContent = {
       "srcEn": "assets/diagrams/three-tier-reference.svg",
       "title": {
         "zh": "三层架构参考答案图",
-        "en": "Three-Tier backup-material Reference Diagram"
+        "en": "Three-Tier Reference Diagram"
       },
       "note": {
         "zh": "说明性答题图：订票/ATM 三层职责 + 视图及视图外信息文档项。",
@@ -5472,7 +5473,7 @@ window.reviewContent = {
             },
             "note": {
               "zh": "掌握到能识别、能简答即可。",
-              "en": "backup-material backup; do not steal P0 time."
+              "en": "Backup practice; keep P0 time for core topics."
             }
           }
         ]

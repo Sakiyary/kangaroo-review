@@ -361,7 +361,7 @@ window.reviewQuestions = [
     "drawing_steps_en": [
       "Draw a six-column table: source, stimulus, artifact, environment, response, response measure.",
       "Use one row for one quality-attribute scenario; do not mix multiple qualities in the same row.",
-      "Fill the fields from the 题目; if no metric is given, provide a measurable threshold and mark it as illustrative."
+      "Fill the fields from the question; if no metric is given, provide a measurable threshold and mark it as illustrative."
     ]
   },
   {
@@ -394,8 +394,7 @@ window.reviewQuestions = [
     "question_zh": "什么是 ASR？列出收集与识别 ASR 的来源和方法。",
     "answer_zh": "ASR 是对架构设计决定有显著影响的需求。识别来源/方法包括：1. 需求文档，先找功能需求、质量需求和约束；2. 利益相关者工作坊/访谈或 QAW，用来补全需求文档里没写清的质量关注点；3. 业务目标，用来判断哪些质量目标真正重要；4. 效用树，把候选 ASR 组织成质量属性、场景和度量，并按重要性和实现难度排序。约束和质量属性场景是重要输入/表达形式。",
     "topicIds": [
-      "asr",
-      "evaluation-atam"
+      "asr"
     ],
     "english_keywords": [
       "ASR",
@@ -544,8 +543,7 @@ window.reviewQuestions = [
     "answer_zh": "按架构过程答四个早期架构活动：1. 规约 ASR：把利益相关者关注点、需求、约束和业务目标整理成可度量、可排序的质量场景；2. 架构设计：用需求、约束、模式和战术形成候选视图；3. 文档化：记录选定并合并后的视图、接口、映射、约束和设计理由；4. 架构评估：用场景检查架构并识别风险、敏感点、权衡点和下一轮反馈。",
     "topicIds": [
       "foundation",
-      "add",
-      "evaluation-atam"
+      "add"
     ],
     "english_keywords": [
       "ASR",
@@ -2255,7 +2253,7 @@ window.reviewQuestions = [
     ],
     "drawing_steps_en": [
       "Draw three vertical tiers: presentation, business logic, data access, then connect to database.",
-      "Write 2-3 concrete responsibilities in each tier; use ATM responsibilities for ATM 题目s and booking/order/seat/payment responsibilities for booking 题目s.",
+      "Write 2-3 concrete responsibilities in each tier; use ATM responsibilities for ATM questions and booking/order/seat/payment responsibilities for booking questions.",
       "Add Views and Beyond documentation items: module view, runtime view, deployment view, interfaces, rationale.",
       "Finish with tradeoffs: separation improves modifiability, but cross-layer calls may add performance overhead."
     ]
@@ -2320,7 +2318,7 @@ window.reviewQuestions = [
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
     "source_audit_zh": "来自相邻课程和补充练习；缓存失效协调器、代理模式、观察者是合理架构解法示例，不是今年复习课核心核心。",
-    "source_audit_en": "Adjacent/old 题目; coordinator/Broker/Observer is a reasonable illustrative architecture solution, not current core.",
+    "source_audit_en": "Adjacent/old questions; coordinator/Broker/Observer is a reasonable illustrative architecture solution, not current core.",
     "source_audit_sources": [
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2015年春季2班A卷.docx",
       "raw/zqx考试复习资料/【批量下载】18年等/体系结构2016年春季2班A卷.docx",
@@ -2349,7 +2347,7 @@ window.reviewQuestions = [
       "Draw a sequence-like flow: Client -> Server A -> DB -> Coordinator/Broker.",
       "After DB commit succeeds, Coordinator/Broker broadcasts invalidate(BSI) to cache adapters on Server B/C/Legacy.",
       "For each adapter, write delete local cache or mark stale, then reload from DB on next read.",
-      "If the 题目 mentions heterogeneous protocols, write RMI/HTTP/SOAP conversion beside adapters."
+      "If the question mentions heterogeneous protocols, write RMI/HTTP/SOAP conversion beside adapters."
     ]
   },
   {
@@ -2504,7 +2502,7 @@ window.reviewQuestions = [
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
     "source_audit_zh": "模式和架构边界来自复习课的 模式/风格 讨论与补充练习；用于防止 GoF 设计模式和架构模式混淆。",
-    "source_audit_en": "Grounded in review discussion of pattern/style and old 题目s; prevents confusing GoF patterns with architectural patterns.",
+    "source_audit_en": "Grounded in review discussion of pattern/style and old questions; prevents confusing GoF patterns with architectural patterns.",
     "source_audit_sources": [
       "raw/2021 痛苦回忆.pdf",
       "data/extracted/raw/softsys-2021-2022-架构-filter.md",
@@ -2655,7 +2653,7 @@ window.reviewQuestions = [
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
     "source_audit_zh": "相邻/补充练习支持 C&C + SOA 解释；今年复习把 SOA 放在演进/模式理解中，故 P2。",
-    "source_audit_en": "Adjacent/old 题目 supports C&C + SOA; current review treats SOA as evolution/pattern understanding, so P2.",
+    "source_audit_en": "Adjacent/old questions supports C&C + SOA; current review treats SOA as evolution/pattern understanding, so P2.",
     "source_audit_sources": [
       "raw/2021 痛苦回忆.pdf",
       "data/extracted/raw/softsys-2021-2022-架构-filter.md",
@@ -2740,7 +2738,7 @@ window.reviewQuestions = [
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
     "source_audit_zh": "相邻课程题；已明确只保留架构组件/连接器/质量取舍，排除代码实现。",
-    "source_audit_en": "Adjacent-course 题目; only architecture components/connectors/tradeoffs are kept, excluding Java implementation.",
+    "source_audit_en": "Adjacent-course questions; only architecture components/connectors/tradeoffs are kept, excluding Java implementation.",
     "source_audit_sources": [
       "raw/2021 痛苦回忆.pdf",
       "data/extracted/raw/softsys-2021-2022-架构-filter.md",
@@ -2999,7 +2997,7 @@ window.reviewQuestions = [
     ],
     "diagram_id": "microservice-pattern-groups",
     "sample_answer_zh": "示例答案：外卖平台适合微服务，因为用户、商家、菜单、订单、支付、骑手调度和通知属于不同业务能力，访问压力和变化频率也不同，可以独立扩展和迭代。系统操作包括浏览餐厅和菜单、创建订单、支付订单、商家接单、分配骑手、更新配送状态、发送通知和结算。一个合理拆分是用户服务、商家/菜单服务、订单服务、支付服务、配送/调度服务、通知服务和结算服务。每个服务拥有自己的数据，用户请求通过 API 网关进入，订单、支付、配送之间可用事件协作和 Saga/补偿保证最终一致性。",
-    "sample_answer_en": "Illustrative answer: a food-delivery platform fits microservices because user, restaurant/menu, order, payment, delivery, notification, and settlement capabilities evolve and scale differently. Map operations to services: browse menus, create order, pay, accept order, dispatch rider, update delivery, notify, and settle. A reasonable split is User, Restaurant/Menu, Order, Payment, Delivery/Dispatch, Notification, and Settlement services. Each owns its data boundary; requests may enter through an API Gateway; services coordinate through synchronous APIs or asynchronous events. If the 题目 asks about consistency, add eventual consistency, Saga, or compensation, but these are example design mechanisms rather than fixed wording in the 题目.",
+    "sample_answer_en": "Illustrative answer: a food-delivery platform fits microservices because user, restaurant/menu, order, payment, delivery, notification, and settlement capabilities evolve and scale differently. Map operations to services: browse menus, create order, pay, accept order, dispatch rider, update delivery, notify, and settle. A reasonable split is User, Restaurant/Menu, Order, Payment, Delivery/Dispatch, Notification, and Settlement services. Each owns its data boundary; requests may enter through an API Gateway; services coordinate through synchronous APIs or asynchronous events. If the question asks about consistency, add eventual consistency, Saga, or compensation, but these are example design mechanisms rather than fixed wording in the question.",
     "visual_hint_zh": "先用四组模式组织答题：拆分服务边界，再补通信、部署和可观测性；具体服务图可参考微服务拆分图。",
     "visual_hint_en": "Use the four pattern groups first: decompose service boundaries, then add communication, deployment, and observability; use the decomposition diagram for concrete service layout.",
     "source_audit_zh": "外卖平台题来自 2025 相邻课程，微服务/DDD 设计骨架来自复习范围原始材料和第 6-9 讲。服务名、Saga、事件协作是合理示例，不是题干唯一标准答案。",
