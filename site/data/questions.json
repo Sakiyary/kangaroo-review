@@ -40,8 +40,8 @@
       "stakeholder concerns",
       "business goals"
     ],
-    "sample_answer_zh": "软件架构来自架构驱动因素，也就是会迫使系统做出结构选择和关键设计决定的因素。最重要的是 NFR/质量需求，因为可用性、性能、可修改性、安全性等质量目标通常决定系统结构。质量需求、关键功能和强约束中，只有会显著影响结构、部署、通信、数据边界或技术选择的少数需求才是 ASR，应优先进入架构设计。需求文档常常写不清质量场景，所以要从利益相关者那里通过工作坊或访谈补充关注点，把“快、稳、安全”改写成可度量场景。组织因素如团队技能、预算、进度、治理和责任边界，会影响模块/服务拆分和交付方式。技术/运行环境如遗留系统、基础设施、数据库、中间件、云平台和部署环境，会限制可行方案。不同驱动因素冲突时，用业务目标判断优先级和取舍。",
-    "sample_answer_en": "Software architecture comes from architectural drivers that shape structures and key decisions. First, NFRs/quality requirements are the main source because they define availability, performance, modifiability, security, and other quality goals. Second, ASRs are the small subset with the strongest architectural impact and must be handled early. Third, stakeholders provide concerns; workshops or interviews turn vague concerns into measurable quality scenarios. Fourth, organisations constrain architecture through team skills, cost, schedule, governance, and responsibility boundaries. Fifth, technical environments constrain feasible choices through legacy systems, infrastructure, databases, middleware, cloud platforms, and deployment. Business goals prioritize the drivers: high-value, high-risk, conflicting, and broadly impactful requirements should guide architecture first.",
+    "sample_answer_zh": "软件架构来自架构驱动因素，也就是会迫使系统做出结构选择和关键设计决定的因素。\nNFR/质量需求是最重要来源，因为可用性、性能、可修改性、安全性等质量目标通常决定系统结构。\nASR 是功能需求、质量需求和约束中会显著影响结构、部署、通信、数据边界或技术选择的少数需求，应优先进入架构设计。\n利益相关者通过工作坊或访谈补充需求文档里说不清的关注点，把“快、稳、安全”改写成可度量质量场景。\n组织因素如团队技能、预算、进度、治理和责任边界，会影响模块/服务拆分和交付方式。\n技术/运行环境如遗留系统、基础设施、数据库、中间件、云平台和部署环境，会限制可行方案。\n不同驱动因素冲突时，用业务目标判断优先级和取舍。",
+    "sample_answer_en": "Software architecture comes from architectural drivers: forces that shape structures and key design decisions.\nNFRs/quality requirements are the most important source because availability, performance, modifiability, security, and similar qualities usually determine structure.\nASRs are the small subset of functional requirements, quality requirements, and constraints that significantly affect structure, deployment, communication, data boundaries, or technology choices; handle them early.\nStakeholders add concerns through workshops or interviews, turning vague needs such as fast, stable, or secure into measurable quality scenarios.\nOrganisational factors such as team skills, budget, schedule, governance, and responsibility boundaries affect module/service decomposition and delivery.\nTechnical/runtime environments such as legacy systems, infrastructure, databases, middleware, cloud platforms, and deployment environments constrain feasible solutions.\nWhen drivers conflict, use business goals to prioritize and make tradeoffs.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料和张贺 复习课件 明确点名，是今年基础题核心。",
     "priority_reason_en": "Explicitly named in the complete recording and Zhang He review slides; this is a 2026 foundation mainline question.",
@@ -112,8 +112,8 @@
       "structure",
       "externally visible properties"
     ],
-    "sample_answer_zh": "设计是更宽泛的设计活动；架构是其中高抽象、影响全局质量和后续实现的部分，所以所有架构都是设计，但不是所有设计都是架构。结构更偏“表达对象”：系统有哪些元素、元素之间有什么关系、外部可见属性是什么。架构会使用这些结构，但答题时还要说明它为什么这样组织：它要回应 ASR，协调运行时依赖、通信、部署和演化等关注点。因此结构可以看作架构的表示材料之一，架构是围绕重要设计决定形成的整体方案。",
-    "sample_answer_en": "Design is broader; architecture is the high-level part of design that affects system-wide qualities and later implementation. Structure describes elements, relations, and externally visible properties. Architecture uses one or more structures, but also explains why they are organized this way to satisfy ASRs and to coordinate runtime dependencies, communication, deployment, and evolution.",
+    "sample_answer_zh": "设计是更宽泛的设计活动；架构是其中高抽象、影响全局质量和后续实现的部分，所以所有架构都是设计，但不是所有设计都是架构。\n结构更偏“表达对象”：系统有哪些元素、元素之间有什么关系、外部可见属性是什么。\n架构会使用这些结构，但还要说明为什么这样组织：它要回应 ASR，协调运行时依赖、通信、部署和演化等关注点。\n因此结构可以看作架构的表示材料之一，架构是围绕重要设计决定形成的整体方案。",
+    "sample_answer_en": "Design is the broader activity; architecture is the high-level part of design that affects system-wide qualities and later implementation, so all architecture is design but not all design is architecture.\nStructure is the representation object: what elements exist, how they relate, and what externally visible properties they expose.\nArchitecture uses these structures, but also explains why they are organized this way: to satisfy ASRs and coordinate runtime dependencies, communication, deployment, and evolution.\nTherefore, structure is one representation material of architecture, while architecture is the overall solution formed around important design decisions.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -172,8 +172,8 @@
       "constraints",
       "non-functional requirements"
     ],
-    "sample_answer_zh": "软件需求是系统必须满足的全部要求，通常包括功能需求、质量需求和约束。功能需求说明系统要做什么，例如下单、支付、查询；质量属性说明系统做得好不好，例如性能、可用性、安全性和可修改性；约束是已经给定、必须遵守的设计决定，例如必须使用某数据库或满足法规。ASR 是架构攸关需求，是会显著影响架构设计决策的需求。重要且困难的质量需求、关键业务目标和强约束最容易成为 ASR。",
-    "sample_answer_en": "Software requirements include functional requirements, quality requirements, and constraints. Quality attributes describe how well the system behaves. ASRs are requirements that significantly affect architectural decisions; hard and important qualities, business goals, and constraints often become ASRs.",
+    "sample_answer_zh": "软件需求是系统必须满足的全部要求，通常包括功能需求、质量需求和约束。\n功能需求说明系统要做什么，例如下单、支付、查询。\n质量属性说明系统做得好不好，例如性能、可用性、安全性和可修改性。\n约束是已经给定、必须遵守的设计决定，例如必须使用某数据库或满足法规。\nASR 是架构攸关需求，会显著影响架构设计决策；重要且困难的质量需求、关键业务目标和强约束最容易成为 ASR。",
+    "sample_answer_en": "Software requirements are all requirements the system must satisfy, usually including functional requirements, quality requirements, and constraints.\nFunctional requirements state what the system must do, such as ordering, payment, or query.\nQuality attributes state how well the system behaves, such as performance, availability, security, and modifiability.\nConstraints are given design decisions or external rules that must be obeyed, such as a required database or regulation.\nASRs are architecturally significant requirements that strongly affect architectural decisions; important and hard quality needs, key business goals, and strong constraints are most likely to become ASRs.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -239,8 +239,8 @@
       "quality requirements",
       "constraints"
     ],
-    "sample_answer_zh": "影响架构设计的需求主要有三类。第一类是功能需求，说明系统必须提供哪些行为和业务价值，通常用用例、用户故事或功能列表描述。第二类是质量需求，说明系统应具备的整体特性，例如性能、可用性、安全性，最好用质量属性场景描述，使其可测试。第三类是约束，表示预先确定的设计决定或外部限制，例如技术栈、部署环境、法规和组织规则。架构设计要同时满足这三类需求，并重点识别其中的 ASR。",
-    "sample_answer_en": "Three kinds of requirements shape architecture: functional requirements, quality requirements, and constraints. Functions describe behavior and value, quality requirements should be specified by measurable scenarios, and constraints are pre-made decisions or external limits.",
+    "sample_answer_zh": "影响架构设计的需求主要有三类。\n功能需求说明系统必须提供哪些行为和业务价值，通常用用例、用户故事或功能列表描述。\n质量需求说明系统应具备的整体特性，例如性能、可用性、安全性，最好用质量属性场景描述，使其可测试。\n约束表示预先确定的设计决定或外部限制，例如技术栈、部署环境、法规和组织规则。\n架构设计要同时满足这三类需求，并重点识别其中的 ASR。",
+    "sample_answer_en": "Three kinds of requirements mainly influence architecture design.\nFunctional requirements describe required behavior and business value, usually through use cases, user stories, or function lists.\nQuality requirements describe system-wide qualities such as performance, availability, and security; they should be specified as quality-attribute scenarios so they are testable.\nConstraints are pre-made design decisions or external limits, such as technology stack, deployment environment, regulation, and organizational rules.\nArchitecture design must satisfy all three kinds and especially identify the ASRs among them.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -309,7 +309,7 @@
     ],
     "likely_answer_pattern": "Draw or describe the six-part quality attribute scenario in the table order: source, stimulus, artifact, environment, response, response measure; provide requested attributes such as availability, performance, modifiability, or interoperability.",
     "question_zh": "用 刺激-响应 形式建模质量属性场景。",
-    "answer_zh": "画出或描述六要素，并按重绘表格顺序背：刺激源、刺激、制品/工件、环境、响应、响应度量。按题目要求套入可用性、性能、可修改性、互操作性等质量属性。",
+    "answer_zh": "画出或描述六要素，并按重绘表格顺序背：刺激源、刺激、工件、环境、响应、响应度量。按题目要求套入可用性、性能、可修改性、互操作性等质量属性。",
     "topicIds": [
       "quality",
       "quality-tactics"
@@ -327,7 +327,7 @@
       "interoperability"
     ],
     "diagram_id": "quality-scenario-table",
-    "sample_answer_zh": "质量属性场景用于把模糊质量需求改写成可测试的架构需求。完整场景包含六个部分：刺激源、刺激、制品/工件、环境、响应、响应度量。按六要素参考表中的 可用性 例子可直接写：刺激源是 心跳监视器；刺激是服务器无响应；制品是处理器；环境是正常操作；响应是通知操作者继续操作；响应度量是没有停机时间。答题时先画六列表，再把题目给出的可用性、性能、可修改性等需求填进去。",
+    "sample_answer_zh": "质量属性场景用于把模糊质量需求改写成可测试的架构需求。完整场景包含六个部分：刺激源、刺激、工件、环境、响应、响应度量。按六要素参考表中的 可用性 例子可直接写：刺激源是 心跳监视器；刺激是服务器无响应；工件是处理器；环境是正常操作；响应是通知操作者继续操作；响应度量是没有停机时间。答题时先画六列表，再把题目给出的可用性、性能、可修改性等需求填进去。",
     "sample_answer_en": "A quality attribute scenario turns a vague quality requirement into a testable architectural requirement. It has six parts: source of stimulus, stimulus, artifact, environment, response, and response measure. In the table's Availability example: the source is a heartbeat monitor; the stimulus is that the server does not respond; the artifact is the processor; the environment is normal operation; the response is to notify the operator and continue operation; and the response measure is no downtime.",
     "visual_hint_zh": "直接照参考表画六列表；可用性 行以 心跳监视器、服务器无响应、处理器、正常操作、通知操作者继续操作、没有停机时间作为参考。",
     "visual_hint_en": "Draw the six-column reference table. For Availability, keep the ground-truth row: heartbeat monitor, server no response, processor, normal operation, notify operator and continue operation, no downtime.",
@@ -353,7 +353,7 @@
       "site/assets/diagrams/quality-scenario-table.svg"
     ],
     "drawing_steps_zh": [
-      "先画 6 列表格：刺激源、刺激、制品/工件、环境、响应、响应度量。",
+      "先画 6 列表格：刺激源、刺激、工件、环境、响应、响应度量。",
       "每一行只对应一个质量属性场景，每一行保持一个质量属性场景，便于六要素和度量一一对应。",
       "按题目给出的质量属性替换字段；没有给数值时自己给可度量阈值，并说明是示例。"
     ],
@@ -404,8 +404,8 @@
       "utility tree"
     ],
     "diagram_id": "utility-tree",
-    "sample_answer_zh": "ASR 不是所有需求，而是会强烈影响架构结构、模式、技术选择和质量取舍的需求。识别时先读需求文档，找功能需求、质量需求和约束；再通过利益相关者工作坊/访谈或质量属性工作坊（QAW）补全需求文档里没有写清的质量关注点；同时用业务目标判断哪些质量目标真正重要；最后把候选 ASR 写成质量属性场景，并放入效用树做重要性和实现难度排序。优先处理业务价值高、技术风险高、冲突多、影响范围大的叶节点。",
-    "sample_answer_en": "An ASR is not every requirement, but a requirement that strongly affects architectural structures, patterns, technology choices, and quality tradeoffs. Identify ASRs by first reading requirement documents for functional requirements, quality requirements, and constraints; then using stakeholder workshops/interviews or Quality Attribute Workshops (QAW) to recover missing quality concerns; using business goals to judge which qualities matter most; and finally expressing candidate ASRs as quality-attribute scenarios in a utility tree, prioritized by importance and implementation difficulty. High business value, high technical risk, many conflicts, and broad impact make a leaf a stronger ASR candidate.",
+    "sample_answer_zh": "ASR 不是所有需求，而是会强烈影响架构结构、模式、技术选择和质量取舍的需求。\n先读需求文档，找功能需求、质量需求和约束。\n再通过利益相关者工作坊/访谈或质量属性工作坊（QAW）补全需求文档里没有写清的质量关注点。\n同时用业务目标判断哪些质量目标真正重要。\n最后把候选 ASR 写成质量属性场景，并放入效用树做重要性和实现难度排序。\n优先处理业务价值高、技术风险高、冲突多、影响范围大的叶节点。",
+    "sample_answer_en": "An ASR is not every requirement, but a requirement that strongly affects architectural structures, patterns, technology choices, and quality tradeoffs.\nFirst read requirement documents to find functional requirements, quality requirements, and constraints.\nThen use stakeholder workshops/interviews or Quality Attribute Workshops (QAW) to recover quality concerns that documents do not state clearly.\nAt the same time, use business goals to judge which quality goals truly matter.\nFinally express candidate ASRs as quality-attribute scenarios and place them in a utility tree for importance and implementation-difficulty prioritization.\nPrioritize leaves with high business value, high technical risk, many conflicts, and broad impact.",
     "visual_hint_zh": "画 效用树 时别只写名词，叶子必须落到可测试场景。",
     "visual_hint_en": "Draw the utility tree with testable scenario leaves rather than noun-only labels.",
     "priority": "P0",
@@ -479,8 +479,8 @@
       "trade-off points",
       "quality attributes"
     ],
-    "sample_answer_zh": "风险是某个架构决定可能导致质量目标无法满足的潜在负面结果，例如只部署一个数据库节点会带来可用性风险。敏感点是某个参数或设计决定的小变化会明显影响质量属性，例如缓存大小会显著影响性能。权衡点是一个决定同时影响多个质量属性，而且影响方向可能相反，例如分层架构提高可修改性和可维护性，但额外层次调用可能降低性能。",
-    "sample_answer_en": "Risk is a potential negative outcome where an architectural decision may cause a quality goal to fail, for example deploying only one database node creates availability risk. A sensitivity point is a parameter or design decision whose small change clearly affects one quality attribute, for example cache size strongly affects performance. A tradeoff point is a decision that affects multiple quality attributes, possibly in opposite directions, for example layering improves modifiability and maintainability but extra layer calls may reduce performance.",
+    "sample_answer_zh": "风险：某个架构决定可能导致质量目标无法满足的潜在负面结果，例如只部署一个数据库节点会带来可用性风险。\n敏感点：某个参数或设计决定的小变化会明显影响质量属性，例如缓存大小会显著影响性能。\n权衡点：一个决定同时影响多个质量属性，而且影响方向可能相反，例如分层架构提高可修改性和可维护性，但额外层次调用可能降低性能。",
+    "sample_answer_en": "Risk: a potential negative outcome where an architectural decision may cause a quality goal to fail, for example deploying only one database node creates availability risk.\nSensitivity point: a parameter or design decision whose small change clearly affects one quality attribute, for example cache size strongly affects performance.\nTradeoff point: a decision that affects multiple quality attributes, possibly in opposite directions, for example layering improves modifiability and maintainability but extra layer calls may reduce performance.",
     "priority": "P2",
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
@@ -560,8 +560,8 @@
       "outputs"
     ],
     "diagram_id": "architecture-design-process",
-    "sample_answer_zh": "本课程的软件架构过程可以按四个早期活动作答。第一步是规约 ASR，把利益相关者关注点、需求、约束和业务目标转成有优先级、可度量的质量场景。第二步是架构设计，依据需求和约束，选择模式与战术，形成候选视图。第三步是文档化，记录选定并合并后的视图，以及接口、映射、设计理由、约束等视图外信息。第四步是架构评估，用质量场景检查架构方案，识别风险、敏感点、权衡点，并把结果反馈给下一轮设计。",
-    "sample_answer_en": "For this course, answer with four early architecture activities. First, specify ASRs by turning stakeholder concerns, requirements, constraints, and business goals into prioritized measurable quality scenarios. Second, perform architecture design using requirements, constraints, patterns, and tactics to form candidate views. Third, document the chosen and combined views plus beyond-view information such as interfaces, mappings, rationale, and constraints. Fourth, evaluate the architecture against scenarios to identify risks, sensitivity points, tradeoff points, and feedback for the next design iteration.",
+    "sample_answer_zh": "本课程的软件架构过程可以按四个早期活动作答。\n第一步是规约 ASR，把利益相关者关注点、需求、约束和业务目标转成有优先级、可度量的质量场景。\n第二步是架构设计，依据需求和约束，选择模式与战术，形成候选视图。\n第三步是文档化，记录选定并合并后的视图，以及接口、映射、设计理由、约束等视图外信息。\n第四步是架构评估，用质量场景检查架构方案，识别风险、敏感点、权衡点，并把结果反馈给下一轮设计。",
+    "sample_answer_en": "For this course, answer with four early architecture activities.\nFirst, specify ASRs by turning stakeholder concerns, requirements, constraints, and business goals into prioritized measurable quality scenarios.\nSecond, perform architecture design using requirements, constraints, patterns, and tactics to form candidate views.\nThird, document the chosen and combined views plus beyond-view information such as interfaces, mappings, rationale, and constraints.\nFourth, evaluate the architecture against scenarios to identify risks, sensitivity points, tradeoff points, and feedback for the next design iteration.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -655,10 +655,10 @@
       "interfaces"
     ],
     "diagram_id": "add-roadmap",
-    "sample_answer_zh": "ADD 3.0 是一种按驱动因素迭代推进的软件架构设计方法。输入包括设计目的、主要功能、质量属性场景、架构关注点、约束和既有架构。每一轮先审查输入，再选择本轮最重要的驱动因素形成迭代目标；接着选择要细化的系统元素，选择合适的设计概念，例如风格、模式、战术或外部组件；然后实例化架构元素、分配职责、定义接口；再画出相关视图并记录设计决定；最后分析当前设计是否达成本轮目标和设计目的。若没有达成，就回到选择驱动因素这一步继续迭代。",
-    "sample_answer_en": "ADD 3.0 is an iterative, attribute-driven architecture design method. First, review the inputs and check that drivers such as Design Purpose, Primary Functionality, Quality Attributes, Architectural Concerns, and Constraints are available; previous-iteration or brownfield designs can also flow into this step. Then establish the iteration goal by selecting drivers, choose one or more system elements to refine, choose design concepts that satisfy the selected drivers, instantiate architectural elements, allocate responsibilities and define interfaces, sketch views and record design decisions/rationale, and finally analyze the current design and review the iteration goal and achievement of the design purpose. If key driving requirements or risks remain, return to Step 2 for another iteration until a refined software architecture design is produced.",
-    "visual_hint_zh": "按课程图手画：上方五个红色驱动因素，下面第 1-7 步纵向流程；第 3-5 步是关键设计步骤；第 7 步标出“必要时迭代”回到第 2 步，底部输出精化后的软件架构设计。",
-    "visual_hint_en": "Draw the course figure: five red drivers on top, a vertical Step 1-7 process below, Steps 3-5 as key design steps, Step 7 looping back to Step 2 if necessary, and refined architecture design at the bottom.",
+    "sample_answer_zh": "ADD 3.0 是一种按驱动因素迭代推进的软件架构设计方法。\n输入包括设计目的、主要功能、质量属性场景、架构关注点、约束和既有架构。\n每一轮先审查输入，再选择本轮最重要的驱动因素形成迭代目标。\n接着选择要细化的系统元素，并选择合适的设计概念，例如风格、模式、战术或外部组件。\n然后实例化架构元素、分配职责、定义接口，再画出相关视图并记录设计决定。\n最后分析当前设计是否达成本轮目标和设计目的；若没有达成，就回到选择驱动因素这一步继续迭代。",
+    "sample_answer_en": "ADD 3.0 is an iterative, driver-based architecture design method.\nInputs include Design Purpose, Primary Functionality, Quality Attribute scenarios, Architectural Concerns, Constraints, and existing architecture artifacts.\nIn each iteration, first review the inputs, then select the most important drivers for this round to establish the iteration goal.\nNext choose the system element to refine and choose suitable design concepts, such as styles, patterns, tactics, or external components.\nThen instantiate architectural elements, allocate responsibilities, define interfaces, sketch relevant views, and record design decisions.\nFinally analyze whether the current design achieves the iteration goal and design purpose; if not, iterate back to driver selection.",
+    "visual_hint_zh": "按课程图手画：上方五个红色驱动因素，下面第 1-7 步纵向流程。\n第 3-5 步标成关键设计步骤。\n第 7 步标出“必要时迭代”回到第 2 步，底部输出精化后的软件架构设计。",
+    "visual_hint_en": "Draw the course figure: five red drivers on top and a vertical Step 1-7 process below.\nMark Steps 3-5 as key design steps.\nShow Step 7 looping back to Step 2 if necessary, and put the refined software architecture design at the bottom.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -696,13 +696,13 @@
       "Draw the bottom output: (Refined) Software Architecture Design."
     ],
     "answer_points_zh": [
-      "输入：设计目的、主要功能、质量属性场景、架构关注点、约束、既有架构。",
+      "输入：设计目的、主要功能、质量属性场景、架构关注点、约束、既有架构或上一轮设计制品。",
       "第 1 步审查输入，确认本轮可用的驱动因素。",
       "第 2 步选择驱动因素并建立迭代目标。",
-      "第 3 步选择要细化的系统元素。",
-      "第 4 步选择设计概念，例如风格、模式、战术或外部组件。",
+      "第 3 步选择一个或多个要细化的系统元素。",
+      "第 4 步选择设计概念，例如风格、模式、战术、参考架构或外部组件。",
       "第 5 步实例化架构元素、分配职责并定义接口。",
-      "第 6 步绘制视图并记录设计决定。",
+      "第 6 步绘制视图并记录设计决定及理由。",
       "第 7 步分析当前设计，检查迭代目标和设计目的是否达成；必要时回到第 2 步。"
     ],
     "answer_points_en": [
@@ -714,7 +714,8 @@
       "Step 5: instantiate architectural elements, allocate responsibilities, and define interfaces.",
       "Step 6: sketch views and record design decisions/rationale.",
       "Step 7: analyze the current design and review whether the iteration goal and design purpose are achieved; if necessary, iterate back to Step 2."
-    ]
+    ],
+    "question_en": "Describe ADD 3.0, including its inputs, seven-step process, and iterative relationship."
   },
   {
     "id": "q_atam_outputs",
@@ -770,8 +771,8 @@
       "final report"
     ],
     "diagram_id": "atam-phase-outputs",
-    "sample_answer_zh": "ATAM 的输出按阶段组织。第 0 阶段是准备阶段，输出 评估计划，包括参与者、时间、范围和报告对象。第 1 阶段 面向项目决策者，输出 业务驱动因素、架构说明、效用树、优先质量场景、风险/非风险、敏感点和权衡点。第 2 阶段引入更广泛的利益相关者，输出新增/合并后的 利益相关者场景、优先场景列表和 风险主题。第 3 阶段输出 最终报告，汇总场景、风险、敏感点、权衡点和风险主题。",
-    "sample_answer_en": "ATAM outputs are phase-based: Phase 0 produces the evaluation plan. Phase 1 produces business drivers, an architecture presentation, a utility tree, prioritized scenarios, risks/non-risks, sensitivity points, and tradeoff points. Phase 2 adds broader stakeholder scenarios, merged/prioritized scenario lists, and risk themes. Phase 3 produces the final report.",
+    "sample_answer_zh": "ATAM 的输出按阶段组织。\n第 0 阶段是准备阶段，输出评估计划，包括参与者、时间、范围和报告对象。\n第 1 阶段面向项目决策者，输出业务驱动因素、架构说明、效用树、优先质量场景、风险/非风险、敏感点和权衡点。\n第 2 阶段引入更广泛的利益相关者，输出新增/合并后的利益相关者场景、优先场景列表和风险主题。\n第 3 阶段输出最终报告，汇总场景、风险、敏感点、权衡点和风险主题。",
+    "sample_answer_en": "ATAM outputs are organized by phase.\nPhase 0 is preparation and produces the evaluation plan, including participants, schedule, scope, and report audience.\nPhase 1 is for project decision makers and produces business drivers, architecture presentation, utility tree, prioritized quality scenarios, risks/non-risks, sensitivity points, and tradeoff points.\nPhase 2 brings in broader stakeholders and produces new/merged stakeholder scenarios, prioritized scenario lists, and risk themes.\nPhase 3 produces the final report, summarizing scenarios, risks, sensitivity points, tradeoff points, and risk themes.",
     "visual_hint_zh": "ATAM 输出题用四阶段表即可，不要把 效用树 图误当完整 ATAM 阶段输出。",
     "visual_hint_en": "Use a four-phase table; do not treat the utility tree alone as the full ATAM phase-output answer.",
     "priority": "P2",
@@ -850,8 +851,8 @@
       "architect",
       "scenarios"
     ],
-    "sample_answer_zh": "ATAM 中至少要说明几类角色。评估团队负责组织评估、介绍 ATAM 方法、引导场景生成、记录风险并形成报告。项目决策者/管理者说明 业务驱动因素、范围和评估目标。首席架构师陈述当前架构、关键设计决定和理由。更广泛的利益相关者 在 第 2 阶段 参与，例如用户、测试、运维、维护、安全或业务代表，他们提出并排序场景，帮助确认风险主题。这些人员是典型例子，考场表述重点放在角色如何提供业务目标、架构信息、场景和风险验证。",
-    "sample_answer_en": "Explain ATAM roles rather than a fixed exhaustive list. The evaluation team organizes the evaluation, presents the method, elicits scenarios, records risks, and writes the report. Project decision makers/managers provide business drivers, scope, and evaluation goals. The lead architect presents the architecture and key rationale. Broader stakeholders in Phase 2, such as users, testers, operators, maintainers, security, or business representatives, propose and prioritize scenarios and help validate risk themes.",
+    "sample_answer_zh": "ATAM 中要按职责说明角色，不需要背固定穷尽名单。\n评估团队负责组织评估、介绍 ATAM 方法、引导场景生成、记录风险并形成报告。\n项目决策者/管理者说明业务驱动因素、范围和评估目标。\n首席架构师陈述当前架构、关键设计决定和理由。\n更广泛的利益相关者在第 2 阶段参与，例如用户、测试、运维、维护、安全或业务代表，他们提出并排序场景，帮助确认风险主题。\n答题重点是说明每类角色贡献什么：业务目标、架构信息、质量场景和风险验证。",
+    "sample_answer_en": "In ATAM, explain roles by responsibility; do not memorize a fixed exhaustive list.\nThe evaluation team organizes the evaluation, presents the ATAM method, elicits scenarios, records risks, and writes the report.\nProject decision makers/managers provide business drivers, scope, and evaluation goals.\nThe lead architect presents the current architecture, key design decisions, and rationale.\nBroader stakeholders participate in Phase 2, such as users, testers, operators, maintainers, security, or business representatives; they propose and prioritize scenarios and help validate risk themes.\nThe key exam point is what each role contributes: business goals, architecture information, quality scenarios, and risk validation.",
     "priority": "P2",
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
@@ -928,8 +929,8 @@
       "views"
     ],
     "diagram_id": "architecture-view-selection",
-    "sample_answer_zh": "先看问题关心什么元素和关系。如果题目问“系统如何被组织成实现单元”，应使用模块视图，常见例子有分解视图、使用视图、分层视图、泛化视图。如果题目问“系统运行时组件如何交互”，应使用组件-连接器视图，常见例子有客户端-服务器、管道-过滤器、发布-订阅、SOA。如果题目问“软件如何映射到非软件环境”，应使用分配视图，常见例子有部署视图、安装视图、工作分配视图、多层部署视图。这样可以避免把所有架构问题都画成同一种 UML 图。",
-    "sample_answer_en": "First ask what elements and relations the question cares about. If it asks how the system is organized into implementation units, use module views such as decomposition, uses, layered, and generalization views. If it asks how runtime components interact, use component-and-connector views such as client-server, pipe-and-filter, publish-subscribe, and SOA. If it asks how software maps to the non-software environment, use allocation views such as deployment, install, work assignment, and multi-tier deployment. This prevents turning every architecture question into the same UML diagram.",
+    "sample_answer_zh": "先看问题关心什么元素和关系。\n如果题目问“系统如何被组织成实现单元”，应使用模块视图，常见例子有分解视图、使用视图、分层视图和泛化视图。\n如果题目问“系统运行时组件如何交互”，应使用组件-连接器视图，常见例子有客户端-服务器、管道-过滤器、发布-订阅和 SOA。\n如果题目问“软件如何映射到非软件环境”，应使用分配视图，常见例子有部署视图、安装视图、工作分配视图和多层部署视图。\n这样可以避免把所有架构问题都画成同一种 UML 图。",
+    "sample_answer_en": "First ask what elements and relations the question cares about.\nIf it asks how the system is organized into implementation units, use module views such as decomposition, uses, layered, and generalization views.\nIf it asks how runtime components interact, use component-and-connector views such as client-server, pipe-and-filter, publish-subscribe, and SOA.\nIf it asks how software maps to the non-software environment, use allocation views such as deployment, install, work assignment, and multi-tier deployment.\nThis prevents turning every architecture question into the same UML diagram.",
     "visual_hint_zh": "考场可画“最小视图 + 选择三步 + 视图外 信息”三块，不必画完整文档模板。",
     "visual_hint_en": "In the exam, draw three blocks: minimum views, three-step selection, and beyond-view information; no need for a full template.",
     "priority": "P0",
@@ -1020,8 +1021,8 @@
       "quality views"
     ],
     "diagram_id": "architecture-view-selection",
-    "sample_answer_zh": "软件架构需要用不同视图文档化，因为不同利益相关者关心不同问题，单一视图无法同时表达实现结构、运行时交互、部署环境和质量属性。开发者关心模块分解和依赖关系，运维人员关心部署视图，测试人员关心接口和质量场景，项目经理关心工作分配和风险。示例视图包括：模块视图 表示实现单元和依赖；组件-连接器视图 表示运行时组件和连接器；部署视图 表示软件到硬件节点的映射；质量视图 表示性能、安全、可靠性等质量关注点。",
-    "sample_answer_en": "Architecture should be documented using different views because different stakeholders care about different questions, and one view cannot show implementation structure, runtime interaction, deployment environment, and quality concerns at the same time. Developers need module decomposition and dependencies; operators need deployment views; testers need interfaces and quality scenarios; project managers need work assignment and risk information. Example views: a module view shows implementation units and dependencies; a Component-and-Connector view shows runtime components and connectors; a deployment view maps software to hardware nodes; a quality view highlights concerns such as performance, security, and reliability.",
+    "sample_answer_zh": "软件架构需要用不同视图文档化，因为不同利益相关者关心不同问题，单一视图无法同时表达实现结构、运行时交互、部署环境和质量属性。\n开发者关心模块分解和依赖关系，运维人员关心部署视图，测试人员关心接口和质量场景，项目经理关心工作分配和风险。\n模块视图表示实现单元和依赖。\n组件-连接器视图表示运行时组件和连接器。\n部署视图表示软件到硬件节点的映射。\n质量视图表示性能、安全、可靠性等质量关注点。",
+    "sample_answer_en": "Architecture should be documented with different views because different stakeholders care about different questions, and one view cannot show implementation structure, runtime interaction, deployment environment, and quality attributes at the same time.\nDevelopers care about module decomposition and dependencies, operators care about deployment views, testers care about interfaces and quality scenarios, and project managers care about work assignment and risk.\nA Module view shows implementation units and dependencies.\nA Component-and-Connector view shows runtime components and connectors.\nA Deployment view maps software to hardware nodes.\nA Quality view highlights quality concerns such as performance, security, and reliability.",
     "visual_hint_zh": "考场可画“最小视图 + 选择三步 + 视图外 信息”三块，不必画完整文档模板。",
     "visual_hint_en": "In the exam, draw three blocks: minimum views, three-step selection, and beyond-view information; no need for a full template.",
     "priority": "P0",
@@ -1045,12 +1046,12 @@
     "drawing_steps_zh": [
       "中心写“架构”，四周画逻辑视图、进程视图、物理视图、开发视图。",
       "用“用例场景”把四个视图串起来，说明场景用于验证视图一致性。",
-      "旁边写每类视图服务的利益相关者：开发、运维、性能分析、用户/业务方。"
+      "旁边写每类视图的目的和服务对象：功能结构/用户与业务方，运行时并发/性能分析，部署映射/运维，代码组织/开发者。"
     ],
     "drawing_steps_en": [
       "Put Architecture in the center and draw logical, process, physical, and development views around it.",
       "Use use-case scenarios to tie the views together and validate consistency.",
-      "Write one purpose beside each view: functional structure, runtime/concurrency, deployment mapping, implementation organization."
+      "Beside each view, write both purpose and audience: functional structure/users and business stakeholders, runtime concurrency/performance analysis, deployment mapping/operators, implementation organization/developers."
     ],
     "answer_points_zh": [
       "原因：不同利益相关者关心不同问题，单一视图无法覆盖所有元素、关系和质量属性。",
@@ -1109,8 +1110,8 @@
       "quality attributes"
     ],
     "diagram_id": "architecture-view-selection",
-    "sample_answer_zh": "典型架构文档包应包含视图和视图外信息两部分。视图部分记录选定的架构视图，每个视图应有主表示图、元素说明、关系说明、接口、行为、上下文图和设计理由。视图外信息记录跨视图信息，包括文档路线图、系统概述、业务目标、架构驱动因素、视图之间的映射、重要设计决定、约束、术语表和索引。这样文档不仅说明“架构长什么样”，还说明“为什么这样设计”和“不同视图如何对应”。",
-    "sample_answer_en": "An architecture documentation package has views and beyond-view information. Each view includes primary presentation, element catalog, relations, interfaces, behavior, context, and rationale. Beyond-view information includes roadmap, overview, drivers, view mappings, decisions, constraints, glossary, and index.",
+    "sample_answer_zh": "典型架构文档包应包含视图和视图外信息两部分。\n视图部分记录选定的架构视图，每个视图应有主表示图、元素说明、关系说明、接口、行为、上下文图和设计理由。\n视图外信息记录跨视图信息，包括文档路线图、系统概述、业务目标、架构驱动因素、视图之间的映射、重要设计决定、约束、术语表和索引。\n这样文档不仅说明“架构长什么样”，还说明“为什么这样设计”和“不同视图如何对应”。",
+    "sample_answer_en": "A typical architecture documentation package contains two parts: views and beyond-view information.\nThe view part records selected architecture views; each view should include primary presentation, element catalog, relation descriptions, interfaces, behavior, context diagram, and rationale.\nBeyond-view information records cross-view information, including document roadmap, system overview, business goals, architectural drivers, view mappings, important design decisions, constraints, glossary, and index.\nThis documentation explains not only what the architecture looks like, but also why it is designed this way and how different views correspond.",
     "visual_hint_zh": "考场可画“最小视图 + 选择三步 + 视图外 信息”三块，不必画完整文档模板。",
     "visual_hint_en": "In the exam, draw three blocks: minimum views, three-step selection, and beyond-view information; no need for a full template.",
     "priority": "P0",
@@ -1189,8 +1190,8 @@
       "use cases"
     ],
     "diagram_id": "review-4-plus-1-views",
-    "sample_answer_zh": "Kruchten 的 4+1 视图用五类视角描述架构。逻辑视图 描述系统提供给用户的主要功能和领域对象；进程视图 描述运行时进程、线程、并发和通信；开发视图 描述代码模块、包和开发组织；物理视图 描述软件如何部署到硬件节点；“+1” 是场景或用例，用来串联和验证前四个视图。它的价值在于用不同视角服务不同利益相关者，并用场景检查视图之间是否一致。",
-    "sample_answer_en": "Kruchten 4+1 includes logical, process, development, physical, plus scenarios/use cases. Logical covers functionality/domain objects, process covers runtime concurrency/communication, development covers modules/packages, physical covers deployment, and scenarios validate the other views.",
+    "sample_answer_zh": "Kruchten 的 4+1 视图用五类视角描述架构。\n逻辑视图描述系统提供给用户的主要功能和领域对象。\n进程视图描述运行时进程、线程、并发和通信。\n开发视图描述代码模块、包和开发组织。\n物理视图描述软件如何部署到硬件节点。\n“+1” 是场景或用例，用来串联和验证前四个视图。\n它的价值在于用不同视角服务不同利益相关者，并用场景检查视图之间是否一致。",
+    "sample_answer_en": "Kruchten 4+1 describes architecture through five perspectives.\nThe Logical view describes the main functionality and domain objects provided to users.\nThe Process view describes runtime processes, threads, concurrency, and communication.\nThe Development view describes code modules, packages, and development organization.\nThe Physical view describes how software is deployed to hardware nodes.\nThe “+1” view is scenarios or use cases, which connect and validate the other four views.\nIts value is serving different stakeholders through different perspectives and checking consistency across views with scenarios.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P0",
@@ -1269,8 +1270,8 @@
       "architectural force"
     ],
     "diagram_id": "review-architecture-evolution",
-    "sample_answer_zh": "战术和模式的区别在粒度。战术通常针对一个质量属性的某个响应点，是较原子的设计动作；模式/风格解决反复出现的一类架构问题，会规定元素、连接关系、约束和质量取舍，往往组合多个战术。例如为了可用性，可以用心跳检测发现故障，用冗余和故障转移支持恢复；这些战术组合到具体系统里，可能成为代理模式、客户端-服务器或微服务结构的一部分。答题按“粒度、作用、例子、取舍”展开即可。",
-    "sample_answer_en": "Tactics and patterns differ in granularity. A tactic is a fine-grained design action for a quality-attribute response; a pattern/style is a larger reusable architectural solution that defines elements, relations, constraints, and quality tradeoffs, often combining several tactics. Availability tactics include heartbeat detection, redundancy, and failover; performance tactics include caching, load balancing, and controlling resource demand; modifiability tactics include increasing cohesion, limiting dependencies, and hiding information; security tactics include authentication, authorization, and auditing/logging. In a concrete system, these tactics may be packaged inside a larger Broker, client-server, layered, SOA, or microservice structure. Answer by granularity, purpose, examples, and tradeoffs.",
+    "sample_answer_zh": "战术和模式的区别在粒度。\n战术通常针对一个质量属性的某个响应点，是较原子的设计动作。\n模式/风格解决反复出现的一类架构问题，会规定元素、连接关系、约束和质量取舍，往往组合多个战术。\n例如为了可用性，可以用心跳检测发现故障，用冗余和故障转移支持恢复。\n这些战术组合到具体系统里，可能成为代理模式、客户端-服务器或微服务结构的一部分。\n答题按“粒度、作用、例子、取舍”展开即可。",
+    "sample_answer_en": "The difference between tactics and patterns is granularity.\nA tactic usually targets one response point of one quality attribute and is a relatively atomic design action.\nA pattern/style solves a recurring class of architecture problems; it defines elements, relations, constraints, and quality tradeoffs, often combining multiple tactics.\nFor availability, heartbeat detection can detect failures, while redundancy and failover support recovery.\nWhen these tactics are combined in a concrete system, they may become part of a Broker, client-server, or microservice structure.\nAnswer by granularity, purpose, examples, and tradeoffs.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P0",
@@ -1308,13 +1309,13 @@
       "战术：解决质量属性响应的原子设计动作。",
       "模式/风格：解决反复出现架构问题的结构方案。",
       "关系：模式通常组合多个战术，并带来新的质量取舍。",
-      "例子：心跳检测、冗余、缓存、负载均衡、认证、授权等。"
+      "例子：可用性=心跳检测/冗余/故障转移；性能=缓存/负载均衡；可修改性=内聚/依赖控制/信息隐藏；安全=认证/授权/日志。"
     ],
     "answer_points_en": [
       "Tactic: an atomic design action for a quality-attribute response.",
       "Pattern/style: a structural solution for a recurring architecture problem.",
-      "Relationship: patterns/styles often combine multiple tactics and impose constraints and tradeoffs.",
-      "Examples: heartbeat/redundancy/failover for availability; caching/load balancing for performance; cohesion/dependency control/information hiding for modifiability; authentication/authorization/logging for security."
+      "Relationship: patterns/styles often combine multiple tactics and introduce new quality tradeoffs.",
+      "Examples: availability = heartbeat/redundancy/failover; performance = caching/load balancing; modifiability = cohesion/dependency control/information hiding; security = authentication/authorization/logging."
     ]
   },
   {
@@ -1355,7 +1356,7 @@
       "SOA",
       "plug-in"
     ],
-    "likely_answer_pattern": "Use the source-backed generic strategies: abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. Treat layering, SOA, plugins, etc. as design concepts or architectural styles, not the core generic-strategy list.",
+    "likely_answer_pattern": "Use the generic design strategies: abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. Treat layering, SOA, plugins, etc. as design concepts or architectural styles, not the core generic-strategy list.",
     "question_zh": "软件设计中有哪些通用设计策略？给出架构例子。",
     "answer_zh": "通用设计策略优先背五个有据可查的词：抽象、分解、生成-测试、迭代/细化、复用。分层、SOA、插件化、组件化等可以作为这些策略落到架构上的例子或设计概念，不要和通用策略清单混在一起当作同级必答。",
     "topicIds": [
@@ -1373,8 +1374,8 @@
       "iteration",
       "reuse"
     ],
-    "sample_answer_zh": "软件设计的通用策略可以这样答：抽象 用抽象隐藏实现细节，让架构师先关注组件、连接件或模块；分解 把系统或模块按关注点拆开；生成并测试 先提出候选方案，再用质量属性场景和约束评估；迭代/细化 通过多轮设计逐步细化，ADD 就是典型迭代方法；复用 复用既有架构、模式、框架或组件来降低风险。分层、SOA、插件化等可以写成这些策略的应用例子，而不是把它们并列成“通用策略”。",
-    "sample_answer_en": "Source-backed generic design strategies are abstraction, decomposition, generate-and-test, iteration/refinement, and reuse. Abstraction hides implementation detail; decomposition separates concerns; generate-and-test creates and evaluates alternatives; iteration/refinement gradually improves the design, as in ADD; reuse lowers risk by using existing architectures, patterns, frameworks, or components. Layering, SOA, and plugins are applications or design concepts, not the core generic-strategy list.",
+    "sample_answer_zh": "抽象：隐藏实现细节，让架构师先关注组件、连接件或模块。\n分解：把系统或模块按关注点拆开。\n生成并测试：先提出候选方案，再用质量属性场景和约束评估。\n迭代/细化：通过多轮设计逐步细化，ADD 就是典型迭代方法。\n复用：复用既有架构、模式、框架或组件来降低风险。\n分层、SOA、插件化等可以写成这些策略的应用例子，而不是把它们并列成核心通用策略。",
+    "sample_answer_en": "Abstraction: hide implementation details so the architect first focuses on components, connectors, or modules.\nDecomposition: split the system or module by concerns.\nGenerate-and-test: propose candidate solutions and evaluate them with quality-attribute scenarios and constraints.\nIteration/refinement: refine the design through multiple rounds; ADD is a typical iterative method.\nReuse: reuse existing architectures, patterns, frameworks, or components to reduce risk.\nLayering, SOA, and plugins can be written as applications of these strategies, but they are not the core generic-strategy list.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
@@ -1446,8 +1447,8 @@
       "controller",
       "notifies"
     ],
-    "sample_answer_zh": "组件-连接器风格关注运行时元素及其交互方式，而不是代码目录结构。组件是运行时执行计算或保存状态的单元，连接器是组件之间调用、事件、消息或数据流的交互机制。MVC 是典型例子：模型保存业务数据和状态，视图负责用户界面展示，控制器接收用户输入并协调模型与视图。它通过调用和通知关系把三者连接起来，使界面展示、用户输入和业务状态变化相对分离。",
-    "sample_answer_en": "C&C style focuses on runtime elements and interactions, not code folders. Components compute or hold state, while connectors are calls/events/messages/streams. In MVC, Model holds data/state, View presents UI, Controller handles input and coordinates Model/View through calls and notifications.",
+    "sample_answer_zh": "组件-连接器风格关注运行时元素及其交互方式，而不是代码目录结构。\n组件是运行时执行计算或保存状态的单元。\n连接器是组件之间调用、事件、消息或数据流的交互机制。\nMVC 是典型例子：模型保存业务数据和状态，视图负责用户界面展示，控制器接收用户输入并协调模型与视图。\nMVC 通过调用和通知关系把三者连接起来，使界面展示、用户输入和业务状态变化相对分离。",
+    "sample_answer_en": "A Component-and-Connector style focuses on runtime elements and their interactions, not code-folder structure.\nA component is a runtime unit that performs computation or holds state.\nA connector is an interaction mechanism between components, such as calls, events, messages, or data streams.\nMVC is a typical example: Model stores business data and state, View presents the user interface, and Controller receives user input and coordinates Model and View.\nMVC connects the three through calls and notifications, separating presentation, user input, and business-state changes.",
     "visual_hint_zh": "MVC 图只作为 C&C 例子，重点是运行时组件和连接件，不是类图。",
     "visual_hint_en": "Use MVC only as a C&C example; focus on runtime components and connectors, not class diagrams.",
     "priority": "P1",
@@ -1527,8 +1528,8 @@
       "latency",
       "single point of failure"
     ],
-    "sample_answer_zh": "代理模式 模式适用于由多个远程对象或服务组成、需要解耦客户端和服务端通信的分布式系统。代理模式 作为中介，负责服务注册、查找、请求转发、结果返回和可能的协议适配。好处是客户端不需要知道服务端位置和实现，服务可以动态替换或扩展，系统互操作性和可扩展性更好。局限是 代理模式 增加了间接层和复杂度，可能带来延迟、瓶颈、单点故障、安全攻击面和测试困难。",
-    "sample_answer_en": "The Broker pattern mediates between clients and servers in distributed systems. It supports registration, lookup, request forwarding, response return, and protocol adaptation. Benefits are location transparency, extensibility, and interoperability; limits are latency, bottleneck, single point of failure, security, and testing complexity.",
+    "sample_answer_zh": "代理架构模式适用于由多个远程对象或服务组成、需要解耦客户端和服务端通信的分布式系统。\n代理组件作为中介，负责服务注册、查找、请求转发、结果返回和可能的协议适配。\n好处是客户端不需要知道服务端位置和实现，服务可以动态替换或扩展，系统互操作性和可扩展性更好。\n局限是代理组件增加了间接层和复杂度，可能带来延迟、瓶颈、单点故障、安全攻击面和测试困难。",
+    "sample_answer_en": "The Broker architectural pattern fits distributed systems with multiple remote objects or services where clients and servers should be decoupled.\nThe broker component acts as an intermediary for service registration, lookup, request forwarding, response return, and possible protocol adaptation.\nBenefits are that clients need not know server location or implementation, services can be replaced or extended dynamically, and interoperability/extensibility improve.\nLimitations are that the broker adds indirection and complexity, possibly causing latency, bottlenecks, single point of failure, security exposure, and testing difficulty.",
     "visual_hint_zh": "代理模式题画出 Client、Broker、Server 的拓扑和转发关系即可。",
     "visual_hint_en": "Broker is a historical pattern question; draw the topology but do not promote it to the core focus.",
     "priority": "P2",
@@ -1603,8 +1604,8 @@
       "modifiability"
     ],
     "diagram_id": "review-architecture-units",
-    "sample_answer_zh": "分层架构把系统组织成若干抽象层，每一层为上层提供服务，并依赖下层完成更基础的能力。它适合复杂系统的关注点分离，例如表示层、业务层、数据访问层。优点是结构清晰、职责分离、可替换性和可维护性较好，也便于复用底层服务。局限是层数过多会增加复杂度和性能开销；如果上层频繁绕过中间层直接访问底层，会破坏分层约束；如果层的抽象设计不合理，反而会阻碍演化。",
-    "sample_answer_en": "Layered architecture organizes a system into abstraction layers with allowed-to-use relations. It improves separation, modifiability, replaceability, and reuse. Limits include extra complexity, performance cost, layer bridging, and poor abstractions that block evolution.",
+    "sample_answer_zh": "分层架构把系统组织成若干抽象层，每一层为上层提供服务，并依赖下层完成更基础的能力。\n它适合复杂系统的关注点分离，例如表示层、业务层、数据访问层。\n优点是结构清晰、职责分离、可替换性和可维护性较好，也便于复用底层服务。\n局限是层数过多会增加复杂度和性能开销。\n如果上层频繁绕过中间层直接访问底层，会破坏分层约束；如果层的抽象设计不合理，反而会阻碍演化。",
+    "sample_answer_en": "Layered architecture organizes the system into abstraction layers; each layer provides services to the layer above and depends on lower layers for more basic capabilities.\nIt is suitable for separating concerns in complex systems, such as presentation layer, business layer, and data access layer.\nAdvantages are clear structure, separated responsibilities, better replaceability and maintainability, and reuse of lower-level services.\nA limitation is that too many layers increase complexity and performance overhead.\nIf upper layers frequently bypass middle layers, the layering constraint is broken; if layer abstractions are poor, evolution becomes harder.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
@@ -1676,8 +1677,8 @@
       "physical deployment"
     ],
     "diagram_id": "review-architecture-units",
-    "sample_answer_zh": "分层 模式 和 多层部署 模式 的核心区别在关注点。分层 是 模块 风格，强调逻辑职责和允许使用关系，例如 表示层/界面层、业务层、数据层，即使它们部署在同一进程中也仍然是分层。多层部署 是 分配 风格，强调软件单元如何分布到不同进程、机器或网络节点上，例如浏览器、应用服务器、数据库服务器三层部署。简单说，分层 回答“代码和职责如何分层”，多层部署 回答“系统如何部署和分布”。",
-    "sample_answer_en": "Layered is a module style about logical responsibilities and allowed-to-use relations. Multi-tier is an allocation style about distributing software across processes, machines, or network nodes. Layered answers how code/responsibilities are separated; multi-tier answers how the system is deployed.",
+    "sample_answer_zh": "分层模式和多层部署模式的核心区别在关注点。\n分层是模块风格，强调逻辑职责和允许使用关系，例如表示层/界面层、业务层、数据层，即使它们部署在同一进程中也仍然是分层。\n多层部署是分配风格，强调软件单元如何分布到不同进程、机器或网络节点上，例如浏览器、应用服务器、数据库服务器三层部署。\n简单说，分层回答“代码和职责如何分层”，多层部署回答“系统如何部署和分布”。",
+    "sample_answer_en": "The core difference between Layered and Multi-tier is their concern.\nLayered is a module style: it emphasizes logical responsibilities and allowed-to-use relations, such as presentation/UI layer, business layer, and data layer, even if they run in the same process.\nMulti-tier is an allocation style: it emphasizes how software units are distributed across processes, machines, or network nodes, such as browser, application server, and database server.\nIn short, Layered answers how code and responsibilities are layered, while Multi-tier answers how the system is deployed and distributed.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P1",
@@ -1762,8 +1763,8 @@
       "security"
     ],
     "diagram_id": "soa-cnc-reference",
-    "sample_answer_zh": "SOA 的基本思想是把业务能力封装成自治服务，通过明确服务契约对外提供能力。核心原则包括服务契约、服务封装、服务复用、服务组合、服务自治和尽量无状态。SOA 提高互操作性，因为异构系统可以通过标准契约和消息协议集成；也有利于可伸缩性，因为服务之间松耦合，可以独立扩展和组合。但 SOA 也会引入分布式复杂度，中间件可能成为性能瓶颈或攻击目标，多服务调用也会增加安全治理、追踪和故障定位难度。",
-    "sample_answer_en": "SOA encapsulates business capabilities as autonomous services with explicit contracts. It improves interoperability and potential scalability through loose coupling and standard contracts, but adds distributed complexity, middleware bottlenecks, security governance, tracing, and fault diagnosis challenges.",
+    "sample_answer_zh": "SOA 的基本思想是把业务能力封装成自治服务，通过明确服务契约对外提供能力。\n核心原则包括服务契约、服务封装、服务复用、服务组合、服务自治和尽量无状态。\nSOA 提高互操作性，因为异构系统可以通过标准契约和消息协议集成。\nSOA 也有利于可伸缩性，因为服务之间松耦合，可以独立扩展和组合。\n局限是会引入分布式复杂度，中间件可能成为性能瓶颈或攻击目标，多服务调用也会增加安全治理、追踪和故障定位难度。",
+    "sample_answer_en": "The basic idea of SOA is to encapsulate business capabilities as autonomous services and expose them through explicit service contracts.\nCore principles include service contract, service encapsulation, service reuse, service composition, service autonomy, and preferably statelessness.\nSOA improves interoperability because heterogeneous systems can integrate through standard contracts and message protocols.\nSOA can also improve scalability because loosely coupled services can be scaled and composed independently.\nIts limitations are distributed complexity, middleware bottlenecks or attack surface, and harder security governance, tracing, and fault diagnosis across multiple service calls.",
     "visual_hint_zh": "SOA 图用于理解质量影响；答题时注意和微服务、DDD、ASR 等内容区分。",
     "visual_hint_en": "The SOA diagram supports quality-impact explanation; the core focus is still microservices/DDD/ASR.",
     "priority": "P1",
@@ -2009,8 +2010,8 @@
       "core assets",
       "systematic variation"
     ],
-    "sample_answer_zh": "软件产品线架构面向一组相关产品，而单个产品架构只面向一个系统。产品线架构必须显式管理共性和可变性，通过核心资产、产品线架构和变化点支持多个产品变体。它追求系统化复用和规模化定制，因此架构中要预留允许变化的范围和机制。单个产品架构只要满足该产品的功能和质量目标即可，不一定需要管理多个变体。产品线架构前期成本更高，但在多个产品间复用时能降低长期成本。",
-    "sample_answer_en": "A software product line architecture serves a family of related products, while a single-product architecture serves one system. SPL explicitly manages commonality and variability through core assets, PLA, and variation points. It costs more upfront but reduces long-term cost across variants.",
+    "sample_answer_zh": "软件产品线架构面向一组相关产品，而单个产品架构只面向一个系统。\n产品线架构必须显式管理共性和可变性，通过核心资产、产品线架构和变化点支持多个产品变体。\n它追求系统化复用和规模化定制，因此架构中要预留允许变化的范围和机制。\n单个产品架构只要满足该产品的功能和质量目标即可，不一定需要管理多个变体。\n产品线架构前期成本更高，但在多个产品间复用时能降低长期成本。",
+    "sample_answer_en": "A software product line architecture serves a family of related products, while a single-product architecture serves one system.\nA product-line architecture must explicitly manage commonality and variability, supporting multiple product variants through core assets, the product-line architecture, and variation points.\nIt pursues systematic reuse and mass customization, so the architecture reserves variation ranges and variation mechanisms.\nA single-product architecture only needs to satisfy that product’s functional and quality goals and does not necessarily manage multiple variants.\nA product-line architecture costs more upfront, but can reduce long-term cost when reused across many products.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
@@ -2078,8 +2079,8 @@
       "models",
       "services"
     ],
-    "sample_answer_zh": "SPL、MDA 和 SOA 都通过抽象来提高复用，但复用对象不同。SPL 复用的是核心资产、产品线架构和变化机制，适合一组相似产品的系统化开发。MDA 复用的是平台无关模型和模型转换，通过 PIM 到 PSM 的映射适配不同平台。SOA 复用的是服务契约和业务服务组合，适合异构系统集成。共同点是都强调抽象、变化管理和批量定制；区别是 SPL 偏产品族和核心资产，MDA 偏模型与转换，SOA 偏运行时服务组合。",
-    "sample_answer_en": "SPL, MDA, and SOA all improve reuse through abstraction, but they reuse different objects. SPL reuses core assets, product-line architecture, and variation mechanisms for a family of similar products. MDA reuses platform-independent models and model transformations, mapping PIM to PSM for different platforms. SOA reuses service contracts and business service compositions for heterogeneous system integration. Commonality: abstraction, variation management, and mass customization. Difference: SPL targets product families/core assets, MDA targets models/transformations, and SOA targets runtime service composition/integration.",
+    "sample_answer_zh": "共同点：SPL、MDA 和 SOA 都通过抽象来提高复用，并通过变化管理支持批量定制。\nSPL：复用核心资产、产品线架构和变化机制，适合一组相似产品的系统化开发。\nMDA：复用平台无关模型和模型转换，通过 PIM 到 PSM 的映射适配不同平台。\nSOA：复用服务契约和业务服务组合，适合异构系统集成。\n区别：SPL 偏产品族和核心资产，MDA 偏模型与转换，SOA 偏运行时服务组合。",
+    "sample_answer_en": "Commonality: SPL, MDA, and SOA all improve reuse through abstraction and support mass customization through variation management.\nSPL: reuses core assets, product-line architecture, and variation mechanisms for systematic development of a family of similar products.\nMDA: reuses platform-independent models and model transformations, mapping PIM to PSM for different platforms.\nSOA: reuses service contracts and business service compositions for heterogeneous system integration.\nDifference: SPL focuses on product families and core assets, MDA focuses on models and transformations, and SOA focuses on runtime service composition.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
@@ -2102,13 +2103,15 @@
       "共同点：都通过抽象和变化管理扩大复用范围。",
       "SPL：复用核心资产、产品线架构和变化机制，面向一族相似产品。",
       "MDA：复用平台无关模型和模型转换，面向多平台迁移。",
-      "SOA：复用服务契约和服务组合，面向异构系统集成。"
+      "SOA：复用服务契约和服务组合，面向异构系统集成。",
+      "区别：SPL 偏产品族和核心资产，MDA 偏模型与转换，SOA 偏运行时服务组合。"
     ],
     "answer_points_en": [
       "Commonality: all use abstraction and variation management to expand reuse.",
       "SPL: reuses core assets, product-line architecture, and variation mechanisms for a family of similar products.",
       "MDA: reuses platform-independent models and transformations for multi-platform adaptation.",
-      "SOA: reuses service contracts and service compositions for heterogeneous integration."
+      "SOA: reuses service contracts and service compositions for heterogeneous integration.",
+      "Difference: SPL focuses on product families and core assets, MDA focuses on models and transformations, and SOA focuses on runtime service composition."
     ]
   },
   {
@@ -2155,8 +2158,8 @@
       "configuration management",
       "binding time"
     ],
-    "sample_answer_zh": "SPL 通过变化点和变化机制实现可变性。核心资产中预留 变化点，产品线架构提供支持这些变化的结构基础；具体产品通过选择特征、配置组件、替换实现或组合服务来得到不同变体。变化可以发生在工作区创建时、构建时、部署时、启动时或运行时。绑定越晚，可修改性和灵活性通常越好，但测试组合更多、运行时复杂度更高；绑定越早，测试和控制更简单，但后续变化成本更高。",
-    "sample_answer_en": "SPL implements variability through variation points and variation mechanisms. Core assets reserve variation points, and the product-line architecture provides the structural basis for supporting those variations. A concrete product selects features, configures components, replaces implementations, or composes services to derive a variant. Variation can be bound at workspace creation, build time, deployment time, startup time, or runtime. Later binding usually improves modifiability and flexibility, but creates more test combinations and higher runtime complexity; earlier binding is easier to test and control, but later change costs more.",
+    "sample_answer_zh": "SPL 通过变化点和变化机制实现可变性。\n核心资产中预留变化点，产品线架构提供支持这些变化的结构基础。\n具体产品通过选择特征、配置组件、替换实现或组合服务来得到不同变体。\n变化可以发生在工作区创建时、构建时、部署时、启动时或运行时。\n绑定越晚，可修改性和灵活性通常越好，但测试组合更多、运行时复杂度更高。\n绑定越早，测试和控制更简单，但后续变化成本更高。",
+    "sample_answer_en": "SPL realizes variability through variation points and variation mechanisms.\nCore assets reserve variation points, and the product-line architecture provides the structural basis for supporting those variations.\nA concrete product derives variants by selecting features, configuring components, replacing implementations, or composing services.\nVariation can be bound at workspace creation, build time, deployment time, startup time, or runtime.\nLater binding usually improves modifiability and flexibility, but creates more test combinations and higher runtime complexity.\nEarlier binding is easier to test and control, but later change costs more.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
@@ -2220,8 +2223,8 @@
       "testability",
       "change dimensions"
     ],
-    "sample_answer_zh": "软件变化可以从时间、空间/结构和抽象三个维度理解。绑定时间 表示某个变化点在什么时候被决定，例如编码时、编译时、部署时、启动时或运行时。较晚绑定能提高可修改性和配置灵活性，例如运行时选择支付策略或插件；但它会增加测试组合、运行时错误和性能开销。较早绑定更容易验证和优化，但当需求变化时修改成本更高。因此架构师要按质量目标选择合适绑定时间。",
-    "sample_answer_en": "Change can be understood by time, space/structure, and abstraction. Binding time is when a variation is decided: coding, compile, deploy, startup, or runtime. Later binding improves flexibility but increases tests/runtime uncertainty; earlier binding is easier to verify but harder to change.",
+    "sample_answer_zh": "软件变化可以从时间、空间/结构和抽象三个维度理解。\n绑定时间表示某个变化点在什么时候被决定，例如编码时、编译时、部署时、启动时或运行时。\n较晚绑定能提高可修改性和配置灵活性，例如运行时选择支付策略或插件。\n较晚绑定也会增加测试组合、运行时错误和性能开销。\n较早绑定更容易验证和优化，但当需求变化时修改成本更高。\n因此架构师要按质量目标选择合适绑定时间。",
+    "sample_answer_en": "Software change can be understood through three dimensions: time, space/structure, and abstraction.\nBinding time means when a variation point is decided, such as coding time, compile time, deployment time, startup time, or runtime.\nLater binding can improve modifiability and configuration flexibility, for example choosing a payment strategy or plugin at runtime.\nLater binding also increases test combinations, runtime errors, and performance overhead.\nEarlier binding is easier to verify and optimize, but costs more to change when requirements change.\nTherefore, architects should choose binding time according to quality goals.",
     "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
     "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
     "priority": "P2",
@@ -2284,8 +2287,8 @@
       "Views and Beyond"
     ],
     "diagram_id": "three-tier-reference",
-    "sample_answer_zh": "以订票系统为例，可以采用三层架构。表示层负责用户交互，包括航班查询、登录、选座和支付页面；业务逻辑层负责核心业务规则，包括库存校验、价格计算、订单创建、支付协调和取消规则；数据访问层负责访问航班、座位、订单和用户数据库，并封装持久化细节。该架构把界面、业务规则和数据访问分离，使 UI、业务规则和数据库可以相对独立修改。用 视图及视图外信息 文档化时，应给出模块视图、运行时交互视图、部署视图、接口说明和设计理由。",
-    "sample_answer_en": "For a booking system, use presentation, business logic, and data access tiers. Presentation handles UI, business logic handles availability/pricing/orders/payment coordination, and data access encapsulates persistence. Document it with module, runtime, deployment views, interfaces, and rationale.",
+    "sample_answer_zh": "以订票系统为例，可以采用三层架构。\n表示层负责用户交互，包括航班查询、登录、选座和支付页面。\n业务逻辑层负责核心业务规则，包括库存校验、价格计算、订单创建、支付协调和取消规则。\n数据访问层负责访问航班、座位、订单和用户数据库，并封装持久化细节。\n该架构把界面、业务规则和数据访问分离，使界面、业务规则和数据库可以相对独立修改。\n用视图及视图外信息文档化时，应给出模块视图、运行时交互视图、部署视图、接口说明和设计理由。",
+    "sample_answer_en": "For a booking system, a three-tier architecture can be used.\nThe presentation tier handles user interaction, including flight search, login, seat selection, and payment pages.\nThe business-logic tier handles core business rules, including inventory checking, price calculation, order creation, payment coordination, and cancellation rules.\nThe data-access tier accesses flight, seat, order, and user databases and encapsulates persistence details.\nThis architecture separates interface, business rules, and data access, so interface, business logic, and database can change relatively independently.\nWhen documenting it with Views and Beyond, include module view, runtime interaction view, deployment view, interface descriptions, and rationale.",
     "visual_hint_zh": "三层图是说明性模板；重点写清各层职责、接口关系和视图外信息。",
     "visual_hint_en": "The three-tier diagram is an illustrative template; focus on layer responsibilities, interfaces, and beyond-view documentation.",
     "priority": "P2",
@@ -2373,8 +2376,8 @@
       "web services",
       "sequence diagram"
     ],
-    "sample_answer_zh": "当前设计的问题是某台服务器更新本地缓存后，其他服务器缓存不会自动失效。可增加缓存失效协调器或代理组件。流程是：客户端请求服务器 A 修改业务对象；服务器 A 先提交数据库；提交成功后向协调器发布缓存失效事件；协调器通知服务器 B、服务器 C 和遗留系统的缓存适配器；各缓存删除本地对象或标记为过期；下次读取时再从数据库重新加载。若用观察者模式解释，更新源/协调器可视作主题，各缓存适配器可视作观察者。若系统协议异构，适配器或连接器把统一的失效通知接口转换成 RMI、HTTP/JSP 或 SOAP 调用。",
-    "sample_answer_en": "The issue is that one server updates its local cache while other caches remain stale. Add a Cache Invalidation Coordinator/Broker. Commit the DB change first, then publish an invalidation event; the coordinator notifies cache adapters, which delete or mark entries stale and reload later. The coordinator/update source plays the Subject role and cache adapters play Observers; connectors/adapters hide RMI, HTTP/JSP, or SOAP differences.",
+    "sample_answer_zh": "当前设计的问题是某台服务器更新本地缓存后，其他服务器缓存不会自动失效。\n可增加缓存失效协调器或代理组件。\n流程是：客户端请求服务器 A 修改业务对象，服务器 A 先提交数据库，提交成功后向协调器发布缓存失效事件。\n协调器通知服务器 B、服务器 C 和遗留系统的缓存适配器，各缓存删除本地对象或标记为过期，下次读取时再从数据库重新加载。\n若用观察者模式解释，更新源/协调器可视作主题，各缓存适配器可视作观察者。\n若系统协议异构，适配器或连接器把统一的失效通知接口转换成 RMI、HTTP/JSP 或 SOAP 调用。",
+    "sample_answer_en": "The current problem is that after one server updates its local cache, the other server caches are not invalidated automatically.\nAdd a Cache Invalidation Coordinator or Broker component.\nThe flow is: the client asks Server A to modify a business object, Server A commits the database first, and after success it publishes an invalidation event to the coordinator.\nThe coordinator notifies cache adapters on Server B, Server C, and the legacy system; each cache deletes the local object or marks it stale, then reloads from the database on the next read.\nIf explained with Observer, the update source/coordinator is the Subject and cache adapters are Observers.\nIf protocols are heterogeneous, adapters or connectors translate the unified invalidation interface into RMI, HTTP/JSP, or SOAP calls.",
     "visual_hint_zh": "缓存题参考图展示一种合理解法：用缓存失效协调器传播变更并通知其他缓存失效。",
     "visual_hint_en": "Cache invalidation is a backup question; the reference diagram shows one reasonable solution, not a core focus.",
     "priority": "P2",
@@ -2559,8 +2562,8 @@
       "style",
       "quality tradeoff"
     ],
-    "sample_answer_zh": "软件模式是对反复出现的上下文、问题和解决方案的命名抽象。能否提供架构取决于粒度：分层、代理模式、管道-过滤器、SOA 等架构模式/风格会组织系统级组件、连接件、约束和质量取舍，因此可以作为架构骨架；工厂模式、命令模式等 GoF 模式主要解决类和对象协作问题，只能作为局部设计手段，不能直接替代软件架构。",
-    "sample_answer_en": "A software pattern is a named abstraction of a recurring context, problem, and solution. Architectural patterns/styles such as Layered, Broker, Pipe-and-Filter, and SOA can provide an architecture skeleton because they organize system-level elements, connectors, constraints, and quality tradeoffs. GoF patterns are mostly local class/object collaboration mechanisms.",
+    "sample_answer_zh": "软件模式是对反复出现的上下文、问题和解决方案的命名抽象。\n能否提供架构取决于粒度。\n分层、代理模式、管道-过滤器、SOA 等架构模式/风格会组织系统级组件、连接件、约束和质量取舍，因此可以作为架构骨架。\n工厂模式、命令模式等 GoF 设计模式主要解决类和对象协作问题。\nGoF 设计模式只能作为局部设计手段，不能直接替代软件架构。",
+    "sample_answer_en": "A software pattern is a named abstraction of a recurring context, problem, and solution.\nWhether a pattern can provide architecture depends on its granularity.\nArchitectural patterns/styles such as Layered, Broker, Pipe-and-Filter, and SOA organize system-level elements, connectors, constraints, and quality tradeoffs, so they can serve as an architecture skeleton.\nGoF design patterns such as Factory and Command mainly solve class/object collaboration problems.\nGoF design patterns are local design mechanisms and cannot directly replace software architecture.",
     "priority": "P2",
     "priority_reason_zh": "非 核心考点的补充掌握；理解到能识别和简答即可。",
     "priority_reason_en": "Appears in historical papers or auxiliary sources, but the complete recording does not promote it to a 2026 focus; keep it as backup.",
@@ -2865,7 +2868,7 @@
     ],
     "likely_answer_pattern": "Use the same six-part scenario template. For operability, focus on operator actions, diagnosis, configuration, rollback, or monitoring. For performance, focus on workload, latency/throughput, and measurable response time.",
     "question_en": "Describe operability and performance quality-attribute scenarios.",
-    "answer_zh": "仍用六要素模板。可操作性写操作者在某环境下执行诊断、配置、回滚或监控操作，系统给出可理解、可执行的响应，并用完成时间/错误率/恢复时间度量。性能写用户或外部系统在峰值/正常负载下发起请求，目标制品在限定延迟、吞吐或资源占用内响应。",
+    "answer_zh": "仍用六要素模板。可操作性写操作者在某环境下执行诊断、配置、回滚或监控操作，系统给出可理解、可执行的响应，并用完成时间/错误率/恢复时间度量。性能写用户或外部系统在峰值/正常负载下发起请求，目标工件在限定延迟、吞吐或资源占用内响应。",
     "topicIds": [
       "quality",
       "quality-tactics"
@@ -2881,8 +2884,8 @@
       "performance"
     ],
     "diagram_id": "quality-scenario-table",
-    "sample_answer_zh": "这类题仍然用六要素模板；下面数值是可替换示例，考场按题干约束调整。可操作性示例：刺激源是运维人员；刺激是在正常运行环境下收到故障告警并执行诊断/回滚；制品是监控控制台和目标服务；响应是展示日志、指标、链路和依赖状态，并允许执行回滚；响应度量可写“在限定时间内定位并完成操作，且不影响已完成业务”。性能示例：刺激源是用户或外部系统；刺激是在峰值负载下发起请求；制品是目标服务/接口（API）；环境是正常运行或高峰期；响应是完成处理并返回结果；响应度量写延迟、吞吐、错误率或资源占用阈值。",
-    "sample_answer_en": "Use the same six-part template; do not treat the following numbers or scenario details as fixed source wording. For operability: the source is an operator; the stimulus is a diagnosis/configuration/rollback action after an alarm during normal operation; the artifact is the console and target service; the response is showing logs, metrics, traces, dependencies, and allowing the operation; measures include bounded diagnosis/operation time and no disruption to completed business. For performance: the source is a user or external system; the stimulus is a request under normal or peak load; the artifact is the target service/API; the response is processing and returning the result; measures are latency, throughput, error rate, or resource usage.",
+    "sample_answer_zh": "总模板：这类题使用质量属性场景六要素，并按题干约束调整场景细节。\n可操作性-刺激源：运维人员。\n可操作性-刺激：收到故障告警并执行诊断、配置或回滚操作。\n可操作性-工件：监控控制台和目标服务。\n可操作性-环境：系统正常运行或故障处理期间。\n可操作性-响应：展示日志、指标、链路和依赖状态，并允许执行回滚或修复操作。\n可操作性-响应度量：在限定时间内定位并完成操作，且不影响已完成业务。\n性能-刺激源：用户或外部系统。\n性能-刺激：在正常负载或峰值负载下发起请求。\n性能-工件：目标服务/接口。\n性能-环境：正常运行或高峰期。\n性能-响应：系统完成处理并返回结果。\n性能-响应度量：延迟、吞吐、错误率或资源占用达到题目阈值。",
+    "sample_answer_en": "General template: use the six-part quality-attribute scenario and adapt scenario details to the question constraints.\nOperability-source: an operator.\nOperability-stimulus: receiving a failure alarm and performing diagnosis, configuration, or rollback.\nOperability-artifact: the monitoring console and target service.\nOperability-environment: during normal operation or failure handling.\nOperability-response: show logs, metrics, traces, and dependency status, and allow rollback or repair operations.\nOperability-response measure: locate and complete the operation within a bounded time without disrupting completed business.\nPerformance-source: a user or external system.\nPerformance-stimulus: sending a request under normal or peak load.\nPerformance-artifact: the target service/API.\nPerformance-environment: normal operation or peak period.\nPerformance-response: the system processes the request and returns the result.\nPerformance-response measure: latency, throughput, error rate, or resource usage satisfies the threshold in the question.",
     "visual_hint_zh": "两个场景都画同一张六要素图，只是刺激源、刺激、制品、响应度量换成“运维操作”和“高并发请求”。",
     "visual_hint_en": "Use the same six-part diagram for both; change the source, stimulus, artifact, and response measure for operator action vs high-load request.",
     "source_audit_zh": "六要素模板来自复习课；可操作性/性能组合来自 2025 相邻材料，具体数值已改为示范性表达而非原题标准。",
@@ -2899,7 +2902,7 @@
       "site/assets/diagrams/quality-scenario-table.svg"
     ],
     "drawing_steps_zh": [
-      "画一张六列表：刺激源、刺激、环境、制品、响应、响应度量。",
+      "画一张六列表：刺激源、刺激、工件、环境、响应、响应度量。",
       "可操作性行把刺激源/刺激写成操作者的诊断、配置、回滚或监控操作。",
       "性能行把刺激源/刺激写成用户或外部系统在正常/峰值负载下发起请求。",
       "响应度量必须可度量，可写操作时间、错误率、恢复时间、延迟、吞吐或资源占用。"
@@ -2971,8 +2974,8 @@
       "infrastructure automation"
     ],
     "diagram_id": "microservice-pattern-groups",
-    "sample_answer_zh": "微服务架构的主要特征可以背六点：第一，通过服务组件化，把业务能力封装为可独立替换和升级的服务；第二，围绕业务能力组织团队和系统边界；第三，高内聚低耦合，服务内部保有自己的领域逻辑，服务间减少直接依赖；第四，去中心化治理和数据管理，不同服务可选不同技术栈并拥有自己的数据库；第五，基础设施自动化，通过持续集成/持续交付、容器、服务发现、监控等支撑频繁交付；第六，服务设计与演进，允许服务独立演进并通过高可用设计容忍失败。",
-    "sample_answer_en": "The main characteristics of microservice architecture can be memorized in six points. First, services componentize business capabilities, so each capability becomes a service that can be replaced or upgraded independently. Second, teams and system boundaries are organized around business capabilities. Third, services are highly cohesive and loosely coupled: each service keeps its own domain logic, and direct dependencies between services are reduced. Fourth, governance and data management are decentralized: different services may choose suitable technology stacks and usually own their own databases. Fifth, infrastructure is automated through CI/CD, containers, service discovery, monitoring, and tracing to support frequent delivery. Sixth, services are designed to evolve independently and tolerate failures through resilient design.",
+    "sample_answer_zh": "服务组件化：把业务能力封装为可独立替换和升级的服务。\n围绕业务能力组织：系统边界和团队边界都尽量按业务能力划分。\n高内聚低耦合：服务内部保有领域逻辑，服务间减少直接依赖。\n去中心化治理和数据：不同服务可选合适技术栈，并拥有自己的数据库或数据边界。\n基础设施自动化：依赖持续集成/持续交付、容器、服务发现、监控和链路追踪来支撑频繁交付。\n独立演进与容错：服务可以独立演进，并通过高可用设计容忍局部失败。",
+    "sample_answer_en": "Componentization via services: package each business capability as a service that can be replaced or upgraded independently.\nOrganization around business capabilities: align service boundaries and team boundaries with business capabilities.\nHigh cohesion and loose coupling: keep domain logic inside the service and reduce direct dependencies between services.\nDecentralized governance and data: services may choose suitable technology stacks and usually own their own databases or data boundaries.\nInfrastructure automation: rely on CI/CD, containers, service discovery, monitoring, and tracing to support frequent delivery.\nIndependent evolution and resilience: services evolve independently and tolerate local failures through resilient design.",
     "visual_hint_zh": "可画成“业务能力 -> 服务边界 -> 独立部署/自有数据库/自动化平台”的三层图。",
     "visual_hint_en": "Draw business capabilities mapped to service boundaries, each with independent deployment, owned data, and automation support.",
     "source_audit_zh": "今年复习范围强调微服务特性和对比是重点；六点特征来自李杉杉课件/前人资料，P0 保留。",
@@ -3077,8 +3080,8 @@
       "eventual consistency"
     ],
     "diagram_id": "microservice-pattern-groups",
-    "sample_answer_zh": "示例答案：外卖平台适合微服务，因为用户、商家、菜单、订单、支付、骑手调度和通知属于不同业务能力，访问压力和变化频率也不同，可以独立扩展和迭代。系统操作包括浏览餐厅和菜单、创建订单、支付订单、商家接单、分配骑手、更新配送状态、发送通知和结算。一个合理拆分是用户服务、商家/菜单服务、订单服务、支付服务、配送/调度服务、通知服务和结算服务。每个服务拥有自己的数据，用户请求通过 API 网关进入，订单、支付、配送之间可用事件协作和 Saga/补偿保证最终一致性。",
-    "sample_answer_en": "Illustrative answer: a food-delivery platform fits microservices because user, restaurant/menu, order, payment, delivery, notification, and settlement capabilities evolve and scale differently. Map operations to services: browse menus, create order, pay, accept order, dispatch rider, update delivery, notify, and settle. A reasonable split is User, Restaurant/Menu, Order, Payment, Delivery/Dispatch, Notification, and Settlement services. Each owns its data boundary; requests may enter through an API Gateway; services coordinate through synchronous APIs or asynchronous events. If the question asks about consistency, add eventual consistency, Saga, or compensation, but these are example design mechanisms rather than fixed wording in the question.",
+    "sample_answer_zh": "适用原因：外卖平台适合微服务，因为用户、商家、菜单、订单、支付、骑手调度、通知和结算属于不同业务能力，访问压力和变化频率也不同，可以独立扩展和迭代。\n系统操作：浏览餐厅和菜单、创建订单、支付订单、商家接单、分配骑手、更新配送状态、发送通知和结算。\n服务拆分：可以拆成用户服务、商家/菜单服务、订单服务、支付服务、配送/调度服务、通知服务和结算服务。\n数据与入口：每个服务拥有自己的数据边界，用户请求通过 API 网关进入。\n协作方式：服务之间可用同步接口处理查询或短事务，用异步事件传播订单、支付、配送等状态变化。\n一致性：如果涉及跨服务一致性，用最终一致性、Saga 或补偿处理，而不是把多个服务写成一个单体事务。",
+    "sample_answer_en": "Fit reason: a food-delivery platform fits microservices because user, restaurant, menu, order, payment, rider dispatch, notification, and settlement are different business capabilities with different load and change frequencies, so they can scale and evolve independently.\nSystem operations: browse restaurants and menus, create orders, pay orders, restaurant accepts orders, dispatch riders, update delivery status, send notifications, and settle.\nService split: a reasonable split is User, Restaurant/Menu, Order, Payment, Delivery/Dispatch, Notification, and Settlement services.\nData and entry: each service owns its data boundary, and user requests enter through an API Gateway.\nCollaboration: services may use synchronous APIs for queries or short transactions and asynchronous events to propagate order, payment, and delivery state changes.\nConsistency: if cross-service consistency is involved, use eventual consistency, Saga, or compensation instead of treating multiple services as one monolithic transaction.",
     "visual_hint_zh": "先用四组模式组织答题：拆分服务边界，再补通信、部署和可观测性；具体服务图可参考微服务拆分图。",
     "visual_hint_en": "Use the four pattern groups first: decompose service boundaries, then add communication, deployment, and observability; use the decomposition diagram for concrete service layout.",
     "source_audit_zh": "外卖平台题来自 2025 相邻课程，微服务/DDD 设计骨架来自复习范围原始材料和第 6-9 讲。服务名、Saga、事件协作是合理示例，不是题干唯一标准答案。",
@@ -3138,11 +3141,11 @@
     "likely_answer_pattern": "Answer by six parts: definition; core idea of structures, relationships, and principles; 4A; TOGAF ADM and CBM; modeling methods; value and scenarios. Keep case details light; focus on the six-part EA answer structure.",
     "question_zh": "解释企业架构：它是什么，核心思想是什么，4A、TOGAF/ADM、CBM、价值和适用场景分别怎么答？",
     "answer_zh": "按六段答：1. 企业架构是具有共同目标的组织集合体的基本组成部分，以及其内外部关系、设计原则和治理原则。2. 基本组成部分不是空泛说法，可按 4A 展开：业务层有客户、产品、渠道策略、流程、业务组件；数据层有逻辑/物理数据资产、标准、责任；应用层有应用蓝图、组件化设计、共享服务；技术层有技术组件、基础设施、标准化和自监控/自恢复。3. 内外部关系可写成企业战略和愿景分解为战略能力、价值链、业务领域，再由流程和数据模型推导业务组件，业务组件再由应用、服务、平台和技术基础设施实现，同时连接客户、员工、渠道、监管、遗留系统和运行环境。4. TOGAF 的核心是 ADM 架构开发周期，CBM 以业务能力为核心、业务组件为能力载体。5. 建模方法包括五级流程、标准动词库、5W1H、A/B/C/D 分层数据设计、流程+数据聚类。6. 价值是解决孤岛和协作问题，推动标准化、业务再造和战略落地，适合复杂企业级系统、跨部门协同和遗留系统治理。",
-    "sample_answer_zh": "企业架构描述一个具有共同目标的组织集合体由哪些基本部分组成，以及这些部分之间的内外部关系、设计原则和治理原则。这里的“基本组成部分”可以用 4A 具体化：业务架构包括客户、产品、渠道策略、业务流程和业务组件；数据架构包括逻辑/物理数据资产、数据标准和数据责任；应用架构包括应用蓝图、组件化设计和服务共享；技术架构包括技术组件、基础设施、标准化，以及运行层面的自监控和自恢复能力。“内外部关系”不是一句空话，可以写成从企业愿景和战略出发，分解出战略能力、价值链和业务领域，再通过业务流程和数据模型推导业务组件，业务组件再被应用组件、共享服务、业务平台和技术基础设施实现；同时还要面向客户、员工、渠道、监管要求、遗留系统和运行环境。它的核心因此可以概括为找结构、找关系、定原则：找结构是识别能力、流程、数据、应用和技术；找关系是说明它们如何依赖、协作和被实现；定原则是用标准化、组件化、共享复用、高内聚低耦合和架构治理机制控制变化。方法上，TOGAF 的核心是 ADM 迭代周期，CBM 以业务能力为核心，把业务组件作为能力载体。建模时用五级流程和标准动词库统一业务行为，用 5W1H 识别业务对象，用 A/B/C/D 分层设计数据，再通过流程任务和数据实体聚类推导业务组件。企业架构的根本价值是解决系统孤岛和协作问题，其次是标准化、业务再造和战略落地，适合业务复杂、系统规模大、跨部门协同强或遗留系统较多的企业级项目。",
-    "sample_answer_en": "Enterprise architecture describes the basic components of an organization with a common goal, plus the internal/external relationships, design principles, and governance principles among those components. The “basic components” can be made concrete through 4A: Business Architecture includes customers, products, channel strategy, business processes, and business components; Data Architecture includes logical/physical data assets, data standards, and data responsibilities; Application Architecture includes application blueprints, componentized design, and shared services; Technology Architecture includes technical components, infrastructure, standardization, and runtime self-monitoring/self-recovery. The “relationships” can be written as a chain: enterprise vision and strategy are decomposed into strategic capabilities, value chains, and business domains; business processes and data models derive business components; business components are implemented by application components, shared services, business platforms, and technical infrastructure; externally, the architecture connects to customers, employees, channels, regulatory requirements, legacy systems, and runtime environments. Therefore the core is identifying structures, identifying relationships, and setting principles: structures are capabilities/processes/data/applications/technologies; relationships explain dependency, collaboration, and implementation; principles control change through standardization, componentization, sharing/reuse, high cohesion and low coupling, and architecture governance. TOGAF centers on the ADM cycle, while CBM centers on business capabilities and uses business components as capability carriers. Modeling methods include five-level processes, a standard verb library, 5W1H for business objects, A/B/C/D layered data design, and process + data clustering to derive business components. The main value is solving silos and collaboration problems, then supporting standardization, business reengineering, and strategy execution in complex enterprise projects.",
+    "sample_answer_zh": "定义：企业架构描述一个具有共同目标的组织集合体由哪些基本组成部分构成，以及这些部分之间的内外部关系、设计原则和治理原则。\n4A：业务架构包括客户、产品、渠道策略、业务流程和业务组件；数据架构包括逻辑/物理数据资产、数据标准和数据责任；应用架构包括应用蓝图、组件化设计和服务共享；技术架构包括技术组件、基础设施、标准化，以及运行层面的自监控和自恢复能力。\n关系链：企业愿景和战略分解为战略能力、价值链和业务领域；业务流程和数据模型推导业务组件；业务组件再被应用组件、共享服务、业务平台和技术基础设施实现；外部还要连接客户、员工、渠道、监管要求、遗留系统和运行环境。\n核心原则：找结构、找关系、定原则。找结构是识别能力、流程、数据、应用和技术；找关系是说明它们如何依赖、协作和被实现；定原则是用标准化、组件化、共享复用、高内聚低耦合和架构治理机制控制变化。\n方法：TOGAF 的核心是 ADM 迭代周期，回答“按什么过程做架构”；CBM 以业务能力为核心，把业务组件作为能力载体，回答“按什么颗粒度拆能力”。\n建模：用五级流程和标准动词库统一业务行为，用 5W1H 识别业务对象，用 A/B/C/D 分层设计数据，再通过流程任务和数据实体聚类推导业务组件。\n价值与场景：企业架构用于解决系统孤岛和协作问题，推动标准化、业务再造和战略落地；适合业务复杂、系统规模大、跨部门协同强或遗留系统较多的企业级项目。",
+    "sample_answer_en": "Definition: Enterprise Architecture describes the basic components of an organizational whole with a common goal, plus their internal/external relationships, design principles, and governance principles.\n4A: Business Architecture includes customers, products, channel strategy, business processes, and business components; Data Architecture includes logical/physical data assets, data standards, and data responsibilities; Application Architecture includes application blueprints, componentized design, and shared services; Technology Architecture includes technical components, infrastructure, standardization, and runtime self-monitoring/self-recovery.\nRelationship chain: enterprise vision and strategy are decomposed into strategic capabilities, value chains, and business domains; business processes and data models derive business components; business components are implemented by application components, shared services, business platforms, and technical infrastructure; externally the architecture connects to customers, employees, channels, regulatory requirements, legacy systems, and runtime environments.\nCore principles: identify structures, identify relationships, and set principles. Structures are capabilities, processes, data, applications, and technologies; relationships explain dependency, collaboration, and implementation; principles control change through standardization, componentization, sharing/reuse, high cohesion and low coupling, and architecture governance.\nMethods: TOGAF centers on the ADM iterative cycle and answers what process develops architecture; CBM centers on business capabilities and uses business components as capability carriers, answering what granularity decomposes capability.\nModeling: use five-level processes and a standard verb library to unify business behavior, 5W1H to identify business objects, A/B/C/D layered data design for data, and process-task plus data-entity clustering to derive business components.\nValue and scenarios: Enterprise Architecture solves system silos and collaboration problems, supports standardization, business reengineering, and strategy execution, and fits enterprise projects with high business complexity, large system scale, strong cross-department collaboration, or many legacy systems.",
     "answer_points_zh": [
       "定义：企业架构描述组织集合体的基本组成部分、内外部关系、设计原则和治理原则。",
-      "基本组成部分：用 4A 展开，业务=客户/产品/渠道/流程/业务组件，数据=数据资产/标准/责任，应用=应用蓝图/组件/共享服务，技术=技术组件/基础设施/标准化。",
+      "基本组成部分：用 4A 展开，业务=客户/产品/渠道/流程/业务组件，数据=数据资产/标准/责任，应用=应用蓝图/组件/共享服务，技术=技术组件/基础设施/标准化/自监控/自恢复。",
       "内外部关系：战略/愿景 -> 战略能力/价值链/业务领域 -> 流程和数据模型 -> 业务组件 -> 应用/服务/平台/基础设施；外部连接客户、员工、渠道、监管、遗留系统和运行环境。",
       "设计/治理原则：标准化、组件化、共享复用、高内聚低耦合、架构委员会/存储库/变更治理、持续演进。",
       "TOGAF/ADM：说明架构开发和治理的迭代过程。",

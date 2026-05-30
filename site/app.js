@@ -435,6 +435,47 @@ function textForLanguage(zh, en, mixedSeparator = "\n") {
   return `${zh}${mixedSeparator}${en}`;
 }
 
+function topicWeightText(topic) {
+  const fallback = priorityName(topic.priority);
+  return localize(topic.examWeight || fallback) || fallback;
+}
+
+const graphRelationText = {
+  "重点包含": { zh: "重点包含", en: "mainly includes" },
+  "场景化为": { zh: "场景化为", en: "is scenario-based as" },
+  "进入": { zh: "进入", en: "feeds into" },
+  "筛出": { zh: "筛出", en: "filters out" },
+  "排序/取舍": { zh: "排序/取舍", en: "prioritizes/trades off" },
+  "提出": { zh: "提出", en: "raises" },
+  "选择": { zh: "选择", en: "selects" },
+  "分成": { zh: "分成", en: "divides into" },
+  "解释": { zh: "解释", en: "explains" },
+  "作为输入": { zh: "作为输入", en: "serves as input to" },
+  "影响": { zh: "影响", en: "influences" },
+  "指导": { zh: "指导", en: "guides" },
+  "成立于": { zh: "成立于", en: "holds within" },
+  "确定": { zh: "确定", en: "determines" },
+  "连接": { zh: "连接", en: "connects" },
+  "拆分": { zh: "拆分", en: "decomposes into" },
+  "落到": { zh: "落到", en: "is realized as" },
+  "组合成": { zh: "组合成", en: "combines into" },
+  "体现为": { zh: "体现为", en: "appears as" },
+  "可用视图表达": { zh: "可用视图表达", en: "can be expressed in views as" },
+  "展开为": { zh: "展开为", en: "expands into" },
+  "承载于": { zh: "承载于", en: "is carried by" },
+  "治理": { zh: "治理", en: "governs" }
+};
+
+function graphRelationLabel(relation) {
+  return localize(graphRelationText[relation] || relation);
+}
+
+function graphTermLabel(label) {
+  const term = glossaryTermByLabel(label);
+  if (!term) return localize(label);
+  return textForLanguage(term.zh || term.en, term.en || term.zh, " / ");
+}
+
 function reviewDisclaimerText() {
   return textForLanguage(
     "本复习资料由 Codex（GPT-5.5）辅助整理生成，专门针对 2026 南京大学软件学院研究生《软件体系结构》期末复习；未经任课老师确认，不保证适用于未来年份或本科《软件系统设计》，请以课程原始 slides、完整复习课录音/整理纪要和老师说明为准。",
@@ -1700,7 +1741,7 @@ function renderTopicDetail(topic) {
       <div class="detail-badges">
         ${renderScopedChecklist("topic", topic.id, labelText(topic.title), "compact-check", topic)}
         <span>${escapeHtml(topic.priority)}</span>
-        <span>${escapeHtml(topic.examWeight || priorityName(topic.priority))}</span>
+        <span>${escapeHtml(topicWeightText(topic))}</span>
         ${renderScopeTag(topic)}
         ${renderMetricBadge("topic_view", topicMetricKey(topic.id))}
       </div>
@@ -2009,10 +2050,10 @@ function glossaryTermByLabel(label) {
 
 function renderGraphTerm(label) {
   const term = glossaryTermByLabel(label);
-  if (!term) return `<span class="term-graph-node muted">${escapeHtml(label)}</span>`;
+  if (!term) return `<span class="term-graph-node muted">${escapeHtml(graphTermLabel(label))}</span>`;
   return `
     <button type="button" class="term-graph-node" data-action="term-ref" data-term-key="${escapeHtml(glossaryMetricKey(term))}">
-      ${escapeHtml(textForLanguage(term.zh || term.en, term.en || term.zh, " / "))}
+      ${escapeHtml(graphTermLabel(label))}
     </button>
   `;
 }
@@ -2045,7 +2086,7 @@ function renderGlossaryGraph() {
             ${(group.edges || []).length ? `
               <div class="term-graph-edges">
                 ${(group.edges || []).map(([from, relation, to]) => `
-                  <span>${escapeHtml(from)} <b>${escapeHtml(relation)}</b> ${escapeHtml(to)}</span>
+                  <span>${escapeHtml(graphTermLabel(from))} <b>${escapeHtml(graphRelationLabel(relation))}</b> ${escapeHtml(graphTermLabel(to))}</span>
                 `).join("")}
               </div>
             ` : ""}
@@ -2088,7 +2129,7 @@ function renderGlossary() {
             <p>
               ${textForLanguage(escapeHtml(item.noteZh), escapeHtml(item.noteEn), " / ")}
               ${item.context ? `<small class="term-context">${escapeHtml(item.context)}</small>` : ""}
-              ${item.boundaryType ? `<small class="term-context">${state.lang === "en" ? "Boundary: " : "边界语境："}${escapeHtml(item.boundaryType)}</small>` : ""}
+              ${item.boundaryType ? `<small class="term-context">${state.lang === "en" ? "Boundary: " : "边界语境："}${escapeHtml(localize(item.boundaryType))}</small>` : ""}
               ${aliases.length ? `<small class="term-context">${state.lang === "en" ? "Aliases: " : "别名："}${escapeHtml(aliases.join(" / "))}</small>` : ""}
             </p>
             <div class="term-actions">
