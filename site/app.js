@@ -27,7 +27,8 @@ const state = {
   questions: [],
   sources: [],
   openQuestionId: "",
-  suppressedQuestionToggleId: ""
+  suppressedQuestionToggleId: "",
+  activeTermKey: ""
 };
 
 const content = window.reviewContent;
@@ -90,6 +91,152 @@ function htmlText(value) {
     .filter(Boolean)
     .map((line) => `<span>${escapeHtml(line)}</span>`)
     .join("");
+}
+
+let inlineTermVariantCache = null;
+
+function isAsciiWordChar(char) {
+  return Boolean(char && /[A-Za-z0-9_]/.test(char));
+}
+
+function normalizeTermVariant(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function termByKey(key) {
+  return content.glossary.find((term) => glossaryMetricKey(term) === key);
+}
+
+function termVariantStrings(term) {
+  const variants = new Set();
+  [term.zh, term.en].forEach((value) => {
+    const text = normalizeTermVariant(value);
+    if (!text) return;
+    variants.add(text);
+    const withoutParentheses = normalizeTermVariant(text.replace(/\s*\([^)]*\)\s*/g, " "));
+    if (withoutParentheses && withoutParentheses !== text) variants.add(withoutParentheses);
+    for (const match of text.matchAll(/\(([A-Za-z][A-Za-z0-9+/.-]{1,16})\)/g)) {
+      variants.add(match[1]);
+    }
+    text.split(/[\/,，、;；]/).map(normalizeTermVariant).filter(Boolean).forEach((part) => {
+      if (part.length >= 3 || /[\u4e00-\u9fff]{2,}/.test(part)) variants.add(part);
+    });
+  });
+  return Array.from(variants).filter((variant) => {
+    if (/^[A-Za-z0-9+/.-]+$/.test(variant)) return variant.length >= 2;
+    return variant.length >= 2;
+  });
+}
+
+function inlineTermVariants() {
+  if (inlineTermVariantCache) return inlineTermVariantCache;
+  const byText = new Map();
+  content.glossary.forEach((term) => {
+    const key = glossaryMetricKey(term);
+    termVariantStrings(term).forEach((variant) => {
+      const lower = variant.toLocaleLowerCase();
+      const existing = byText.get(lower);
+      if (!existing || variant.length > existing.text.length) {
+        byText.set(lower, {
+          key,
+          text: variant,
+          lower,
+          ascii: /^[A-Za-z0-9+/.-]+$/.test(variant)
+        });
+      }
+    });
+  });
+  inlineTermVariantCache = Array.from(byText.values()).sort((a, b) => b.text.length - a.text.length);
+  return inlineTermVariantCache;
+}
+
+function matchInlineTermAt(text, index) {
+  const lowerText = text.toLocaleLowerCase();
+  for (const variant of inlineTermVariants()) {
+    if (!lowerText.startsWith(variant.lower, index)) continue;
+    if (variant.ascii) {
+      const before = text[index - 1];
+      const after = text[index + variant.text.length];
+      if (isAsciiWordChar(before) || isAsciiWordChar(after)) continue;
+    }
+    return variant;
+  }
+  return null;
+}
+
+function annotateInlineTerms(line) {
+  const text = String(line || "");
+  let output = "";
+  let cursor = 0;
+  let index = 0;
+  let count = 0;
+  while (index < text.length) {
+    const match = count < 24 ? matchInlineTermAt(text, index) : null;
+    if (!match) {
+      index += 1;
+      continue;
+    }
+    output += escapeHtml(text.slice(cursor, index));
+    const label = text.slice(index, index + match.text.length);
+    output += `<button type="button" class="term-ref" data-action="term-ref" data-term-key="${escapeHtml(match.key)}">${escapeHtml(label)}</button>`;
+    index += match.text.length;
+    cursor = index;
+    count += 1;
+  }
+  output += escapeHtml(text.slice(cursor));
+  return output;
+}
+
+function richText(value) {
+  return localize(value)
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => `<span>${annotateInlineTerms(line)}</span>`)
+    .join("");
+}
+
+function splitAfterMarks(text, marks) {
+  const chunks = [];
+  let buffer = "";
+  Array.from(text).forEach((char) => {
+    buffer += char;
+    if (marks.includes(char)) {
+      const value = buffer.trim();
+      if (value) chunks.push(value);
+      buffer = "";
+    }
+  });
+  const rest = buffer.trim();
+  if (rest) chunks.push(rest);
+  return chunks;
+}
+
+function splitStudyText(value) {
+  const text = localize(value).replace(/\r/g, "\n").trim();
+  if (!text) return [];
+  const rawLines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const points = [];
+  rawLines.forEach((line) => {
+    const stripped = line.replace(/^([0-9]+[.)、]\s*|[-*•]\s*)/, "").trim();
+    if (!stripped) return;
+    const chunks = stripped.length > 84
+      ? splitAfterMarks(stripped, "。！？；;")
+      : [stripped];
+    chunks.forEach((chunk) => {
+      const part = chunk.trim();
+      if (part) points.push(part);
+    });
+  });
+  return points;
+}
+
+function renderPointList(value, className = "note-list") {
+  const points = splitStudyText(value);
+  if (!points.length) return "";
+  return `<ul class="${escapeHtml(className)}">${points.map((point) => `<li>${richText(point)}</li>`).join("")}</ul>`;
 }
 
 function toTextList(value) {
@@ -358,6 +505,7 @@ function mindmapNodes() {
 function checklistCurrentItems() {
   const items = [];
   content.topics.forEach((topic) => {
+    if (isOutOfScopePriority(topic.priority)) return;
     items.push({
       key: checklistKey("topic", topic.id),
       kind: "topic",
@@ -367,6 +515,7 @@ function checklistCurrentItems() {
     });
   });
   state.questions.forEach((question) => {
+    if (isOutOfScopePriority(question.priority)) return;
     items.push({
       key: checklistKey("question", question.id || question.canonical_question),
       kind: "question",
@@ -412,6 +561,7 @@ function checklistCurrentItems() {
     });
   });
   mindmapNodes().forEach((node) => {
+    if (isOutOfScopePriority(node.priority)) return;
     items.push({
       key: checklistKey("mindmap", node.id),
       kind: "mindmap",
@@ -1069,11 +1219,62 @@ function priorityName(priority) {
   })[priority] || priority;
 }
 
+function isOutOfScopePriority(priority) {
+  return priority === "P2" || priority === "P3";
+}
+
+function scopeMeta(item = {}) {
+  const priority = item.priority || item.level || "";
+  if (priority === "P3") {
+    return {
+      className: "out-of-scope",
+      label: state.lang === "en" ? "Outside current review scope" : "复习课外，可跳过",
+      title: state.lang === "en"
+        ? "Kept only as historical context; not counted in the review checklist."
+        : "仅保留作历史背景，不计入复习清单。"
+    };
+  }
+  if (priority === "P2") {
+    return {
+      className: "historical-scope",
+      label: state.lang === "en" ? "Historical backup" : "历史保底，低优先",
+      title: state.lang === "en"
+        ? "May help with older papers, but it is not a current-scope first pass."
+        : "可辅助看旧题，但不是今年主线第一轮复习范围。"
+    };
+  }
+  if (priority === "P1") {
+    return {
+      className: "adjacent-scope",
+      label: state.lang === "en" ? "Current-adjacent" : "主线相邻",
+      title: state.lang === "en" ? "Review after P0." : "P0 之后复习。"
+    };
+  }
+  return {
+    className: "current-scope",
+    label: state.lang === "en" ? "Current review focus" : "今年主线",
+    title: state.lang === "en" ? "Counted in the review checklist." : "计入复习清单。"
+  };
+}
+
+function renderScopeTag(item) {
+  const meta = scopeMeta(item);
+  return `<span class="scope-tag ${escapeHtml(meta.className)}" title="${escapeHtml(meta.title)}">${escapeHtml(meta.label)}</span>`;
+}
+
+function renderScopedChecklist(kind, id, label, extraClass = "", item = {}) {
+  if (!isOutOfScopePriority(item.priority || item.level || "")) {
+    return renderChecklistControl(kind, id, label, extraClass);
+  }
+  const meta = scopeMeta(item);
+  return `<span class="check-skipped ${escapeHtml(extraClass)}" title="${escapeHtml(meta.title)}">${escapeHtml(state.lang === "en" ? "Skipped" : "不计入清单")}</span>`;
+}
+
 function currentTopics() {
   return content.topics
     .filter((topic) => state.priority === "all" || topic.priority === state.priority)
     .filter((topic) => state.topicGroup === "all" || topic.group === state.topicGroup)
-    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.deepDive, topic.sources, topic.sourceConfidence));
+    .filter((topic) => includesQuery(topic.id, topic.priority, topic.title, topic.takeaway, topic.answerFrame, topic.bullets, topic.deepDive, topic.lectureNotes, topic.memorize, topic.examTemplate, topic.sources, topic.sourceConfidence));
 }
 
 function currentSources() {
@@ -1231,7 +1432,7 @@ function renderMindmapNode(node, group) {
       </div>
       <div class="mindmap-node-actions">
         ${renderMetricBadge("mindmap_node_click", metricKey)}
-        ${renderChecklistControl("mindmap", node.id, labelText(node.title), "compact-check")}
+        ${renderScopedChecklist("mindmap", node.id, labelText(node.title), "compact-check", { priority })}
         ${topic ? `<a href="#knowledge" data-action="jump-topic" data-topic-id="${escapeHtml(topic.id)}">${state.lang === "en" ? "Open topic" : "打开知识点"}</a>` : ""}
       </div>
     </article>
@@ -1280,7 +1481,7 @@ function renderPlan() {
               <ul>
                 ${group.items.map((item) => `
                   <li>
-                    ${renderChecklistControl("topic", item.topicId, labelText(item), "inline-check")}
+                    ${renderScopedChecklist("topic", item.topicId, labelText(item), "inline-check", group)}
                     <a href="#knowledge" data-action="jump-topic" data-topic-id="${escapeHtml(item.topicId)}">${htmlText(item)}</a>
                   </li>
                 `).join("")}
@@ -1343,22 +1544,25 @@ function renderTopicDetail(topic) {
         <h2>${htmlText(topic.title)}</h2>
       </div>
       <div class="detail-badges">
-        ${renderChecklistControl("topic", topic.id, labelText(topic.title), "compact-check")}
+        ${renderScopedChecklist("topic", topic.id, labelText(topic.title), "compact-check", topic)}
         <span>${escapeHtml(topic.priority)}</span>
         <span>${escapeHtml(topic.examWeight || priorityName(topic.priority))}</span>
+        ${renderScopeTag(topic)}
         ${renderMetricBadge("topic_view", topicMetricKey(topic.id))}
       </div>
     </header>
-    <p class="takeaway">${htmlText(topic.takeaway)}</p>
+    <p class="takeaway">${richText(topic.takeaway)}</p>
     <section class="answer-box">
       <b>${state.lang === "en" ? "Answer frame" : "答题框架"}</b>
-      <p>${htmlText(topic.answerFrame)}</p>
+      ${renderPointList(topic.answerFrame, "answer-list")}
     </section>
+    ${renderTopicStudyAid(topic)}
+    ${renderLectureNotes(topic)}
     <section class="detail-columns">
       <div>
         <h3>${state.lang === "en" ? "Key points" : "关键点"}</h3>
         <ul class="dense-list">
-          ${(topic.bullets || []).map((item) => `<li>${htmlText(item)}</li>`).join("")}
+          ${(topic.bullets || []).map((item) => `<li>${richText(item)}</li>`).join("")}
         </ul>
       </div>
       <aside>
@@ -1401,6 +1605,81 @@ function renderTopicDetail(topic) {
   `;
 }
 
+function renderTopicStudyAid(topic) {
+  if (!topic.memorize && !topic.examTemplate) return "";
+  return `
+    <section class="study-aid">
+      ${topic.memorize ? `
+        <details class="study-aid-card" open>
+          <summary>
+            <span>${state.lang === "en" ? "Memorize" : "速背"}</span>
+            <strong>${state.lang === "en" ? "Memorize this" : "背诵清单"}</strong>
+          </summary>
+          <ul class="dense-list">
+            ${splitStudyText(topic.memorize).map((line) => `<li>${richText(line)}</li>`).join("")}
+          </ul>
+        </details>
+      ` : ""}
+      ${topic.examTemplate ? `
+        <details class="study-aid-card" open>
+          <summary>
+            <span>${state.lang === "en" ? "Exam" : "答法"}</span>
+            <strong>${state.lang === "en" ? "Exam wording" : "考场答法"}</strong>
+          </summary>
+          ${renderPointList(topic.examTemplate, "note-list")}
+        </details>
+      ` : ""}
+    </section>
+  `;
+}
+
+function renderLectureNotes(topic) {
+  const notes = topic.lectureNotes || [];
+  if (!notes.length) return "";
+  return `
+    <section class="lecture-notes">
+      <header>
+        <div>
+          <h3>${state.lang === "en" ? "Full study notes" : "详细讲义：这块到底怎么理解"}</h3>
+          <p>${state.lang === "en"
+            ? "Open the parts you are not fluent with. Each block separates understanding, memorization, exam wording, and source boundary."
+            : "按不会的地方展开看。每块都分成怎么理解、背什么、怎么答和来源边界，尽量不让框架词自己悬空。"}</p>
+        </div>
+        <span>${notes.length} ${state.lang === "en" ? "blocks" : "块"}</span>
+      </header>
+      <div class="lecture-note-list">
+        ${notes.map((item, index) => `
+          <details class="lecture-note" ${index === 0 ? "open" : ""}>
+            <summary>
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <strong>${htmlText(item.title)}</strong>
+              <em>${htmlText(item.summary)}</em>
+            </summary>
+            <div class="lecture-note-body">
+              <section>
+                <h4>${state.lang === "en" ? "How to understand it" : "怎么理解"}</h4>
+                ${renderPointList(item.explain, "note-list")}
+              </section>
+              <section>
+                <h4>${state.lang === "en" ? "What to memorize" : "背什么"}</h4>
+                ${renderPointList(item.memorize, "note-list")}
+              </section>
+              <section>
+                <h4>${state.lang === "en" ? "How to answer" : "怎么写答案"}</h4>
+                ${renderPointList(item.answer, "note-list")}
+              </section>
+              <section>
+                <h4>${state.lang === "en" ? "Source boundary" : "来源边界"}</h4>
+                ${renderPointList(item.boundary, "note-list")}
+              </section>
+            </div>
+          </details>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function renderDeepDive(topic) {
   const sections = topic.deepDive || [];
   if (!sections.length) return "";
@@ -1409,24 +1688,26 @@ function renderDeepDive(topic) {
       <h3>${state.lang === "en" ? "Expanded notes" : "展开讲解：背什么，怎么写，哪里易错"}</h3>
       <div class="deep-dive-list">
         ${sections.map((section) => `
-          <article class="deep-dive-row">
-            <header>
+          <details class="deep-dive-row">
+            <summary>
               <b>${htmlText(section.title)}</b>
-              <p>${htmlText(section.summary || "")}</p>
-            </header>
-            <div>
-              <span>${state.lang === "en" ? "Must memorize" : "必须背"}</span>
-              <p>${htmlText(section.must)}</p>
+              <span>${htmlText(section.summary || "")}</span>
+            </summary>
+            <div class="deep-dive-body">
+              <section>
+                <span>${state.lang === "en" ? "Must memorize" : "必须背"}</span>
+                ${renderPointList(section.must, "note-list compact")}
+              </section>
+              <section>
+                <span>${state.lang === "en" ? "How to answer" : "怎么答"}</span>
+                ${renderPointList(section.answer, "note-list compact")}
+              </section>
+              <section>
+                <span>${state.lang === "en" ? "Common trap" : "易错点"}</span>
+                ${renderPointList(section.trap, "note-list compact")}
+              </section>
             </div>
-            <div>
-              <span>${state.lang === "en" ? "How to answer" : "怎么答"}</span>
-              <p>${htmlText(section.answer)}</p>
-            </div>
-            <div>
-              <span>${state.lang === "en" ? "Common trap" : "易错点"}</span>
-              <p>${htmlText(section.trap)}</p>
-            </div>
-          </article>
+          </details>
         `).join("")}
       </div>
     </section>
@@ -1481,8 +1762,8 @@ function renderPapers() {
         </label>
       </div>
       <p class="source-note">${state.lang === "en"
-        ? "Cluster priority follows the current review class first, then recent adjacent-course papers, then older historical papers."
-        : "题簇优先级先按今年复习课主纲排序，再参考 2025/2022/2021 相邻课程真题，最后才看更早旧题。"}</p>
+        ? "P0/P1 are the current review scope. P2/P3 are historical backup or outside-scope context and are not counted in the checklist."
+        : "P0/P1 按今年完整录音与复习课 slides 作为当前复习范围；P2/P3 只作历史保底或范围外背景，不计入复习清单。"}</p>
       <div class="question-list">
         ${questions.map((question, index) => renderQuestion(question, openQuestionId ? questionId(question) === openQuestionId : index === 0)).join("") || `<p class="empty">${state.lang === "en" ? "No question matches current filters." : "当前筛选下没有真题。"}</p>`}
       </div>
@@ -1496,36 +1777,47 @@ function renderQuestionBody(question) {
   const sourceAudit = localizedPair(question, "source_audit_zh", "source_audit_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
   const drawingSteps = localizedList(question, "drawing_steps_zh", "drawing_steps_en");
+  const answerPoints = localizedList(question, "answer_points_zh", "answer_points_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
   const answer = textForLanguage(zhAnswer, question.likely_answer_pattern);
   const priorityReason = localizedPair(question, "priority_reason_zh", "priority_reason_en");
   const title = textForLanguage(question.question_zh || question.canonical_question, question.canonical_question);
+  const answerPointItems = answerPoints.length ? answerPoints : splitStudyText(sample || answer);
   return `
     <div class="question-actions">
-      ${renderChecklistControl("question", question.id || question.canonical_question, labelText(title), "compact-check")}
+      ${renderScopedChecklist("question", question.id || question.canonical_question, labelText(title), "compact-check", question)}
+      ${renderScopeTag(question)}
     </div>
     <div class="question-body">
       <section>
         <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
-        <p>${htmlText(answer)}</p>
+        ${renderPointList(answer, "answer-list")}
       </section>
+      ${answerPointItems.length ? `
+        <section class="answer-points">
+          <h3>${state.lang === "en" ? "Answer by points" : "按点作答"}</h3>
+          <ol>
+            ${answerPointItems.map((point) => `<li>${richText(point)}</li>`).join("")}
+          </ol>
+        </section>
+      ` : ""}
       ${sample ? `
         <section class="sample-answer">
           <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
-          <p>${htmlText(sample)}</p>
+          ${renderPointList(sample, "sample-list")}
         </section>
       ` : ""}
       ${sourceAudit ? `
-        <section class="source-audit">
-          <h3>${state.lang === "en" ? "Grounding check" : "来源校对"}</h3>
-          <p>${htmlText(sourceAudit)}</p>
-        </section>
+        <details class="source-audit">
+          <summary>${state.lang === "en" ? "Grounding note" : "依据说明"}</summary>
+          <p>${richText(sourceAudit)}</p>
+        </details>
       ` : ""}
       ${drawingSteps.length ? `
         <section class="drawing-guide">
           <h3>${state.lang === "en" ? "How to draw it in the exam" : "考场怎么画图"}</h3>
           <ol>
-            ${drawingSteps.map((step) => `<li>${htmlText(step)}</li>`).join("")}
+            ${drawingSteps.map((step) => `<li>${richText(step)}</li>`).join("")}
           </ol>
         </section>
       ` : ""}
@@ -1533,19 +1825,19 @@ function renderQuestionBody(question) {
         <section class="question-diagram">
           <h3>${state.lang === "en" ? "Reference diagram" : "参考答案图 / 配套图解"}</h3>
           ${renderDiagramCard(diagram, true)}
-          ${visualHint ? `<p>${htmlText(visualHint)}</p>` : ""}
+          ${visualHint ? `<p>${richText(visualHint)}</p>` : ""}
         </section>
       ` : visualHint ? `
         <section class="question-diagram">
           <h3>${state.lang === "en" ? "Diagram hint" : "画图提示"}</h3>
-          <p>${htmlText(visualHint)}</p>
+          <p>${richText(visualHint)}</p>
         </section>
       ` : ""}
       <div class="question-meta">
         <div class="tag-stack">
           ${[...(question.english_keywords || question.recurring_terms || [])].map((term) => `<span>${escapeHtml(term)}</span>`).join("")}
         </div>
-        ${priorityReason ? `<small class="priority-reason">${htmlText(priorityReason)}</small>` : ""}
+        ${priorityReason ? `<small class="priority-reason">${richText(priorityReason)}</small>` : ""}
         <small>${escapeHtml((question.appearances || []).join(" · "))}</small>
       </div>
     </div>`;
@@ -1561,6 +1853,7 @@ function renderQuestion(question, open) {
       <summary>
         <span class="question-kicker">
           <em class="question-priority ${escapeHtml(priority.toLowerCase())}">${escapeHtml(priority)} · ${escapeHtml(priorityName(priority))}</em>
+          ${renderScopeTag(question)}
           ${escapeHtml(question.cluster)} · ${(question.appearances || []).length} hits
         </span>
         <strong>${htmlText(title)}</strong>
@@ -1756,6 +2049,7 @@ function renderMeta() {
 }
 
 function renderAll() {
+  closeTermPopover();
   setPage(state.page);
   renderMeta();
   renderCurrentPage();
@@ -1775,6 +2069,66 @@ function setPageFromHash() {
 
 function trackQuestionOpen(question) {
   trackMetric("question_view", questionMetricKey(question), question.question_zh || question.canonical_question);
+}
+
+function relatedTermsFor(term) {
+  const haystack = `${term.noteZh || ""}\n${term.noteEn || ""}`.toLocaleLowerCase();
+  if (!haystack.trim()) return [];
+  const currentKey = glossaryMetricKey(term);
+  return content.glossary
+    .filter((candidate) => glossaryMetricKey(candidate) !== currentKey)
+    .filter((candidate) => termVariantStrings(candidate).some((variant) => haystack.includes(variant.toLocaleLowerCase())))
+    .slice(0, 6);
+}
+
+function closeTermPopover() {
+  const popover = document.querySelector(".term-popover");
+  if (popover) popover.remove();
+  state.activeTermKey = "";
+}
+
+function openTermPopover(trigger) {
+  const key = trigger?.dataset?.termKey || "";
+  const term = termByKey(key);
+  if (!term) return;
+  closeTermPopover();
+  state.activeTermKey = key;
+  const relatedTerms = relatedTermsFor(term);
+  const note = textForLanguage(term.noteZh || "", term.noteEn || "");
+  const popover = document.createElement("aside");
+  popover.className = "term-popover";
+  popover.setAttribute("role", "dialog");
+  popover.setAttribute("aria-label", labelText({ zh: term.zh, en: term.en }));
+  popover.innerHTML = `
+    <div class="term-popover-head">
+      <span>${escapeHtml(term.category || "term")}</span>
+      <strong>${escapeHtml(textForLanguage(term.zh || term.en, term.en || term.zh, " / "))}</strong>
+    </div>
+    <p>${richText(note)}</p>
+    ${relatedTerms.length ? `
+      <div class="term-related">
+        <span>${state.lang === "en" ? "Related" : "相关术语"}</span>
+        ${relatedTerms.map((item) => `
+          <button type="button" data-action="term-ref" data-term-key="${escapeHtml(glossaryMetricKey(item))}">
+            ${escapeHtml(textForLanguage(item.zh || item.en, item.en || item.zh, " / "))}
+          </button>
+        `).join("")}
+      </div>
+    ` : ""}
+  `;
+  document.body.appendChild(popover);
+  const triggerRect = trigger.getBoundingClientRect();
+  const popoverRect = popover.getBoundingClientRect();
+  const margin = 14;
+  const maxLeft = window.scrollX + window.innerWidth - popoverRect.width - margin;
+  const left = Math.max(window.scrollX + margin, Math.min(window.scrollX + triggerRect.left, maxLeft));
+  let top = window.scrollY + triggerRect.bottom + 10;
+  if (triggerRect.bottom + popoverRect.height + 20 > window.innerHeight && triggerRect.top > popoverRect.height + 20) {
+    top = window.scrollY + triggerRect.top - popoverRect.height - 10;
+  }
+  popover.style.left = `${Math.round(left)}px`;
+  popover.style.top = `${Math.round(top)}px`;
+  trackMetric("glossary_view", key, labelText({ zh: term.zh, en: term.en }));
 }
 
 function revealQuestion(targetQuestionId, options = {}) {
@@ -1869,6 +2223,14 @@ function setupEvents() {
   });
 
   document.addEventListener("click", (event) => {
+    const inlineTerm = event.target.closest('[data-action="term-ref"]');
+    if (inlineTerm) {
+      event.preventDefault();
+      event.stopPropagation();
+      openTermPopover(inlineTerm);
+      return;
+    }
+    if (!event.target.closest(".term-popover")) closeTermPopover();
     if (event.target.closest(".check-control")) {
       event.stopPropagation();
       return;
@@ -2001,8 +2363,14 @@ function setupEvents() {
     }
   }, true);
 
+  window.addEventListener("scroll", closeTermPopover, { passive: true });
+  window.addEventListener("resize", closeTermPopover);
+
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeModal();
+    if (event.key === "Escape") {
+      closeTermPopover();
+      closeModal();
+    }
   });
 }
 

@@ -94,8 +94,33 @@ async function checkViewport(name, viewport) {
   await page.click('a[data-page="knowledge"]');
   await page.waitForSelector(".knowledge-layout");
   await page.click('button[data-topic-group="modern"]');
+  await page.click('button[data-action="select-topic"][data-topic-id="enterprise"]');
+  await page.waitForSelector(".study-aid");
   const detail = await page.locator(".topic-detail").innerText();
   const detailHasDeepDive = await page.locator(".deep-dive-row").count();
+  const inlineTermCount = await page.locator(".topic-detail .term-ref").count();
+  let termPopoverWorks = false;
+  let termPopoverClosedByScroll = false;
+  let termPopoverClosedByOutside = false;
+  let termPopoverText = "";
+  if (inlineTermCount > 0) {
+    await page.locator(".topic-detail .term-ref").first().evaluate((element) => element.click());
+    await page.waitForSelector(".term-popover", { state: "attached" });
+    termPopoverText = await page.locator(".term-popover").innerText();
+    const popoverBox = await page.locator(".term-popover").evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return { width: rect.width, height: rect.height };
+    });
+    termPopoverWorks = Boolean(popoverBox && popoverBox.width > 120 && popoverBox.height > 60 && /相关术语|Related|基础|architecture|架构/i.test(termPopoverText));
+    await page.mouse.wheel(0, 160);
+    await page.waitForTimeout(120);
+    termPopoverClosedByScroll = await page.locator(".term-popover").count() === 0;
+    await page.locator(".topic-detail .term-ref").first().evaluate((element) => element.click());
+    await page.waitForSelector(".term-popover", { state: "attached" });
+    await page.mouse.click(8, 8);
+    await page.waitForTimeout(120);
+    termPopoverClosedByOutside = await page.locator(".term-popover").count() === 0;
+  }
   await page.waitForFunction(() => {
     const image = document.querySelector(".diagram-card img");
     return image && image.complete && image.naturalWidth > 0;
@@ -292,6 +317,11 @@ async function checkViewport(name, viewport) {
     englishNavHasOverview: englishNav.includes("Overview") && englishNav.includes("Sources"),
     detailHasModernTopic: /DDD|领域驱动|微服务|Enterprise|企业架构/.test(detail),
     detailHasDeepDive: detailHasDeepDive > 0,
+    inlineTermCount,
+    termPopoverWorks,
+    termPopoverClosedByScroll,
+    termPopoverClosedByOutside,
+    termPopoverText: termPopoverText.slice(0, 160),
     diagramRendered: diagramBox.complete && diagramBox.width > 120 && diagramBox.height > 60,
     diagramLanguageSwitches,
     allDiagramAssetsLoaded,
@@ -335,6 +365,9 @@ for (const result of [desktop, mobile]) {
     "englishNavHasOverview",
     "detailHasModernTopic",
     "detailHasDeepDive",
+    "termPopoverWorks",
+    "termPopoverClosedByScroll",
+    "termPopoverClosedByOutside",
     "diagramRendered",
     "diagramLanguageSwitches",
     "allDiagramAssetsLoaded",
