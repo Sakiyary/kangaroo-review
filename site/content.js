@@ -1,4 +1,5 @@
 // Maintenance note: grounding details for future edits live in question source_audit_* fields, tooling, git history, and .omx/context notes. The public UI keeps study copy separate from audit wording.
+// Study-copy style: keep explanations and sample answers concrete, point-by-point, and memorizable; zh/en variants should cover the same concepts, steps, examples, and boundaries.
 window.reviewContent = {
   "meta": {
     "title": {
@@ -504,7 +505,7 @@ window.reviewContent = {
           "en": "Constraints are pre-made design decisions that shape the architecture space."
         },
         {
-          "zh": "QAW/访谈的价值在于把“希望系统快/稳定/安全”这类口头需求转成可度量 ASR。",
+          "zh": "质量属性工作坊（QAW）/访谈的价值在于把“希望系统快/稳定/安全”这类口头需求转成可度量 ASR。",
           "en": "QAW/interviews turn verbal needs such as “fast/stable/secure” into measurable ASRs."
         },
         {
@@ -534,7 +535,7 @@ window.reviewContent = {
             "en": "Functions, quality attributes, and constraints can become ASRs; important and hard quality needs are common."
           },
           "answer": {
-            "zh": "先定义，再说来源/方法：需求文档、利益相关者工作坊/访谈 或 QAW、业务目标、约束，以及质量属性场景化表达。",
+            "zh": "先定义，再说来源/方法：需求文档、利益相关者工作坊/访谈或质量属性工作坊（QAW）、业务目标、约束，以及质量属性场景化表达。",
             "en": "Define ASR, then list sources/methods: requirement documents, stakeholder workshops/interviews or QAW, business goals, constraints, and scenario-based quality expression."
           },
           "trap": {
@@ -2171,7 +2172,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "掌握到能辨认、能简答即可。",
-            "en": "Not highest priority this year, but useful as backup practice."
+            "en": "Know enough to recognize the terms and write a short answer."
           },
           "explain": {
             "zh": "ATAM 用来评价一个架构是否能满足重要质量属性目标。它不是写新架构，而是围绕业务目标、质量属性场景和架构方案找风险。核心产物包括效用树、质量属性场景、风险、非风险、敏感点、权衡点。敏感点是某个设计参数变化会显著影响质量属性；权衡点是一个设计决定同时影响多个质量属性，且可能一好一坏。",
@@ -2283,7 +2284,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "常见问法包括变化点、变化机制、绑定时间。",
-            "en": "SPL, MDA, and SOA reuse different things."
+            "en": "Common questions include variation points, variation mechanisms, and binding time."
           },
           "must": {
             "zh": "SPL 复用核心资产，MDA 复用模型和转换，SOA 复用服务契约和组合。",
@@ -2316,7 +2317,7 @@ window.reviewContent = {
           },
           "summary": {
             "zh": "这部分掌握概念即可，常见问法是定义和三要素。",
-            "en": "Lower priority this year, but backup materials may ask the concept."
+            "en": "Know the concept and the three elements: variation point, mechanism, and binding time."
           },
           "explain": {
             "zh": "软件产品线不是复制粘贴代码，而是围绕一族相似产品识别共性和可变性。领域工程构建核心资产，包括架构、组件、需求、测试、配置、生成脚本和文档；应用工程根据具体产品需求选择和绑定可变点，派生产品。收益是规模化复用和一致性，成本是前期投入、治理和可变性管理复杂。",
@@ -2358,7 +2359,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "和设计决定七类里的 绑定时间 有交叉；掌握概念边界即可。",
-            "en": "Overlaps with binding time in design decisions, but weaker in this year's mainline."
+            "en": "This overlaps with binding time in the seven design-decision categories; keep the concept boundary clear."
           }
         }
       ]
@@ -2487,7 +2488,7 @@ window.reviewContent = {
           },
           "boundary": {
             "zh": "设计题先识别业务边界和质量需求，再用微服务、DDD、ADD 文档化或三层/缓存等合适模板组织答案。",
-            "en": "This year's design priority is microservices + DDD + ADD documentation; old design templates are backup."
+            "en": "For design questions, identify business boundaries and quality requirements first; then organize the answer with a suitable template such as microservices, DDD, ADD documentation, three-tier, or cache invalidation."
           }
         },
         {
@@ -5269,7 +5270,7 @@ window.reviewContent = {
     },
     "note": {
       "zh": "节点点击会统计，勾选会进入本地清单。",
-      "en": "Highest-level outline from the review material and review slides; node clicks are counted and 清单 state is local."
+      "en": "Node clicks are counted, and checklist state stays in local browser storage."
     },
     "groups": [
       {
@@ -5473,7 +5474,7 @@ window.reviewContent = {
             },
             "note": {
               "zh": "掌握到能识别、能简答即可。",
-              "en": "Backup practice; keep P0 time for core topics."
+              "en": "Know enough to recognize and write a short answer."
             }
           }
         ]
@@ -5569,7 +5570,7 @@ window.reviewContent = {
       },
       "note": {
         "zh": "用于回答 4+1、视图选择、文档包和架构过程题。这里的“边界”主要是系统/模块/视图边界。",
-        "en": "Use for 4+1, view selection, documentation packages, and architecture process."
+        "en": "Use for 4+1, view selection, documentation packages, and architecture-process questions. Here, boundary mainly means system, module, or view boundary."
       },
       "terms": [
         "利益相关者",
@@ -5623,7 +5624,7 @@ window.reviewContent = {
       },
       "note": {
         "zh": "用于回答 ADD 3.0 输入、七步流程和迭代目标。这里的“驱动因素”按 ADD 图中的五类红框理解。",
-        "en": "Use for ADD 3.0 inputs, seven steps, and iteration goals."
+        "en": "Use for ADD 3.0 inputs, seven steps, and iteration goals. Here, drivers are the five red boxes in the ADD figure."
       },
       "terms": [
         "属性驱动设计",
@@ -5667,7 +5668,7 @@ window.reviewContent = {
       },
       "note": {
         "zh": "用于区分限界上下文、服务边界、数据边界和组织边界：它们名称相近，但分别属于模型、部署/业务能力、数据所有权和团队治理语境。",
-        "en": "Use to distinguish bounded context, service boundary, data boundary, and organisational boundary."
+        "en": "Use to distinguish bounded context, service boundary, data boundary, and organisational boundary: their names are close, but they belong to modeling, deployment/business capability, data ownership, and team-governance contexts respectively."
       },
       "terms": [
         "统一语言",

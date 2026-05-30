@@ -104,6 +104,78 @@ function normalizeTermVariant(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
 }
 
+const unsafeBareChineseTerms = new Set([
+  "模式",
+  "策略",
+  "环境",
+  "技术",
+  "部署",
+  "接口",
+  "视图",
+  "实体",
+  "聚合",
+  "响应",
+  "刺激",
+  "制品",
+  "风险",
+  "故障",
+  "错误",
+  "数据"
+]);
+
+const contextSensitiveTermRules = [
+  {
+    termId: "pattern",
+    blockedContext: [
+      "GoF",
+      "设计模式",
+      "策略模式",
+      "工厂模式",
+      "单例模式",
+      "观察者模式",
+      "命令模式",
+      "装饰器模式",
+      "代码实现",
+      "design pattern",
+      "design patterns",
+      "factory pattern",
+      "singleton pattern",
+      "observer pattern",
+      "command pattern",
+      "decorator pattern",
+      "code implementation"
+    ]
+  },
+  {
+    termId: "strategy",
+    blockedContext: ["策略模式", "GoF"]
+  },
+  {
+    termId: "aggregate",
+    requiredContext: ["DDD", "领域", "聚合根", "值对象", "实体", "限界上下文", "战术模式"]
+  },
+  {
+    zh: "实体",
+    requiredContext: ["DDD", "领域", "值对象", "聚合", "限界上下文", "战术模式"]
+  },
+  {
+    zh: "环境",
+    requiredContext: ["质量属性", "质量场景", "运行环境", "技术环境", "部署", "约束"]
+  },
+  {
+    zh: "响应",
+    requiredContext: ["刺激", "响应度量", "质量属性", "质量场景", "六要素"]
+  },
+  {
+    zh: "刺激",
+    requiredContext: ["刺激源", "响应", "响应度量", "质量属性", "质量场景", "六要素"]
+  },
+  {
+    zh: "制品",
+    requiredContext: ["刺激", "响应", "质量属性", "质量场景", "六要素"]
+  }
+];
+
 function termByKey(key) {
   return content.glossary.find((term) => glossaryMetricKey(term) === key);
 }
@@ -117,6 +189,17 @@ function termAliasValues(term) {
   return [];
 }
 
+function isChineseText(value) {
+  return /[\u4e00-\u9fff]/.test(value);
+}
+
+function shouldAddSplitVariant(part) {
+  if (!part) return false;
+  if (/^[A-Za-z0-9+/.-]+$/.test(part)) return part.length >= 3;
+  if (isChineseText(part)) return Array.from(part).length >= 3;
+  return part.length >= 3;
+}
+
 function addTermVariant(variants, value) {
   const text = normalizeTermVariant(value);
   if (!text) return;
@@ -127,9 +210,7 @@ function addTermVariant(variants, value) {
     variants.add(match[1]);
     variants.add(`${match[1]}s`);
   }
-  text.split(/[\/,，、;；]/).map(normalizeTermVariant).filter(Boolean).forEach((part) => {
-    if (part.length >= 3 || /[\u4e00-\u9fff]{2,}/.test(part)) variants.add(part);
-  });
+  text.split(/[\/,，、;；]/).map(normalizeTermVariant).filter(shouldAddSplitVariant).forEach((part) => variants.add(part));
   if (/^[A-Za-z][A-Za-z0-9+.-]{1,16}$/.test(text) && !/s$/i.test(text)) {
     variants.add(`${text}s`);
   }
@@ -139,9 +220,19 @@ function termVariantStrings(term) {
   const variants = new Set();
   [term.zh, term.en, term.id, ...termAliasValues(term)].forEach((value) => addTermVariant(variants, value));
   return Array.from(variants).filter((variant) => {
+    if (unsafeBareChineseTerms.has(variant)) return false;
     if (/^[A-Za-z0-9+/.-]+$/.test(variant)) return variant.length >= 2;
     return variant.length >= 2;
   });
+}
+
+function termRuleFor(term) {
+  return contextSensitiveTermRules.find((rule) => {
+    if (rule.termId && term.id === rule.termId) return true;
+    if (rule.en && term.en === rule.en) return true;
+    if (rule.zh && term.zh === rule.zh) return true;
+    return false;
+  }) || null;
 }
 
 function inlineTermVariants() {
@@ -157,7 +248,8 @@ function inlineTermVariants() {
           key,
           text: variant,
           lower,
-          ascii: /^[A-Za-z0-9+/.-]+$/.test(variant)
+          ascii: /^[A-Za-z0-9+/.-]+$/.test(variant),
+          rule: termRuleFor(term)
         });
       }
     });
@@ -175,9 +267,23 @@ function matchInlineTermAt(text, index) {
       const after = text[index + variant.text.length];
       if (isAsciiWordChar(before) || isAsciiWordChar(after)) continue;
     }
+    if (variant.rule && !inlineContextAllowed(text, index, variant)) continue;
     return variant;
   }
   return null;
+}
+
+function inlineContextAllowed(text, index, variant) {
+  const rule = variant.rule || {};
+  const start = Math.max(0, index - 18);
+  const end = Math.min(text.length, index + variant.text.length + 18);
+  const context = text.slice(start, end);
+  const normalizedContext = context.toLocaleLowerCase();
+  if ((rule.blockedContext || []).some((word) => normalizedContext.includes(String(word).toLocaleLowerCase()))) return false;
+  if ((rule.requiredContext || []).length && !(rule.requiredContext || []).some((word) => normalizedContext.includes(String(word).toLocaleLowerCase()))) {
+    return false;
+  }
+  return true;
 }
 
 function annotateInlineTerms(line) {
