@@ -1740,6 +1740,24 @@ li {
   padding-left: 22px;
 }
 
+.bilingual-ordered-lists {
+  display: grid;
+  gap: 14px;
+}
+
+.bilingual-ordered-lists ol {
+  margin: 0;
+}
+
+.lang-ordered-list {
+  padding-left: 22px;
+}
+
+.lang-ordered-list.en-list {
+  border-top: 1px dashed rgba(31, 35, 40, 0.16);
+  padding-top: 12px;
+}
+
 .answer-points li,
 .question-body .answer-list li,
 .question-body .sample-list li {

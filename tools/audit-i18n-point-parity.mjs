@@ -55,9 +55,20 @@ function explicitPointCount(text, lang) {
   return 1;
 }
 
+function renderedPointCount(text, lang) {
+  const rawText = String(text || "").replace(/\r/g, "\n").trim();
+  if (!rawText) return 0;
+  const lines = splitNonEmpty(rawText, /\n+/);
+  return lines.filter((line) => line.replace(/^([0-9]+[.)、]\s*|[-*•]\s*)/, "").trim()).length;
+}
+
+function pointCount(text, lang) {
+  return renderedPointCount(text, lang);
+}
+
 function addFinding(kind, location, zh, en, extra = {}) {
-  const zhCount = explicitPointCount(zh, "zh");
-  const enCount = explicitPointCount(en, "en");
+  const zhCount = pointCount(zh, "zh");
+  const enCount = pointCount(en, "en");
   const isHighRisk = Math.abs(zhCount - enCount) >= 2 || (zhCount === 1 && enCount >= 3) || (enCount === 1 && zhCount >= 3);
   const isMediumRisk = zhCount !== enCount && Math.max(zhCount, enCount) >= 3;
   if (!isHighRisk && !isMediumRisk) return;
@@ -70,6 +81,17 @@ function addFinding(kind, location, zh, en, extra = {}) {
     zh: String(zh || "").slice(0, 420),
     en: String(en || "").slice(0, 420),
     ...extra
+  });
+}
+
+function hasHiddenAnswerFramePoints(text) {
+  return splitNonEmpty(String(text || ""), /\n+/).some((line) => {
+    const stripped = line.trim();
+    if (!stripped) return false;
+    if (/[；;]/.test(stripped)) return true;
+    if (stripped.length > 220) return true;
+    const inlineNumbered = stripped.match(/(?:^|[。.!?]\s*)(?:[0-9]+[.)、]|第[一二三四五六七八九十]+|First|Second|Third|Fourth|Fifth|Sixth|Seventh|Finally)[，,:：\s]/gi);
+    return inlineNumbered && inlineNumbered.length >= 2;
   });
 }
 
@@ -89,9 +111,37 @@ walkLocalized(content, "content");
 
 for (const question of questions) {
   const base = `questions.${question.id}`;
+  for (const legacyKey of ["answer_zh", "answer_en", "likely_answer_pattern"]) {
+    if (Object.prototype.hasOwnProperty.call(question, legacyKey)) {
+      findings.push({
+        kind: "legacy-question-field",
+        location: `${base}.${legacyKey}`,
+        zhCount: 0,
+        enCount: 0,
+        risk: "high",
+        zh: "",
+        en: "",
+        message: "Use answer_frame_zh/answer_frame_en so the UI-rendered answer frame has an explicit i18n pair."
+      });
+    }
+  }
+  for (const frameKey of ["answer_frame_zh", "answer_frame_en"]) {
+    if (typeof question[frameKey] === "string" && hasHiddenAnswerFramePoints(question[frameKey])) {
+      findings.push({
+        kind: "answer-frame-format",
+        location: `${base}.${frameKey}`,
+        zhCount: renderedPointCount(question.answer_frame_zh || "", "zh"),
+        enCount: renderedPointCount(question.answer_frame_en || "", "en"),
+        risk: "high",
+        zh: String(question.answer_frame_zh || "").slice(0, 420),
+        en: String(question.answer_frame_en || "").slice(0, 420),
+        message: "Answer frames must use explicit newlines for separate answer points instead of hiding multiple points in one line."
+      });
+    }
+  }
   for (const [zhKey, enKey] of [
+    ["answer_frame_zh", "answer_frame_en"],
     ["sample_answer_zh", "sample_answer_en"],
-    ["answer_zh", "answer_en"],
     ["priority_reason_zh", "priority_reason_en"],
     ["visual_hint_zh", "visual_hint_en"],
     ["source_audit_zh", "source_audit_en"]

@@ -313,8 +313,8 @@ window.reviewContent = {
             "en": "NFRs/quality requirements -> ASRs -> stakeholder concerns -> organisations -> technical environments -> prioritized by business goals."
           },
           "answer": {
-            "zh": "考场可写六句：1. 架构来自架构驱动因素。2. NFR/质量需求是最主要来源。3. ASR 是其中必须优先处理的少数需求。4. 利益相关者关注点补充并细化质量场景。5. 组织因素和技术/运行环境给出约束。6. 业务目标用于排序、冲突解决和取舍。",
-            "en": "In the exam, write six sentences: architecture comes from architectural drivers; NFRs/quality requirements are the main source; ASRs are the subset to handle early; stakeholder concerns refine quality scenarios; organisations and technical environments constrain choices; business goals prioritize and resolve conflicts."
+            "zh": "考场可写六句：\n1. 架构来自架构驱动因素。\n2. NFR/质量需求是最主要来源。\n3. ASR 是其中必须优先处理的少数需求。\n4. 利益相关者关注点补充并细化质量场景。\n5. 组织因素和技术/运行环境给出约束。\n6. 业务目标用于排序、冲突解决和取舍。",
+            "en": "In the exam, write six sentences:\n1. Architecture comes from architectural drivers.\n2. NFRs/quality requirements are the main source.\n3. ASRs are the subset to handle early.\n4. Stakeholder concerns refine quality scenarios.\n5. Organisations and technical environments constrain choices.\n6. Business goals prioritize and resolve conflicts."
           },
           "boundary": {
             "zh": "依据完整课程录音、张贺 第一份课程讲义 和 ASR/效用树 幻灯片；按“架构驱动因素”表述组织答案。",
@@ -1819,8 +1819,8 @@ window.reviewContent = {
             "en": "A tactic bridges quality attributes and design."
           },
           "must": {
-            "zh": "可用性：检测、恢复、预防；性能：控制资源需求、管理资源、资源仲裁；安全性：抵抗、检测、恢复；可测试性：控制和观察。",
-            "en": "Availability: detect/recover/prevent; performance: resource demand/management/arbitration; security: resist/detect/recover; testability: control and observe."
+            "zh": "可用性：检测、恢复、预防。\n性能：控制资源需求、管理资源、资源仲裁。\n安全性：抵抗、检测、恢复。\n可测试性：控制和观察。",
+            "en": "Availability: detect/recover/prevent.\nPerformance: resource demand/management/arbitration.\nSecurity: resist/detect/recover.\nTestability: control and observe."
           },
           "answer": {
             "zh": "看到属性题，先写场景，再选 战术，并说明它改变了哪一段响应。",
@@ -1938,8 +1938,8 @@ window.reviewContent = {
         "en": "Architecture design is not merely choosing a pattern; it is a systematic set of design decisions. The seven decision categories should be explained point by point."
       },
       "answerFrame": {
-        "zh": "按七类展开：责任分配、协调/配置模型、数据模型、资源管理、架构元素映射、绑定时间、技术选择。每类给一个例子即可。",
-        "en": "Use seven categories: responsibility allocation, coordination/configuration model, data model, resource management, mapping among architectural elements, binding time, technology choice. Give one example each."
+        "zh": "按七类展开：责任分配、协调/配置模型、数据模型、资源管理、架构元素映射、绑定时间、技术选择。\n每类给一个例子即可。",
+        "en": "Use seven categories: responsibility allocation, coordination/configuration model, data model, resource management, mapping among architectural elements, binding time, technology choice.\nGive one example each."
       },
       "bullets": [
         {
@@ -2153,8 +2153,8 @@ window.reviewContent = {
             "en": "Memorize ATAM through the phase-output table."
           },
           "must": {
-            "zh": "第 0 阶段 计划；第 1 阶段 业务目标、架构、效用树、风险/非风险、敏感点/权衡点；第 2 阶段 利益相关者场景和风险主题；第 3 阶段 报告。",
-            "en": "Phase 0 plan; Phase 1 business drivers, architecture, utility tree, risks/non-risks, sensitivity/tradeoff points; Phase 2 stakeholder scenarios/risk themes; Phase 3 report."
+            "zh": "第 0 阶段：评估计划。\n第 1 阶段：业务目标、架构说明、效用树、风险/非风险、敏感点/权衡点。\n第 2 阶段：利益相关者场景和风险主题。\n第 3 阶段：最终报告。",
+            "en": "Phase 0: evaluation plan.\nPhase 1: business drivers, architecture presentation, utility tree, risks/non-risks, sensitivity/tradeoff points.\nPhase 2: stakeholder scenarios and risk themes.\nPhase 3: final report."
           },
           "answer": {
             "zh": "用“阶段 -> 参与者 -> 输出物”三列表回答最稳。",
@@ -2363,8 +2363,8 @@ window.reviewContent = {
             "en": "A software product line is not copy-paste reuse; it identifies commonality and variability across a family of similar products.\nDomain engineering builds core assets, including architecture, components, requirements, tests, configuration, generators, and documents.\nApplication engineering selects and binds variation points according to a concrete product’s requirements to derive that product.\nBenefits are reuse at scale and consistency; costs are upfront investment, governance, and variability-management complexity."
           },
           "memorize": {
-            "zh": "领域工程建核心资产；应用工程派生产品；管理共性/可变性。",
-            "en": "Domain engineering builds core assets; application engineering derives products; manage commonality/variability."
+            "zh": "领域工程建立核心资产。\n应用工程派生具体产品。\n全过程管理共性和可变性。",
+            "en": "Domain engineering builds core assets.\nApplication engineering derives concrete products.\nThe whole process manages commonality and variability."
           },
           "answer": {
             "zh": "答 SPL 时按“产品族 -> 共性/可变性 -> 核心资产 -> 派生产品 -> 收益/成本”写。",
@@ -4308,7 +4308,7 @@ window.reviewContent = {
         "属性驱动设计"
       ],
       "noteZh": "记录为什么选择某个架构方案、它满足哪些驱动因素以及接受哪些取舍。没有设计理由，图只能说明“是什么”，不能说明“为什么”。",
-      "noteEn": "Explains why a design choice was made, which drivers it addresses, and what tradeoffs it accepts."
+      "noteEn": "Explains why a design choice was made, which drivers it addresses, and what tradeoffs it accepts. Without rationale, a diagram says what, not why."
     },
     {
       "id": "responsibility-allocation",

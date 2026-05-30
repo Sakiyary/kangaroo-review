@@ -317,24 +317,8 @@ function richText(value) {
     .join("");
 }
 
-function splitAfterMarks(text, marks) {
-  const chunks = [];
-  let buffer = "";
-  Array.from(text).forEach((char) => {
-    buffer += char;
-    if (marks.includes(char)) {
-      const value = buffer.trim();
-      if (value) chunks.push(value);
-      buffer = "";
-    }
-  });
-  const rest = buffer.trim();
-  if (rest) chunks.push(rest);
-  return chunks;
-}
-
-function splitStudyText(value) {
-  const text = localize(value).replace(/\r/g, "\n").trim();
+function splitStudyText(value, mode = state.lang) {
+  const text = localize(value, mode).replace(/\r/g, "\n").trim();
   if (!text) return [];
   const rawLines = text
     .split("\n")
@@ -344,16 +328,7 @@ function splitStudyText(value) {
   rawLines.forEach((line) => {
     const stripped = line.replace(/^([0-9]+[.)、]\s*|[-*•]\s*)/, "").trim();
     if (!stripped) return;
-    const sentenceMarks = /[A-Za-z]/.test(stripped) && !/[\u4e00-\u9fff]/.test(stripped)
-      ? ".!?;"
-      : "。！？；;";
-    const chunks = stripped.length > 84
-      ? splitAfterMarks(stripped, sentenceMarks)
-      : [stripped];
-    chunks.forEach((chunk) => {
-      const part = chunk.trim();
-      if (part) points.push(part);
-    });
+    points.push(stripped);
   });
   return points;
 }
@@ -370,20 +345,38 @@ function toTextList(value) {
   return String(value).split("\n").filter(Boolean);
 }
 
-function localizedList(item, zhKey, enKey) {
-  if (!item) return [];
-  const zh = toTextList(item[zhKey]);
-  const en = toTextList(item[enKey]);
-  if (state.lang === "zh") return zh.length ? zh : en;
-  if (state.lang === "en") return en.length ? en : zh;
-  const max = Math.max(zh.length, en.length);
-  return Array.from({ length: max }, (_, index) => {
-    const zhLine = zh[index] || "";
-    const enLine = en[index] || "";
-    if (!zhLine) return enLine;
-    if (!enLine || zhLine === enLine) return zhLine;
-    return `${zhLine}\n${enLine}`;
-  }).filter(Boolean);
+function renderOrderedItems(items, className = "") {
+  const values = (items || []).filter(Boolean).map(String);
+  if (!values.length) return "";
+  const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
+  return `<ol${classAttr}>${values.map((item) => `<li>${richText(item)}</li>`).join("")}</ol>`;
+}
+
+function renderBilingualOrderedLists(zhItems, enItems) {
+  const zh = (zhItems || []).filter(Boolean);
+  const en = (enItems || []).filter(Boolean);
+  if (state.lang === "zh") return renderOrderedItems(zh.length ? zh : en);
+  if (state.lang === "en") return renderOrderedItems(en.length ? en : zh);
+  if (!zh.length) return renderOrderedItems(en);
+  if (!en.length || zh.join("\n") === en.join("\n")) return renderOrderedItems(zh);
+  return `
+    <div class="bilingual-ordered-lists">
+      ${renderOrderedItems(zh, "lang-ordered-list zh-list")}
+      ${renderOrderedItems(en, "lang-ordered-list en-list")}
+    </div>
+  `;
+}
+
+function renderLocalizedOrderedList(item, zhKey, enKey) {
+  if (!item) return "";
+  return renderBilingualOrderedLists(toTextList(item[zhKey]), toTextList(item[enKey]));
+}
+
+function renderLocalizedOrderedText(item, zhKey, enKey, fallbackZh = "", fallbackEn = "") {
+  if (!item) return "";
+  const zhText = item[zhKey] || fallbackZh || item[enKey] || fallbackEn || "";
+  const enText = item[enKey] || fallbackEn || item[zhKey] || fallbackZh || "";
+  return renderBilingualOrderedLists(splitStudyText(zhText, "zh"), splitStudyText(enText, "en"));
 }
 
 function labelText(value) {
@@ -1926,7 +1919,7 @@ function renderPapers() {
   const clusters = ["all", ...new Set(priorityQuestions.map((q) => q.cluster).sort())];
   const questions = priorityQuestions
     .filter((question) => state.cluster === "all" || question.cluster === state.cluster)
-    .filter((question) => includesQuery(question.cluster, question.priority, question.canonical_question, question.question_zh, question.likely_answer_pattern, question.answer_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords));
+    .filter((question) => includesQuery(question.cluster, question.priority, question.canonical_question, question.question_zh, question.answer_frame_en, question.answer_frame_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords));
   const openQuestionId = questions.some((question) => questionId(question) === state.openQuestionId)
     ? state.openQuestionId
     : "";
@@ -1955,15 +1948,15 @@ function renderPapers() {
 }
 
 function renderQuestionBody(question) {
-  const zhAnswer = question.answer_zh || question.likely_answer_pattern;
   const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
-  const drawingSteps = localizedList(question, "drawing_steps_zh", "drawing_steps_en");
-  const answerPoints = localizedList(question, "answer_points_zh", "answer_points_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
-  const answer = textForLanguage(zhAnswer, question.likely_answer_pattern);
+  const answer = localizedPair(question, "answer_frame_zh", "answer_frame_en");
   const title = textForLanguage(question.question_zh || question.canonical_question, question.canonical_question);
-  const answerPointItems = answerPoints.length ? answerPoints : splitStudyText(sample || answer);
+  const answerPointHtml = (question.answer_points_zh || question.answer_points_en)
+    ? renderLocalizedOrderedList(question, "answer_points_zh", "answer_points_en")
+    : renderLocalizedOrderedText(question, "sample_answer_zh", "sample_answer_en", question.answer_frame_zh, question.answer_frame_en);
+  const drawingStepsHtml = renderLocalizedOrderedList(question, "drawing_steps_zh", "drawing_steps_en");
   return `
     <div class="question-actions">
       ${renderScopedChecklist("question", question.id || question.canonical_question, labelText(title), "compact-check", question)}
@@ -1974,12 +1967,10 @@ function renderQuestionBody(question) {
         <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
         ${renderPointList(answer, "answer-list")}
       </section>
-      ${answerPointItems.length ? `
+      ${answerPointHtml ? `
         <section class="answer-points">
           <h3>${state.lang === "en" ? "Answer by points" : "按点作答"}</h3>
-          <ol>
-            ${answerPointItems.map((point) => `<li>${richText(point)}</li>`).join("")}
-          </ol>
+          ${answerPointHtml}
         </section>
       ` : ""}
       ${sample ? `
@@ -1988,12 +1979,10 @@ function renderQuestionBody(question) {
           ${renderPointList(sample, "sample-list")}
         </section>
       ` : ""}
-      ${drawingSteps.length ? `
+      ${drawingStepsHtml ? `
         <section class="drawing-guide">
           <h3>${state.lang === "en" ? "How to draw it in the exam" : "考场怎么画图"}</h3>
-          <ol>
-            ${drawingSteps.map((step) => `<li>${richText(step)}</li>`).join("")}
-          </ol>
+          ${drawingStepsHtml}
         </section>
       ` : ""}
       ${diagram ? `
@@ -2344,7 +2333,25 @@ function renderMeta() {
   if (railLabel) railLabel.textContent = state.lang === "en" ? "Priority" : "优先级";
 }
 
-function renderAll() {
+function captureRelativeScroll() {
+  const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  return maxScroll > 0 ? window.scrollY / maxScroll : 0;
+}
+
+function restoreRelativeScroll(ratio) {
+  const apply = () => {
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: Math.min(maxScroll, Math.max(0, ratio * maxScroll)), behavior: "auto" });
+  };
+  window.requestAnimationFrame(() => {
+    apply();
+    window.requestAnimationFrame(apply);
+  });
+  [80, 240, 500].forEach((delay) => window.setTimeout(apply, delay));
+}
+
+function renderAll(options = {}) {
+  const relativeScroll = options.preserveRelativeScroll ? captureRelativeScroll() : null;
   closeTermPopover();
   setPage(state.page);
   renderMeta();
@@ -2353,6 +2360,7 @@ function renderAll() {
   refreshVisibleMetrics();
   loadComments(state.page);
   heartbeatOnline(state.lastOnlineHeartbeatPage !== state.page);
+  if (relativeScroll !== null) restoreRelativeScroll(relativeScroll);
 }
 
 function setPageFromHash() {
@@ -2468,7 +2476,7 @@ function setupEvents() {
       document.querySelectorAll("[data-lang]").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
       state.lang = button.dataset.lang;
-      renderAll();
+      renderAll({ preserveRelativeScroll: true });
     });
   });
 
