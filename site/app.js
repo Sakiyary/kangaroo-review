@@ -1913,6 +1913,11 @@ function renderDiagramCard(diagram, compact = false) {
   `;
 }
 
+function shouldRenderSampleAnswer(question) {
+  if (!question || !localizedPair(question, "sample_answer_zh", "sample_answer_en")) return false;
+  return !question.hide_sample_answer;
+}
+
 function renderPapers() {
   const priorityQuestions = state.questions
     .filter((question) => state.priority === "all" || question.priority === state.priority);
@@ -1955,7 +1960,10 @@ function renderQuestionBody(question) {
   const title = textForLanguage(question.question_zh || question.canonical_question, question.canonical_question);
   const answerPointHtml = (question.answer_points_zh || question.answer_points_en)
     ? renderLocalizedOrderedList(question, "answer_points_zh", "answer_points_en")
-    : renderLocalizedOrderedText(question, "sample_answer_zh", "sample_answer_en", question.answer_frame_zh, question.answer_frame_en);
+    : "";
+  const sampleAnswerHtml = shouldRenderSampleAnswer(question)
+    ? renderLocalizedOrderedText(question, "sample_answer_zh", "sample_answer_en")
+    : "";
   const drawingStepsHtml = renderLocalizedOrderedList(question, "drawing_steps_zh", "drawing_steps_en");
   return `
     <div class="question-actions">
@@ -1964,7 +1972,7 @@ function renderQuestionBody(question) {
     </div>
     <div class="question-body">
       <section>
-        <h3>${state.lang === "en" ? "Likely answer pattern" : "建议答题框架"}</h3>
+        <h3>${state.lang === "en" ? "Answer outline" : "答题提纲"}</h3>
         ${renderPointList(answer, "answer-list")}
       </section>
       ${answerPointHtml ? `
@@ -1973,10 +1981,10 @@ function renderQuestionBody(question) {
           ${answerPointHtml}
         </section>
       ` : ""}
-      ${sample ? `
+      ${sampleAnswerHtml ? `
         <section class="sample-answer">
-          <h3>${state.lang === "en" ? "Exam-ready sample answer" : "可直接背的示例答案"}</h3>
-          ${renderPointList(sample, "sample-list")}
+          <h3>${state.lang === "en" ? "Memorizable reference answer" : "可背参考答案"}</h3>
+          ${sampleAnswerHtml}
         </section>
       ` : ""}
       ${drawingStepsHtml ? `

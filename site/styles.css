@@ -1740,6 +1740,11 @@ li {
   padding-left: 22px;
 }
 
+.sample-answer ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
 .bilingual-ordered-lists {
   display: grid;
   gap: 14px;
@@ -1759,6 +1764,7 @@ li {
 }
 
 .answer-points li,
+.sample-answer li,
 .question-body .answer-list li,
 .question-body .sample-list li {
   line-height: 1.7;
