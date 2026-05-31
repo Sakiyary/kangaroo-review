@@ -1880,8 +1880,7 @@ li {
 
 .mock-intro span,
 .mock-intro p,
-.mock-section header span,
-.mock-prediction span {
+.mock-section header span {
   color: var(--muted);
   line-height: 1.65;
 }
@@ -2005,29 +2004,6 @@ li {
 
 .mock-question-tools {
   justify-content: flex-end;
-}
-
-.mock-prediction {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 10px;
-  margin: 14px 0;
-  border-left: 5px solid var(--line);
-  background: rgba(31, 35, 40, 0.045);
-  padding: 12px;
-}
-
-.mock-prediction strong {
-  color: var(--ink);
-}
-
-.mock-prediction.very-high,
-.mock-prediction.high {
-  border-left-color: var(--red);
-}
-
-.mock-prediction.medium {
-  border-left-color: var(--teal);
 }
 
 .mock-answer {
@@ -3105,10 +3081,6 @@ li {
     flex: 1 1 130px;
   }
 
-  .mock-prediction {
-    grid-template-columns: 1fr;
-  }
-
   .metric-badge {
     flex-wrap: wrap;
   }
@@ -3185,7 +3157,6 @@ li {
   }
 
   body[data-print-mode="mock-paper"] .mock-answer,
-  body[data-print-mode="mock-paper"] .mock-prediction,
   body[data-print-mode="mock-paper"] .mock-instructions section:nth-child(2) {
     display: none !important;
   }

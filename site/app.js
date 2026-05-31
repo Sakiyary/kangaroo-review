@@ -2086,30 +2086,11 @@ function mockExportMetricKey(kind) {
   return stableMetricKey("mock-export", kind);
 }
 
-function mockProbabilityClass(value = "") {
-  const normalized = value.toLowerCase().replace(/\s+/g, "-");
-  if (normalized.includes("very")) return "very-high";
-  if (normalized.includes("high")) return "high";
-  if (normalized.includes("medium")) return "medium";
-  return "low";
-}
-
 function mockDifficultyText(value = "") {
   const map = {
     Easy: "易",
     Medium: "中",
     Hard: "难"
-  };
-  return map[value] || value;
-}
-
-function mockProbabilityText(value = "", mode = state.lang) {
-  if (mode === "en") return value;
-  const map = {
-    "Very High": "很高",
-    High: "高",
-    Medium: "中",
-    Low: "低"
   };
   return map[value] || value;
 }
@@ -2182,7 +2163,6 @@ function renderMockRelated(question) {
 }
 
 function renderMockQuestion(question) {
-  const badgeClass = mockProbabilityClass(question.probability);
   const answerOpen = state.openMockAnswerIds.includes(question.id);
   return `
     <article class="mock-question" data-scroll-key="mock:${escapeHtml(question.id)}" data-mock-question-id="${escapeHtml(question.id)}">
@@ -2199,10 +2179,6 @@ function renderMockQuestion(question) {
           ${renderMetricBadge("mock_answer_open", mockAnswerMetricKey(question))}
         </div>
       </div>
-      <p class="mock-prediction ${escapeHtml(badgeClass)}">
-        <strong>${escapeHtml(mockProbabilityText(question.probability))}</strong>
-        <span>${escapeHtml(question.prediction || "")}</span>
-      </p>
       <details class="mock-answer" data-mock-question-id="${escapeHtml(question.id)}" ${answerOpen ? "open" : ""}>
         <summary>${state.lang === "en" ? "Show Chinese answer key" : "查看中文参考答案"}</summary>
         <div class="mock-answer-content">
@@ -2331,8 +2307,6 @@ function mockQuestionMarkdown(question, includeAnswer = false) {
   ];
   if (!includeAnswer) return lines;
   lines.push(
-    `预测：${mockProbabilityText(question.probability, "zh")}；难度：${mockDifficultyText(question.difficulty)}。${question.prediction || ""}`,
-    "",
     "#### 中文参考答案",
     "",
     question.answer?.summary || "",

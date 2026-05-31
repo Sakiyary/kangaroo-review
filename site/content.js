@@ -697,8 +697,8 @@ window.reviewContent = {
             "en": "The review material made ADD a major focus; the diagram should follow the Lecture 12 ADD 3.0 method figure."
           },
           "must": {
-            "zh": "五类驱动因素 + 七步：审查输入；通过选择驱动因素建立迭代目标；选择要细化的元素；选择设计概念；实例化元素、分配职责、定义接口；绘制视图并记录设计决定；分析当前设计并检查目标/设计目的。",
-            "en": "Five driver classes plus seven steps: Review inputs; Establish iteration goal by selecting drivers; Choose elements to refine; Choose design concepts; Instantiate/allocate/define interfaces; Sketch views and record decisions; Perform analysis of current design and review goal/purpose."
+            "zh": "五类驱动因素：设计目的、主要功能、质量属性、架构关注点、约束。\n七步必须带产物背：1. 审查输入 -> 得到整理后的输入包和本轮可用驱动因素；2. 建立迭代目标 -> 得到本轮目标、优先驱动因素和判断目标达成的依据；3. 选择要细化的元素 -> 得到本轮要设计的系统/子系统/组件边界；4. 选择设计概念 -> 得到可采用的参考架构、风格、模式、战术、外部组件或技术机制；5. 实例化架构元素 -> 得到具体元素、职责分配和接口；6. 绘制视图并记录决定 -> 得到视图草图、设计决策和设计理由；7. 分析当前设计 -> 得到目标达成判断、风险/取舍和下一轮迭代动作。",
+            "en": "Five driver classes: Design Purpose, Primary Functionality, Quality Attributes, Architectural Concerns, and Constraints.\nMemorize each step with its output: 1. Review inputs -> organized input package and usable drivers; 2. Establish iteration goal -> iteration goal, selected drivers, and achievement criteria; 3. Choose elements to refine -> system/subsystem/component boundary for this round; 4. Choose design concepts -> reference architectures, styles, patterns, tactics, external components, or technical mechanisms; 5. Instantiate elements -> concrete elements, responsibilities, and interfaces; 6. Sketch views and record decisions -> view sketches, design decisions, and rationale; 7. Analyze design -> goal-achievement judgment, risks/tradeoffs, and next iteration action."
           },
           "answer": {
             "zh": "手画时先画上方五个红色驱动因素，再画第 1-7 步的纵向流程；第 7 步后写“必要时迭代”，并输出“精化后的软件架构设计”。",
@@ -736,8 +736,8 @@ window.reviewContent = {
         "add-roadmap"
       ],
       "memorize": {
-        "zh": "ADD 3.0 输入五类驱动因素：设计目的、主要功能、质量属性、架构关注点、约束。\n七步流程：审查输入 -> 通过选择驱动因素建立迭代目标 -> 选择要细化的系统元素 -> 选择设计概念 -> 实例化元素、分配职责、定义接口 -> 绘制视图并记录设计决定 -> 分析当前设计并检查目标达成情况。\n第 7 步分析后若没有达成目标，回到第 2 步重新选择驱动因素迭代；旧系统可从既有架构或上一轮迭代进入。",
-        "en": "ADD 3.0 inputs: design purpose, primary functionality, quality attributes, architectural concerns, and constraints.\nSeven steps: review inputs; establish iteration goal by selecting drivers; choose elements to refine; choose design concepts; instantiate elements, allocate responsibilities, and define interfaces; sketch views and record decisions; analyze the design and review goal achievement.\nIf Step 7 shows the goal is not achieved, iterate back to Step 2; brownfield work can start from an existing system or a previous iteration."
+        "zh": "ADD 3.0 输入五类驱动因素：设计目的、主要功能、质量属性、架构关注点、约束；棕地开发还要把既有系统或上一轮设计作为制品输入。\n七步和产物：1. 审查输入，产出整理后的输入包、关键场景/约束清单和可用驱动因素；2. 选择驱动因素建立迭代目标，产出本轮目标、优先驱动因素和验收/分析依据；3. 选择要细化的系统元素，产出本轮设计边界，例如整个系统、子系统、服务或已有组件；4. 选择设计概念，产出候选参考架构、风格、模式、战术、外部组件或技术机制；5. 实例化架构元素，产出具体元素、职责分配、接口和交互关系；6. 绘制视图并记录设计决定，产出模块/组件连接件/部署等视图草图、设计决策和设计理由；7. 分析当前设计，产出目标达成判断、风险、敏感点/取舍点和下一轮迭代动作。\n迭代关系：第 7 步若未达成目标或发现新风险，就回到第 2 步重新选择驱动因素；每一轮的输出会成为下一轮输入。",
+        "en": "ADD 3.0 inputs: design purpose, primary functionality, quality attributes, architectural concerns, and constraints; brownfield development also feeds existing systems or previous-iteration designs into the artifact flow.\nSteps and outputs: 1. Review inputs -> organized input package, key scenarios/constraints, and usable drivers; 2. Select drivers and establish iteration goal -> iteration goal, prioritized drivers, and analysis/acceptance criteria; 3. Choose elements to refine -> design boundary for this round, such as the whole system, a subsystem, a service, or an existing component; 4. Choose design concepts -> candidate reference architectures, styles, patterns, tactics, external components, or mechanisms; 5. Instantiate architectural elements -> concrete elements, responsibilities, interfaces, and interactions; 6. Sketch views and record decisions -> module/C&C/deployment sketches, decisions, and rationale; 7. Analyze current design -> goal-achievement judgment, risks, sensitivity/tradeoff points, and next iteration action.\nIteration: if Step 7 does not achieve the goal or exposes new risk, return to Step 2; each iteration output becomes input to the next round."
       },
       "examTemplate": {
         "zh": "画 ADD 图时先画顶部五个红色驱动因素，再画中间七个步骤，最后画底部“精化后的软件架构设计”；把第 7 步到第 2 步的迭代箭头和左侧棕地输入虚线补全。",
@@ -750,20 +750,20 @@ window.reviewContent = {
             "en": "What each ADD 3.0 step produces"
           },
           "summary": {
-            "zh": "ADD 按七步标题和迭代推进逻辑一起背：输入驱动每一轮目标，目标决定 细化元素 与 设计概念，最后记录决策并分析是否达到目标。",
-            "en": "Do not only memorize the seven titles; know how the iteration advances design."
+            "zh": "ADD 不能只背七步标题，要把每步“交出什么东西”背出来。老师若问流程，标题够一半；若问设计题，必须把产物落到边界、元素、职责、接口、视图和风险。",
+            "en": "Do not memorize only the seven titles; memorize what each step produces. For a process question, titles are only half the answer; for a design question, outputs must become boundaries, elements, responsibilities, interfaces, views, and risks."
           },
           "explain": {
-            "zh": "ADD 先审查输入，确认设计目的、主要功能、质量属性、架构关注点和约束。然后通过选择驱动因素建立迭代目标。第三步选择要细化的系统元素，可能是整个系统、一个子系统或一个已有组件。第四步选择设计概念，例如风格、模式、战术或技术机制。第五步实例化架构元素、分配职责、定义接口。第六步画视图并记录设计决定。第七步分析当前设计是否达到目标；没有达到就回到第 2 步继续迭代。",
-            "en": "ADD first reviews inputs: design purpose, primary functionality, quality attributes, architectural concerns, and constraints. It then establishes an iteration goal by selecting drivers. Step 3 chooses the system element to refine: the whole system, a subsystem, or an existing component. Step 4 chooses design concepts, such as styles, patterns, tactics, or technologies. Step 5 instantiates elements, allocates responsibilities, and defines interfaces. Step 6 sketches views and records decisions. Step 7 analyzes whether the design meets the goal; if not, iterate back to Step 2."
+            "zh": "第 1 步审查输入，产物是整理后的输入包：设计目的、主要功能、质量属性场景、架构关注点、约束，以及棕地系统的既有架构。第 2 步选择驱动因素建立迭代目标，产物是本轮目标和优先驱动因素，例如先确定整体结构、先处理可用性、先解决部署约束。第 3 步选择要细化的系统元素，产物是本轮设计边界，例如整个系统、订单子系统、缓存组件或已有服务。第 4 步选择设计概念，产物是候选方案库，例如分层、微服务、发布订阅、缓存、熔断、负载均衡、外部组件。第 5 步实例化元素，产物是具体元素列表、职责分配、接口和连接关系。第 6 步绘制视图并记录设计决定，产物是可沟通的视图草图、决策项和理由。第 7 步分析当前设计，产物是是否达成本轮目标的结论、风险/取舍和下一轮要继续处理的驱动因素。",
+            "en": "Step 1 reviews inputs and produces an organized input package: design purpose, primary functionality, quality-attribute scenarios, architectural concerns, constraints, and existing brownfield architecture. Step 2 selects drivers and establishes the iteration goal; its output is the iteration goal plus prioritized drivers, such as defining the overall structure first, handling availability first, or solving a deployment constraint first. Step 3 chooses elements to refine and produces this round's design boundary, such as the whole system, an order subsystem, a cache component, or an existing service. Step 4 chooses design concepts and produces candidate approaches such as layering, microservices, publish-subscribe, caching, circuit breaker, load balancing, or external components. Step 5 instantiates elements and produces concrete elements, responsibilities, interfaces, and connectors. Step 6 sketches views and records design decisions, producing communicable sketches, decisions, and rationale. Step 7 analyzes the current design and produces the goal-achievement judgment, risks/tradeoffs, and the drivers to address in the next iteration."
           },
           "memorize": {
-            "zh": "五类驱动因素 + 七步 + 第 7 步回第 2 步迭代。",
-            "en": "Five driver types + seven steps + Step 7 iterates back to Step 2."
+            "zh": "背诵压缩版：输入包 -> 迭代目标 -> 细化边界 -> 设计概念 -> 元素/职责/接口 -> 视图/决策/理由 -> 分析结论/风险/下一轮。",
+            "en": "Compact version: input package -> iteration goal -> refinement boundary -> design concepts -> elements/responsibilities/interfaces -> views/decisions/rationale -> analysis result/risks/next round."
           },
           "answer": {
-            "zh": "简答题按“输入 -> 七步 -> 产物 -> 迭代”写；画图题按重绘 ADD 图画顶部驱动因素、中间步骤、底部精化后的架构和两条回路。",
-            "en": "For short answers, use “inputs -> seven steps -> outputs -> iteration”; for drawing, reproduce top drivers, middle steps, bottom refined architecture, and the feedback/artifact loops."
+            "zh": "简答题可以直接写：ADD 每轮先把输入整理成驱动因素清单，再选驱动因素形成迭代目标，确定要细化的元素，选择设计概念，实例化元素并分配职责/接口，画视图记录决策，最后分析风险和目标达成情况；若未达成，分析结果和精化设计进入下一轮。",
+            "en": "For a short answer: in each ADD iteration, organize inputs into drivers, select drivers to form the iteration goal, decide which element to refine, choose design concepts, instantiate elements and assign responsibilities/interfaces, sketch views and record decisions, then analyze risks and goal achievement; if the goal is not achieved, the analysis result and refined design feed the next iteration."
           },
           "boundary": {
             "zh": "以用户提供的原图依据和重绘 ADD 图为最高基准。",
