@@ -1599,7 +1599,7 @@ window.reviewContent = {
         "en": "Memorize 4+1 together with Views and Beyond. Focus on view types, stakeholder concerns, and beyond-view information, not just UML diagram names."
       },
       "answerFrame": {
-        "zh": "4+1：逻辑、过程、物理、开发 + 用例场景。视图及视图外信息：先文档化视图，再补充跨视图信息、接口、映射、理由、质量属性。",
+        "zh": "4+1：逻辑、进程、物理、开发 + 用例场景。视图及视图外信息：先文档化视图，再补充跨视图信息、接口、映射、理由、质量属性。",
         "en": "4+1: logical, process, physical, development + use-case scenarios. Views and Beyond: document views first, then beyond-view information, interfaces, mappings, rationale, and quality attributes."
       },
       "bullets": [
@@ -1670,19 +1670,42 @@ window.reviewContent = {
             "zh": "只写“画类图、部署图、时序图”不够。要说每个视图服务谁、解决什么 关注点。",
             "en": "Class/deployment/sequence diagrams alone are insufficient; state audience and concern."
           }
+        },
+        {
+          "title": {
+            "zh": "4+1 每个视图怎么画 UML",
+            "en": "How to draw UML for each 4+1 view"
+          },
+          "summary": {
+            "zh": "每个视图都要先说关注点，再选能表达该关注点的 UML 图。",
+            "en": "For each view, state the concern first, then choose the UML notation that exposes it."
+          },
+          "must": {
+            "zh": "+1 场景画用例图：画系统边界、外部参与者和关键用例。\n逻辑视图画类图：画核心领域类/对象、职责、属性/操作、关联、聚合或继承。\n开发视图画组件图或包图：画代码包、组件、服务/库、制品和依赖关系。\n进程视图画时序图：画运行时生命线、消息顺序、同步/异步调用、并发或通信点。\n物理视图画部署图：画节点、容器/服务器、网络、部署制品、数据库和中间件。",
+            "en": "+1 scenarios use a use-case diagram: draw system boundary, external actors, and key use cases.\nLogical view uses a class diagram: draw core domain classes/objects, responsibilities, attributes/operations, associations, aggregation, or inheritance.\nDevelopment view uses a component or package diagram: draw packages, components, services/libraries, artifacts, and dependencies.\nProcess view uses a sequence diagram: draw runtime lifelines, message order, sync/async calls, concurrency, or communication points.\nPhysical view uses a deployment diagram: draw nodes, containers/servers, networks, deployed artifacts, databases, and middleware."
+          },
+          "answer": {
+            "zh": "画图题按“视图目的 -> UML 图种 -> 图中元素”回答；4+1 依赖箭头按 逻辑视图 -> 开发视图、逻辑视图 -> 进程视图、开发视图 -> 物理视图、进程视图 -> 物理视图 画。",
+            "en": "For sketch questions, answer as view purpose -> UML notation -> diagram elements. Draw 4+1 dependency arrows as Logical -> Development, Logical -> Process, Development -> Physical, and Process -> Physical."
+          },
+          "trap": {
+            "zh": "不要把 UML 图名当成答案本身。图名只是表达视图的工具，分数点在视图关注点、元素和关系。",
+            "en": "Do not treat UML names as the whole answer; the marks come from view concerns, elements, and relations."
+          }
         }
       ],
       "diagramIds": [
         "architecture-view-selection",
         "review-4-plus-1-views",
+        "review-4-plus-1-uml-cheatsheet",
         "architecture-design-process"
       ],
       "memorize": {
-        "zh": "视图及视图外信息 三类视图：模块、组件-连接器、分配。\n4+1 视图：逻辑视图、进程视图、物理视图、开发视图，加 用例/场景。\n视图不是越多越好；根据 利益相关者关注点 选择并记录视图、元素、关系、约束和 设计理由。",
-        "en": "Views and Beyond has three view types: Module, Component-and-Connector, and Allocation.\n4+1 views: Logical, Process, Physical, Development, plus Use Cases/Scenarios.\nMore views are not always better; select views by stakeholder concerns and record elements, relations, constraints, and rationale."
+        "zh": "视图及视图外信息 三类视图：模块、组件-连接器、分配。\n4+1 视图：逻辑视图、进程视图、物理视图、开发视图，加 用例/场景。\n4+1 画图：用例图、类图、组件/包图、时序图、部署图。\n视图不是越多越好；根据 利益相关者关注点 选择并记录视图、元素、关系、约束和 设计理由。",
+        "en": "Views and Beyond has three view types: Module, Component-and-Connector, and Allocation.\n4+1 views: Logical, Process, Physical, Development, plus Use Cases/Scenarios.\n4+1 sketching: use-case diagram, class diagram, component/package diagram, sequence diagram, deployment diagram.\nMore views are not always better; select views by stakeholder concerns and record elements, relations, constraints, and rationale."
       },
       "examTemplate": {
-        "zh": "视图题先说“同一架构面向不同关切要用不同视图”，再列三类视图或 4+1，最后给例子：开发人员看模块，运维人员看部署，性能/并发看进程或 C&C。",
+        "zh": "视图题先说“同一架构面向不同关切要用不同视图”，再列三类视图或 4+1，最后给例子：开发人员看模块，运维人员看部署，性能/并发看进程视图或 C&C。",
         "en": "For view questions, first state that different stakeholder concerns need different views, then list the three view types or 4+1, and give examples: developers use module views, operators use deployment views, performance/concurrency uses process or C&C views."
       },
       "lectureNotes": [
@@ -2945,7 +2968,7 @@ window.reviewContent = {
     },
     {
       "category": "views",
-      "zh": "过程视图",
+      "zh": "进程视图",
       "en": "Process View",
       "noteZh": "描述并发、通信和运行时行为。",
       "noteEn": "Describes concurrency, communication, and runtime behavior.",
@@ -2956,9 +2979,7 @@ window.reviewContent = {
         "用例场景"
       ],
       "aliases": {
-        "zh": [
-          "进程视图"
-        ],
+        "zh": [],
         "en": [
           "Process Views"
         ]
@@ -5055,12 +5076,30 @@ window.reviewContent = {
         "en": "4+1 Views"
       },
       "note": {
-        "zh": "来自课程材料纪要配套重绘：逻辑视图、进程视图、物理视图、开发视图与用例场景。",
+        "zh": "来自课程材料纪要配套重绘：逻辑视图、进程视图、物理视图、开发视图与用例场景；实线箭头表示视图依赖方向。",
         "en": "Redrawn with the complete review minutes: logical, process, physical, development, and use-case scenarios."
       },
       "use": {
         "zh": "4+1 题和文档化题使用。",
         "en": "Use for 4+1 and documentation questions."
+      }
+    },
+    {
+      "id": "review-4-plus-1-uml-cheatsheet",
+      "src": "assets/diagrams/review-4-plus-1-uml-cheatsheet.svg",
+      "srcZh": "assets/diagrams/review-4-plus-1-uml-cheatsheet.zh.svg",
+      "srcEn": "assets/diagrams/review-4-plus-1-uml-cheatsheet.svg",
+      "title": {
+        "zh": "4+1 视图 UML 画法",
+        "en": "4+1 UML Sketch Guide"
+      },
+      "note": {
+        "zh": "把 4+1 每个视图落到可手画的 UML：用例图、类图、组件/包图、时序图、部署图。",
+        "en": "Maps each 4+1 view to an exam-sketchable UML notation: use-case, class, component/package, sequence, and deployment."
+      },
+      "use": {
+        "zh": "4+1 画图题、视图选择题和文档化题使用。",
+        "en": "Use for 4+1 drawing, view selection, and documentation questions."
       }
     },
     {

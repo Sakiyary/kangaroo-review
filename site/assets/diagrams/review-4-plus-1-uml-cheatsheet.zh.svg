@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">4+1 视图 UML 画法速查</title>
+  <desc id="desc">考场画图速查：场景用用例图，逻辑视图用类图，开发视图用组件图或包图，进程视图用时序图，物理视图用部署图。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f5d75"/>
+    </marker>
+    <style>
+      .bg{fill:#fbfaf7}
+      .panel{fill:#fff;stroke:#cfd7e2;stroke-width:2;rx:18}
+      .panelTitle{font:700 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2733}
+      .subtitle{font:600 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#c5533d}
+      .body{font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#4f5d75}
+      .tiny{font:13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#6b7686}
+      .title{font:700 34px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2733}
+      .note{font:17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#6b7686}
+      .shape{fill:#f8fbff;stroke:#52647d;stroke-width:2}
+      .accent{fill:#f7e7df;stroke:#c5533d;stroke-width:2}
+      .muted{fill:#eef4ea;stroke:#6a8f56;stroke-width:2}
+      .line{stroke:#4f5d75;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .plain{stroke:#4f5d75;stroke-width:2;fill:none}
+      .dash{stroke:#8793a4;stroke-width:1.8;stroke-dasharray:6 6;fill:none}
+    </style>
+  </defs>
+  <rect class="bg" width="1400" height="900"/>
+  <text class="title" x="700" y="58" text-anchor="middle">4+1 视图：每个视图该画什么 UML</text>
+  <text class="note" x="700" y="90" text-anchor="middle">先写视图目的，再画能表达该关注点的 UML 图；不要只背图名。</text>
+
+  <rect class="panel" x="45" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="72" y="162">+1 场景</text>
+  <text class="subtitle" x="72" y="188">用例图 / Use-case diagram</text>
+  <rect class="shape" x="172" y="220" width="220" height="165" rx="12"/>
+  <text class="tiny" x="282" y="244" text-anchor="middle">系统边界</text>
+  <circle class="accent" cx="112" cy="258" r="16"/>
+  <path class="plain" d="M112 274 L112 322 M82 294 L142 294 M112 322 L92 360 M112 322 L132 360"/>
+  <text class="tiny" x="112" y="386" text-anchor="middle">参与者</text>
+  <ellipse class="muted" cx="282" cy="285" rx="72" ry="28"/>
+  <text class="tiny" x="282" y="290" text-anchor="middle">下单</text>
+  <ellipse class="muted" cx="282" cy="345" rx="72" ry="28"/>
+  <text class="tiny" x="282" y="350" text-anchor="middle">查状态</text>
+  <path class="plain" d="M142 294 L210 285 M142 320 L210 345"/>
+  <text class="body" x="72" y="417">用关键场景驱动架构，并验证四个视图一致。</text>
+
+  <rect class="panel" x="495" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="522" y="162">逻辑视图</text>
+  <text class="subtitle" x="522" y="188">类图 / Class diagram</text>
+  <rect class="shape" x="535" y="225" width="128" height="112"/>
+  <line class="plain" x1="535" y1="255" x2="663" y2="255"/>
+  <line class="plain" x1="535" y1="295" x2="663" y2="295"/>
+  <text class="tiny" x="599" y="247" text-anchor="middle">订单</text>
+  <text class="tiny" x="545" y="278">编号、总价</text>
+  <text class="tiny" x="545" y="320">提交()</text>
+  <rect class="shape" x="735" y="225" width="128" height="112"/>
+  <line class="plain" x1="735" y1="255" x2="863" y2="255"/>
+  <line class="plain" x1="735" y1="295" x2="863" y2="295"/>
+  <text class="tiny" x="799" y="247" text-anchor="middle">支付</text>
+  <text class="tiny" x="745" y="278">金额</text>
+  <text class="tiny" x="745" y="320">授权()</text>
+  <path class="line" d="M663 280 L735 280"/>
+  <rect class="shape" x="636" y="360" width="128" height="54"/>
+  <text class="tiny" x="700" y="392" text-anchor="middle">顾客</text>
+  <path class="plain" d="M636 386 L600 337"/>
+  <text class="body" x="522" y="427">画核心概念、职责、属性/操作和类之间关系。</text>
+
+  <rect class="panel" x="945" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="972" y="162">开发视图</text>
+  <text class="subtitle" x="972" y="188">组件图或包图 / Component or package</text>
+  <path class="shape" d="M990 236 h92 l18 22 h196 v125 h-306 z"/>
+  <text class="tiny" x="1143" y="259" text-anchor="middle">order 包</text>
+  <rect class="muted" x="1018" y="292" width="110" height="42" rx="8"/>
+  <text class="tiny" x="1073" y="318" text-anchor="middle">订单接口</text>
+  <rect class="muted" x="1160" y="292" width="110" height="42" rx="8"/>
+  <text class="tiny" x="1215" y="318" text-anchor="middle">订单核心</text>
+  <path class="line" d="M1128 313 L1160 313"/>
+  <path class="shape" d="M1024 354 h80 l15 18 h151 v46 h-246 z"/>
+  <text class="tiny" x="1147" y="392" text-anchor="middle">共享内核</text>
+  <text class="body" x="972" y="427">画代码模块、包、组件、制品和依赖关系。</text>
+
+  <rect class="panel" x="45" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="72" y="537">进程视图</text>
+  <text class="subtitle" x="72" y="563">时序图 / Sequence diagram</text>
+  <text class="tiny" x="112" y="610" text-anchor="middle">客户端</text>
+  <text class="tiny" x="220" y="610" text-anchor="middle">订单服务</text>
+  <text class="tiny" x="332" y="610" text-anchor="middle">支付服务</text>
+  <path class="dash" d="M112 622 L112 755 M220 622 L220 755 M332 622 L332 755"/>
+  <rect class="accent" x="103" y="648" width="18" height="62"/>
+  <rect class="accent" x="211" y="668" width="18" height="80"/>
+  <rect class="accent" x="323" y="700" width="18" height="35"/>
+  <path class="line" d="M121 668 L211 668"/>
+  <text class="tiny" x="166" y="660" text-anchor="middle">创建订单()</text>
+  <path class="line" d="M229 702 L323 702"/>
+  <text class="tiny" x="276" y="694" text-anchor="middle">支付授权()</text>
+  <path class="line" d="M323 735 L229 735"/>
+  <text class="tiny" x="276" y="755" text-anchor="middle">成功</text>
+  <text class="body" x="72" y="800">画运行时顺序、消息、并发、异步交互和同步点。</text>
+
+  <rect class="panel" x="495" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="522" y="537">物理视图</text>
+  <text class="subtitle" x="522" y="563">部署图 / Deployment diagram</text>
+  <rect class="shape" x="535" y="610" width="130" height="94" rx="10"/>
+  <text class="tiny" x="600" y="635" text-anchor="middle">浏览器</text>
+  <rect class="accent" x="565" y="660" width="70" height="25" rx="5"/>
+  <text class="tiny" x="600" y="677" text-anchor="middle">前端制品</text>
+  <rect class="shape" x="735" y="600" width="130" height="112" rx="10"/>
+  <text class="tiny" x="800" y="625" text-anchor="middle">API 服务器</text>
+  <rect class="accent" x="762" y="650" width="76" height="25" rx="5"/>
+  <text class="tiny" x="800" y="667" text-anchor="middle">服务制品</text>
+  <rect class="shape" x="610" y="740" width="115" height="50" rx="10"/>
+  <text class="tiny" x="668" y="770" text-anchor="middle">数据库</text>
+  <path class="line" d="M665 655 L735 655"/>
+  <path class="line" d="M780 712 L705 740"/>
+  <text class="body" x="522" y="800">画节点、网络、部署制品、数据库和中间件。</text>
+
+  <rect class="panel" x="945" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="972" y="537">答题模板</text>
+  <text class="subtitle" x="972" y="563">目的 -> 图种 -> 元素</text>
+  <text class="body" x="972" y="610">1. 先写该视图服务的关注点。</text>
+  <text class="body" x="972" y="642">2. 再写该视图适合画哪种 UML。</text>
+  <text class="body" x="972" y="674">3. 图中只放能支撑该关注点的元素。</text>
+  <text class="body" x="972" y="706">4. 最后用场景检查各视图是否一致。</text>
+  <text class="body" x="972" y="758">避免只列 UML 图名；要说清楚每个视图</text>
+  <text class="body" x="972" y="786">帮助利益相关者理解什么。</text>
+</svg>

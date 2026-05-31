@@ -1176,9 +1176,9 @@ window.reviewQuestions = [
       "development view",
       "use cases"
     ],
-    "answer_frame_en": "Logical view explains main functionality and domain objects.\nProcess view explains concurrency, processes, threads, and communication.\nDevelopment view explains code modules and development organization.\nPhysical/deployment view explains mapping from software to hardware or deployment environment.\nScenarios/use cases connect and validate the other four views.",
+    "answer_frame_en": "Logical view explains main functionality and domain objects; sketch it with a class diagram.\nProcess view explains concurrency, runtime processes, threads, and communication; sketch it with a sequence diagram.\nDevelopment view explains code modules, packages, components, and development organization; sketch it with a component or package diagram.\nPhysical/deployment view explains mapping from software to hardware, containers, or deployment environment; sketch it with a deployment diagram.\nScenarios/use cases connect and validate the other four views; sketch them with a use-case diagram.\nDraw dependency arrows as Logical -> Development, Logical -> Process, Development -> Physical, and Process -> Physical.",
     "question_zh": "描述 Kruchten 的 4+1 视图。",
-    "answer_frame_zh": "逻辑视图说明主要功能和领域对象。\n进程视图说明并发、进程、线程和通信。\n开发视图说明代码模块和开发组织。\n物理/部署视图说明软件到硬件或部署环境的映射。\n用例/场景用于串联和验证前四个视图。",
+    "answer_frame_zh": "逻辑视图说明主要功能和领域对象，考场可画类图。\n进程视图说明并发、运行时进程、线程和通信，考场可画时序图。\n开发视图说明代码模块、包、组件和开发组织，考场可画组件图或包图。\n物理/部署视图说明软件到硬件、容器或部署环境的映射，考场可画部署图。\n用例/场景用于串联和验证前四个视图，考场可画用例图。\n视图依赖箭头按 逻辑视图 -> 开发视图、逻辑视图 -> 进程视图、开发视图 -> 物理视图、进程视图 -> 物理视图 画。",
     "topicIds": [
       "views"
     ],
@@ -1191,10 +1191,10 @@ window.reviewQuestions = [
       "use cases"
     ],
     "diagram_id": "review-4-plus-1-views",
-    "sample_answer_zh": "Kruchten 的 4+1 视图用五类视角描述架构。\n逻辑视图描述系统提供给用户的主要功能和领域对象。\n进程视图描述运行时进程、线程、并发和通信。\n开发视图描述代码模块、包和开发组织。\n物理视图描述软件如何部署到硬件节点。\n“+1” 是场景或用例，用来串联和验证前四个视图。\n它的价值在于用不同视角服务不同利益相关者，并用场景检查视图之间是否一致。",
-    "sample_answer_en": "Kruchten 4+1 describes architecture through five perspectives.\nThe Logical view describes the main functionality and domain objects provided to users.\nThe Process view describes runtime processes, threads, concurrency, and communication.\nThe Development view describes code modules, packages, and development organization.\nThe Physical view describes how software is deployed to hardware nodes.\nThe “+1” view is scenarios or use cases, which connect and validate the other four views.\nIts value is serving different stakeholders through different perspectives and checking consistency across views with scenarios.",
-    "visual_hint_zh": "可以参考配套图解，考场手画时保留核心元素和箭头，不必追求美观。",
-    "visual_hint_en": "Use the linked diagram as a guide; in the exam, keep core elements and arrows rather than visual polish.",
+    "sample_answer_zh": "Kruchten 的 4+1 视图用五类视角描述架构。\n逻辑视图描述系统提供给用户的主要功能和领域对象，适合用类图画核心类、职责、属性/操作和类之间关系。\n进程视图描述运行时进程、线程、并发和通信，适合用时序图画生命线、消息顺序、同步/异步调用和通信点。\n开发视图描述代码模块、包、组件、制品和开发组织，适合用组件图或包图画代码单元及其依赖。\n物理视图描述软件如何部署到硬件节点、容器、网络、数据库和中间件，适合用部署图表达软件到运行环境的映射。\n“+1” 是场景或用例，适合用用例图画系统边界、参与者和关键用例，用来串联和验证前四个视图。\n图中视图依赖关系可画为：逻辑视图指向开发视图和进程视图，开发视图和进程视图都指向物理视图。\n它的价值在于用不同视角服务不同利益相关者，并用场景检查视图之间是否一致。",
+    "sample_answer_en": "Kruchten 4+1 describes architecture through five perspectives.\nThe Logical view describes the main functionality and domain objects provided to users; use a class diagram for core classes, responsibilities, attributes/operations, and relations.\nThe Process view describes runtime processes, threads, concurrency, and communication; use a sequence diagram for lifelines, message order, sync/async calls, and communication points.\nThe Development view describes code modules, packages, components, artifacts, and development organization; use a component or package diagram for code units and dependencies.\nThe Physical view describes deployment to hardware nodes, containers, networks, databases, and middleware; use a deployment diagram for software-to-environment mapping.\nThe “+1” view is scenarios or use cases; use a use-case diagram for system boundary, actors, and key use cases, and use scenarios to connect and validate the other views.\nThe dependency arrows can be drawn as Logical -> Development, Logical -> Process, Development -> Physical, and Process -> Physical.\nIts value is serving different stakeholders through different perspectives and checking consistency across views with scenarios.",
+    "visual_hint_zh": "可以参考两张配套图解：4+1 模型图保留视图依赖箭头，UML 速查图说明每个视图怎么手画。",
+    "visual_hint_en": "Use the two linked diagrams: the 4+1 model keeps view dependency arrows, and the UML cheat sheet shows how to sketch each view.",
     "priority": "P0",
     "priority_reason_zh": "复习范围原始材料与复习课件 明确属于核心考点；优先练到能直接成段作答。",
     "priority_reason_en": "The complete recording and review slides put this in the main focus; practice until you can answer in full paragraphs.",
@@ -1215,13 +1215,17 @@ window.reviewQuestions = [
     ],
     "drawing_steps_zh": [
       "画四个视图围绕“用例场景”：逻辑视图、进程视图、物理视图、开发视图。",
+      "画实线依赖箭头：逻辑视图 -> 开发视图，逻辑视图 -> 进程视图，开发视图 -> 物理视图，进程视图 -> 物理视图。",
       "每个视图旁写服务对象：用户/设计人员、性能分析人员、运维人员、开发人员。",
-      "中间或底部写“用例场景”，表示用场景驱动和验证四个视图。"
+      "中间或底部写“用例场景”，表示用场景驱动和验证四个视图。",
+      "如果题目要求展开 UML，+1 画用例图，逻辑视图画类图，开发视图画组件图或包图，进程视图画时序图，物理视图画部署图。"
     ],
     "drawing_steps_en": [
       "Draw four views around scenarios: Logical, Process, Physical, Development.",
+      "Draw solid dependency arrows: Logical -> Development, Logical -> Process, Development -> Physical, Process -> Physical.",
       "Write one concern for each view: functional objects, runtime concurrency, deployment nodes, code organization.",
-      "Put Use-case scenarios in the center or bottom to show scenario-driven validation."
+      "Put Use-case scenarios in the center or bottom to show scenario-driven validation.",
+      "If the question asks for UML detail, draw use-case diagram for +1, class diagram for Logical, component/package diagram for Development, sequence diagram for Process, and deployment diagram for Physical."
     ]
   },
   {

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">4+1 Views UML Cheat Sheet</title>
+  <desc id="desc">Exam sketch guide: scenarios use a use-case diagram, logical view uses class diagram, development view uses component or package diagram, process view uses sequence diagram, and physical view uses deployment diagram.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f5d75"/>
+    </marker>
+    <style>
+      .bg{fill:#fbfaf7}
+      .panel{fill:#fff;stroke:#cfd7e2;stroke-width:2;rx:18}
+      .panelTitle{font:700 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2733}
+      .subtitle{font:600 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#c5533d}
+      .body{font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#4f5d75}
+      .tiny{font:13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#6b7686}
+      .title{font:700 34px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2733}
+      .note{font:17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#6b7686}
+      .shape{fill:#f8fbff;stroke:#52647d;stroke-width:2}
+      .accent{fill:#f7e7df;stroke:#c5533d;stroke-width:2}
+      .muted{fill:#eef4ea;stroke:#6a8f56;stroke-width:2}
+      .line{stroke:#4f5d75;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .plain{stroke:#4f5d75;stroke-width:2;fill:none}
+      .dash{stroke:#8793a4;stroke-width:1.8;stroke-dasharray:6 6;fill:none}
+    </style>
+  </defs>
+  <rect class="bg" width="1400" height="900"/>
+  <text class="title" x="700" y="58" text-anchor="middle">4+1 Views: What UML to Sketch</text>
+  <text class="note" x="700" y="90" text-anchor="middle">Write the view purpose first, then draw the UML notation that best exposes that concern.</text>
+
+  <rect class="panel" x="45" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="72" y="162">+1 Scenarios</text>
+  <text class="subtitle" x="72" y="188">Use-case diagram / 用例图</text>
+  <rect class="shape" x="172" y="220" width="220" height="165" rx="12"/>
+  <text class="tiny" x="282" y="244" text-anchor="middle">System boundary</text>
+  <circle class="accent" cx="112" cy="258" r="16"/>
+  <path class="plain" d="M112 274 L112 322 M82 294 L142 294 M112 322 L92 360 M112 322 L132 360"/>
+  <text class="tiny" x="112" y="386" text-anchor="middle">Actor</text>
+  <ellipse class="muted" cx="282" cy="285" rx="72" ry="28"/>
+  <text class="tiny" x="282" y="290" text-anchor="middle">Place order</text>
+  <ellipse class="muted" cx="282" cy="345" rx="72" ry="28"/>
+  <text class="tiny" x="282" y="350" text-anchor="middle">Track status</text>
+  <path class="plain" d="M142 294 L210 285 M142 320 L210 345"/>
+  <text class="body" x="72" y="417">Use scenarios to drive and validate other views.</text>
+
+  <rect class="panel" x="495" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="522" y="162">Logical View</text>
+  <text class="subtitle" x="522" y="188">Class diagram / 类图</text>
+  <rect class="shape" x="535" y="225" width="128" height="112"/>
+  <line class="plain" x1="535" y1="255" x2="663" y2="255"/>
+  <line class="plain" x1="535" y1="295" x2="663" y2="295"/>
+  <text class="tiny" x="599" y="247" text-anchor="middle">Order</text>
+  <text class="tiny" x="545" y="278">id, total</text>
+  <text class="tiny" x="545" y="320">submit()</text>
+  <rect class="shape" x="735" y="225" width="128" height="112"/>
+  <line class="plain" x1="735" y1="255" x2="863" y2="255"/>
+  <line class="plain" x1="735" y1="295" x2="863" y2="295"/>
+  <text class="tiny" x="799" y="247" text-anchor="middle">Payment</text>
+  <text class="tiny" x="745" y="278">amount</text>
+  <text class="tiny" x="745" y="320">authorize()</text>
+  <path class="line" d="M663 280 L735 280"/>
+  <rect class="shape" x="636" y="360" width="128" height="54"/>
+  <text class="tiny" x="700" y="392" text-anchor="middle">Customer</text>
+  <path class="plain" d="M636 386 L600 337"/>
+  <text class="body" x="522" y="427">Show core concepts, responsibilities, and relations.</text>
+
+  <rect class="panel" x="945" y="125" width="410" height="320"/>
+  <text class="panelTitle" x="972" y="162">Development View</text>
+  <text class="subtitle" x="972" y="188">Component/package diagram / 组件图或包图</text>
+  <path class="shape" d="M990 236 h92 l18 22 h196 v125 h-306 z"/>
+  <text class="tiny" x="1143" y="259" text-anchor="middle">package order</text>
+  <rect class="muted" x="1018" y="292" width="110" height="42" rx="8"/>
+  <text class="tiny" x="1073" y="318" text-anchor="middle">Order API</text>
+  <rect class="muted" x="1160" y="292" width="110" height="42" rx="8"/>
+  <text class="tiny" x="1215" y="318" text-anchor="middle">Order Core</text>
+  <path class="line" d="M1128 313 L1160 313"/>
+  <path class="shape" d="M1024 354 h80 l15 18 h151 v46 h-246 z"/>
+  <text class="tiny" x="1147" y="392" text-anchor="middle">shared-kernel</text>
+  <text class="body" x="972" y="427">Show code units, packages, components, and dependencies.</text>
+
+  <rect class="panel" x="45" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="72" y="537">Process View</text>
+  <text class="subtitle" x="72" y="563">Sequence diagram / 时序图</text>
+  <text class="tiny" x="112" y="610" text-anchor="middle">Client</text>
+  <text class="tiny" x="220" y="610" text-anchor="middle">OrderSvc</text>
+  <text class="tiny" x="332" y="610" text-anchor="middle">PaymentSvc</text>
+  <path class="dash" d="M112 622 L112 755 M220 622 L220 755 M332 622 L332 755"/>
+  <rect class="accent" x="103" y="648" width="18" height="62"/>
+  <rect class="accent" x="211" y="668" width="18" height="80"/>
+  <rect class="accent" x="323" y="700" width="18" height="35"/>
+  <path class="line" d="M121 668 L211 668"/>
+  <text class="tiny" x="166" y="660" text-anchor="middle">createOrder()</text>
+  <path class="line" d="M229 702 L323 702"/>
+  <text class="tiny" x="276" y="694" text-anchor="middle">authorize()</text>
+  <path class="line" d="M323 735 L229 735"/>
+  <text class="tiny" x="276" y="755" text-anchor="middle">ok</text>
+  <text class="body" x="72" y="800">Show runtime order, messages, concurrency, and async calls.</text>
+
+  <rect class="panel" x="495" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="522" y="537">Physical View</text>
+  <text class="subtitle" x="522" y="563">Deployment diagram / 部署图</text>
+  <rect class="shape" x="535" y="610" width="130" height="94" rx="10"/>
+  <text class="tiny" x="600" y="635" text-anchor="middle">Browser</text>
+  <rect class="accent" x="565" y="660" width="70" height="25" rx="5"/>
+  <text class="tiny" x="600" y="677" text-anchor="middle">SPA</text>
+  <rect class="shape" x="735" y="600" width="130" height="112" rx="10"/>
+  <text class="tiny" x="800" y="625" text-anchor="middle">API Server</text>
+  <rect class="accent" x="762" y="650" width="76" height="25" rx="5"/>
+  <text class="tiny" x="800" y="667" text-anchor="middle">Service</text>
+  <rect class="shape" x="610" y="740" width="115" height="50" rx="10"/>
+  <text class="tiny" x="668" y="770" text-anchor="middle">Database</text>
+  <path class="line" d="M665 655 L735 655"/>
+  <path class="line" d="M780 712 L705 740"/>
+  <text class="body" x="522" y="800">Show nodes, networks, artifacts, databases, and middleware.</text>
+
+  <rect class="panel" x="945" y="500" width="410" height="320"/>
+  <text class="panelTitle" x="972" y="537">Answer Pattern</text>
+  <text class="subtitle" x="972" y="563">Purpose -> notation -> elements</text>
+  <text class="body" x="972" y="610">1. State the concern of the view.</text>
+  <text class="body" x="972" y="642">2. Name the UML diagram to draw.</text>
+  <text class="body" x="972" y="674">3. Put only the elements that support that concern.</text>
+  <text class="body" x="972" y="706">4. Use scenarios to check the views agree.</text>
+  <text class="body" x="972" y="758">Avoid: listing UML names without explaining what</text>
+  <text class="body" x="972" y="786">each view helps stakeholders understand.</text>
+</svg>
