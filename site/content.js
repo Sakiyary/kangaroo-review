@@ -794,12 +794,12 @@ window.reviewContent = {
         "en": "Enterprise Architecture"
       },
       "takeaway": {
-        "zh": "企业架构按 P1 复习：会 4A、TOGAF/ADM、CBM 和基础建模检查视角；案例细节只作背景。",
-        "en": "Review enterprise architecture as P1: know 4A, TOGAF/ADM, CBM, and basic modeling/checking lenses; case details are background."
+        "zh": "企业架构按 P1 复习：会 4A、TOGAF/ADM、CBM 和“战略 -> 能力 -> 4A -> 治理 -> 路线图”的实施链；案例细节只作背景。",
+        "en": "Review enterprise architecture as P1: know 4A, TOGAF/ADM, CBM, and the implementation chain of strategy -> capabilities -> 4A -> governance -> roadmap; case details are background."
       },
       "answerFrame": {
-        "zh": "回答时围绕“找结构、找关系、定原则”。先分业务/数据/应用/技术架构，再用 TOGAF ADM 或 CBM 说明怎么落地。",
-        "en": "Answer around structure, relationships, and principles. Start with business/data/application/technology architecture, then use TOGAF ADM or CBM for implementation."
+        "zh": "回答时围绕“找结构、找关系、定原则”。先说战略目标和业务能力，再分业务/数据/应用/技术架构，最后用 TOGAF ADM、CBM、治理和迁移路线图说明怎么落地。",
+        "en": "Answer around structure, relationships, and principles. Start with strategic goals and business capabilities, split business/data/application/technology architecture, then use TOGAF ADM, CBM, governance, and a migration roadmap to explain implementation."
       },
       "bullets": [
         {
@@ -815,8 +815,16 @@ window.reviewContent = {
           "en": "CBM: business capability as the core; components are cohesive, loosely coupled, reusable, and composable."
         },
         {
+          "zh": "TOGAF、ADM、CBM 不是同一层级：TOGAF 管企业架构整体框架，ADM 管架构开发流程，CBM 管业务能力/组件拆分。",
+          "en": "TOGAF, ADM, and CBM are not the same level: TOGAF is the overall EA framework, ADM is the architecture development process, and CBM decomposes business capabilities/components."
+        },
+        {
           "zh": "企业架构可按“现状架构 -> 目标架构 -> 差距 -> 路线图 -> 治理”组织答案。",
           "en": "Enterprise architecture answers can use “baseline architecture -> target architecture -> gaps -> roadmap -> governance”."
+        },
+        {
+          "zh": "数字化转型题要落到价值链、业务流程、主题域、应用组合、API/服务、平台和基础设施，不要停在口号。",
+          "en": "For digital transformation questions, land the answer on value chain, business processes, subject areas, application portfolio, APIs/services, platforms, and infrastructure instead of slogans."
         },
         {
           "zh": "CBM 不是技术组件图，而是用业务能力拆分企业，帮助识别共用能力、中台和治理边界。",
@@ -826,10 +834,11 @@ window.reviewContent = {
       "sources": [
         "Complete review minutes",
         "Li Shanshan review-class slides",
-        "Lecture 10-11 Enterprise Architecture slide OCR"
+        "Lecture 10-11 Enterprise Architecture slide OCR",
+        "Feishu AI Wiki: 05 DDD、事件风暴与企业架构"
       ],
       "group": "modern",
-      "sourceConfidence": "完整录音李杉杉段 + Lecture 10-11 OCR",
+      "sourceConfidence": "完整录音李杉杉段 + Lecture 10-11 OCR + 同学 AI Wiki 企业架构章节补充",
       "examWeight": "概念理解题",
       "deepDive": [
         {
@@ -842,12 +851,12 @@ window.reviewContent = {
             "en": "EA maps business goals to multi-layer architecture governance."
           },
           "must": {
-            "zh": "业务架构、数据架构、应用架构、技术架构；治理、路线图、原则和安全约束作为落地机制/约束说明。",
-            "en": "Business, data, application, and technology architecture; governance, roadmap, principles, and security constraints are implementation mechanisms/constraints."
+            "zh": "业务架构回答企业要做什么和能力怎样组织；数据架构回答核心业务对象、主题域和数据标准；应用架构回答哪些应用/API/服务支撑能力；技术架构回答平台、基础设施和标准组件怎样承载交付。",
+            "en": "Business architecture answers what the enterprise does and how capabilities are organized; data architecture covers core business objects, subject areas, and standards; application architecture maps applications/APIs/services to capabilities; technology architecture covers platforms, infrastructure, and standard components."
           },
           "answer": {
-            "zh": "先写现状和目标，再写差距、路线图和治理机制。",
-            "en": "Write current state, target state, gaps, roadmap, and governance."
+            "zh": "按“战略目标 -> 业务能力 -> 4A -> 治理/标准 -> 迁移路线图”写。最后补一句：企业架构的价值是统一目标、标准化建设、降低复杂度并支持持续治理。",
+            "en": "Use “strategic goals -> business capabilities -> 4A -> governance/standards -> migration roadmap”. Close with EA's value: aligning goals, standardizing construction, reducing complexity, and supporting continuous governance."
           },
           "trap": {
             "zh": "不要把企业架构写成“系统架构图”。它关注企业级能力和治理。",
@@ -874,6 +883,28 @@ window.reviewContent = {
           "trap": {
             "zh": "CBM 不是技术组件图，别把服务/数据库直接画成 capability。",
             "en": "CBM is not a technical component diagram; do not draw services/databases as capabilities."
+          }
+        },
+        {
+          "title": {
+            "zh": "实施路径",
+            "en": "Implementation path"
+          },
+          "summary": {
+            "zh": "Wiki 补充强调企业架构题要写成从战略到实施的连续链条。",
+            "en": "The Wiki supplement emphasizes writing EA as a continuous chain from strategy to implementation."
+          },
+          "must": {
+            "zh": "自顶向下：战略规划 -> 战略能力 -> 流程能力/指标/改善机会；自底向上：沉淀通用能力、中台和平台能力。",
+            "en": "Top down: strategic planning -> strategic capabilities -> process capabilities/metrics/improvement opportunities; bottom up: accumulate common capabilities, middle-platform capabilities, and platform capabilities."
+          },
+          "answer": {
+            "zh": "实施步骤可写：1 识别战略与价值驱动；2 建能力地图/价值链/流程模型；3 设计数据责任、应用组合、服务边界和集成关系；4 选择平台、中间件、部署与网络标准；5 用原则、评审、路线图和变更管理持续治理。",
+            "en": "Implementation steps: 1 identify strategy and value drivers; 2 build capability map/value chain/process models; 3 design data responsibility, application portfolio, service boundaries, and integration; 4 select platform, middleware, deployment, and network standards; 5 govern continuously with principles, reviews, roadmap, and change management."
+          },
+          "trap": {
+            "zh": "不要只背 4A 名词。题目问数字化转型作用时，要说明 4A 如何把目标落到能力、数据、应用服务和技术平台。",
+            "en": "Do not only memorize the four A names. If asked about digital transformation, explain how 4A maps goals to capabilities, data, application services, and technology platforms."
           }
         }
       ],
@@ -1877,6 +1908,27 @@ window.reviewContent = {
       "noteEn": "A method organizing reusable and composable components by business capability."
     },
     {
+      "category": "enterprise",
+      "zh": "能力地图",
+      "en": "Capability Map",
+      "noteZh": "把战略目标拆成可建设、可复用、可治理业务能力的企业级地图。",
+      "noteEn": "An enterprise-level map that decomposes strategic goals into buildable, reusable, and governable business capabilities."
+    },
+    {
+      "category": "enterprise",
+      "zh": "迁移路线图",
+      "en": "Migration Roadmap",
+      "noteZh": "从现状架构走向目标架构的阶段、优先级和治理计划。",
+      "noteEn": "The phases, priorities, and governance plan for moving from baseline architecture to target architecture."
+    },
+    {
+      "category": "enterprise",
+      "zh": "实施治理",
+      "en": "Implementation Governance",
+      "noteZh": "通过原则、标准、评审和变更管理约束企业架构落地。",
+      "noteEn": "Controls EA implementation through principles, standards, reviews, and change management."
+    },
+    {
       "category": "quality",
       "zh": "安全性",
       "en": "Security",
@@ -2360,10 +2412,10 @@ window.reviewContent = {
         "en": "Enterprise architecture"
       },
       "status": {
-        "zh": "降为 P1",
-        "en": "Set to P1"
+        "zh": "P1，已补充实施链",
+        "en": "P1, implementation chain added"
       },
-      "evidence": "Complete minutes P1; Lecture 10-11 4A/TOGAF/CBM OCR"
+      "evidence": "Complete minutes P1; Lecture 10-11 4A/TOGAF/CBM OCR; Feishu AI Wiki 05 DDD、事件风暴与企业架构"
     },
     {
       "area": {
@@ -3004,8 +3056,8 @@ window.reviewContent = {
               "en": "EA 4A/TOGAF/CBM"
             },
             "note": {
-              "zh": "P1：会基础分析和检查视角，不死背案例。",
-              "en": "P1: know analysis/checking lenses, not case details."
+              "zh": "P1：按战略、能力、4A、治理、路线图组织答案，不死背案例。",
+              "en": "P1: organize answers by strategy, capabilities, 4A, governance, and roadmap; do not memorize case details."
             }
           },
           {

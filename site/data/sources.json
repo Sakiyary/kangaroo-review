@@ -778,6 +778,18 @@
     "needs_ocr": false
   },
   {
+    "path": "feishu/ai-wiki-05-ddd-event-storming-enterprise-architecture.md",
+    "title": "AI 整理 Wiki：05 DDD、事件风暴与企业架构",
+    "kind": "feishu-wiki",
+    "source_group": "peer_ai_notes",
+    "trust": "auxiliary_peer_ai_low_priority",
+    "extraction": "lark-cli-docs-fetch",
+    "text_chars": 9500,
+    "url": "https://my.feishu.cn/wiki/MsqFw2do2ifOEikleEBcm19HnTc",
+    "summary": "补充企业架构理论题拿分框架，强调战略目标、能力地图、4A、TOGAF/ADM、CBM、治理和迁移路线图。",
+    "needs_ocr": false
+  },
+  {
     "path": "feishu/lu-jun-architectural-patterns-review.md",
     "title": "吕骏架构模式复习飞书纪要",
     "kind": "feishu-note",
