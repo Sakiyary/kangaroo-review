@@ -33,6 +33,8 @@ EVENT_TYPES = {
     "mindmap_node_click",
     "whiteboard_open",
     "reward_open",
+    "mock_answer_open",
+    "mock_export",
     "search",
     "filter_change",
 }

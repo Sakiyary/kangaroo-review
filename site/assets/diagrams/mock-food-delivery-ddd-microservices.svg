@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1120" viewBox="0 0 1700 1120" role="img" aria-labelledby="title desc">
+  <title id="title">外卖平台 DDD 与微服务参考架构图</title>
+  <desc id="desc">使用限界上下文、领域事件、服务边界和平台能力展示外卖平台微服务设计。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#26323f"/>
+    </marker>
+    <marker id="eventArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#b54634"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1f2933" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fffdf8; }
+      .title { font: 700 40px "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #1f2933; }
+      .sub { font: 500 21px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #66737f; }
+      .client { fill: #eef5ff; stroke: #5579b8; stroke-width: 2.5; rx: 16; filter: url(#shadow); }
+      .gateway { fill: #f7efe2; stroke: #a36d23; stroke-width: 2.8; rx: 16; filter: url(#shadow); }
+      .context { fill: #ffffff; stroke: #26323f; stroke-width: 2.6; rx: 22; filter: url(#shadow); }
+      .context.core { fill: #fff3ef; stroke: #b54634; }
+      .context.support { fill: #eef8ef; stroke: #5c8f52; }
+      .context.generic { fill: #f0f3f7; stroke: #66737f; }
+      .data { fill: #f8fbff; stroke: #7890b8; stroke-width: 2; rx: 10; }
+      .platform { fill: #202a33; stroke: #202a33; rx: 20; filter: url(#shadow); }
+      .bus { fill: #b54634; stroke: #8f2f24; stroke-width: 3; rx: 20; filter: url(#shadow); }
+      .label { font: 700 24px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1f2933; text-anchor: middle; }
+      .small { font: 500 17px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #4c5967; text-anchor: middle; }
+      .tiny { font: 500 15px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #4c5967; text-anchor: middle; }
+      .white { fill: #ffffff; }
+      .line { stroke: #26323f; stroke-width: 3.2; fill: none; marker-end: url(#arrow); }
+      .event { stroke: #b54634; stroke-width: 3.8; fill: none; marker-end: url(#eventArrow); }
+      .dash { stroke-dasharray: 8 8; }
+      .tag { fill: #fff7df; stroke: #d3a53d; stroke-width: 2; rx: 12; }
+      .tag-text { font: 600 16px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #684b09; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1700" height="1120"/>
+  <text class="title" x="80" y="70">DDD + 微服务设计参考图：外卖平台</text>
+  <text class="sub" x="80" y="110">先用限界上下文划清业务边界，再把上下文映射成可独立部署、独立拥有数据的服务。</text>
+
+  <g transform="translate(70 170)">
+    <rect class="client" x="0" y="0" width="210" height="78"/>
+    <text class="label" x="105" y="32">用户端</text>
+    <text class="small" x="105" y="58">下单 / 查询 / 评价</text>
+  </g>
+  <g transform="translate(70 282)">
+    <rect class="client" x="0" y="0" width="210" height="78"/>
+    <text class="label" x="105" y="32">商家端</text>
+    <text class="small" x="105" y="58">接单 / 菜单 / 营业</text>
+  </g>
+  <g transform="translate(70 394)">
+    <rect class="client" x="0" y="0" width="210" height="78"/>
+    <text class="label" x="105" y="32">骑手端</text>
+    <text class="small" x="105" y="58">接单 / 配送状态</text>
+  </g>
+
+  <g transform="translate(345 245)">
+    <rect class="gateway" x="0" y="0" width="250" height="150"/>
+    <text class="label" x="125" y="45">API Gateway</text>
+    <text class="small" x="125" y="77">认证 / 路由 / 限流</text>
+    <text class="small" x="125" y="107">协议转换 / 聚合查询</text>
+  </g>
+
+  <path class="line" d="M280 209 H342"/>
+  <path class="line" d="M280 321 H342"/>
+  <path class="line" d="M280 433 C310 433 326 380 342 360"/>
+
+  <g transform="translate(680 170)">
+    <rect class="context support" x="0" y="0" width="245" height="145"/>
+    <text class="label" x="122.5" y="34">用户上下文</text>
+    <text class="small" x="122.5" y="64">Customer 聚合</text>
+    <text class="small" x="122.5" y="92">地址 / 会员 / 偏好</text>
+    <rect class="data" x="52" y="108" width="140" height="26"/>
+    <text class="tiny" x="122.5" y="127">用户数据库</text>
+  </g>
+
+  <g transform="translate(980 170)">
+    <rect class="context support" x="0" y="0" width="255" height="145"/>
+    <text class="label" x="127.5" y="34">商家菜单上下文</text>
+    <text class="small" x="127.5" y="64">Restaurant / Menu</text>
+    <text class="small" x="127.5" y="92">菜品 / 库存 / 营业状态</text>
+    <rect class="data" x="58" y="108" width="140" height="26"/>
+    <text class="tiny" x="127.5" y="127">菜单数据库</text>
+  </g>
+
+  <g transform="translate(795 385)">
+    <rect class="context core" x="0" y="0" width="280" height="155"/>
+    <text class="label" x="140" y="35">订单上下文</text>
+    <text class="small" x="140" y="67">Order 聚合根</text>
+    <text class="small" x="140" y="95">订单生命周期 / 状态机</text>
+    <rect class="data" x="70" y="116" width="140" height="28"/>
+    <text class="tiny" x="140" y="135">订单数据库</text>
+  </g>
+
+  <g transform="translate(635 625)">
+    <rect class="context core" x="0" y="0" width="250" height="145"/>
+    <text class="label" x="125" y="34">支付上下文</text>
+    <text class="small" x="125" y="64">Payment 聚合</text>
+    <text class="small" x="125" y="92">授权 / 扣款 / 退款</text>
+    <rect class="data" x="55" y="108" width="140" height="26"/>
+    <text class="tiny" x="125" y="127">支付数据库</text>
+  </g>
+
+  <g transform="translate(970 625)">
+    <rect class="context core" x="0" y="0" width="270" height="145"/>
+    <text class="label" x="135" y="34">配送调度上下文</text>
+    <text class="small" x="135" y="64">DeliveryTask 聚合</text>
+    <text class="small" x="135" y="92">派单 / 轨迹 / 完成</text>
+    <rect class="data" x="65" y="108" width="140" height="26"/>
+    <text class="tiny" x="135" y="127">配送数据库</text>
+  </g>
+
+  <g transform="translate(1325 380)">
+    <rect class="context generic" x="0" y="0" width="250" height="128"/>
+    <text class="label" x="125" y="33">通知上下文</text>
+    <text class="small" x="125" y="63">短信 / Push / 邮件</text>
+    <text class="small" x="125" y="92">NotificationSent</text>
+  </g>
+
+  <g transform="translate(1325 555)">
+    <rect class="context generic" x="0" y="0" width="250" height="128"/>
+    <text class="label" x="125" y="33">促销上下文</text>
+    <text class="small" x="125" y="63">Promotion / Coupon</text>
+    <text class="small" x="125" y="92">价格规则变化频繁</text>
+  </g>
+
+  <g transform="translate(1325 730)">
+    <rect class="context support" x="0" y="0" width="250" height="128"/>
+    <text class="label" x="125" y="33">结算上下文</text>
+    <text class="small" x="125" y="63">Settlement 聚合</text>
+    <text class="small" x="125" y="92">商家 / 骑手结算</text>
+  </g>
+
+  <g transform="translate(665 815)">
+    <rect class="bus" x="0" y="0" width="660" height="96"/>
+    <text class="label white" x="330" y="30">事件总线 / 消息通道</text>
+    <text class="small white" x="330" y="57">订单已创建 · 支付已授权 · 骑手已分配</text>
+    <text class="small white" x="330" y="80">配送已完成 · 结算已生成</text>
+  </g>
+
+  <g transform="translate(385 965)">
+    <rect class="platform" x="0" y="0" width="240" height="100"/>
+    <text class="label white" x="120" y="36">平台能力</text>
+    <text class="small white" x="120" y="65">服务发现 / 配置 / CI/CD</text>
+  </g>
+  <g transform="translate(675 965)">
+    <rect class="platform" x="0" y="0" width="275" height="100"/>
+    <text class="label white" x="137.5" y="36">可观测性</text>
+    <text class="small white" x="137.5" y="65">日志 / 指标 / 分布式追踪</text>
+  </g>
+  <g transform="translate(1005 965)">
+    <rect class="platform" x="0" y="0" width="300" height="100"/>
+    <text class="label white" x="150" y="36">可靠性战术</text>
+    <text class="small white" x="150" y="65">超时 / 重试 / 熔断 / 健康检查</text>
+  </g>
+
+  <path class="line" d="M595 320 C660 320 700 275 680 244"/>
+  <path class="line" d="M595 320 C690 340 745 410 795 462"/>
+  <path class="line" d="M595 320 C720 270 855 250 980 244"/>
+
+  <path class="event" d="M935 540 V805"/>
+  <path class="event" d="M935 540 C890 610 820 625 760 625"/>
+  <path class="event" d="M968 540 C1032 590 1082 615 1105 625"/>
+  <path class="event" d="M1075 460 H1320"/>
+  <path class="event" d="M1075 490 C1180 520 1240 560 1320 610"/>
+  <path class="event" d="M1105 770 C1150 800 1225 815 1320 815"/>
+  <path class="event" d="M760 770 C820 805 960 815 1010 815"/>
+  <path class="event" d="M1105 770 V815"/>
+
+  <path class="line dash" d="M925 315 C925 345 925 360 925 382"/>
+  <path class="line dash" d="M1235 242 C1300 255 1340 330 1395 380"/>
+
+  <g transform="translate(86 540)">
+    <rect class="tag" x="0" y="0" width="455" height="132"/>
+    <text class="tag-text" x="24" y="34">答题顺序：</text>
+    <text class="tag-text" x="24" y="66">1. 子域 / 限界上下文</text>
+    <text class="tag-text" x="24" y="96">2. 聚合与领域事件</text>
+    <text class="tag-text" x="225" y="66">3. 服务与数据边界</text>
+    <text class="tag-text" x="225" y="96">4. 质量属性与取舍</text>
+  </g>
+
+  <g transform="translate(86 710)">
+    <rect class="tag" x="0" y="0" width="455" height="120"/>
+    <text class="tag-text" x="24" y="34">关键取舍：</text>
+    <text class="tag-text" x="24" y="66">独立部署 / 伸缩 / 团队自治提升。</text>
+    <text class="tag-text" x="24" y="96">一致性、测试、部署治理和追踪更复杂。</text>
+  </g>
+</svg>

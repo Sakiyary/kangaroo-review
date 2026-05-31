@@ -129,6 +129,17 @@ const tests = [
     }
   },
   {
+    name: "mock-exam-answer-open",
+    hash: "mock",
+    waitFor: ".mock-question",
+    lang: "en",
+    setup: async (page) => {
+      await page.locator('.mock-answer[data-mock-question-id="mock-q12"] > summary').click();
+      await page.waitForSelector('.mock-answer[data-mock-question-id="mock-q12"][open] .mock-answer-block');
+      await scrollSelectorToCenter(page, '.mock-answer[data-mock-question-id="mock-q12"] .mock-answer-block');
+    }
+  },
+  {
     name: "scope-mindmap",
     hash: "scope",
     waitFor: ".mindmap-node",

@@ -246,6 +246,52 @@ async function checkViewport(name, viewport) {
     return texts.find((text) => /架构|需求|系统|质量|服务/.test(text)) || texts[0] || "";
   });
 
+  await page.click('a[data-page="mock"]');
+  await page.waitForSelector(".mock-exam .mock-question");
+  const mockQuestionCount = await page.locator(".mock-question").count();
+  const mockScoreText = await page.locator(".mock-score-table").innerText();
+  const mockCacheAnswer = page.locator('.mock-answer[data-mock-question-id="mock-q11"]');
+  await mockCacheAnswer.locator("> summary").click();
+  await page.waitForSelector('.mock-answer[data-mock-question-id="mock-q11"][open] .mock-answer-diagram img');
+  await page.locator('.mock-answer[data-mock-question-id="mock-q11"] .mock-answer-diagram').screenshot({
+    path: `${screenshots}/kangaroo-review-${name}-mock-cache-diagram.png`
+  });
+  const mockAnswer = page.locator('.mock-answer[data-mock-question-id="mock-q12"]');
+  await mockAnswer.locator("> summary").click();
+  await page.waitForSelector('.mock-answer[data-mock-question-id="mock-q12"][open] .mock-answer-diagram img');
+  await page.waitForFunction(() => {
+    const image = document.querySelector('.mock-answer[data-mock-question-id="mock-q12"] .mock-answer-diagram img');
+    return image && image.complete && image.naturalWidth > 500;
+  });
+  const mockAnswerText = await mockAnswer.innerText();
+  const mockDiagramLoaded = await page.locator('.mock-answer[data-mock-question-id="mock-q12"] .mock-answer-diagram img').evaluate((image) => ({
+    complete: image.complete,
+    naturalWidth: image.naturalWidth,
+    width: Math.round(image.getBoundingClientRect().width)
+  }));
+  await page.locator('.mock-answer[data-mock-question-id="mock-q12"] .mock-answer-diagram').screenshot({
+    path: `${screenshots}/kangaroo-review-${name}-mock-ddd-diagram.png`
+  });
+  const mockRelatedCount = await page.locator('.mock-answer[data-mock-question-id="mock-q12"] .mock-related-links a').count();
+  const [mockPaperDownload] = await Promise.all([
+    page.waitForEvent("download"),
+    page.click('[data-action="mock-export-paper-md"]')
+  ]);
+  const mockPaperPath = `${screenshots}/kangaroo-review-${name}-mock-paper.md`;
+  await mockPaperDownload.saveAs(mockPaperPath);
+  const [mockAnswerDownload] = await Promise.all([
+    page.waitForEvent("download"),
+    page.click('[data-action="mock-export-answer-md"]')
+  ]);
+  const mockAnswerPath = `${screenshots}/kangaroo-review-${name}-mock-answer.md`;
+  await mockAnswerDownload.saveAs(mockAnswerPath);
+  const mockDownloadNames = [mockPaperDownload.suggestedFilename(), mockAnswerDownload.suggestedFilename()];
+  const mockPageWidth = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth
+  }));
+  await page.screenshot({ path: `${screenshots}/kangaroo-review-${name}-mock.png`, fullPage: true });
+
   await page.click('a[data-page="whiteboards"]');
   await page.waitForSelector(".diagram-gallery-row .diagram-card button");
   const diagramGalleryCount = await page.locator(".diagram-gallery-row").count();
@@ -314,7 +360,7 @@ async function checkViewport(name, viewport) {
     checklistRoundTripped,
     priorityBadgesSingleLine,
     commentPosted,
-    englishNavHasOverview: englishNav.includes("Overview") && englishNav.includes("Sources"),
+    englishNavHasOverview: englishNav.includes("Overview") && englishNav.includes("Sources") && englishNav.includes("Mock"),
     detailHasModernTopic: /DDD|领域驱动|微服务|Enterprise|企业架构/.test(detail),
     detailHasDeepDive: detailHasDeepDive > 0,
     inlineTermCount,
@@ -336,6 +382,14 @@ async function checkViewport(name, viewport) {
     sampleAnswerHasChinese: /架构|需求|系统|质量|服务/.test(sampleAnswer),
     drawingGuideVisible: drawingGuideCount > 0 && /画|Draw|How to draw|考场/.test(drawingGuideText),
     drawingGuideCount,
+    mockQuestionCount,
+    mockScoreText,
+    mockAnswerHasChinese: /限界上下文|领域事件|服务边界|质量属性/.test(mockAnswerText),
+    mockDiagramLoaded,
+    mockRelatedCount,
+    mockDownloadsWork: mockDownloadNames.every((name) => /mock-(paper|answer).+\.md$/.test(name)),
+    mockNoHorizontalOverflow: mockPageWidth.scrollWidth <= mockPageWidth.clientWidth + 2,
+    mockPageWidth,
     diagramGalleryCount,
     archivedWhiteboardCount,
     diagramGalleryNaturalWidth,
@@ -378,6 +432,9 @@ for (const result of [desktop, mobile]) {
     "questionHasChinese",
     "sampleAnswerHasChinese",
     "drawingGuideVisible",
+    "mockAnswerHasChinese",
+    "mockDownloadsWork",
+    "mockNoHorizontalOverflow",
     "sourcePreviewLoaded",
     "disclaimerHasCodex",
     "rewardHasCopy",
@@ -404,6 +461,12 @@ for (const result of [desktop, mobile]) {
   }
   if (result.overviewMetricBadges < 3) errors.push(`${result.name}: metric badges missing`);
   if (result.questionCount < 40) errors.push(`${result.name}: expected at least 40 question clusters`);
+  if (result.mockQuestionCount !== 12) errors.push(`${result.name}: expected 12 mock questions`);
+  if (!/100/.test(result.mockScoreText)) errors.push(`${result.name}: mock score table missing total`);
+  if (!(result.mockDiagramLoaded.complete && result.mockDiagramLoaded.naturalWidth > 500)) {
+    errors.push(`${result.name}: mock answer diagram did not load ${JSON.stringify(result.mockDiagramLoaded)}`);
+  }
+  if (result.mockRelatedCount < 2) errors.push(`${result.name}: mock related links missing`);
   if (result.diagramGalleryCount < 23) errors.push(`${result.name}: expected at least 23 diagram gallery items`);
   if (result.archivedWhiteboardCount < 4) errors.push(`${result.name}: expected archived whiteboards to remain available`);
   if (result.diagramGalleryNaturalWidth < 1000) errors.push(`${result.name}: diagram gallery image did not load`);

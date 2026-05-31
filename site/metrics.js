@@ -11,6 +11,8 @@ const eventNames = {
   whiteboard_open: "画板放大",
   mindmap_node_click: "纲领节点点击",
   reward_open: "打赏弹窗",
+  mock_answer_open: "模拟卷答案展开",
+  mock_export: "模拟卷导出",
   filter_change: "筛选变更",
   search: "搜索"
 };

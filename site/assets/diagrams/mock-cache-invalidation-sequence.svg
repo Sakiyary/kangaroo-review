@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940" role="img" aria-labelledby="title desc">
+  <title id="title">分布式缓存失效时序参考图</title>
+  <desc id="desc">服务器 A 提交数据库后发布缓存失效事件，协调器广播给其他服务器的缓存适配器。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#2d3748"/>
+    </marker>
+    <marker id="eventArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#b54634"/>
+    </marker>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1f2933" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fffdf8; }
+      .title { font: 700 38px "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #1f2933; }
+      .sub { font: 500 21px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #66737f; }
+      .box { fill: #ffffff; stroke: #2d3748; stroke-width: 2.5; rx: 18; filter: url(#softShadow); }
+      .box-blue { fill: #eef5ff; stroke: #5a7fc0; }
+      .box-red { fill: #fff1ec; stroke: #b54634; }
+      .box-green { fill: #eef8ef; stroke: #5c8f52; }
+      .label { font: 700 23px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1f2933; text-anchor: middle; }
+      .small { font: 500 17px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #4c5967; text-anchor: middle; }
+      .life { stroke: #a8b1bb; stroke-width: 2.5; stroke-dasharray: 9 9; }
+      .line { stroke: #2d3748; stroke-width: 3.5; fill: none; marker-end: url(#arrow); }
+      .event { stroke: #b54634; stroke-width: 4; fill: none; marker-end: url(#eventArrow); }
+      .note { fill: #fff7df; stroke: #d3a53d; stroke-width: 2; rx: 14; }
+      .note-text { font: 600 18px "PingFang SC", "Microsoft YaHei", sans-serif; fill: #6f4b00; }
+      .step { fill: #b54634; }
+      .step-text { font: 700 17px "Inter", "PingFang SC", sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="940"/>
+  <text class="title" x="80" y="70">缓存失效参考答案：提交后广播失效事件</text>
+  <text class="sub" x="80" y="108">关键顺序：先提交数据库，再发布失效事件；其他节点通过适配器删除或刷新本地缓存。</text>
+
+  <g transform="translate(80 155)">
+    <rect class="box box-blue" x="0" y="0" width="205" height="92"/>
+    <text class="label" x="102.5" y="39">客户端</text>
+    <text class="small" x="102.5" y="67">Client</text>
+  </g>
+  <g transform="translate(335 155)">
+    <rect class="box box-blue" x="0" y="0" width="225" height="92"/>
+    <text class="label" x="112.5" y="38">服务器 A</text>
+    <text class="small" x="112.5" y="66">更新数据的节点</text>
+  </g>
+  <g transform="translate(650 155)">
+    <rect class="box box-green" x="0" y="0" width="230" height="92"/>
+    <text class="label" x="115" y="38">数据库</text>
+    <text class="small" x="115" y="66">权威数据源</text>
+  </g>
+  <g transform="translate(970 155)">
+    <rect class="box box-red" x="0" y="0" width="260" height="92"/>
+    <text class="label" x="130" y="36">失效协调器</text>
+    <text class="small" x="130" y="64">消息代理 / 发布订阅</text>
+  </g>
+  <g transform="translate(1340 155)">
+    <rect class="box box-blue" x="0" y="0" width="205" height="92"/>
+    <text class="label" x="102.5" y="38">服务器 B/N</text>
+    <text class="small" x="102.5" y="66">其他缓存节点</text>
+  </g>
+
+  <line class="life" x1="182" y1="268" x2="182" y2="760"/>
+  <line class="life" x1="448" y1="268" x2="448" y2="760"/>
+  <line class="life" x1="765" y1="268" x2="765" y2="760"/>
+  <line class="life" x1="1100" y1="268" x2="1100" y2="760"/>
+  <line class="life" x1="1442" y1="268" x2="1442" y2="760"/>
+
+  <circle class="step" cx="120" cy="314" r="18"/><text class="step-text" x="120" y="314">1</text>
+  <path class="line" d="M183 314 H422"/>
+  <text class="small" x="302" y="300">写入 / 更新请求</text>
+
+  <circle class="step" cx="520" cy="397" r="18"/><text class="step-text" x="520" y="397">2</text>
+  <path class="line" d="M449 397 H735"/>
+  <text class="small" x="592" y="383">提交事务到数据库</text>
+
+  <circle class="step" cx="845" cy="480" r="18"/><text class="step-text" x="845" y="480">3</text>
+  <path class="line" d="M735 480 H475"/>
+  <text class="small" x="605" y="466">提交成功 / 版本号</text>
+
+  <circle class="step" cx="590" cy="563" r="18"/><text class="step-text" x="590" y="563">4</text>
+  <path class="event" d="M449 563 H1067"/>
+  <text class="small" x="760" y="548">发布 CacheInvalidated / DataChanged 事件</text>
+
+  <circle class="step" cx="1255" cy="646" r="18"/><text class="step-text" x="1255" y="646">5</text>
+  <path class="event" d="M1101 646 H1412"/>
+  <text class="small" x="1257" y="631">广播给其他缓存适配器</text>
+
+  <circle class="step" cx="1385" cy="729" r="18"/><text class="step-text" x="1385" y="729">6</text>
+  <path class="line" d="M1442 729 C1320 800 600 800 476 729"/>
+  <text class="small" x="965" y="830">删除 / 标记过期 / 重新加载；失败则重试、记录死信、保持幂等</text>
+
+  <g transform="translate(90 805)">
+    <rect class="note" x="0" y="0" width="510" height="78"/>
+    <text class="note-text" x="24" y="31">强一致性：同步失效或集中缓存，延迟更高。</text>
+    <text class="note-text" x="24" y="58">最终一致性：异步广播，吞吐更好，但短时间可能读到旧值。</text>
+  </g>
+  <g transform="translate(670 805)">
+    <rect class="note" x="0" y="0" width="615" height="78"/>
+    <text class="note-text" x="24" y="31">连接件职责：消息队列 / 发布订阅 / Web Service 统一异构缓存协议。</text>
+    <text class="note-text" x="24" y="58">答题要写清楚顺序、幂等、重试和监控。</text>
+  </g>
+</svg>

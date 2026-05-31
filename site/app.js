@@ -28,12 +28,16 @@ const state = {
   sources: [],
   openQuestionId: "",
   openQuestionIds: [],
+  openMockAnswerIds: [],
+  openMockRelatedIds: [],
+  suppressMockDetailsToggle: false,
   suppressedQuestionToggleId: "",
   activeTermKey: ""
 };
 
 const content = window.reviewContent;
-const pages = new Set(["overview", "scope", "plan", "knowledge", "papers", "glossary", "whiteboards", "sources"]);
+const mockExam = window.reviewMockExam || { sections: [], questions: [], scoreRows: [], instructions: [] };
+const pages = new Set(["overview", "scope", "plan", "knowledge", "papers", "mock", "glossary", "whiteboards", "sources"]);
 const scrollAnchorSelectors = [
   "[data-scroll-key]",
   ".question-item[data-question-id]",
@@ -55,7 +59,9 @@ const metricLabels = {
   diagram_open: { zh: "图解放大", en: "diagram zooms" },
   mindmap_node_click: { zh: "节点点击", en: "node clicks" },
   whiteboard_open: { zh: "画板放大", en: "whiteboard zooms" },
-  reward_open: { zh: "打赏弹窗", en: "reward opens" }
+  reward_open: { zh: "打赏弹窗", en: "reward opens" },
+  mock_answer_open: { zh: "答案展开", en: "answer opens" },
+  mock_export: { zh: "模拟卷导出", en: "mock exports" }
 };
 const metricSessionKey = "kangaroo-review-session";
 const browserIdentityKey = "kangaroo-review-browser-id";
@@ -489,6 +495,10 @@ function diagramById(id) {
   return (content.diagrams || []).find((diagram) => diagram.id === id);
 }
 
+function topicById(id) {
+  return (content.topics || []).find((topic) => topic.id === id);
+}
+
 function flattenValues(value) {
   if (value == null) return [];
   if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return [String(value)];
@@ -711,6 +721,16 @@ function checklistCurrentItems() {
       label: state.lang === "en" ? question.canonical_question : (question.question_zh || question.canonical_question),
       priority: question.priority || "",
       page: "papers"
+    });
+  });
+  (mockExam.questions || []).forEach((question) => {
+    if (isOutOfScopePriority(question.priority)) return;
+    items.push({
+      key: checklistKey("mock", question.id),
+      kind: "mock",
+      label: `模拟卷 Q${question.number}: ${question.title}`,
+      priority: question.priority || "",
+      page: "mock"
     });
   });
   content.glossary.forEach((term) => {
@@ -2048,6 +2068,413 @@ function renderQuestion(question, open) {
   `;
 }
 
+function mockQuestionById(id) {
+  return (mockExam.questions || []).find((question) => question.id === id);
+}
+
+function mockQuestionsForSection(section) {
+  return (section.questionIds || [])
+    .map((id) => mockQuestionById(id))
+    .filter(Boolean);
+}
+
+function mockAnswerMetricKey(question) {
+  return stableMetricKey("mock-answer", question.id);
+}
+
+function mockExportMetricKey(kind) {
+  return stableMetricKey("mock-export", kind);
+}
+
+function mockProbabilityClass(value = "") {
+  const normalized = value.toLowerCase().replace(/\s+/g, "-");
+  if (normalized.includes("very")) return "very-high";
+  if (normalized.includes("high")) return "high";
+  if (normalized.includes("medium")) return "medium";
+  return "low";
+}
+
+function mockDifficultyText(value = "") {
+  const map = {
+    Easy: "易",
+    Medium: "中",
+    Hard: "难"
+  };
+  return map[value] || value;
+}
+
+function mockProbabilityText(value = "", mode = state.lang) {
+  if (mode === "en") return value;
+  const map = {
+    "Very High": "很高",
+    High: "高",
+    Medium: "中",
+    Low: "低"
+  };
+  return map[value] || value;
+}
+
+function mockDrawingSource(drawing = {}) {
+  if (drawing.src) return drawing.src;
+  const diagram = drawing.diagramId ? diagramById(drawing.diagramId) : null;
+  return diagram?.srcZh || diagram?.src || diagram?.srcEn || "";
+}
+
+function mockDrawingLabel(question, drawing = {}) {
+  if (drawing.alt) return drawing.alt;
+  const diagram = drawing.diagramId ? diagramById(drawing.diagramId) : null;
+  return diagram ? labelText(diagram.title) : `模拟卷 Q${question.number} 参考图`;
+}
+
+function renderMockDrawing(question) {
+  const drawing = question.answer?.drawing;
+  const src = mockDrawingSource(drawing);
+  if (!src) return "";
+  const label = mockDrawingLabel(question, drawing);
+  return `
+    <figure class="mock-answer-diagram" data-scroll-key="mock:${escapeHtml(question.id)}:diagram">
+      <button type="button" data-action="open-mock-diagram" data-diagram-src="${escapeHtml(src)}" data-diagram-label="${escapeHtml(label)}">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(label)}" />
+        <span>${state.lang === "en" ? "Zoom" : "放大"}</span>
+      </button>
+      <figcaption>${escapeHtml(label)}</figcaption>
+    </figure>
+  `;
+}
+
+function renderMockDrawingGuide(question) {
+  const steps = question.answer?.drawing?.how || [];
+  if (!steps.length) return "";
+  return `
+    <section class="mock-answer-block" data-scroll-key="mock:${escapeHtml(question.id)}:drawing">
+      <h4>怎么画图</h4>
+      ${renderOrderedItems(steps)}
+    </section>
+  `;
+}
+
+function renderMockRelatedItem(item) {
+  if (item.type === "topic") {
+    const topic = topicById(item.id);
+    const label = item.label || (topic ? labelText(topic.title) : item.id);
+    return `<a href="#knowledge" data-action="jump-topic" data-topic-id="${escapeHtml(item.id)}">${escapeHtml(label)}</a>`;
+  }
+  if (item.type === "question") {
+    const question = questionById(item.id);
+    const label = item.label || (question ? (question.question_zh || question.canonical_question) : item.id);
+    return `<a href="#papers" data-action="jump-question" data-question-id="${escapeHtml(item.id)}">${escapeHtml(label)}</a>`;
+  }
+  return `<span>${escapeHtml(item.label || item.id || "")}</span>`;
+}
+
+function renderMockRelated(question) {
+  const related = question.answer?.related || [];
+  if (!related.length) return "";
+  const open = state.openMockRelatedIds.includes(question.id);
+  return `
+    <details class="mock-related" data-mock-question-id="${escapeHtml(question.id)}" ${open ? "open" : ""}>
+      <summary>${state.lang === "en" ? "Related knowledge" : "展开相关知识库 / 真题"}</summary>
+      <div class="mock-related-links">
+        ${related.map(renderMockRelatedItem).join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderMockQuestion(question) {
+  const badgeClass = mockProbabilityClass(question.probability);
+  const answerOpen = state.openMockAnswerIds.includes(question.id);
+  return `
+    <article class="mock-question" data-scroll-key="mock:${escapeHtml(question.id)}" data-mock-question-id="${escapeHtml(question.id)}">
+      <div class="mock-question-head">
+        <div class="mock-number">Q${escapeHtml(question.number)}</div>
+        <div>
+          <span class="mock-kicker">
+            ${escapeHtml(question.points)} pts · ${escapeHtml(question.priority)} · ${escapeHtml(question.difficulty)} / ${escapeHtml(mockDifficultyText(question.difficulty))}
+          </span>
+          <h3>${escapeHtml(question.title)}</h3>
+        </div>
+        <div class="mock-question-tools">
+          ${renderScopedChecklist("mock", question.id, `模拟卷 Q${question.number}: ${question.title}`, "compact-check", question)}
+          ${renderMetricBadge("mock_answer_open", mockAnswerMetricKey(question))}
+        </div>
+      </div>
+      <p class="mock-prediction ${escapeHtml(badgeClass)}">
+        <strong>${escapeHtml(mockProbabilityText(question.probability))}</strong>
+        <span>${escapeHtml(question.prediction || "")}</span>
+      </p>
+      <details class="mock-answer" data-mock-question-id="${escapeHtml(question.id)}" ${answerOpen ? "open" : ""}>
+        <summary>${state.lang === "en" ? "Show Chinese answer key" : "查看中文参考答案"}</summary>
+        <div class="mock-answer-content">
+          ${question.answer?.summary ? `<p class="mock-answer-summary">${richText(question.answer.summary)}</p>` : ""}
+          ${question.answer?.points?.length ? `
+            <section class="mock-answer-block">
+              <h4>按点作答</h4>
+              ${renderOrderedItems(question.answer.points)}
+            </section>
+          ` : ""}
+          ${renderMockDrawingGuide(question)}
+          ${renderMockDrawing(question)}
+          ${renderMockRelated(question)}
+        </div>
+      </details>
+    </article>
+  `;
+}
+
+function renderMockSection(section) {
+  const questions = mockQuestionsForSection(section);
+  return `
+    <section class="mock-section" data-scroll-key="mock-section:${escapeHtml(section.id)}">
+      <header>
+        <div>
+          <p class="section-kicker">${escapeHtml(section.id.toUpperCase())}</p>
+          <h2>${escapeHtml(section.title)}</h2>
+          <span>${escapeHtml(section.note || "")}</span>
+        </div>
+        <strong>${escapeHtml(section.points)} pts</strong>
+      </header>
+      <div class="mock-question-list">
+        ${questions.map(renderMockQuestion).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderMockScoreTable() {
+  return `
+    <table class="mock-score-table">
+      <thead>
+        <tr><th>Part</th><th>Points</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        ${(mockExam.scoreRows || []).map((row) => `
+          <tr>
+            <td>${escapeHtml(row.label)}</td>
+            <td>${escapeHtml(row.points)}</td>
+            <td>${escapeHtml(row.description)}</td>
+          </tr>
+        `).join("")}
+        <tr>
+          <td>Total</td>
+          <td>${escapeHtml(mockExam.totalPoints)}</td>
+          <td>Complete mock exam</td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+}
+
+function renderMockExam() {
+  return `
+    <section class="panel mock-exam">
+      <div class="section-head split">
+        <div>
+          <p class="section-kicker">Mock Exam</p>
+          <h1>${state.lang === "en" ? "Mock Exam" : "模拟卷"}</h1>
+          <p>${escapeHtml(mockExam.course || "")}</p>
+        </div>
+        <div class="mock-toolbar" aria-label="${state.lang === "en" ? "Mock exam exports" : "模拟卷导出"}">
+          <button type="button" data-action="mock-export-paper-md">${state.lang === "en" ? "Paper MD" : "试卷 MD"}</button>
+          <button type="button" data-action="mock-print-paper">${state.lang === "en" ? "Paper PDF" : "试卷 PDF/打印"}</button>
+          <button type="button" data-action="mock-export-answer-md">${state.lang === "en" ? "Answer MD" : "答案 MD"}</button>
+          <button type="button" data-action="mock-print-answer">${state.lang === "en" ? "Answer PDF" : "答案 PDF/打印"}</button>
+        </div>
+      </div>
+      <div class="mock-export-metrics">
+        ${renderMetricBadge("mock_export", mockExportMetricKey("paper-md"), "paper md")}
+        ${renderMetricBadge("mock_export", mockExportMetricKey("answer-md"), "answer md")}
+      </div>
+      <div class="mock-intro">
+        <div>
+          <strong>${escapeHtml(mockExam.title)}</strong>
+          <span>${escapeHtml(mockExam.duration)} · ${escapeHtml(mockExam.totalPoints)} points</span>
+          <p>${escapeHtml(mockExam.paperNote || "")}</p>
+        </div>
+        ${renderMockScoreTable()}
+      </div>
+      <div class="mock-instructions">
+        <section>
+          <h2>${state.lang === "en" ? "Instructions" : "答题说明"}</h2>
+          <ul>${(mockExam.instructions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+        <section>
+          <h2>${state.lang === "en" ? "Source priority" : "组卷依据"}</h2>
+          <ul>${(mockExam.sourcePolicy || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+      </div>
+      <div class="mock-print-root">
+        ${(mockExam.sections || []).map(renderMockSection).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function mockMarkdownLink(item) {
+  if (item.type === "topic") {
+    const topic = topicById(item.id);
+    return `- 知识点：${item.label || (topic ? labelText(topic.title) : item.id)} (#knowledge / ${item.id})`;
+  }
+  if (item.type === "question") {
+    const question = questionById(item.id);
+    return `- 真题：${item.label || question?.question_zh || question?.canonical_question || item.id} (#papers / ${item.id})`;
+  }
+  return `- ${item.label || item.id || ""}`;
+}
+
+function mockQuestionMarkdown(question, includeAnswer = false) {
+  const lines = [
+    `### Q${question.number}. (${question.points} points)`,
+    "",
+    question.title,
+    ""
+  ];
+  if (!includeAnswer) return lines;
+  lines.push(
+    `预测：${mockProbabilityText(question.probability, "zh")}；难度：${mockDifficultyText(question.difficulty)}。${question.prediction || ""}`,
+    "",
+    "#### 中文参考答案",
+    "",
+    question.answer?.summary || "",
+    ""
+  );
+  (question.answer?.points || []).forEach((point, index) => {
+    lines.push(`${index + 1}. ${point}`);
+  });
+  const drawingSteps = question.answer?.drawing?.how || [];
+  if (drawingSteps.length) {
+    lines.push("", "#### 怎么画图", "");
+    drawingSteps.forEach((step, index) => lines.push(`${index + 1}. ${step}`));
+  }
+  const drawingSrc = mockDrawingSource(question.answer?.drawing);
+  if (drawingSrc) {
+    lines.push("", `![${mockDrawingLabel(question, question.answer?.drawing)}](${drawingSrc})`);
+  }
+  const related = question.answer?.related || [];
+  if (related.length) {
+    lines.push("", "#### 相关知识库 / 真题", "", ...related.map(mockMarkdownLink));
+  }
+  lines.push("");
+  return lines;
+}
+
+function mockExamMarkdown(kind) {
+  const includeAnswer = kind === "answer";
+  const title = includeAnswer ? `${mockExam.title} - Answer Key` : mockExam.title;
+  const lines = [
+    `# ${title}`,
+    "",
+    mockExam.course || "",
+    "",
+    `- Total points: ${mockExam.totalPoints}`,
+    `- ${mockExam.duration}`,
+    ""
+  ];
+  if (!includeAnswer) {
+    lines.push("## Instructions", "", ...(mockExam.instructions || []).map((item) => `- ${item}`), "");
+  } else {
+    lines.push(
+      "## 说明",
+      "",
+      "答案为中文复习版；题面保留英文。画图题的图片路径为站点内相对路径。",
+      ""
+    );
+  }
+  (mockExam.sections || []).forEach((section) => {
+    lines.push(`## ${section.title} (${section.points} points)`, "", section.note || "", "");
+    mockQuestionsForSection(section).forEach((question) => {
+      lines.push(...mockQuestionMarkdown(question, includeAnswer));
+    });
+  });
+  return lines.filter((line, index, arr) => !(line === "" && arr[index - 1] === "" && arr[index + 1] === "")).join("\n");
+}
+
+function downloadTextFile(filename, text, type = "text/plain;charset=utf-8") {
+  const blob = new Blob([text], { type });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportMockMarkdown(kind) {
+  const filename = kind === "answer"
+    ? `kangaroo-review-mock-answer-${new Date().toISOString().slice(0, 10)}.md`
+    : `kangaroo-review-mock-paper-${new Date().toISOString().slice(0, 10)}.md`;
+  trackMetric("mock_export", mockExportMetricKey(`${kind}-md`), filename);
+  downloadTextFile(filename, mockExamMarkdown(kind), "text/markdown;charset=utf-8");
+}
+
+function printMock(kind) {
+  trackMetric("mock_export", mockExportMetricKey(`${kind}-print`), `${kind} print`);
+  const details = [...document.querySelectorAll(".mock-answer, .mock-related")];
+  const previous = details.map((item) => ({ item, open: item.open }));
+  const previousAnswers = [...state.openMockAnswerIds];
+  const previousRelated = [...state.openMockRelatedIds];
+  state.suppressMockDetailsToggle = true;
+  details.forEach((item) => {
+    item.open = kind === "answer";
+  });
+  document.body.dataset.printMode = kind === "answer" ? "mock-answer" : "mock-paper";
+  let restored = false;
+  const restore = () => {
+    if (restored) return;
+    restored = true;
+    previous.forEach(({ item, open }) => {
+      item.open = open;
+    });
+    state.openMockAnswerIds = previousAnswers;
+    state.openMockRelatedIds = previousRelated;
+    delete document.body.dataset.printMode;
+    window.setTimeout(() => {
+      state.suppressMockDetailsToggle = false;
+    }, 120);
+  };
+  window.addEventListener("afterprint", restore, { once: true });
+  window.setTimeout(restore, 1800);
+  window.print();
+}
+
+function openMockDiagram(src, label) {
+  if (!src) return;
+  trackMetric("diagram_open", stableMetricKey("mock-diagram", src), label || src);
+  openModal(`
+    <div class="modal-panel wide">
+      <div class="modal-head">
+        <strong>${escapeHtml(label || "Mock exam diagram")}</strong>
+        <button type="button" data-action="close-modal">×</button>
+      </div>
+      <div class="modal-actions">
+        <button type="button" data-action="zoom-board" data-delta="-0.15">-</button>
+        <button type="button" data-action="zoom-board" data-delta="0.15">+</button>
+      </div>
+      <img class="modal-image modal-zoom-target" data-zoom="1" src="${escapeHtml(src)}" alt="${escapeHtml(label || "Mock exam diagram")}" />
+    </div>
+  `);
+}
+
+function jumpToQuestion(questionIdValue, clickEvent) {
+  const question = questionById(questionIdValue);
+  if (!question) return;
+  clickEvent?.preventDefault?.();
+  state.priority = "all";
+  state.cluster = "all";
+  state.openQuestionId = questionId(question);
+  state.openQuestionIds = [...new Set([...state.openQuestionIds, state.openQuestionId])];
+  state.page = "papers";
+  window.history.pushState(null, "", "#papers");
+  renderAll();
+  trackQuestionOpen(question);
+  window.requestAnimationFrame(() => {
+    document.querySelector(`.question-item[data-question-id="${CSS.escape(state.openQuestionId)}"]`)
+      ?.scrollIntoView({ block: "center", behavior: "smooth" });
+  });
+}
+
 function glossaryTermByLabel(label) {
   const needle = normalizeTermVariant(label).toLocaleLowerCase();
   if (!needle) return null;
@@ -2318,6 +2745,7 @@ function renderCurrentPage() {
     plan: renderPlan,
     knowledge: renderKnowledge,
     papers: renderPapers,
+    mock: renderMockExam,
     glossary: renderGlossary,
     whiteboards: renderDiagramGallery,
     sources: renderSources
@@ -2334,6 +2762,7 @@ function renderMeta() {
     plan: { zh: "路线", en: "Plan" },
     knowledge: { zh: "知识库", en: "Knowledge" },
     papers: { zh: "真题", en: "Papers" },
+    mock: { zh: "模拟", en: "Mock" },
     glossary: { zh: "术语", en: "Glossary" },
     whiteboards: { zh: "图解", en: "Diagrams" },
     sources: { zh: "资料库", en: "Sources" }
@@ -2464,6 +2893,14 @@ function rememberQuestionOpenState(questionIdValue, isOpen) {
   state.openQuestionIds = current;
   if (isOpen) state.openQuestionId = id;
   else if (state.openQuestionId === id) state.openQuestionId = current[current.length - 1] || "";
+}
+
+function rememberOpenId(listName, idValue, isOpen) {
+  const id = String(idValue || "");
+  if (!id || !Array.isArray(state[listName])) return;
+  const current = state[listName].filter((item) => item !== id);
+  if (isOpen) current.push(id);
+  state[listName] = current;
 }
 
 function relatedTermsFor(term) {
@@ -2670,6 +3107,9 @@ function setupEvents() {
         state.topicGroup = topic?.group || "all";
         break;
       }
+      case "jump-question":
+        jumpToQuestion(target.dataset.questionId, event);
+        break;
       case "mindmap-node": {
         const nodeId = target.dataset.nodeId;
         const node = mindmapNodes().find((item) => item.id === nodeId);
@@ -2705,6 +3145,10 @@ function setupEvents() {
         trackMetric("diagram_open", stableMetricKey("diagram", target.dataset.diagramId), target.dataset.diagramId);
         openDiagram(target.dataset.diagramId);
         break;
+      case "open-mock-diagram":
+        event.preventDefault();
+        openMockDiagram(target.dataset.diagramSrc, target.dataset.diagramLabel);
+        break;
       case "preview-source": {
         event.preventDefault();
         const source = currentSources()[Number(target.dataset.sourceIndex)];
@@ -2725,6 +3169,22 @@ function setupEvents() {
       case "export-checklist":
         event.preventDefault();
         exportChecklist();
+        break;
+      case "mock-export-paper-md":
+        event.preventDefault();
+        exportMockMarkdown("paper");
+        break;
+      case "mock-export-answer-md":
+        event.preventDefault();
+        exportMockMarkdown("answer");
+        break;
+      case "mock-print-paper":
+        event.preventDefault();
+        printMock("paper");
+        break;
+      case "mock-print-answer":
+        event.preventDefault();
+        printMock("answer");
         break;
       case "import-checklist":
         event.preventDefault();
@@ -2755,6 +3215,20 @@ function setupEvents() {
   });
 
   document.addEventListener("toggle", (event) => {
+    if (event.target.classList?.contains("mock-answer")) {
+      if (state.suppressMockDetailsToggle) return;
+      const question = mockQuestionById(event.target.dataset.mockQuestionId);
+      rememberOpenId("openMockAnswerIds", event.target.dataset.mockQuestionId, event.target.open);
+      if (event.target.open && question) {
+        trackMetric("mock_answer_open", mockAnswerMetricKey(question), `Mock Q${question.number}`);
+      }
+      return;
+    }
+    if (event.target.classList?.contains("mock-related")) {
+      if (state.suppressMockDetailsToggle) return;
+      rememberOpenId("openMockRelatedIds", event.target.dataset.mockQuestionId, event.target.open);
+      return;
+    }
     const item = event.target.closest?.(".question-item");
     if (!item) return;
     rememberQuestionOpenState(item.dataset.questionId, item.open);
