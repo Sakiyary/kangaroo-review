@@ -27,12 +27,21 @@ const state = {
   questions: [],
   sources: [],
   openQuestionId: "",
+  openQuestionIds: [],
   suppressedQuestionToggleId: "",
   activeTermKey: ""
 };
 
 const content = window.reviewContent;
 const pages = new Set(["overview", "scope", "plan", "knowledge", "papers", "glossary", "whiteboards", "sources"]);
+const scrollAnchorSelectors = [
+  "[data-scroll-key]",
+  ".question-item[data-question-id]",
+  ".mindmap-node[data-node-id]",
+  ".topic-index button[data-topic-id]",
+  ".term-row[data-term-key]",
+  ".source-row"
+];
 const metricLabels = {
   site_visit: { zh: "站点访问", en: "site visits" },
   page_view: { zh: "本页查看", en: "page views" },
@@ -1612,7 +1621,7 @@ function renderMindmapNode(node, group) {
   const metricKey = mindmapNodeMetricKey(node.id);
   const topic = node.topicId ? content.topics.find((item) => item.id === node.topicId) : null;
   return `
-    <article class="mindmap-node ${priority ? priority.toLowerCase() : ""}" data-action="mindmap-node" data-node-id="${escapeHtml(node.id)}" tabindex="0">
+    <article class="mindmap-node ${priority ? priority.toLowerCase() : ""}" data-action="mindmap-node" data-node-id="${escapeHtml(node.id)}" data-scroll-key="mindmap:${escapeHtml(node.id)}" tabindex="0">
       <div class="mindmap-node-main">
         <span>${escapeHtml(priority || "scope")}</span>
         <strong>${htmlText(node.title)}</strong>
@@ -1636,7 +1645,7 @@ function renderPlan() {
       </div>
       <div class="route-board">
         ${content.studyPlan.map((step, index) => `
-          <section class="route-step">
+          <section class="route-step" data-scroll-key="route:${escapeHtml(routeStepId(step, index))}">
             <div class="route-step-head">
               <b>${htmlText(step.day)}</b>
               ${renderChecklistControl("route", routeStepId(step, index), labelText(step.title), "compact-check")}
@@ -1659,7 +1668,7 @@ function renderPlan() {
         ${content.priorities
           .filter((group) => state.priority === "all" || group.level === state.priority)
           .map((group) => `
-            <article class="priority-lane ${group.level.toLowerCase()}">
+            <article class="priority-lane ${group.level.toLowerCase()}" data-scroll-key="priority:${escapeHtml(group.level)}">
               <header>
                 <span>${escapeHtml(group.level)}</span>
                 <strong>${htmlText(group.title)}</strong>
@@ -1713,7 +1722,7 @@ function renderKnowledge() {
             </button>
           `).join("") || `<p class="empty">${state.lang === "en" ? "No topic matches current filters." : "当前筛选下没有知识点。"}</p>`}
         </nav>
-        <article class="topic-detail">
+        <article class="topic-detail" ${selected ? `data-scroll-key="topic:${escapeHtml(selected.id)}"` : ""}>
           ${selected ? renderTopicDetail(selected) : ""}
         </article>
       </div>
@@ -1790,7 +1799,7 @@ function renderTopicStudyAid(topic) {
   return `
     <section class="study-aid">
       ${topic.memorize ? `
-        <details class="study-aid-card" open>
+        <details class="study-aid-card" data-scroll-key="topic:${escapeHtml(topic.id)}:memorize" open>
           <summary>
             <span>${state.lang === "en" ? "Memorize" : "速背"}</span>
             <strong>${state.lang === "en" ? "Memorize this" : "背诵清单"}</strong>
@@ -1801,7 +1810,7 @@ function renderTopicStudyAid(topic) {
         </details>
       ` : ""}
       ${topic.examTemplate ? `
-        <details class="study-aid-card" open>
+        <details class="study-aid-card" data-scroll-key="topic:${escapeHtml(topic.id)}:exam-template" open>
           <summary>
             <span>${state.lang === "en" ? "Exam" : "答法"}</span>
             <strong>${state.lang === "en" ? "Exam wording" : "考场答法"}</strong>
@@ -1829,7 +1838,7 @@ function renderLectureNotes(topic) {
       </header>
       <div class="lecture-note-list">
         ${notes.map((item, index) => `
-          <details class="lecture-note" ${index === 0 ? "open" : ""}>
+          <details class="lecture-note" data-scroll-key="topic:${escapeHtml(topic.id)}:lecture:${index}" ${index === 0 ? "open" : ""}>
             <summary>
               <span>${String(index + 1).padStart(2, "0")}</span>
               <strong>${htmlText(item.title)}</strong>
@@ -1863,8 +1872,8 @@ function renderDeepDive(topic) {
     <section class="deep-dive">
       <h3>${state.lang === "en" ? "Expanded notes" : "展开讲解：背什么，怎么写，哪里易错"}</h3>
       <div class="deep-dive-list">
-        ${sections.map((section) => `
-          <details class="deep-dive-row">
+        ${sections.map((section, index) => `
+          <details class="deep-dive-row" data-scroll-key="topic:${escapeHtml(topic.id)}:deep:${index}">
             <summary>
               <b>${htmlText(section.title)}</b>
               <span>${htmlText(section.summary || "")}</span>
@@ -1897,7 +1906,7 @@ function renderDiagramVisual(diagram, mode = "card") {
 
 function renderDiagramCard(diagram, compact = false) {
   return `
-    <article class="diagram-card ${compact ? "compact" : ""}">
+    <article class="diagram-card ${compact ? "compact" : ""}" data-scroll-key="diagram:${escapeHtml(diagram.id)}">
       <button type="button" data-action="open-diagram" data-diagram-id="${escapeHtml(diagram.id)}">
         <div class="diagram-preview">
           ${renderDiagramVisual(diagram, "card")}
@@ -1925,9 +1934,12 @@ function renderPapers() {
   const questions = priorityQuestions
     .filter((question) => state.cluster === "all" || question.cluster === state.cluster)
     .filter((question) => includesQuery(question.cluster, question.priority, question.canonical_question, question.question_zh, question.answer_frame_en, question.answer_frame_zh, question.sample_answer_zh, question.sample_answer_en, question.recurring_terms, question.english_keywords));
-  const openQuestionId = questions.some((question) => questionId(question) === state.openQuestionId)
-    ? state.openQuestionId
-    : "";
+  const visibleQuestionIds = new Set(questions.map((question) => questionId(question)));
+  const openQuestionIds = state.openQuestionIds.filter((id) => visibleQuestionIds.has(id));
+  if (state.openQuestionId && visibleQuestionIds.has(state.openQuestionId) && !openQuestionIds.includes(state.openQuestionId)) {
+    openQuestionIds.push(state.openQuestionId);
+  }
+  state.openQuestionIds = openQuestionIds;
   return `
     <section class="panel">
       <div class="section-head split">
@@ -1946,13 +1958,15 @@ function renderPapers() {
         ? "P0/P1 are the core review items. P2/P3 are backup practice or background and are not counted in the checklist."
         : "P0/P1 是核心内容；P2/P3 只作补充练习或背景了解，不计入复习清单。"}</p>
       <div class="question-list">
-        ${questions.map((question, index) => renderQuestion(question, openQuestionId ? questionId(question) === openQuestionId : index === 0)).join("") || `<p class="empty">${state.lang === "en" ? "No question matches current filters." : "当前筛选下没有真题。"}</p>`}
+        ${questions.map((question, index) => renderQuestion(question, openQuestionIds.length ? openQuestionIds.includes(questionId(question)) : index === 0)).join("") || `<p class="empty">${state.lang === "en" ? "No question matches current filters." : "当前筛选下没有真题。"}</p>`}
       </div>
     </section>
   `;
 }
 
 function renderQuestionBody(question) {
+  const id = questionId(question);
+  const scrollKey = (part) => `question:${id}:${part}`;
   const sample = localizedPair(question, "sample_answer_zh", "sample_answer_en");
   const visualHint = localizedPair(question, "visual_hint_zh", "visual_hint_en");
   const diagram = question.diagram_id ? diagramById(question.diagram_id) : null;
@@ -1971,36 +1985,36 @@ function renderQuestionBody(question) {
       ${renderScopeTag(question)}
     </div>
     <div class="question-body">
-      <section>
+      <section data-scroll-key="${escapeHtml(scrollKey("outline"))}">
         <h3>${state.lang === "en" ? "Answer outline" : "答题提纲"}</h3>
         ${renderPointList(answer, "answer-list")}
       </section>
       ${answerPointHtml ? `
-        <section class="answer-points">
+        <section class="answer-points" data-scroll-key="${escapeHtml(scrollKey("answer-points"))}">
           <h3>${state.lang === "en" ? "Answer by points" : "按点作答"}</h3>
           ${answerPointHtml}
         </section>
       ` : ""}
       ${sampleAnswerHtml ? `
-        <section class="sample-answer">
+        <section class="sample-answer" data-scroll-key="${escapeHtml(scrollKey("sample-answer"))}">
           <h3>${state.lang === "en" ? "Memorizable reference answer" : "可背参考答案"}</h3>
           ${sampleAnswerHtml}
         </section>
       ` : ""}
       ${drawingStepsHtml ? `
-        <section class="drawing-guide">
+        <section class="drawing-guide" data-scroll-key="${escapeHtml(scrollKey("drawing-guide"))}">
           <h3>${state.lang === "en" ? "How to draw it in the exam" : "考场怎么画图"}</h3>
           ${drawingStepsHtml}
         </section>
       ` : ""}
       ${diagram ? `
-        <section class="question-diagram">
+        <section class="question-diagram" data-scroll-key="${escapeHtml(scrollKey("diagram"))}">
           <h3>${state.lang === "en" ? "Reference diagram" : "参考答案图 / 配套图解"}</h3>
           ${renderDiagramCard(diagram, true)}
           ${visualHint ? `<p>${richText(visualHint)}</p>` : ""}
         </section>
       ` : visualHint ? `
-        <section class="question-diagram">
+        <section class="question-diagram" data-scroll-key="${escapeHtml(scrollKey("visual-hint"))}">
           <h3>${state.lang === "en" ? "Diagram hint" : "画图提示"}</h3>
           <p>${richText(visualHint)}</p>
         </section>
@@ -2019,7 +2033,7 @@ function renderQuestion(question, open) {
   const priority = question.priority || "P2";
   const id = questionId(question);
   return `
-    <details class="question-item" data-question-id="${escapeHtml(id)}" ${open ? "open" : ""}>
+    <details class="question-item" data-question-id="${escapeHtml(id)}" data-scroll-key="question:${escapeHtml(id)}" ${open ? "open" : ""}>
       <summary>
         <span class="question-kicker">
           <em class="question-priority ${escapeHtml(priority.toLowerCase())}">${escapeHtml(priority)} · ${escapeHtml(priorityName(priority))}</em>
@@ -2072,7 +2086,7 @@ function renderGlossaryGraph() {
       </div>
       <div class="term-graph-grid">
         ${graph.map((group) => `
-          <article class="term-graph-lane">
+          <article class="term-graph-lane" data-scroll-key="term-graph:${escapeHtml(labelText(group.title))}">
             <header>
               <strong>${htmlText(group.title)}</strong>
               <p>${richText(localize(group.note || ""))}</p>
@@ -2119,7 +2133,7 @@ function renderGlossary() {
           const key = glossaryMetricKey(item);
           const aliases = termAliasValues(item).slice(0, 6);
           return `
-          <div class="term-row" data-action="glossary-term" data-term-key="${escapeHtml(key)}">
+          <div class="term-row" data-action="glossary-term" data-term-key="${escapeHtml(key)}" data-scroll-key="term:${escapeHtml(key)}">
             <span>${escapeHtml(item.category)}</span>
             <strong>${state.lang === "en" ? escapeHtml(item.en) : escapeHtml(item.zh)}</strong>
             <b>${state.lang === "en" ? escapeHtml(item.zh) : escapeHtml(item.en)}</b>
@@ -2174,7 +2188,7 @@ function renderDiagramGallery() {
           const diagrams = content.diagrams.filter((diagram) => diagramPriority(diagram) === group.priority);
           if (!diagrams.length) return "";
           return `
-            <section class="diagram-gallery-group">
+            <section class="diagram-gallery-group" data-scroll-key="diagram-group:${escapeHtml(group.priority)}">
               <header>
                 <div>
                   <span>${escapeHtml(group.priority)}</span>
@@ -2186,7 +2200,7 @@ function renderDiagramGallery() {
               ${diagrams.map((diagram) => {
                 const topics = relatedTopicsForDiagram(diagram.id);
                 return `
-                  <article class="diagram-gallery-row">
+                  <article class="diagram-gallery-row" data-scroll-key="diagram-row:${escapeHtml(diagram.id)}">
                     ${renderDiagramCard(diagram)}
                     <div class="diagram-gallery-meta">
                       ${group.priority !== "P2" ? renderChecklistControl("diagram", diagram.id, labelText(diagram.title), "compact-check") : ""}
@@ -2258,7 +2272,7 @@ function renderSources() {
           const key = sourceMetricKey(source);
           const label = sourceLabel(source);
           return `
-          <article class="source-row">
+          <article class="source-row" data-scroll-key="source:${escapeHtml(key)}">
             <div>
               <span>${escapeHtml(sourceKindName(source.kind))} · ${escapeHtml(sourceGroupName(source.source_group))}</span>
               <strong>${escapeHtml(label)}</strong>
@@ -2343,13 +2357,72 @@ function renderMeta() {
 
 function captureRelativeScroll() {
   const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-  return maxScroll > 0 ? window.scrollY / maxScroll : 0;
+  const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+  const viewportY = Math.round(window.innerHeight * 0.46);
+  return {
+    ratio,
+    anchor: captureScrollAnchor(viewportY)
+  };
 }
 
-function restoreRelativeScroll(ratio) {
+function captureScrollAnchor(viewportY) {
+  const anchorDocY = window.scrollY + viewportY;
+  let best = null;
+  let bestDistance = Number.POSITIVE_INFINITY;
+  scrollAnchorSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      if (!rect.height) return;
+      const key = scrollAnchorKey(node);
+      if (!key) return;
+      const top = window.scrollY + rect.top;
+      const bottom = top + rect.height;
+      const distance = anchorDocY < top ? top - anchorDocY : anchorDocY > bottom ? anchorDocY - bottom : 0;
+      const isBetter = distance < bestDistance || (distance === bestDistance && rect.height < (best?.height || Number.POSITIVE_INFINITY));
+      if (isBetter) {
+        bestDistance = distance;
+        best = {
+          key,
+          offsetRatio: Math.max(0, Math.min(1, (anchorDocY - top) / rect.height)),
+          viewportY,
+          height: rect.height
+        };
+      }
+    });
+  });
+  return best;
+}
+
+function scrollAnchorKey(node) {
+  return node.dataset.scrollKey
+    || (node.dataset.questionId ? `question:${node.dataset.questionId}` : "")
+    || (node.dataset.nodeId ? `mindmap:${node.dataset.nodeId}` : "")
+    || (node.dataset.topicId ? `topic-index:${node.dataset.topicId}` : "")
+    || (node.dataset.termKey ? `term:${node.dataset.termKey}` : "");
+}
+
+function scrollAnchorNode(anchor) {
+  if (!anchor?.key) return null;
+  const escaped = CSS.escape(anchor.key);
+  return document.querySelector(`[data-scroll-key="${escaped}"]`)
+    || document.querySelector(`.question-item[data-question-id="${CSS.escape(anchor.key.replace(/^question:/, ""))}"]`);
+}
+
+function restoreRelativeScroll(snapshot) {
+  const fallbackRatio = typeof snapshot === "number" ? snapshot : Number(snapshot?.ratio || 0);
+  const anchor = typeof snapshot === "object" ? snapshot.anchor : null;
   const apply = () => {
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    window.scrollTo({ top: Math.min(maxScroll, Math.max(0, ratio * maxScroll)), behavior: "auto" });
+    let targetTop = fallbackRatio * maxScroll;
+    if (anchor?.key) {
+      const node = scrollAnchorNode(anchor);
+      if (node) {
+        const rect = node.getBoundingClientRect();
+        const documentTop = window.scrollY + rect.top;
+        targetTop = documentTop + rect.height * Number(anchor.offsetRatio || 0) - Number(anchor.viewportY || window.innerHeight * 0.46);
+      }
+    }
+    window.scrollTo({ top: Math.min(maxScroll, Math.max(0, targetTop)), behavior: "auto" });
   };
   window.requestAnimationFrame(() => {
     apply();
@@ -2381,6 +2454,16 @@ function setPageFromHash() {
 
 function trackQuestionOpen(question) {
   trackMetric("question_view", questionMetricKey(question), question.question_zh || question.canonical_question);
+}
+
+function rememberQuestionOpenState(questionIdValue, isOpen) {
+  const id = String(questionIdValue || "");
+  if (!id) return;
+  const current = state.openQuestionIds.filter((item) => item !== id);
+  if (isOpen) current.push(id);
+  state.openQuestionIds = current;
+  if (isOpen) state.openQuestionId = id;
+  else if (state.openQuestionId === id) state.openQuestionId = current[current.length - 1] || "";
 }
 
 function relatedTermsFor(term) {
@@ -2465,6 +2548,7 @@ function revealQuestion(targetQuestionId, options = {}) {
     item.dataset.programmaticOpen = "1";
     item.open = true;
   }
+  rememberQuestionOpenState(targetQuestionId, true);
   item.classList.add("is-targeted");
   const summary = item.querySelector("summary");
   (summary || item).scrollIntoView({ block: "center", behavior: "smooth" });
@@ -2672,7 +2756,9 @@ function setupEvents() {
 
   document.addEventListener("toggle", (event) => {
     const item = event.target.closest?.(".question-item");
-    if (!item || !item.open) return;
+    if (!item) return;
+    rememberQuestionOpenState(item.dataset.questionId, item.open);
+    if (!item.open) return;
     if (item.dataset.programmaticOpen === "1") {
       delete item.dataset.programmaticOpen;
       return;
@@ -2683,7 +2769,6 @@ function setupEvents() {
     }
     const question = questionById(item.dataset.questionId);
     if (question) {
-      state.openQuestionId = questionId(question);
       trackQuestionOpen(question);
     }
   }, true);
